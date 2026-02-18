@@ -231,42 +231,47 @@ class _IntentChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Material(
-      color: isSelected ? DesignTokens.accent : Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: DesignTokens.space16,
-            vertical: DesignTokens.space12,
-          ),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: isSelected
-                  ? DesignTokens.accent
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.3),
+    return Semantics(
+      button: true,
+      label: label,
+      selected: isSelected,
+      child: Material(
+        color: isSelected ? DesignTokens.accent : Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: DesignTokens.space16,
+              vertical: 14,
             ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: 20,
+            decoration: BoxDecoration(
+              border: Border.all(
                 color: isSelected
-                    ? DesignTokens.accentForeground
-                    : theme.colorScheme.onSurface,
+                    ? DesignTokens.accent
+                    : theme.colorScheme.onSurface.withValues(alpha: 0.3),
               ),
-              const SizedBox(width: DesignTokens.space8),
-              Text(
-                label,
-                style: theme.textTheme.labelLarge?.copyWith(
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  icon,
+                  size: 20,
                   color: isSelected
                       ? DesignTokens.accentForeground
                       : theme.colorScheme.onSurface,
                 ),
-              ),
-            ],
+                const SizedBox(width: DesignTokens.space8),
+                Text(
+                  label,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: isSelected
+                        ? DesignTokens.accentForeground
+                        : theme.colorScheme.onSurface,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

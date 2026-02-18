@@ -10,6 +10,7 @@ import 'package:gw_parish_website/data/models/parish_models.dart';
 import 'package:gw_parish_website/data/repositories/content_repository_factory.dart';
 import 'package:gw_parish_website/data/repositories/newsletter_repository_factory.dart';
 import 'package:gw_parish_website/services/liturgy/asset_liturgy_provider.dart';
+import 'package:gw_parish_website/services/liturgy/caching_liturgy_repository.dart';
 import 'package:gw_parish_website/services/liturgy/composite_liturgy_repository.dart';
 import 'package:gw_parish_website/services/liturgy/liturgy_repository.dart';
 import 'package:gw_parish_website/services/mass/mass_schedule_service.dart';
@@ -54,7 +55,9 @@ class _ParishAppState extends State<ParishApp> {
     final content = await contentRepo.loadContent();
     final archive = await newsletterRepo.loadArchive();
     final accessibility = await AccessibilityController.load();
-    final liturgyRepository = CompositeLiturgyRepository();
+    final liturgyRepository = CachingLiturgyRepository(
+      upstream: CompositeLiturgyRepository(),
+    );
     final massScheduleService = MassScheduleService();
     final prayerWallService = PrayerWallService();
     final audioController = EditorialAudioController();

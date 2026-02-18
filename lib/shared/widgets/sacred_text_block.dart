@@ -35,7 +35,8 @@ class SacredTextBlock extends StatelessWidget {
               label: altText ?? 'Sacred text',
               child: Image.asset(imageAsset!, fit: BoxFit.contain),
             )
-          : Column(
+          : SelectionArea(
+              child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -60,6 +61,7 @@ class SacredTextBlock extends StatelessWidget {
                 ],
               ],
             ),
+          ),
     );
   }
 }

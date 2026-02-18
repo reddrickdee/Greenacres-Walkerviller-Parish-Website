@@ -23,33 +23,36 @@ class ChristianArtCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(item.title, style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 14),
-            ClipRect(
-              child: Image.network(
-                item.imageUrl,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: 320,
-                webHtmlElementStrategy: WebHtmlElementStrategy.fallback,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child;
-                  }
-                  return const SizedBox(
-                    height: 320,
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    height: 260,
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    color: const Color(0x14D4AF37),
-                    child: const Text(
-                      'Christian Art image unavailable right now.',
-                    ),
-                  );
-                },
+            Semantics(
+              label: 'Christian art: ${item.title}',
+              child: ClipRect(
+                child: Image.network(
+                  item.imageUrl,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 320,
+                  webHtmlElementStrategy: WebHtmlElementStrategy.fallback,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+                    return const SizedBox(
+                      height: 320,
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 260,
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      color: const Color(0x14D4AF37),
+                      child: const Text(
+                        'Christian Art image unavailable right now.',
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             const SizedBox(height: 12),

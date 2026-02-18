@@ -9,16 +9,22 @@ class ScriptureBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
-        border: Border(left: BorderSide(color: DesignTokens.accent, width: 2)),
-      ),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-          fontStyle: FontStyle.italic,
-          height: 1.5,
+    return Semantics(
+      label: 'Scripture passage: $text',
+      child: Container(
+        padding: const EdgeInsets.all(24),
+        decoration: const BoxDecoration(
+          border:
+              Border(left: BorderSide(color: DesignTokens.accent, width: 2)),
+        ),
+        child: SelectionArea(
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontStyle: FontStyle.italic,
+              height: 1.5,
+            ),
+          ),
         ),
       ),
     );

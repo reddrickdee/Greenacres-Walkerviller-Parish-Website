@@ -244,11 +244,15 @@ class _IntentionCardState extends State<_IntentionCard>
               style: theme.textTheme.bodySmall,
             ),
             const SizedBox(height: 10),
-            TextButton.icon(
-              onPressed: _handlePray,
-              icon: const Text('🕯', style: TextStyle(fontSize: 16)),
-              label: Text(
-                'Pray for this · ${widget.intention.prayerCount}',
+            Semantics(
+              button: true,
+              label: 'Pray for this intention, ${widget.intention.prayerCount} prayers',
+              child: TextButton.icon(
+                onPressed: _handlePray,
+                icon: const Text('🕯', style: TextStyle(fontSize: 16)),
+                label: Text(
+                  'Pray for this · ${widget.intention.prayerCount}',
+                ),
               ),
             ),
           ],

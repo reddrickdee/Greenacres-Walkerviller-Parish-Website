@@ -104,7 +104,26 @@ class LiturgicalDay {
           : ChristianArtItem.fromJson(
               json['christianArt'] as Map<String, dynamic>,
             ),
+      saintOfDay: json['saintOfDay'] == null
+          ? null
+          : SaintOfDay.fromJson(
+              json['saintOfDay'] as Map<String, dynamic>,
+            ),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'date': date.toIso8601String(),
+      'seasonName': seasonName,
+      'season': season.name,
+      'readings': readings.map((r) => r.toJson()).toList(),
+      'upcomingFeasts': upcomingFeasts,
+      'lastUpdated': lastUpdated,
+      'source': source,
+      if (christianArt != null) 'christianArt': christianArt!.toJson(),
+      if (saintOfDay != null) 'saintOfDay': saintOfDay!.toJson(),
+    };
   }
 
   LiturgicalDay copyWith({
@@ -211,4 +230,22 @@ class SaintOfDay {
   final String biography;
   final String source;
   final String? imageUrl;
+
+  factory SaintOfDay.fromJson(Map<String, dynamic> json) {
+    return SaintOfDay(
+      name: json['name'] as String,
+      biography: json['biography'] as String,
+      source: json['source'] as String,
+      imageUrl: json['imageUrl'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'biography': biography,
+      'source': source,
+      if (imageUrl != null) 'imageUrl': imageUrl,
+    };
+  }
 }
