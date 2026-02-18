@@ -36,6 +36,29 @@ class EditorialImage extends StatelessWidget {
     this.semanticLabel,
   }) : image = AssetImage(assetPath);
 
+  EditorialImage.network({
+    super.key,
+    required String url,
+    this.focalPoint = Alignment.center,
+    this.width = double.infinity,
+    this.height,
+    this.fit = BoxFit.cover,
+    this.borderRadius = BorderRadius.zero,
+    this.filterQuality = FilterQuality.medium,
+    this.semanticLabel,
+  }) : image = NetworkImage(url);
+
+  /// Resolves an image path to the appropriate [ImageProvider].
+  ///
+  /// Paths starting with `http://` or `https://` are treated as network
+  /// images (CMS-uploaded); all other paths are treated as bundled assets.
+  static ImageProvider resolveImage(String path) {
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return NetworkImage(path);
+    }
+    return AssetImage(path);
+  }
+
   final ImageProvider image;
   final Alignment focalPoint;
   final double? width;
@@ -62,3 +85,4 @@ class EditorialImage extends StatelessWidget {
     );
   }
 }
+

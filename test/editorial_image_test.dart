@@ -24,4 +24,32 @@ void main() {
     final image = tester.widget<Image>(find.byType(Image));
     expect(image.alignment, focalPoint);
   });
+
+  group('resolveImage', () {
+    test('returns NetworkImage for https URL', () {
+      final result = EditorialImage.resolveImage(
+        'https://cdn.example.com/image.jpg',
+      );
+      expect(result, isA<NetworkImage>());
+    });
+
+    test('returns NetworkImage for http URL', () {
+      final result = EditorialImage.resolveImage(
+        'http://cdn.example.com/image.jpg',
+      );
+      expect(result, isA<NetworkImage>());
+    });
+
+    test('returns AssetImage for asset path', () {
+      final result = EditorialImage.resolveImage(
+        'assets/images/source/our_parish.jpg',
+      );
+      expect(result, isA<AssetImage>());
+    });
+
+    test('returns AssetImage for relative path', () {
+      final result = EditorialImage.resolveImage('images/photo.png');
+      expect(result, isA<AssetImage>());
+    });
+  });
 }

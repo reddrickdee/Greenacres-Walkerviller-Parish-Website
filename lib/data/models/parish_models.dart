@@ -55,6 +55,40 @@ class ParishContent {
   final List<SacramentalJourney> sacramentalJourneys;
   final List<HomilyRecording> homilyRecordings;
 
+  /// Creates a copy with only the specified fields replaced.
+  ///
+  /// Currently scoped to [massSchedule] for CMS overlay; extend as more
+  /// content domains move to Supabase.
+  ParishContent copyWith({List<MassScheduleEntry>? massSchedule}) {
+    return ParishContent(
+      lastVerified: lastVerified,
+      sources: sources,
+      tagline: tagline,
+      parishName: parishName,
+      welcomeExcerpt: welcomeExcerpt,
+      parishPrayerText: parishPrayerText,
+      priestWelcome: priestWelcome,
+      pastoralChairMessage: pastoralChairMessage,
+      visionStatement: visionStatement,
+      missionPoints: missionPoints,
+      councilMembers: councilMembers,
+      newsItems: newsItems,
+      eventItems: eventItems,
+      massSchedule: massSchedule ?? this.massSchedule,
+      sacraments: sacraments,
+      communityServices: communityServices,
+      faithFormation: faithFormation,
+      volunteerInfo: volunteerInfo,
+      newHereSteps: newHereSteps,
+      historyMilestones: historyMilestones,
+      contact: contact,
+      schools: schools,
+      refurbishmentImages: refurbishmentImages,
+      sacramentalJourneys: sacramentalJourneys,
+      homilyRecordings: homilyRecordings,
+    );
+  }
+
   factory ParishContent.fromJson(Map<String, dynamic> json) {
     return ParishContent(
       lastVerified: json['lastVerified'] as String,

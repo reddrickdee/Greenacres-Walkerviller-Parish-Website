@@ -7,8 +7,8 @@ import 'package:gw_parish_website/core/theme/app_theme.dart';
 import 'package:gw_parish_website/core/theme/design_tokens.dart';
 import 'package:gw_parish_website/data/models/liturgy_models.dart';
 import 'package:gw_parish_website/data/models/parish_models.dart';
-import 'package:gw_parish_website/data/repositories/asset_newsletter_repository.dart';
 import 'package:gw_parish_website/data/repositories/content_repository_factory.dart';
+import 'package:gw_parish_website/data/repositories/newsletter_repository_factory.dart';
 import 'package:gw_parish_website/services/liturgy/asset_liturgy_provider.dart';
 import 'package:gw_parish_website/services/liturgy/composite_liturgy_repository.dart';
 import 'package:gw_parish_website/services/liturgy/liturgy_repository.dart';
@@ -33,8 +33,24 @@ class _ParishAppState extends State<ParishApp> {
   }
 
   Future<_BootstrapData> _load() async {
-    final contentRepo = ContentRepositoryFactory.create();
-    final newsletterRepo = const AssetNewsletterRepository();
+    // Read CMS configuration from build-time environment variables.
+    const backend = String.fromEnvironment(
+      'CONTENT_BACKEND',
+      defaultValue: 'asset',
+    );
+    const cmsEndpoint = String.fromEnvironment('CMS_ENDPOINT');
+    const cmsToken = String.fromEnvironment('CMS_TOKEN');
+
+    final contentRepo = ContentRepositoryFactory.create(
+      backend: backend,
+      cmsEndpoint: cmsEndpoint.isEmpty ? null : cmsEndpoint,
+      cmsToken: cmsToken.isEmpty ? null : cmsToken,
+    );
+    final newsletterRepo = NewsletterRepositoryFactory.create(
+      backend: backend,
+      cmsEndpoint: cmsEndpoint.isEmpty ? null : cmsEndpoint,
+      cmsToken: cmsToken.isEmpty ? null : cmsToken,
+    );
     final content = await contentRepo.loadContent();
     final archive = await newsletterRepo.loadArchive();
     final accessibility = await AccessibilityController.load();

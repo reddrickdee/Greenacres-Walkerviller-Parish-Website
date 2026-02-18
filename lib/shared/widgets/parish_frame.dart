@@ -116,6 +116,18 @@ class ParishFrame extends StatelessWidget {
                 child: ListView(
                   padding: EdgeInsets.zero,
                   children: [
+                    ListTile(
+                      leading: Icon(
+                        Icons.close,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                      title: Text(
+                        parishContent.parishName,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      onTap: () => Navigator.pop(context),
+                    ),
+                    const Divider(height: 1),
                     for (final item in navItems)
                       ListTile(
                         minTileHeight: 56,
@@ -137,6 +149,35 @@ class ParishFrame extends StatelessWidget {
       body: Column(
         children: [
           Container(height: 3, color: seasonColor),
+          // Skip-navigation link (WCAG 2.4.1)
+          Semantics(
+            label: 'Skip to main content',
+            child: Focus(
+              autofocus: false,
+              child: Builder(
+                builder: (ctx) => InkWell(
+                  focusColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+                  onTap: () {
+                    // Move focus to main content area
+                    final mainContent = ctx.findAncestorWidgetOfExactType<KeyedSubtree>();
+                    if (mainContent != null) {
+                      Scrollable.ensureVisible(ctx, alignment: 0.0);
+                    }
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 2),
+                    alignment: Alignment.center,
+                    // Only visible on keyboard focus
+                    child: const Text(
+                      'Skip to main content',
+                      style: TextStyle(fontSize: 0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: Stack(
               children: [
@@ -356,15 +397,29 @@ class _Footer extends StatelessWidget {
             SizedBox(
               width: 320,
               child: Text(
-                'Weekend Mass Summary\n'
-                'St Monica\'s: Saturday 6:00pm\n'
-                'St Martin\'s: Sunday 9:30am',
+                _weekendMassSummary(content.massSchedule),
               ),
             ),
             SizedBox(
               width: 320,
-              child: Text(
-                'Schools\n${content.schools.first.name}\n${content.schools.last.name}',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Schools\n${content.schools.first.name}\n${content.schools.last.name}',
+                  ),
+                  const SizedBox(height: 8),
+                  InkWell(
+                    onTap: () => GoRouter.of(context).go('/privacy'),
+                    child: Text(
+                      'Privacy Policy',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -372,4 +427,28 @@ class _Footer extends StatelessWidget {
       ),
     );
   }
+}
+
+String _weekendMassSummary(List<MassScheduleEntry> schedule) {
+  const dayName = <int, String>{
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday',
+    7: 'Sunday',
+  };
+
+  final weekend =
+      schedule.where((e) => e.dayOfWeek == 6 || e.dayOfWeek == 7).toList();
+  if (weekend.isEmpty) {
+    return 'Weekend Mass times\nSee Mass & Sacraments page';
+  }
+
+  final lines = <String>['Weekend Mass Summary'];
+  for (final entry in weekend) {
+    lines.add('${entry.church}: ${dayName[entry.dayOfWeek]} ${entry.startTime}');
+  }
+  return lines.join('\n');
 }

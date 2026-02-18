@@ -114,8 +114,8 @@ class _BulletinHeader extends StatelessWidget {
               constraints: const BoxConstraints(maxHeight: 500),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4),
-                child: Image.asset(
-                  bulletin.coverImage!,
+                child: Image(
+                  image: EditorialImage.resolveImage(bulletin.coverImage!),
                   width: 1200,
                   fit: BoxFit.cover,
                 ),
@@ -140,8 +140,8 @@ class _BulletinSectionWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (section.imageAsset != null) ...[
-          EditorialImage.asset(
-            assetPath: section.imageAsset!,
+          EditorialImage(
+            image: EditorialImage.resolveImage(section.imageAsset!),
             height: 300,
             focalPoint: section.imageFocalPoint,
             borderRadius: BorderRadius.circular(2),

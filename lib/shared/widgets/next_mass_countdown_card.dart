@@ -25,23 +25,43 @@ class NextMassCountdownCard extends StatefulWidget {
 }
 
 class _NextMassCountdownCardState extends State<NextMassCountdownCard> {
-  late Timer _timer;
+  Timer? _timer;
   late MassStatusResult _status;
 
   @override
   void initState() {
     super.initState();
     _status = widget.service.massStatus(DateTime.now(), widget.schedule);
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+
+    // Tick every second only when imminent (<1hr) or in-progress;
+    // otherwise every 60 s to save rebuilds.
+    final isUrgent = _status.status == MassStatus.imminent ||
+        _status.status == MassStatus.inProgress;
+    final interval = isUrgent
+        ? const Duration(seconds: 1)
+        : const Duration(seconds: 60);
+
+    _timer = Timer.periodic(interval, (_) {
+      final prevStatus = _status.status;
       setState(() {
         _status = widget.service.massStatus(DateTime.now(), widget.schedule);
       });
+      // Restart timer if we crossed into the urgent zone.
+      if (prevStatus == MassStatus.upcoming &&
+          _status.status != MassStatus.upcoming) {
+        _startTimer();
+      }
     });
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 

@@ -10,11 +10,13 @@ class ServicesCommunityPage extends StatelessWidget {
   const ServicesCommunityPage({
     required this.content,
     required this.prayerWallService,
+    this.reduceMotion = false,
     super.key,
   });
 
   final ParishContent content;
   final PrayerWallService prayerWallService;
+  final bool reduceMotion;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,10 @@ class ServicesCommunityPage extends StatelessWidget {
         SectionShell(
           overline: 'Book of Remembrance',
           title: 'Prayer Wall',
-          child: PrayerWallSection(service: prayerWallService),
+          child: PrayerWallSection(
+            service: prayerWallService,
+            reduceMotion: reduceMotion,
+          ),
         ),
         SectionShell(
           overline: 'Services and Community',

@@ -16,6 +16,7 @@ import 'package:gw_parish_website/features/new_here/new_here_page.dart';
 import 'package:gw_parish_website/features/news_events/bulletin_detail_page.dart';
 import 'package:gw_parish_website/features/news_events/news_events_page.dart';
 import 'package:gw_parish_website/features/services_community/services_community_page.dart';
+import 'package:gw_parish_website/features/privacy/privacy_policy_page.dart';
 import 'package:gw_parish_website/features/pew_mode/pew_mode_page.dart';
 import 'package:gw_parish_website/services/liturgy/liturgy_repository.dart';
 import 'package:gw_parish_website/services/mass/mass_schedule_service.dart';
@@ -53,6 +54,37 @@ GoRouter createRouter({
   }
 
   return GoRouter(
+    errorBuilder: (context, state) => shell(
+      state: state,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.explore_off, size: 64),
+              const SizedBox(height: 16),
+              Text(
+                'Page not found',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'The page "${state.uri.path}" does not exist.',
+                style: Theme.of(context).textTheme.bodyLarge,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              FilledButton.icon(
+                onPressed: () => context.go('/'),
+                icon: const Icon(Icons.home),
+                label: const Text('Go to Homepage'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
     routes: [
       GoRoute(
         path: '/',
@@ -136,6 +168,7 @@ GoRouter createRouter({
           child: ServicesCommunityPage(
             content: content,
             prayerWallService: prayerWallService,
+            reduceMotion: accessibility.reduceMotion,
           ),
         ),
       ),
@@ -164,6 +197,13 @@ GoRouter createRouter({
         path: '/search',
         builder: (context, state) =>
             shell(state: state, child: SearchPage(content: content)),
+      ),
+      GoRoute(
+        path: '/privacy',
+        builder: (context, state) => shell(
+          state: state,
+          child: const PrivacyPolicyPage(),
+        ),
       ),
 
       // ── Pew Mode: distraction-free reading view (no shell) ─────
