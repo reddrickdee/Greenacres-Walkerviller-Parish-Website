@@ -1,0 +1,418 @@
+{
+  "lastVerified": "2026-02-12",
+  "source": "https://www.gwparish.org.au/News/PastNewsletters.html",
+  "items": [
+    {
+      "id": "1st-sun-lent",
+      "title": "CONNECTIONS 1ST SUN LENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_1ST_SUN_LENT.pdf",
+      "isCurrent": true,
+      "nativeBulletin": {
+        "date": "February 15, 2026",
+        "coverImage": "assets/images/source/our_parish.jpg",
+        "priestReflection": "As we enter the holy season of Lent, we are invited once again to journey with Christ into the wilderness. The ashes we received on Wednesday are not merely a sign of mourning, but a call to transformation. This week, we reflect on the temptations of Jesus and how they mirror the challenges we face in our own lives today.\n\nLent is not just about giving things up; it is about making room for God. In the silence of our hearts, away from the noise of our busy lives, what is God whispering to us? We are called to prayer, fasting, and almsgiving — the three pillars that help us reorient our lives towards the Gospel.\n\nMay this season be for all of us a time of deep spiritual renewal, as we prepare our hearts for the joy of the Resurrection. Let us be patient with ourselves and with one another, knowing that God's grace is always sufficient.",
+        "sections": [
+          {
+            "title": "Project Refurbishment Update",
+            "content": "The restoration of the sanctuary floors at St Monica's is ahead of schedule. We expect the scaffolding to be removed by early March, revealing the original woodwork in all its glory.",
+            "imageAsset": "assets/images/refurbishment/after_1.png",
+            "imageFocalPoint": {
+              "x": 0.0,
+              "y": -0.25
+            }
+          },
+          {
+            "title": "Parish Lenten Program",
+            "content": "Join us every Tuesday evening at 7:00 PM in the Parish Hall for our \"Walking with Christ\" study series. Refreshments provided."
+          },
+          {
+            "title": "Youth Group Launch",
+            "content": "We are excited to announce the relaunch of our Senior Youth Group! Open to all high school students, we'll be meeting for pizza and discussion this Friday."
+          },
+          {
+            "title": "Community Outreach",
+            "content": "The Vinnies food drive continues. This week we are specifically asking for non-perishable breakfast items and long-life milk."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2nd-sun-easter",
+      "title": "CONNECTIONS 2ND SUNDAY EASTER",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUNDAY_EASTER.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "2nd-sun-lent",
+      "title": "CONNECTIONS 2ND SUN LENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_LENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "2nd-sun-ordinary-time",
+      "title": "CONNECTIONS 2ND SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "3rd-sun-lent",
+      "title": "CONNECTIONS 3RD SUN LENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_LENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "3rd-sun-ordinary-time",
+      "title": "CONNECTIONS 3RD SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "4th-sun-easter",
+      "title": "CONNECTIONS 4TH SUN EASTER",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_EASTER.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "4th-sun-lent",
+      "title": "CONNECTIONS 4TH SUN LENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_LENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "5th-sun-easter",
+      "title": "CONNECTIONS 5TH SUN EASTER",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_5TH_SUN_EASTER.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "5th-sun-lent",
+      "title": "CONNECTIONS 5TH SUN LENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_5TH_SUN_LENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "5th-sun-ordinary-time",
+      "title": "CONNECTIONS 5TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_5TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "6th-sun-ordinary-time",
+      "title": "CONNECTIONS 6TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_6TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "7th-sun-ordinary-time",
+      "title": "CONNECTIONS 7TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_7TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "8th-sun-ordinary-time",
+      "title": "CONNECTIONS 8TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_8TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "ascension",
+      "title": "CONNECTIONS ASCENSION",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_ASCENSION.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "ascension-of-the-lord",
+      "title": "CONNECTIONS ASCENSION OF THE LORD",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_ASCENSION_OF_THE_LORD.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "baptism-of-the-lord",
+      "title": "CONNECTIONS BAPTISM OF THE LORD",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_BAPTISM_OF_THE_LORD.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "easter-sunday",
+      "title": "CONNECTIONS EASTER SUNDAY",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_EASTER_SUNDAY.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "epiphany",
+      "title": "CONNECTIONS EPIPHANY",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_EPIPHANY.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "holy-family",
+      "title": "CONNECTIONS HOLY FAMILY",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_HOLY_FAMILY.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "palm-sunday",
+      "title": "CONNECTIONS PALM SUNDAY",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_PALM_SUNDAY.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "pentecost-sunday",
+      "title": "CONNECTIONS PENTECOST SUNDAY",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_PENTECOST_SUNDAY.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "presentation-of-the-lord",
+      "title": "CONNECTIONS THE PRESENTATION OF THE LORD",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_THE_PRESENTATION_OF_THE_LORD.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "14th-sun-ordinary-time",
+      "title": "CONNECTIONS 14TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_14TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "15th-sun-ordinary-time",
+      "title": "CONNECTIONS 15TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_15TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "16th-sun-ordinary-time",
+      "title": "CONNECTIONS 16TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_16TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "17th-sun-ordinary-time",
+      "title": "CONNECTIONS 17TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_17TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "18th-sun-ordinary-time",
+      "title": "CONNECTIONS 18TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_18TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "19th-sun-ordinary-time",
+      "title": "CONNECTIONS 19TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_19TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "1st-sun-advent",
+      "title": "CONNECTIONS 1ST SUN ADVENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_1ST_SUN_ADVENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "20th-sun-ordinary-time",
+      "title": "CONNECTIONS 20TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_20TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "21st-sun-ordinary-time",
+      "title": "CONNECTIONS 21ST SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_21ST_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "22nd-sun-ordinary-time",
+      "title": "CONNECTIONS 22ND SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_22ND_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "23rd-sun-ordinary-time",
+      "title": "CONNECTIONS 23RD SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_23RD_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "25th-sun-ordinary-time",
+      "title": "CONNECTIONS 25TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_25TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "26th-sun-ordinary-time",
+      "title": "CONNECTIONS 26TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_26TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "27th-sun-ordinary-time",
+      "title": "CONNECTIONS 27TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_27TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "28th-sun-ordinary-time",
+      "title": "CONNECTIONS 28TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_28TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "29th-sun-ordinary-time",
+      "title": "CONNECTIONS 29TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_29TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "2nd-sun-advent",
+      "title": "CONNECTIONS 2ND SUN ADVENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_ADVENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "2nd-sun-ordinary-time-2",
+      "title": "CONNECTIONS 2ND SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "30th-sun-ordinary-time",
+      "title": "CONNECTIONS 30TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_30TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "33rd-sun-ordinary-time",
+      "title": "CONNECTIONS 33RD SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_33RD_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "3rd-sun-advent",
+      "title": "CONNECTIONS 3RD SUN ADVENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_ADVENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "3rd-sun-ordinary-time-2",
+      "title": "CONNECTIONS 3RD SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "4th-sun-advent",
+      "title": "CONNECTIONS 4TH SUN ADVENT",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_ADVENT.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "4th-sun-ordinary-time",
+      "title": "CONNECTIONS 4TH SUN ORDINARY TIME",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_ORDINARY_TIME.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "baptism-of-the-lord-2",
+      "title": "CONNECTIONS BAPTISM OF THE LORD",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_BAPTISM_OF_THE_LORD.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "christ-the-king",
+      "title": "CONNECTIONS CHRIST THE KING",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_CHRIST_THE_KING.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "exaltation-holy-cross",
+      "title": "CONNECTIONS EXALTATION OF THE HOLY CROSS",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_EXALTATION_OF_THE_HOLY_CROSS.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "most-holy-body-blood",
+      "title": "CONNECTIONS MOST HOLY BODY AND BLOOD",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_MOST_HOLY BODY_AND_BLOOD.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "most-holy-trinity",
+      "title": "CONNECTIONS MOST HOLY TRINITY",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_MOST_HOLY_TRINITY.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "sts-peter-paul",
+      "title": "CONNECTIONS STS PETER AND PAUL APOSTLES",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_STS_PETER_AND_PAUL_APOSTLES.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "faithful-departed",
+      "title": "CONNECTIONS THE COMMEMORATION OF THE FAITHFUL DEPARTED",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_THE_COMMEMORATION_OF_THE_FAITHFUL_DEPARTED.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    },
+    {
+      "id": "lateran-basilica",
+      "title": "CONNECTIONS THE DEDICATION OF THE LATERAN BASILICA",
+      "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_THE_DEDICATION_OF_THE_LATERAN_BASILICA.pdf",
+      "isCurrent": false,
+      "nativeBulletin": null
+    }
+  ]
+}

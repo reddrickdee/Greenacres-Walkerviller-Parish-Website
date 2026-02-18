@@ -1,0 +1,511 @@
+{
+  "lastVerified": "2026-02-12",
+  "sources": [
+    "https://www.gwparish.org.au/",
+    "https://www.gwparish.org.au/Welcome/Parish_Priest.html",
+    "https://www.gwparish.org.au/Welcome/Pastoral_Council.html",
+    "https://www.gwparish.org.au/Welcome/Vision_And_Mission.html",
+    "https://www.gwparish.org.au/Welcome/Pastoral_Council_Members.html",
+    "https://www.gwparish.org.au/services/StMonica.html",
+    "https://www.gwparish.org.au/services/StMartin.html",
+    "https://www.gwparish.org.au/services/CommunityServices.html",
+    "https://www.gwparish.org.au/services/Spirituality.html",
+    "https://www.gwparish.org.au/services/Volunteers.html",
+    "https://www.gwparish.org.au/services/Sacraments.html",
+    "https://www.gwparish.org.au/History/Parish_History.html",
+    "https://www.gwparish.org.au/Contact_Us/index.html",
+    "https://www.gwparish.org.au/Contact_Us/Parish_Schools.html",
+    "https://www.gwparish.org.au/News/index.html",
+    "https://www.gwparish.org.au/News/newsletters.html",
+    "https://www.gwparish.org.au/News/PastNewsletters.html"
+  ],
+  "parishName": "Greenacres Walkerville Catholic Parish",
+  "tagline": "In the Footsteps of Jesus",
+  "welcomeExcerpt": "Welcome to Greenacres Walkerville Parish. We encourage you to look around our website to learn more and to become part of a welcoming and inclusive Catholic community.",
+  "parishPrayerText": "Lord, we pray for all those who made this Church possible, our benefactors, our workers and those who, through their actions and prayers, have kept a living faith in our Parish. May we always strive to walk in the footprints of Jesus and may God continue to bless our future generations as they work in His Vineyard.",
+  "priestWelcome": "Dear Parishioners. The Greenacres Walkerville Parish continues to have a powerful impact on the lives of our Catholic community. Its members play an extremely important role in our spiritual and educational development. Each Catholic generation has faced its particular challenges and opportunities while fulfilling its own mission. One challenge is constant: to participate in the spread of the Gospel message and pass this on to the next generation. We all strive to walk in the footsteps of Jesus as we create an inclusive community involving as many parishioners as possible. St Paul invites each of the baptised to bring our own special gifts and skills to build up the Body of Christ.",
+  "pastoralChairMessage": "Dear Parishioners. The Catholic community we now call Greenacres Walkerville Parish has existed in a variety of forms since 1952. Here, you are part of a parish with a strong sense of history, a commitment to those who form it today by being a source of nourishment and joy, and a commitment to welcome and outreach for those yet to come. We are glad that you are here. We have two churches in our parish and you are warmly welcome to join Mass at 6:00pm Saturday in St Monica's Church and 9:30am Sunday in St Martin's Church. Our Parish Pastoral Councillors are committed to building a strong community based on Catholic tradition, social justice, outreach, faith formation, meaningful liturgical celebrations, financial stewardship and addressing the needs of all members of our community.",
+  "visionStatement": "Our Parish vision is to build a community following the footsteps of Jesus, so that we become a united, inclusive and welcoming Parish centred on God and developing as a people of faith.",
+  "missionPoints": [
+    {
+      "title": "To experience a sense of community - including Parish schools."
+    },
+    {
+      "title": "Commitment to social justice."
+    },
+    {
+      "title": "Meaningful liturgical celebrations and worship - includes music."
+    },
+    {
+      "title": "Outreach to the sick, lonely, the aged and disabled."
+    },
+    {
+      "title": "Financial stability, future growth and transparency in community - includes capital projects."
+    },
+    {
+      "title": "Faith formation process for all members of our community - includes different cultural groups."
+    },
+    {
+      "title": "Educationally and theologically sound sacramental programs."
+    }
+  ],
+  "councilMembers": [
+    {
+      "name": "Reg Nye",
+      "role": "Chairperson",
+      "bio": "Reg Nye has an engineering trade and production management background and was self-employed for more than 30 years in the retail hardware industry. A parishioner since 1997, he has served in pastoral and finance councils, planned giving and church maintenance. His stated hope as PPC Chair is to support the health and growth of faith and deepen love for Jesus.",
+      "photoAsset": "assets/images/source/council_reg_nye.png"
+    },
+    {
+      "name": "Gerry McCarthy",
+      "role": "Chair of the Parish Finance Council",
+      "bio": "Gerry McCarthy grew up in the Enfield Parish and has served parish communities across Millicent and Tea Tree Gully. Returning to live in this parish in 2004, he now supports finance, maintenance, safety and welfare and serves as an active St Vincent de Paul member.",
+      "photoAsset": "assets/images/source/council_gerry_mccarthy.png"
+    }
+  ],
+  "newsItems": [
+    {
+      "title": "Connections Newsletter",
+      "summary": "Current and past Connections parish newsletters are published as downloadable PDFs.",
+      "url": "https://www.gwparish.org.au/News/newsletters.html",
+      "imageAsset": "assets/images/source/news_connections.png"
+    },
+    {
+      "title": "Parish Our Story",
+      "summary": "A downloadable parish story document highlighting parish journey and ministry context.",
+      "url": "https://www.gwparish.org.au/News/Our_Story.pdf",
+      "imageAsset": "assets/images/source/news_our_story.png"
+    },
+    {
+      "title": "Parish Financial Report",
+      "summary": "Published parish financial report for transparency and stewardship.",
+      "url": "https://www.gwparish.org.au/News/Parish_Financial_Report_Sep_2020.pdf",
+      "imageAsset": "assets/images/source/news_report.png"
+    },
+    {
+      "title": "Direct Giving App",
+      "summary": "Set up direct giving for first and second collections through Good Giving.",
+      "url": "https://goodgiving.com.au/home/myparish",
+      "imageAsset": "assets/images/source/giving_app.png"
+    }
+  ],
+  "eventItems": [
+    {
+      "title": "Saturday Vigil Mass",
+      "dateLabel": "Weekly",
+      "description": "6:00pm at St Monica's Church, Walkerville."
+    },
+    {
+      "title": "Sunday Parish Mass",
+      "dateLabel": "Weekly",
+      "description": "9:30am at St Martin's Church, Greenacres."
+    },
+    {
+      "title": "Children's Liturgy",
+      "dateLabel": "1st & 3rd Weekends",
+      "description": "Children's liturgy sessions at both churches."
+    },
+    {
+      "title": "Ninna Marni Social Group",
+      "dateLabel": "Mondays",
+      "description": "Over-50s social gathering from 1:30pm to 4:00pm in St Martin's Hall."
+    }
+  ],
+  "massSchedule": [
+    {
+      "id": "monica_sat_vigil",
+      "church": "St Monica's Church",
+      "address": "90 North East Road, Walkerville",
+      "dayOfWeek": 6,
+      "startTime": "18:00",
+      "type": "Weekend Vigil Mass",
+      "durationMinutes": 60
+    },
+    {
+      "id": "monica_sun_ordinariate",
+      "church": "St Monica's Church",
+      "address": "90 North East Road, Walkerville",
+      "dayOfWeek": 7,
+      "startTime": "11:00",
+      "type": "Sunday Mass",
+      "notes": "Ordinariate of Our Lady of the Southern Cross",
+      "durationMinutes": 60
+    },
+    {
+      "id": "monica_wed",
+      "church": "St Monica's Church",
+      "address": "90 North East Road, Walkerville",
+      "dayOfWeek": 3,
+      "startTime": "09:00",
+      "type": "Weekday Mass",
+      "durationMinutes": 30
+    },
+    {
+      "id": "martin_sun",
+      "church": "St Martin's Church",
+      "address": "Corner Muller and Hampstead Roads, Greenacres",
+      "dayOfWeek": 7,
+      "startTime": "09:30",
+      "type": "Sunday Mass",
+      "durationMinutes": 60
+    },
+    {
+      "id": "martin_tue",
+      "church": "St Martin's Church",
+      "address": "Corner Muller and Hampstead Roads, Greenacres",
+      "dayOfWeek": 2,
+      "startTime": "09:00",
+      "type": "Weekday Mass",
+      "durationMinutes": 30
+    },
+    {
+      "id": "martin_thu",
+      "church": "St Martin's Church",
+      "address": "Corner Muller and Hampstead Roads, Greenacres",
+      "dayOfWeek": 4,
+      "startTime": "09:00",
+      "type": "Weekday Mass",
+      "durationMinutes": 30
+    }
+  ],
+  "sacraments": [
+    {
+      "title": "Reconciliation",
+      "details": "St Monica's: Saturday evening 5:30pm-5:50pm or by appointment. St Martin's: by appointment only."
+    },
+    {
+      "title": "Baptisms",
+      "details": "St Monica's: during Saturday Vigil Mass. St Martin's: during weekend Masses or private baptisms by appointment (11:00am on the 2nd and 4th Sundays)."
+    },
+    {
+      "title": "Weddings",
+      "details": "Weddings are celebrated by appointment. Please contact the Parish Office to begin preparation."
+    },
+    {
+      "title": "Sacramental Program",
+      "details": "The parish sacramental program for school-aged children includes Reconciliation, Confirmation and Eucharist over a two-year cycle with parent participation in all preparation sessions."
+    }
+  ],
+  "communityServices": [
+    "Parish Pastoral Council provides a voice for lay people in parish decision-making.",
+    "Parish Finance Council oversees financial administration, maintenance and WHS through a monthly subcommittee.",
+    "Visitation ministry serves the sick and homebound with regular visits and communion.",
+    "St Vincent de Paul Society supports families and individuals in need through home visits, Vinnies centres and Fred's Van outreach."
+  ],
+  "faithFormation": [
+    "Lectio Divina for Gospel reflection and scriptural prayer.",
+    "Children's liturgy on first and third weekends at St Monica's and St Martin's.",
+    "Our Mother of Perpetual Help devotion every first Wednesday at St Martin's (Rosary 6:00pm, Mass/Novena 6:30pm).",
+    "El Shaddai Prayer Partners fellowship every Sunday at St Martin's (2:00pm-4:00pm).",
+    "Sri Lankan Catholic Community gathering every second Sunday at St Martin's (4:30pm catechism, 5:30pm Mass).",
+    "Ninna Marni social group for over-50s each Monday afternoon at St Martin's Hall."
+  ],
+  "volunteerInfo": "Our Parish welcomes parishioners to participate in ministries including the Word, Eucharist, pastoral visitation, liturgy, maintenance, councils, sacramental preparation, altar serving and hospitality. The parish is committed to a safe and supportive volunteer environment and requires Working With Children Check clearance in line with Catholic Archdiocese policy.",
+  "newHereSteps": [
+    "Join the community at either Saturday 6:00pm (St Monica's) or Sunday 9:30am (St Martin's).",
+    "Arrive 10-15 minutes early; parishioners and ministers are ready to welcome you.",
+    "If you are unsure what to do during Mass, simply follow the congregation; printed guides and friendly assistance are available.",
+    "Introduce yourself after Mass to the celebrant or parish office team so we can help you find groups and ministries.",
+    "Families with children are encouraged to join children's liturgy and school-linked parish events.",
+    "If you need pastoral support, sacramental information, or home visitation, contact the parish office and we will connect you quickly."
+  ],
+  "historyMilestones": [
+    {
+      "year": "1912",
+      "description": "Former Druids Hall on North East Road used for Sunday Mass."
+    },
+    {
+      "year": "1919",
+      "description": "Land for original Walkerville Church Hall purchased."
+    },
+    {
+      "year": "1929",
+      "description": "St Monica's School opened with the Sisters of St Joseph."
+    },
+    {
+      "year": "1941",
+      "description": "Parish of Walkerville established by Archbishop Beovich after separating from Lower North Adelaide Parish; Fr Thomas O'Rourke appointed Parish Priest."
+    },
+    {
+      "year": "1942",
+      "description": "Purchase of church site where St Monica's Church now stands."
+    },
+    {
+      "year": "1943",
+      "description": "Brick annex added to Greenacres Church Hall to relieve overcrowding."
+    },
+    {
+      "year": "1947",
+      "description": "Land purchased at Enfield for future school."
+    },
+    {
+      "year": "1949",
+      "description": "Purchase of Greenacres site."
+    },
+    {
+      "year": "1952",
+      "description": "Foundation stone laid for St Monica's Church."
+    },
+    {
+      "year": "1953",
+      "description": "Palm Sunday opening of St Monica's Church and parish expansion to Clearview, Northfield and Hillcrest."
+    },
+    {
+      "year": "1958",
+      "description": "Greenacres Church/Hall built at corner Hampstead and Muller Roads."
+    },
+    {
+      "year": "1964",
+      "description": "St Martin's Catholic Primary School opened."
+    },
+    {
+      "year": "2003",
+      "description": "Amalgamation of Greenacres and Walkerville Parishes; Fr Anthony Pearson appointed Parish Priest."
+    },
+    {
+      "year": "2007",
+      "description": "Parish office moved to 106A Hampstead Road, Broadview; new parish presbytery purchased."
+    },
+    {
+      "year": "2011",
+      "description": "Parish office moved to 66-80 Princes Road, Greenacres (St Martin's Catholic Primary School)."
+    },
+    {
+      "year": "2013",
+      "description": "Fr Kym Spurling appointed Parish Priest at Greenacres Walkerville."
+    },
+    {
+      "year": "2018",
+      "description": "Licence to Occupy signed with St Monica's Parish School for church car park and grassed area."
+    },
+    {
+      "year": "2019",
+      "description": "Refurbishment of St Monica's Church and car park."
+    },
+    {
+      "year": "2023",
+      "description": "Vicar General Fr Dean Marin appointed Moderator; Deacon Andrew Kirkbride appointed Pastoral Director."
+    },
+    {
+      "year": "2024",
+      "description": "Sr Brenda Balingasa appointed as Parish Pastoral Associate."
+    }
+  ],
+  "contact": {
+    "address": "56-80 Princes Road, Greenacres SA 5086",
+    "postalAddress": "PO Box 42, Greenacres SA 5086",
+    "phone": "(08) 8261 6200",
+    "email": "office@gwparish.org.au",
+    "officeHours": "Monday, Wednesday, Thursday, 9:00am to 3:00pm",
+    "stMonicaQuery": "St Monica's Catholic Church, 90 North East Road, Walkerville SA",
+    "stMartinQuery": "St Martin's Catholic Church, Corner Muller and Hampstead Roads, Greenacres SA"
+  },
+  "schools": [
+    {
+      "name": "St Martin's Catholic Primary School",
+      "address": "56-80 Princes Road, Greenacres SA 5086",
+      "principal": "Ms Christine Comas",
+      "phone": "(08) 8211 2400",
+      "website": "www.smg.catholic.edu.au"
+    },
+    {
+      "name": "St Monica's Parish School",
+      "address": "92 North East Road, Walkerville SA 5081",
+      "principal": "Mrs Emily Sayer",
+      "phone": "(08) 8344 2384",
+      "website": "www.stmonica.edu.au"
+    }
+  ],
+  "refurbishmentImages": [
+    "assets/images/refurbishment/st_monica_3.png",
+    "assets/images/refurbishment/st_monica_4.png",
+    "assets/images/refurbishment/st_monica_5.png",
+    "assets/images/refurbishment/before_1.png",
+    "assets/images/refurbishment/after_1.png",
+    "assets/images/refurbishment/before_2.png",
+    "assets/images/refurbishment/after_2.png",
+    "assets/images/refurbishment/before_3.png",
+    "assets/images/refurbishment/after_3.png",
+    "assets/images/refurbishment/before_4.png",
+    "assets/images/refurbishment/after_4.png",
+    "assets/images/refurbishment/under_construction.jpeg"
+  ],
+  "sacramentalJourneys": [
+    {
+      "id": "rcia",
+      "title": "RCIA — Rite of Christian Initiation of Adults",
+      "subtitle": "Your journey into the Catholic faith",
+      "intro": "The RCIA is a faith formation process for adults seeking Baptism, Confirmation and Eucharist.  Sessions are held at the parish and the journey typically begins in autumn each year.",
+      "steps": [
+        {
+          "id": "rcia-inquiry",
+          "phaseLabel": "Phase 1",
+          "title": "Inquiry & Welcome",
+          "details": "An informal period for questions, sharing your story, and learning about Catholic life.  No commitment required.",
+          "prerequisites": [
+            "Contact the Parish Office to register interest"
+          ],
+          "meetingLabel": "Weekly group sessions (Feb–Apr)"
+        },
+        {
+          "id": "rcia-catechumenate",
+          "phaseLabel": "Phase 2",
+          "title": "Catechumenate",
+          "details": "Deeper exploration of Scripture, prayer and Catholic teaching with a parish sponsor walking alongside you.",
+          "prerequisites": [
+            "Rite of Acceptance celebrated at Sunday Mass"
+          ],
+          "meetingLabel": "Weekly sessions (May–Nov)"
+        },
+        {
+          "id": "rcia-purification",
+          "phaseLabel": "Phase 3",
+          "title": "Purification & Enlightenment",
+          "details": "A period of prayer, reflection and preparation during Lent leading to the Easter Vigil.",
+          "prerequisites": [
+            "Rite of Election at the Cathedral"
+          ],
+          "meetingLabel": "Lenten retreat & weekly sessions"
+        },
+        {
+          "id": "rcia-sacraments",
+          "phaseLabel": "Phase 4",
+          "title": "Sacraments of Initiation",
+          "details": "Receive Baptism, Confirmation and First Eucharist at the Easter Vigil Mass.",
+          "prerequisites": [],
+          "meetingLabel": "Easter Vigil"
+        },
+        {
+          "id": "rcia-mystagogia",
+          "phaseLabel": "Phase 5",
+          "title": "Mystagogia",
+          "details": "Post-Easter sessions to deepen understanding of the sacraments and find your place in parish life.",
+          "prerequisites": [],
+          "meetingLabel": "Monthly gatherings (Easter–Pentecost)"
+        }
+      ],
+      "ctaLabel": "Contact the Parish Office to begin",
+      "ctaRoute": "/contact"
+    },
+    {
+      "id": "baptism",
+      "title": "Infant Baptism",
+      "subtitle": "Welcoming your child into the faith",
+      "intro": "Baptism is the first sacrament of initiation and is celebrated at both parish churches.  Preparation sessions help parents and godparents understand the commitment they are making.",
+      "steps": [
+        {
+          "id": "bap-contact",
+          "phaseLabel": "Step 1",
+          "title": "Initial Contact",
+          "details": "Phone or email the Parish Office to express your interest.  The office will confirm available dates and share preparation details.",
+          "prerequisites": [
+            "At least one parent is a baptised Catholic"
+          ],
+          "meetingLabel": null
+        },
+        {
+          "id": "bap-prep",
+          "phaseLabel": "Step 2",
+          "title": "Baptism Preparation Session",
+          "details": "A single evening session for parents and godparents covering the meaning and liturgy of Baptism.",
+          "prerequisites": [
+            "Completed registration form"
+          ],
+          "meetingLabel": "One evening session (arranged with the office)"
+        },
+        {
+          "id": "bap-documents",
+          "phaseLabel": "Step 3",
+          "title": "Godparent & Document Requirements",
+          "details": "At least one godparent must be a confirmed, practising Catholic.  Bring the child's birth certificate and godparent confirmation certificates.",
+          "prerequisites": [
+            "Child's birth certificate",
+            "Godparent confirmation certificate",
+            "Godparent practising Catholic declaration"
+          ],
+          "meetingLabel": null
+        },
+        {
+          "id": "bap-ceremony",
+          "phaseLabel": "Step 4",
+          "title": "Baptism Ceremony",
+          "details": "St Monica's: during Saturday Vigil Mass.  St Martin's: during Sunday Mass or private ceremony at 11:00am on 2nd & 4th Sundays.",
+          "prerequisites": [],
+          "meetingLabel": "As arranged"
+        }
+      ],
+      "ctaLabel": "Request Baptism",
+      "ctaRoute": "/contact"
+    },
+    {
+      "id": "marriage",
+      "title": "Marriage Preparation",
+      "subtitle": "Preparing for the Sacrament of Matrimony",
+      "intro": "Catholic marriage preparation ensures couples understand the sacramental commitment.  Please allow at least six months before your intended wedding date to complete preparation.",
+      "steps": [
+        {
+          "id": "mar-meeting",
+          "phaseLabel": "Step 1",
+          "title": "Initial Meeting with the Priest",
+          "details": "Contact the Parish Office to arrange a meeting with the Parish Priest to discuss your plans and begin documentation.",
+          "prerequisites": [
+            "At least one partner is a baptised Catholic",
+            "Contact the office at least 6 months before the wedding date"
+          ],
+          "meetingLabel": null
+        },
+        {
+          "id": "mar-documents",
+          "phaseLabel": "Step 2",
+          "title": "Documentation",
+          "details": "Gather Baptism certificates (issued within the last 6 months), confirmation certificates and any required dispensations.",
+          "prerequisites": [
+            "Recent Baptism certificate (within 6 months)",
+            "Confirmation certificate",
+            "Government Notice of Intended Marriage form"
+          ],
+          "meetingLabel": null
+        },
+        {
+          "id": "mar-course",
+          "phaseLabel": "Step 3",
+          "title": "Marriage Preparation Course",
+          "details": "Complete a diocesan-approved pre-marriage course.  Options include CatholicCare weekend programs and online courses.",
+          "prerequisites": [
+            "Enrol through CatholicCare Adelaide or approved provider"
+          ],
+          "meetingLabel": "Weekend or six-week course"
+        },
+        {
+          "id": "mar-rehearsal",
+          "phaseLabel": "Step 4",
+          "title": "Ceremony Rehearsal & Liturgy Planning",
+          "details": "Finalise readings, music and vows with the priest and attend a ceremony rehearsal at the church.",
+          "prerequisites": [],
+          "meetingLabel": "One session before the wedding"
+        },
+        {
+          "id": "mar-wedding",
+          "phaseLabel": "Step 5",
+          "title": "Wedding Day",
+          "details": "Celebrate the Sacrament of Matrimony surrounded by your parish community.",
+          "prerequisites": [],
+          "meetingLabel": "Your chosen date"
+        }
+      ],
+      "ctaLabel": "Begin Marriage Preparation",
+      "ctaRoute": "/contact"
+    }
+  ],
+  "homilyRecordings": [
+    {
+      "id": "homily-2026-02-09",
+      "title": "Fifth Sunday in Ordinary Time",
+      "speaker": "Fr Kym Spurling",
+      "dateIso": "2026-02-09",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "durationLabel": "12 min",
+      "summary": "Reflecting on the call of the first disciples and what it means to leave our nets behind in the modern world."
+    }
+  ]
+}

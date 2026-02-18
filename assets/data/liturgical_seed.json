@@ -1,0 +1,75 @@
+{
+    "seedDate": "2026-02-12",
+    "sundayCycle": "A",
+    "weekdayCycle": "II",
+    "season": {
+        "name": "Ordinary Time",
+        "week": 5,
+        "color": "green",
+        "colorHex": "#2D5F2D"
+    },
+    "today": {
+        "date": "2026-02-12",
+        "dayOfWeek": "Thursday",
+        "celebration": "Thursday of Week 5 in Ordinary Time",
+        "readings": {
+            "firstReading": {
+                "reference": "1 Kings 11:4-13",
+                "label": "First Reading"
+            },
+            "responsorialPsalm": {
+                "reference": "Psalm 105:3-4, 35-37, 40",
+                "label": "Responsorial Psalm"
+            },
+            "gospel": {
+                "reference": "Mark 7:24-30",
+                "label": "Gospel"
+            }
+        },
+        "fullTextUrl": "https://universalis.com/Australia/20260212/mass.htm"
+    },
+    "upcomingObservances": [
+        {
+            "date": "2026-02-14",
+            "name": "Saints Cyril, Monk, and Methodius, Bishop",
+            "rank": "Memorial",
+            "note": "Patrons of Europe"
+        },
+        {
+            "date": "2026-02-15",
+            "name": "Sixth Sunday in Ordinary Time",
+            "rank": "Sunday",
+            "readings": {
+                "firstReading": "Jeremiah 17:5-8",
+                "responsorialPsalm": "Psalm 1:1-4, 6",
+                "secondReading": "1 Corinthians 15:12, 16-20",
+                "gospel": "Luke 6:17, 20-26"
+            },
+            "fullTextUrl": "https://universalis.com/Australia/20260215/mass.htm"
+        },
+        {
+            "date": "2026-02-18",
+            "name": "Ash Wednesday",
+            "rank": "Solemnity",
+            "note": "Beginning of Lent",
+            "seasonChange": {
+                "newSeason": "Lent",
+                "newColor": "violet",
+                "newColorHex": "#6B3FA0"
+            },
+            "readings": {
+                "firstReading": "Joel 2:12-18",
+                "responsorialPsalm": "Psalm 50:3-6, 12-14, 17",
+                "secondReading": "2 Corinthians 5:20 — 6:2",
+                "gospel": "Matthew 6:1-6, 16-18"
+            },
+            "fullTextUrl": "https://universalis.com/Australia/20260218/mass.htm"
+        },
+        {
+            "date": "2026-02-22",
+            "name": "First Sunday of Lent",
+            "rank": "Sunday",
+            "fullTextUrl": "https://universalis.com/Australia/20260222/mass.htm"
+        }
+    ]
+}
