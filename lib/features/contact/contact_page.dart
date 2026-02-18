@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:gw_parish_website/data/models/parish_models.dart';
@@ -26,26 +27,28 @@ class ContactPage extends StatelessWidget {
                 child: Card(
                   child: Padding(
                     padding: const EdgeInsets.all(24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(content.contact.postalAddress),
-                        const SizedBox(height: 8),
-                        Text('Phone: ${content.contact.phone}'),
-                        const SizedBox(height: 8),
-                        Text('Email: ${content.contact.email}'),
-                        const SizedBox(height: 8),
-                        Text('Office Hours: ${content.contact.officeHours}'),
-                        const SizedBox(height: 14),
-                        TextButton(
-                          onPressed: () => launchUrl(
-                            Uri.parse(
-                              'tel:${content.contact.phone.replaceAll(' ', '')}',
+                    child: SelectionArea(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(content.contact.postalAddress),
+                          const SizedBox(height: 8),
+                          Text('Phone: ${content.contact.phone}'),
+                          const SizedBox(height: 8),
+                          Text('Email: ${content.contact.email}'),
+                          const SizedBox(height: 8),
+                          Text('Office Hours: ${content.contact.officeHours}'),
+                          const SizedBox(height: 14),
+                          TextButton(
+                            onPressed: () => launchUrl(
+                              Uri.parse(
+                                'tel:${content.contact.phone.replaceAll(' ', '')}',
+                              ),
                             ),
+                            child: const Text('Call Parish Office'),
                           ),
-                          child: const Text('Call Parish Office'),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -121,6 +124,7 @@ class _ContactFormState extends State<_ContactForm> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _messageController = TextEditingController();
+  bool _consentChecked = false;
 
   @override
   void dispose() {
@@ -134,7 +138,7 @@ class _ContactFormState extends State<_ContactForm> {
     final name = _nameController.text.trim();
     final email = _emailController.text.trim();
     final message = _messageController.text.trim();
-    if (name.isEmpty || message.isEmpty) return;
+    if (name.isEmpty || message.isEmpty || !_consentChecked) return;
 
     final subject = Uri.encodeComponent('Website Contact from $name');
     final body = Uri.encodeComponent(
@@ -151,6 +155,8 @@ class _ContactFormState extends State<_ContactForm> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(24),
@@ -159,7 +165,7 @@ class _ContactFormState extends State<_ContactForm> {
           children: [
             Text(
               'Send a Message',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: theme.textTheme.titleLarge,
             ),
             const SizedBox(height: 12),
             TextField(
@@ -192,20 +198,38 @@ class _ContactFormState extends State<_ContactForm> {
                 hintText: 'How can we help?',
               ),
             ),
-            const SizedBox(height: 8),
-            Text(
-              'Your name and email will be used only to respond to your '
-              'enquiry. See our Privacy Policy.',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.6),
+            const SizedBox(height: 12),
+
+            // ── Privacy consent ────────────────────────────────────
+            CheckboxListTile(
+              value: _consentChecked,
+              onChanged: (v) => setState(() => _consentChecked = v ?? false),
+              controlAffinity: ListTileControlAffinity.leading,
+              contentPadding: EdgeInsets.zero,
+              title: GestureDetector(
+                onTap: () => context.go('/privacy'),
+                child: Text.rich(
+                  TextSpan(
+                    text: 'I consent to my details being processed in '
+                        'accordance with the ',
+                    children: [
+                      TextSpan(
+                        text: 'Parish Privacy Policy',
+                        style: TextStyle(
+                          color: theme.colorScheme.primary,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                      const TextSpan(text: '.'),
+                    ],
                   ),
+                  style: theme.textTheme.bodySmall,
+                ),
+              ),
             ),
             const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: _submit,
+              onPressed: _consentChecked ? _submit : null,
               child: const Text('Send Message'),
             ),
           ],
@@ -214,4 +238,3 @@ class _ContactFormState extends State<_ContactForm> {
     );
   }
 }
-
