@@ -62,29 +62,52 @@ class _PrayerWallSectionState extends State<PrayerWallSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ── Submit form ──────────────────────────────────────────
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Expanded(
-              child: TextField(
-                controller: _textController,
-                maxLength: 200,
-                maxLines: 2,
-                decoration: const InputDecoration(
-                  hintText: 'Share your prayer intention (anonymous)…',
-                  border: OutlineInputBorder(),
-                  counterText: '',
+        // ── Submit form or "call the office" notice ───────────────
+        if (widget.service.submissionEnabled)
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _textController,
+                  maxLength: 200,
+                  maxLines: 2,
+                  decoration: const InputDecoration(
+                    labelText: 'Prayer intention',
+                    hintText: 'Share your prayer intention (anonymous)…',
+                    border: OutlineInputBorder(),
+                    counterText: '',
+                  ),
                 ),
               ),
+              const SizedBox(width: 12),
+              FilledButton(
+                onPressed: _submit,
+                child: const Text('Submit'),
+              ),
+            ],
+          )
+        else
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.phone_outlined,
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'To submit a prayer intention, please call the parish office.',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(width: 12),
-            FilledButton(
-              onPressed: _submit,
-              child: const Text('Submit'),
-            ),
-          ],
-        ),
+          ),
         const SizedBox(height: 24),
 
         // ── Staggered grid of intentions ─────────────────────────

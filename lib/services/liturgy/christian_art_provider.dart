@@ -78,7 +78,7 @@ class ChristianArtProvider {
         'https://christian.art/wp-json/wp/v2/daily-gospel-reading'
         '?slug=$slug&_embed=1',
       );
-      final response = await _client.get(uri);
+      final response = await _client.get(uri).timeout(const Duration(seconds: 5));
       if (response.statusCode != 200) {
         return null;
       }
@@ -105,7 +105,7 @@ class ChristianArtProvider {
         '&per_page=1',
       );
 
-      final searchResponse = await _client.get(uri);
+      final searchResponse = await _client.get(uri).timeout(const Duration(seconds: 5));
       if (searchResponse.statusCode != 200) {
         return null;
       }
@@ -124,7 +124,7 @@ class ChristianArtProvider {
         Uri.parse(
           'https://christian.art/wp-json/wp/v2/daily-gospel-reading/$id?_embed=1',
         ),
-      );
+      ).timeout(const Duration(seconds: 5));
       if (detailsResponse.statusCode != 200) {
         return null;
       }
@@ -142,7 +142,7 @@ class ChristianArtProvider {
         '?url=${Uri.encodeQueryComponent(pageUrl)}',
       );
 
-      final response = await _client.get(uri);
+      final response = await _client.get(uri).timeout(const Duration(seconds: 5));
       if (response.statusCode != 200) {
         return null;
       }

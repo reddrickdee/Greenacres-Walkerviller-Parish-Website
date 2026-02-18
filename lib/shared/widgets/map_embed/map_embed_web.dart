@@ -19,6 +19,7 @@ Widget createMapEmbed({required String title, required String query}) {
         ..style.height = '100%'
         ..setAttribute('loading', 'lazy')
         ..setAttribute('referrerpolicy', 'no-referrer-when-downgrade')
+        ..setAttribute('sandbox', 'allow-scripts allow-same-origin')
         ..title = title;
       return frame;
     });

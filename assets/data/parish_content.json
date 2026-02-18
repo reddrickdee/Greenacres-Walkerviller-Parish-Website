@@ -497,15 +497,5 @@
       "ctaRoute": "/contact"
     }
   ],
-  "homilyRecordings": [
-    {
-      "id": "homily-2026-02-09",
-      "title": "Fifth Sunday in Ordinary Time",
-      "speaker": "Fr Kym Spurling",
-      "dateIso": "2026-02-09",
-      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-      "durationLabel": "12 min",
-      "summary": "Reflecting on the call of the first disciples and what it means to leave our nets behind in the modern world."
-    }
-  ]
+  "homilyRecordings": []
 }

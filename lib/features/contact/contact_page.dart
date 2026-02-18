@@ -51,7 +51,10 @@ class ContactPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 12),
-              const SizedBox(width: 520, child: _ContactForm()),
+              SizedBox(
+                width: 520,
+                child: _ContactForm(parishEmail: content.contact.email),
+              ),
             ],
           ),
         ),
@@ -105,8 +108,46 @@ class ContactPage extends StatelessWidget {
   }
 }
 
-class _ContactForm extends StatelessWidget {
-  const _ContactForm();
+class _ContactForm extends StatefulWidget {
+  const _ContactForm({required this.parishEmail});
+
+  final String parishEmail;
+
+  @override
+  State<_ContactForm> createState() => _ContactFormState();
+}
+
+class _ContactFormState extends State<_ContactForm> {
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _messageController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _messageController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submit() async {
+    final name = _nameController.text.trim();
+    final email = _emailController.text.trim();
+    final message = _messageController.text.trim();
+    if (name.isEmpty || message.isEmpty) return;
+
+    final subject = Uri.encodeComponent('Website Contact from $name');
+    final body = Uri.encodeComponent(
+      'Name: $name\n'
+      '${email.isNotEmpty ? 'Email: $email\n' : ''}'
+      '\n$message',
+    );
+
+    final uri = Uri.parse(
+      'mailto:${widget.parishEmail}?subject=$subject&body=$body',
+    );
+    await launchUrl(uri);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,28 +162,56 @@ class _ContactForm extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 12),
-            const TextField(
+            TextField(
+              controller: _nameController,
               minLines: 1,
               maxLines: 1,
-              decoration: InputDecoration(hintText: 'Name'),
+              decoration: const InputDecoration(
+                labelText: 'Name',
+                hintText: 'Your full name',
+              ),
             ),
             const SizedBox(height: 8),
-            const TextField(
+            TextField(
+              controller: _emailController,
               minLines: 1,
               maxLines: 1,
-              decoration: InputDecoration(hintText: 'Email'),
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                labelText: 'Email',
+                hintText: 'your.email@example.com',
+              ),
             ),
             const SizedBox(height: 8),
-            const TextField(
+            TextField(
+              controller: _messageController,
               minLines: 4,
               maxLines: 4,
-              decoration: InputDecoration(hintText: 'Message'),
+              decoration: const InputDecoration(
+                labelText: 'Message',
+                hintText: 'How can we help?',
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Your name and email will be used only to respond to your '
+              'enquiry. See our Privacy Policy.',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withValues(alpha: 0.6),
+                  ),
             ),
             const SizedBox(height: 12),
-            ElevatedButton(onPressed: () {}, child: const Text('Submit')),
+            ElevatedButton(
+              onPressed: _submit,
+              child: const Text('Send Message'),
+            ),
           ],
         ),
       ),
     );
   }
 }
+

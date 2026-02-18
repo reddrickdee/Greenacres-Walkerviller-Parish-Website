@@ -163,7 +163,7 @@ GoRouter createRouter({
       GoRoute(
         path: '/search',
         builder: (context, state) =>
-            shell(state: state, child: const SearchPage()),
+            shell(state: state, child: SearchPage(content: content)),
       ),
 
       // ── Pew Mode: distraction-free reading view (no shell) ─────

@@ -6,16 +6,22 @@ import 'package:gw_parish_website/data/models/parish_models.dart';
 ///
 /// In production this would be backed by Firestore with a moderation queue.
 /// For the prototype, it pre-seeds a small set of sample intentions.
+/// Submission is disabled for MVP — set [submissionEnabled] to true when
+/// Firestore backend and moderation queue are in place.
 class PrayerWallService extends ChangeNotifier {
-  PrayerWallService() {
+  PrayerWallService({this.submissionEnabled = false}) {
     _intentions.addAll(_sampleIntentions);
   }
+
+  /// Whether users can submit new prayer intentions through the UI.
+  final bool submissionEnabled;
 
   final List<PrayerIntention> _intentions = [];
 
   List<PrayerIntention> get intentions => List.unmodifiable(_intentions);
 
   void addIntention(String text) {
+    if (!submissionEnabled) return;
     if (text.trim().isEmpty) return;
     final trimmed = text.trim();
     final capped = trimmed.length > 200 ? trimmed.substring(0, 200) : trimmed;

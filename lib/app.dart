@@ -94,7 +94,7 @@ class _ParishAppState extends State<ParishApp> {
                   children: const [
                     SizedBox(width: 160, child: LinearProgressIndicator()),
                     SizedBox(height: 16),
-                    Text('Loading Parish Prototype...'),
+                    Text('Loading…'),
                   ],
                 ),
               ),

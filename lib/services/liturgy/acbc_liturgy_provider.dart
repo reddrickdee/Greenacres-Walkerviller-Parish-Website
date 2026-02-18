@@ -14,7 +14,7 @@ class AcbcLiturgyProvider {
   Future<LiturgicalDay?> tryFetch(DateTime date) async {
     final uri = Uri.parse('https://www.catholic.au/s/article/Daily-Readings');
     try {
-      final response = await _client.get(uri);
+      final response = await _client.get(uri).timeout(const Duration(seconds: 5));
       if (response.statusCode != 200) {
         return null;
       }

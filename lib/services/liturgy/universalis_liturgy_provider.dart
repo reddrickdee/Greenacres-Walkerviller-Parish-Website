@@ -17,7 +17,7 @@ class UniversalisLiturgyProvider {
     );
 
     try {
-      final response = await _client.get(uri);
+      final response = await _client.get(uri).timeout(const Duration(seconds: 5));
       if (response.statusCode != 200) {
         return null;
       }
@@ -150,7 +150,7 @@ class UniversalisLiturgyProvider {
     );
 
     try {
-      final response = await _client.get(uri);
+      final response = await _client.get(uri).timeout(const Duration(seconds: 5));
       if (response.statusCode != 200) {
         return null;
       }
