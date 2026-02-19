@@ -1,12 +1,12 @@
 // flutter_bootstrap.js — GW Parish PWA source template
 // Placeholders are replaced at build time by the Flutter toolchain.
 
-{{flutter_js}}
-{{flutter_build_config}}
+{ { flutter_js } }
+{ { flutter_build_config } }
 
 _flutter.loader.load({
   serviceWorkerSettings: {
-    serviceWorkerVersion: '{{flutter_service_worker_version}}',
+    serviceWorkerVersion: "{{flutter_service_worker_version}}",
     timeoutMillis: 10000,
   },
   onEntrypointLoaded: async function (engineInitializer) {
