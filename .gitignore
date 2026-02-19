@@ -46,3 +46,4 @@ app.*.map.json
 
 # Dev-only files — do not ship to production
 PARISH_DEV_SYSTEM_PROMPT.md
+node_modules
