@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 GrayscaleHoverImage(
-                  image: const AssetImage('assets/images/source/hero_3.jpg'),
+                  image: const AssetImage('assets/images/source/hero_3.webp'),
                   height: mobile ? 320 : 520,
                 ),
                 const SizedBox(height: 24),

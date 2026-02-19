@@ -9,14 +9,14 @@ void main() {
       final json = <String, dynamic>{
         'title': 'Update',
         'content': 'Details here.',
-        'imageAsset': 'assets/images/refurbishment/after_1.png',
+        'imageAsset': 'assets/images/refurbishment/after_1.webp',
         'imageFocalPoint': {'x': 0.2, 'y': -0.4},
       };
       final section = BulletinSection.fromJson(json);
 
       expect(section.title, 'Update');
       expect(section.content, 'Details here.');
-      expect(section.imageAsset, 'assets/images/refurbishment/after_1.png');
+      expect(section.imageAsset, 'assets/images/refurbishment/after_1.webp');
       expect(section.imageFocalPoint, const Alignment(0.2, -0.4));
     });
 
@@ -44,7 +44,7 @@ void main() {
     test('parses bulletin with cover image and sections', () {
       final json = <String, dynamic>{
         'date': 'February 15, 2026',
-        'coverImage': 'assets/images/source/our_parish.jpg',
+        'coverImage': 'assets/images/source/our_parish.webp',
         'priestReflection': 'Reflection text.',
         'sections': [
           {'title': 'A', 'content': 'Body A'},
@@ -54,7 +54,7 @@ void main() {
       final bulletin = Bulletin.fromJson(json);
 
       expect(bulletin.date, 'February 15, 2026');
-      expect(bulletin.coverImage, 'assets/images/source/our_parish.jpg');
+      expect(bulletin.coverImage, 'assets/images/source/our_parish.webp');
       expect(bulletin.priestReflection, 'Reflection text.');
       expect(bulletin.sections, hasLength(2));
       expect(bulletin.sections[1].imageAsset, 'img.png');

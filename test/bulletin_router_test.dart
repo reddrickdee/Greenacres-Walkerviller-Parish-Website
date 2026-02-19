@@ -147,7 +147,7 @@ const Map<String, dynamic> _sampleContent = {
       'name': 'N',
       'role': 'R',
       'bio': 'B',
-      'photoAsset': 'assets/images/source/council_reg_nye.png',
+      'photoAsset': 'assets/images/source/council_reg_nye.webp',
     },
   ],
   'newsItems': [
@@ -194,5 +194,5 @@ const Map<String, dynamic> _sampleContent = {
       'website': 'www.example.com',
     },
   ],
-  'refurbishmentImages': ['assets/images/refurbishment/after_1.png'],
+  'refurbishmentImages': ['assets/images/refurbishment/after_1.webp'],
 };

@@ -13,7 +13,7 @@ void main() {
       MaterialApp(
         home: Scaffold(
           body: EditorialImage.asset(
-            assetPath: 'assets/images/source/our_parish.jpg',
+            assetPath: 'assets/images/source/our_parish.webp',
             height: 220,
             focalPoint: focalPoint,
           ),
@@ -42,7 +42,7 @@ void main() {
 
     test('returns AssetImage for asset path', () {
       final result = EditorialImage.resolveImage(
-        'assets/images/source/our_parish.jpg',
+        'assets/images/source/our_parish.webp',
       );
       expect(result, isA<AssetImage>());
     });

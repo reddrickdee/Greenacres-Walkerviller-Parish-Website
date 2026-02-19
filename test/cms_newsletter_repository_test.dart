@@ -89,7 +89,7 @@ void main() {
           'is_current': true,
           'published_on': '2026-02-15',
           'native_date': 'February 15, 2026',
-          'cover_image': 'assets/images/source/our_parish.jpg',
+          'cover_image': 'assets/images/source/our_parish.webp',
           'priest_reflection': 'Reflection text.',
           'bulletin_sections': [
             {
@@ -138,7 +138,7 @@ void main() {
         final bulletin = item.nativeBulletin!;
         expect(bulletin.date, 'February 15, 2026');
         expect(bulletin.priestReflection, 'Reflection text.');
-        expect(bulletin.coverImage, 'assets/images/source/our_parish.jpg');
+        expect(bulletin.coverImage, 'assets/images/source/our_parish.webp');
 
         // Sections should be sorted by sort_order.
         expect(bulletin.sections, hasLength(2));

@@ -178,7 +178,7 @@ const _scenes = <_SacredSpaceScene>[
   _SacredSpaceScene(
     church: "St Martin's Church",
     label: 'Stained Glass',
-    assetPath: 'assets/images/refurbishment/st_monica_5.png',
+    assetPath: 'assets/images/refurbishment/st_monica_5.webp',
     headlineParts: [
       HeadlinePart('Light Through '),
       HeadlinePart('Stained Glass', italic: true, gold: true),
@@ -194,7 +194,7 @@ const _scenes = <_SacredSpaceScene>[
   _SacredSpaceScene(
     church: "St Monica's Church",
     label: 'Tabernacle',
-    assetPath: 'assets/images/refurbishment/after_2.png',
+    assetPath: 'assets/images/refurbishment/after_2.webp',
     headlineParts: [
       HeadlinePart('The '),
       HeadlinePart('Tabernacle', italic: true, gold: true),
@@ -210,7 +210,7 @@ const _scenes = <_SacredSpaceScene>[
   _SacredSpaceScene(
     church: 'Parish Heritage',
     label: 'Cornerstones',
-    assetPath: 'assets/images/refurbishment/before_1.png',
+    assetPath: 'assets/images/refurbishment/before_1.webp',
     headlineParts: [
       HeadlinePart('Historical '),
       HeadlinePart('Cornerstones', italic: true, gold: true),
