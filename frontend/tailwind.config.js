@@ -11,8 +11,9 @@ export default {
                     bg: '#F9F8F6',      // Warm alabaster
                     surface: '#FFFFFF',
                     fg: '#1C1917',      // Deep slate instead of harsh black
-                    muted: '#78716C',   // Stone gray
-                    accent: '#D4AF37',  // Liturgical Gold
+                    muted: '#57534E',   // UPGRADED: darker stone for WCAG AA (7:1 contrast on white)
+                    accent: '#B8941E',  // UPGRADED: slightly darker gold for better contrast on light bg
+                    'accent-hover': '#9A7B16',
 
                     // Liturgical Seasons
                     advent: '#6B3FA0',
@@ -24,6 +25,13 @@ export default {
                 display: ['Cinzel', 'serif'],
                 serif: ['"Cormorant Garamond"', 'serif'],
                 body: ['Inter', 'sans-serif'],
+            },
+            fontSize: {
+                // Readable base scale for elderly-friendly UI
+                'body': ['1.125rem', { lineHeight: '1.75' }],   // 18px base
+                'body-lg': ['1.25rem', { lineHeight: '1.7' }],  // 20px
+                'body-xl': ['1.5rem', { lineHeight: '1.65' }],  // 24px
+                'nav': ['0.875rem', { lineHeight: '1', letterSpacing: '0.1em' }],
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

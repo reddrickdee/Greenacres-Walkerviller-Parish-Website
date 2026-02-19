@@ -3,12 +3,49 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply antialiased bg-parish-bg text-parish-fg font-body;
+  html {
+    font-size: 18px;
+    /* Elderly-friendly base: 18px instead of 16px */
+    scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  body {
+    @apply antialiased bg-parish-bg text-parish-fg font-body;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display tracking-tight;
+    line-height: 1.15;
+  }
+
+  /* Generous focus rings for keyboard navigation — essential for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 3px solid #B8941E;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  /* Minimum touch target sizes for mobile (48×48px per WCAG) */
+  a,
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better link defaults */
+  a {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 }
 
@@ -16,14 +53,15 @@
   .noise-bg {
     position: relative;
   }
-  
+
   .noise-bg::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 50;
-    opacity: 0.4;
+    opacity: 0.25;
+    /* Reduced: less visual noise for readability */
     mix-blend-mode: overlay;
     background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
   }
@@ -31,9 +69,8 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .text-edge-cap {
-    /* Typographic trick to align text tightly to boundaries */
     line-height: 0.9;
     padding-top: 0.1em;
   }
@@ -42,4 +79,31 @@
 /* Custom Selection */
 ::selection {
   @apply bg-parish-accent text-white;
+}
+
+/* Smooth scrollbar for newsletter archive etc */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 3px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
