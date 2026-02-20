@@ -1,4 +1,4 @@
-import type { ParishContent, NewsletterArchive, MassScheduleEntry } from '../types';
+import type { ParishContent, NewsletterArchive, MassScheduleEntry, DailyReflection } from '../types';
 
 /**
  * Loads the core parish content from the bundled JSON file.
@@ -67,6 +67,49 @@ async function loadMassScheduleFromCMS(): Promise<MassScheduleEntry[] | null> {
                 durationMinutes: (row.duration_minutes as number) ?? 60,
             };
         });
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Fetch the daily reflection for a specific date from Supabase.
+ * Returns null if not found or on failure.
+ */
+export async function loadDailyReflectionFromCMS(dateIso: string): Promise<DailyReflection | null> {
+    const endpoint = import.meta.env.VITE_SUPABASE_URL;
+    const apiKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+    if (!endpoint || !apiKey) return null;
+
+    try {
+        const res = await fetch(
+            `${endpoint}/rest/v1/daily_reflections?date=eq.${dateIso}`,
+            {
+                headers: {
+                    Accept: 'application/json',
+                    apikey: apiKey,
+                    Authorization: `Bearer ${apiKey}`,
+                },
+            }
+        );
+
+        if (!res.ok) return null;
+
+        const rows: Array<Record<string, unknown>> = await res.json();
+        if (rows.length === 0) return null;
+
+        const row = rows[0];
+        return {
+            id: row.id as string,
+            date: row.date as string,
+            liturgicalColor: row.liturgical_color as string,
+            title: row.title as string,
+            firstReading: (row.first_reading as string) ?? undefined,
+            psalm: (row.psalm as string) ?? undefined,
+            gospel: (row.gospel as string) ?? undefined,
+            reflection: (row.reflection as string) ?? undefined,
+        } as DailyReflection;
     } catch {
         return null;
     }

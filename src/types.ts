@@ -161,3 +161,16 @@ export interface BulletinSection {
     imageAsset?: string;
     imageFocalPoint?: { x: number; y: number };
 }
+
+// ── Daily Reflections ────────────────────────────────────────────────────────
+
+export interface DailyReflection {
+    id: string;
+    date: string;
+    liturgicalColor: string;
+    title: string;
+    firstReading?: string;
+    psalm?: string;
+    gospel?: string;
+    reflection?: string;
+}

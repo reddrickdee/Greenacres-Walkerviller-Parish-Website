@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { PrayerWallSection } from '../components/PrayerWallSection';
+import { DailyReflectionCard } from '../components/home/DailyReflectionCard';
 
 export function HomePage() {
     const { scrollYProgress } = useScroll();
@@ -135,8 +136,13 @@ export function HomePage() {
                     </div>
                 </div>
 
+                {/* Daily Reflection */}
+                <div className="mt-24 md:mt-32 max-w-4xl mx-auto">
+                    <DailyReflectionCard />
+                </div>
+
                 {/* Worship at a Glance */}
-                <div className="mt-28 md:mt-40 max-w-6xl mx-auto pb-20 md:pb-32">
+                <div className="mt-28 md:mt-32 max-w-6xl mx-auto pb-20 md:pb-32">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                         <div className="lg:col-span-4 flex flex-col justify-end pb-8">
                             <h3 className="font-display text-3xl md:text-4xl mb-4">Worship at a Glance</h3>
