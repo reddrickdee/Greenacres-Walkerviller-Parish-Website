@@ -9,6 +9,8 @@ import { NewHerePage } from './pages/NewHerePage';
 import { NewsEventsPage } from './pages/NewsEventsPage';
 import { SacramentsServicesPage } from './pages/SacramentsServicesPage';
 import { BulletinPage } from './pages/BulletinPage';
+import { GalleryPage } from './pages/GalleryPage';
+import { SafeguardingPage } from './pages/SafeguardingPage';
 
 const router = createBrowserRouter([
     {
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
             {
                 path: 'news-events/bulletin/:id',
                 element: <BulletinPage />,
+            },
+            {
+                path: 'gallery',
+                element: <GalleryPage />,
+            },
+            {
+                path: 'safeguarding',
+                element: <SafeguardingPage />,
             }
         ]
     }

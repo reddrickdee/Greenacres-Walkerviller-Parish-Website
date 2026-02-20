@@ -15,17 +15,31 @@
             "type": "weekend"
         },
         {
+            "church": "st_monica",
+            "label": "Sunday Ordinariate Mass",
+            "day": "Sunday",
+            "time": "11:00",
+            "type": "weekend"
+        },
+        {
             "church": "st_martin",
             "label": "Tuesday Mass",
             "day": "Tuesday",
-            "time": "08:00",
+            "time": "09:00",
+            "type": "weekday"
+        },
+        {
+            "church": "st_monica",
+            "label": "Wednesday Mass",
+            "day": "Wednesday",
+            "time": "09:00",
             "type": "weekday"
         },
         {
             "church": "st_martin",
             "label": "Thursday Mass",
             "day": "Thursday",
-            "time": "08:00",
+            "time": "09:00",
             "type": "weekday"
         }
     ],

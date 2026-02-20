@@ -9,6 +9,7 @@ const NAV_LINKS = [
     { to: '/mass-times', label: 'Mass Times' },
     { to: '/sacraments', label: 'Sacraments' },
     { to: '/news-events', label: 'News & Events' },
+    { to: '/gallery', label: 'Gallery' },
     { to: '/contact', label: 'Contact' },
     { to: '/new-here', label: "I'm New Here" },
 ];
@@ -128,6 +129,7 @@ export function RootLayout() {
                                 <Link to="/" className="text-white/70 hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Home</Link>
                                 <Link to="/about" className="text-white/70 hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">About Us</Link>
                                 <Link to="/history" className="text-white/70 hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">History</Link>
+                                <Link to="/gallery" className="text-white/70 hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Gallery</Link>
                                 <Link to="/new-here" className="text-white/70 hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">I'm New Here</Link>
                             </div>
                             <div className="flex flex-col gap-4">
@@ -141,10 +143,14 @@ export function RootLayout() {
                     </div>
 
                     <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-white/40 font-serif text-base">
-                            © {new Date().getFullYear()} Greenacres Walkerville Catholic Parish
+                        <p className="text-white/40 font-serif text-base text-center md:text-left">
+                            © {new Date().getFullYear()} Greenacres Walkerville Catholic Parish<br />
+                            <Link to="/safeguarding" className="hover:text-parish-accent transition-colors">Safeguarding & Privacy</Link>
                         </p>
-                        <p className="text-white/30 font-serif text-sm italic">
+                        <p className="text-white/40 font-serif text-sm italic text-center max-w-md">
+                            We acknowledge the Traditional Owners and Custodians of the lands on which our parish gathers. We pay our respects to Elders past, present and emerging.
+                        </p>
+                        <p className="text-white/30 font-serif text-sm italic text-center md:text-right">
                             In the Footsteps of Jesus
                         </p>
                     </div>
