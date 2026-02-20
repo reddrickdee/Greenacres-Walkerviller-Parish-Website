@@ -11,10 +11,11 @@
     --color-parish-muted: 87 83 78;
     --color-parish-accent: 184 148 30;
     --color-parish-accent-hover: 154 123 22;
-    
+
     --color-parish-border: 28 25 23;
-    --color-parish-inverse: 255 255 255;
-    --color-parish-inverse-muted: 249 248 246;
+    --color-parish-inverse: 28 25 23;
+    /* Dark text/bg for inverse mode (i.e. if background is accent) */
+    --color-parish-inverse-muted: 87 83 78;
   }
 
   html[data-theme="dark"] {
@@ -25,10 +26,11 @@
     --color-parish-muted: 168 162 158;
     --color-parish-accent: 196 162 72;
     --color-parish-accent-hover: 216 182 92;
-    
+
     --color-parish-border: 255 255 255;
-    --color-parish-inverse: 28 25 23;
-    --color-parish-inverse-muted: 87 83 78;
+    --color-parish-inverse: 249 248 246;
+    /* Light text/bg for inverse mode */
+    --color-parish-inverse-muted: 214 211 209;
   }
 
   html {

@@ -43,7 +43,7 @@ export function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5 mb-16 md:mb-20"
+                    className="bg-parish-surface p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 mb-16 md:mb-20"
                 >
                     <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-8">From the Pastoral Council</h2>
                     <p className="font-serif text-xl md:text-2xl leading-relaxed text-parish-muted">
@@ -89,10 +89,10 @@ export function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
-                    className="bg-[#1C1917] p-8 md:p-14 rounded-[2rem] text-white mb-16 md:mb-20 text-center"
+                    className="bg-parish-inverse p-8 md:p-14 rounded-[2rem] text-parish-surface mb-16 md:mb-20 text-center"
                 >
                     <h2 className="font-display text-3xl text-parish-accent mb-8">Parish Prayer</h2>
-                    <p className="font-serif text-xl md:text-2xl italic leading-relaxed text-white/80 max-w-3xl mx-auto">
+                    <p className="font-serif text-xl md:text-2xl italic leading-relaxed text-parish-surface/80 max-w-3xl mx-auto">
                         "{content.parishPrayerText}"
                     </p>
                 </motion.div>
@@ -107,7 +107,7 @@ export function AboutPage() {
                     <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-10 text-center">Pastoral Council</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {content.councilMembers.map((member, i) => (
-                            <div key={i} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5">
+                            <div key={i} className="bg-parish-surface p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5">
                                 <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">{member.role}</div>
                                 <div className="font-display text-2xl text-parish-fg mb-4">{member.name}</div>
                                 <p className="font-serif text-lg text-parish-muted leading-relaxed">{member.bio}</p>

@@ -37,13 +37,13 @@ export function MassTimesPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.1 }}
-                        className="bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5"
+                        className="bg-parish-surface p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5"
                     >
                         <h2 className="font-display text-3xl mb-3">St Monica's Church</h2>
                         <p className="font-serif text-lg text-parish-muted italic mb-8">{monicaMasses[0]?.address}</p>
                         <div className="space-y-6">
                             {monicaMasses.map(mass => (
-                                <div key={mass.id} className="border-b border-black/5 pb-5 last:border-0">
+                                <div key={mass.id} className="border-b border-parish-border/5 pb-5 last:border-0">
                                     <div className="flex justify-between items-baseline gap-4">
                                         <span className="font-display text-3xl">{mass.startTime}</span>
                                         <span className="font-display tracking-widest text-sm uppercase text-parish-accent">{WEEKDAYS[mass.dayOfWeek - 1]}</span>
@@ -59,13 +59,13 @@ export function MassTimesPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5"
+                        className="bg-parish-surface p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5"
                     >
                         <h2 className="font-display text-3xl mb-3">St Martin's Church</h2>
                         <p className="font-serif text-lg text-parish-muted italic mb-8">{martinMasses[0]?.address}</p>
                         <div className="space-y-6">
                             {martinMasses.map(mass => (
-                                <div key={mass.id} className="border-b border-black/5 pb-5 last:border-0">
+                                <div key={mass.id} className="border-b border-parish-border/5 pb-5 last:border-0">
                                     <div className="flex justify-between items-baseline gap-4">
                                         <span className="font-display text-3xl">{mass.startTime}</span>
                                         <span className="font-display tracking-widest text-sm uppercase text-parish-accent">{WEEKDAYS[mass.dayOfWeek - 1]}</span>
@@ -83,14 +83,14 @@ export function MassTimesPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
-                    className="mt-20 bg-[#1C1917] p-8 md:p-14 rounded-[2rem] text-white"
+                    className="mt-20 bg-parish-inverse p-8 md:p-14 rounded-[2rem] text-parish-surface"
                 >
                     <h2 className="font-display text-3xl md:text-4xl mb-10 text-parish-accent">Sacraments at a Glance</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {content.sacraments.map((s, i) => (
-                            <div key={i} className="border-b border-white/10 pb-6">
-                                <h3 className="font-display text-2xl mb-3 text-white">{s.title}</h3>
-                                <p className="font-serif text-lg text-white/70 leading-relaxed">{s.details}</p>
+                            <div key={i} className="border-b border-parish-surface/10 pb-6">
+                                <h3 className="font-display text-2xl mb-3 text-parish-surface">{s.title}</h3>
+                                <p className="font-serif text-lg text-parish-surface/70 leading-relaxed">{s.details}</p>
                             </div>
                         ))}
                     </div>

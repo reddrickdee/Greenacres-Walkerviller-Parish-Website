@@ -12,7 +12,7 @@ export function HomePage() {
 
     if (isLoading || !content) {
         return (
-            <div className="h-screen flex items-center justify-center bg-[#1C1917] text-white font-display tracking-widest text-lg">
+            <div className="h-screen flex items-center justify-center bg-parish-bg text-parish-fg font-display tracking-widest text-lg">
                 Loading…
             </div>
         );
@@ -23,7 +23,7 @@ export function HomePage() {
     return (
         <>
             {/* Hero Section */}
-            <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1C1917]">
+            <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-parish-bg">
                 <motion.div
                     style={{ y, opacity }}
                     className="absolute inset-0 z-0"
@@ -49,7 +49,7 @@ export function HomePage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.4 }}
-                        className="font-display text-5xl md:text-7xl lg:text-8xl text-[#F9F8F6] leading-tight mb-8"
+                        className="font-display text-5xl md:text-7xl lg:text-8xl text-parish-fg leading-tight mb-8"
                     >
                         Welcome to<br />Our <em className="font-serif italic text-parish-accent">Parish</em>
                     </motion.h1>
@@ -58,10 +58,10 @@ export function HomePage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.7 }}
-                        className="font-serif text-xl md:text-2xl text-white/70 italic max-w-2xl mx-auto mb-12"
+                        className="font-serif text-xl md:text-2xl text-parish-fg/70 italic max-w-2xl mx-auto mb-12"
                     >
                         "I can do all things through Christ who strengthens me."
-                        <span className="block text-base text-white/40 mt-2 not-italic">— Philippians 4:13</span>
+                        <span className="block text-base text-parish-fg/40 mt-2 not-italic">— Philippians 4:13</span>
                     </motion.p>
 
                     <motion.div
@@ -72,13 +72,13 @@ export function HomePage() {
                     >
                         <a
                             href="/mass-times"
-                            className="bg-parish-accent text-[#1C1917] px-10 py-4 font-display text-base tracking-widest uppercase rounded-full hover:bg-white transition-colors no-underline font-semibold"
+                            className="bg-parish-accent text-parish-surface px-10 py-4 font-display text-base tracking-widest uppercase rounded-full hover:bg-parish-surface transition-colors no-underline font-semibold"
                         >
                             Mass Times
                         </a>
                         <a
                             href="/new-here"
-                            className="border-2 border-white/40 text-white px-10 py-4 font-display text-base tracking-widest uppercase rounded-full hover:border-parish-accent hover:text-parish-accent transition-colors no-underline"
+                            className="border-2 border-parish-border/40 text-parish-fg px-10 py-4 font-display text-base tracking-widest uppercase rounded-full hover:border-parish-accent hover:text-parish-accent transition-colors no-underline"
                         >
                             I'm New Here
                         </a>
@@ -92,11 +92,11 @@ export function HomePage() {
                     transition={{ delay: 1.5 }}
                     className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
                 >
-                    <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+                    <div className="w-6 h-10 border-2 border-parish-border/30 rounded-full flex justify-center pt-2">
                         <motion.div
                             animate={{ y: [0, 8, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
-                            className="w-1.5 h-1.5 bg-white/60 rounded-full"
+                            className="w-1.5 h-1.5 bg-parish-fg/60 rounded-full"
                         />
                     </div>
                 </motion.div>
@@ -171,18 +171,18 @@ export function HomePage() {
                             <motion.div
                                 whileHover={{ y: -4 }}
                                 transition={{ duration: 0.4, ease: "easeOut" }}
-                                className="lg:col-span-8 bg-white p-8 md:p-14 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] border border-black/5 flex flex-col md:flex-row gap-10 items-center"
+                                className="lg:col-span-8 bg-parish-surface p-8 md:p-14 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] border border-parish-border/5 flex flex-col md:flex-row gap-10 items-center"
                             >
                                 <div className="flex-1">
                                     <div className="text-parish-accent font-display tracking-widest text-sm uppercase mb-4">Next Mass</div>
                                     <h4 className="font-display text-5xl md:text-6xl mb-3">{nextMass.startTime}</h4>
                                     <p className="text-parish-muted font-serif text-xl italic mb-8">{nextMass.church}</p>
-                                    <a href="/mass-times" className="bg-parish-fg text-white px-8 py-4 font-display text-sm tracking-widest uppercase hover:bg-parish-accent transition-colors rounded-full no-underline inline-block">
+                                    <a href="/mass-times" className="bg-parish-fg text-parish-surface px-8 py-4 font-display text-sm tracking-widest uppercase hover:bg-parish-accent transition-colors rounded-full no-underline inline-block">
                                         View Full Schedule
                                     </a>
                                 </div>
 
-                                <div className="w-full md:w-[1px] h-[1px] md:h-32 bg-black/10" />
+                                <div className="w-full md:w-[1px] h-[1px] md:h-32 bg-parish-border/10" />
 
                                 <div className="flex-1">
                                     <div className="text-parish-fg/40 font-display tracking-widest text-sm uppercase mb-4">Parish Prayer</div>

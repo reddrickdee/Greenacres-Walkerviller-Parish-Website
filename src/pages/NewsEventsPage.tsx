@@ -41,7 +41,7 @@ export function NewsEventsPage() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: "-40px" }}
                                     transition={{ duration: 0.8, delay: index * 0.1 }}
-                                    className="group block bg-white p-8 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5 hover:border-parish-accent/30 transition-all no-underline"
+                                    className="group block bg-parish-surface p-8 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 hover:border-parish-accent/30 transition-all no-underline"
                                 >
                                     <h3 className="font-display text-2xl mb-3 text-parish-fg group-hover:text-parish-accent transition-colors">{item.title}</h3>
                                     <p className="font-serif text-xl text-parish-muted leading-relaxed">{item.summary}</p>
@@ -62,9 +62,9 @@ export function NewsEventsPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.6, delay: i * 0.1 }}
-                                    className="flex flex-col sm:flex-row gap-5 items-start bg-white p-6 rounded-2xl border border-black/5"
+                                    className="flex flex-col sm:flex-row gap-5 items-start bg-parish-surface p-6 rounded-2xl border border-parish-border/5"
                                 >
-                                    <div className="bg-parish-accent text-white px-5 py-3 rounded-xl font-display text-sm tracking-widest uppercase text-center min-w-[120px] shrink-0">
+                                    <div className="bg-parish-accent text-parish-surface px-5 py-3 rounded-xl font-display text-sm tracking-widest uppercase text-center min-w-[120px] shrink-0">
                                         {item.dateLabel}
                                     </div>
                                     <div>
@@ -78,12 +78,12 @@ export function NewsEventsPage() {
 
                     {/* Sidebar */}
                     <div className="lg:col-span-4">
-                        <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5 sticky top-28">
+                        <div className="bg-parish-surface p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 sticky top-28">
                             <h3 className="font-display text-2xl mb-6">Bulletin Archive</h3>
                             <p className="font-serif text-base text-parish-muted mb-6">Browse past editions of the Connections newsletter.</p>
                             <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
                                 {newsletters.items.map(item => (
-                                    <div key={item.id} className="group border-b border-black/5 pb-3">
+                                    <div key={item.id} className="group border-b border-parish-border/5 pb-3">
                                         {item.isCurrent && (
                                             <span className="font-display tracking-widest text-xs uppercase text-parish-accent mb-1 block">✦ Current Issue</span>
                                         )}

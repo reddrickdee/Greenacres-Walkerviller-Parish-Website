@@ -34,7 +34,7 @@ export function ContactPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.1 }}
-                        className="bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5"
+                        className="bg-parish-surface p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5"
                     >
                         <h2 className="font-display text-3xl mb-8">Parish Office</h2>
                         <div className="space-y-6">
@@ -67,7 +67,7 @@ export function ContactPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.2 }}
-                            className="bg-white p-5 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5 overflow-hidden"
+                            className="bg-parish-surface p-5 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden"
                         >
                             <h3 className="font-display text-xl mb-3 px-2">St Monica's Church</h3>
                             <iframe
@@ -81,7 +81,7 @@ export function ContactPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.3 }}
-                            className="bg-white p-5 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5 overflow-hidden"
+                            className="bg-parish-surface p-5 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden"
                         >
                             <h3 className="font-display text-xl mb-3 px-2">St Martin's Church</h3>
                             <iframe
@@ -105,7 +105,7 @@ export function ContactPage() {
                     <h2 className="font-display text-3xl md:text-4xl mb-10 text-center">Parish Schools</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {schools.map((school, i) => (
-                            <div key={i} className="bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5">
+                            <div key={i} className="bg-parish-surface p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5">
                                 <h3 className="font-display text-2xl mb-4">{school.name}</h3>
                                 <div className="space-y-3 font-serif text-lg text-parish-muted">
                                     <p>{school.address}</p>

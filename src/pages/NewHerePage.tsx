@@ -31,9 +31,9 @@ export function NewHerePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.15 }}
-                    className="bg-[#1C1917] p-8 md:p-12 rounded-[2rem] text-center mb-16"
+                    className="bg-parish-inverse p-8 md:p-12 rounded-[2rem] text-center mb-16"
                 >
-                    <p className="font-serif text-xl md:text-2xl italic text-white/80 leading-relaxed max-w-2xl mx-auto">
+                    <p className="font-serif text-xl md:text-2xl italic text-parish-surface/80 leading-relaxed max-w-2xl mx-auto">
                         "Come to me, all you who are weary and burdened, and I will give you rest."
                     </p>
                     <p className="font-display tracking-widest text-sm uppercase text-parish-accent mt-4">— Matthew 11:28</p>
@@ -54,7 +54,7 @@ export function NewHerePage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-40px" }}
                             transition={{ duration: 0.6, delay: i * 0.08 }}
-                            className="bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5 flex gap-6 items-start"
+                            className="bg-parish-surface p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 flex gap-6 items-start"
                         >
                             <div className="font-display text-4xl text-parish-accent leading-none mt-1 shrink-0 w-12 text-center">{i + 1}</div>
                             <p className="font-serif text-xl leading-relaxed text-parish-muted">{step}</p>
@@ -64,10 +64,10 @@ export function NewHerePage() {
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16 text-center">
-                    <a href="/mass-times" className="bg-parish-fg text-white px-10 py-4 font-display tracking-widest uppercase text-base hover:bg-parish-accent transition-colors rounded-full no-underline inline-block">
+                    <a href="/mass-times" className="bg-parish-fg text-parish-surface px-10 py-4 font-display tracking-widest uppercase text-base hover:bg-parish-accent transition-colors rounded-full no-underline inline-block">
                         Plan Your Visit
                     </a>
-                    <a href="/contact" className="bg-white text-parish-fg border-2 border-parish-fg/20 px-10 py-4 font-display tracking-widest uppercase text-base hover:border-parish-accent hover:text-parish-accent transition-colors rounded-full no-underline inline-block">
+                    <a href="/contact" className="bg-parish-surface text-parish-fg border-2 border-parish-fg/20 px-10 py-4 font-display tracking-widest uppercase text-base hover:border-parish-accent hover:text-parish-accent transition-colors rounded-full no-underline inline-block">
                         Contact the Office
                     </a>
                 </div>

@@ -69,19 +69,19 @@ export function FacebookFeed({
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#1877F2]/20 to-[#42b72a]/20 rounded-[2rem] blur-[24px] opacity-0 group-hover:opacity-100 transition duration-1000"></div>
 
             {/* Bento Box Container */}
-            <div className="relative w-full h-full overflow-hidden rounded-[2rem] border border-white/10 bg-[#141414]/80 backdrop-blur-2xl shadow-2xl flex flex-col">
+            <div className="relative w-full h-full overflow-hidden rounded-[2rem] border border-parish-border/10 bg-parish-surface/80 backdrop-blur-2xl shadow-2xl flex flex-col">
 
                 {/* Custom Native Header */}
-                <div className="px-6 py-5 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
+                <div className="px-6 py-5 border-b border-parish-border/5 flex items-center justify-between bg-parish-elevated">
                     <div className="flex items-center gap-4">
                         <motion.div
                             whileHover={{ rotate: 15, scale: 1.1 }}
                             className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center shadow-lg shadow-[#1877F2]/30"
                         >
-                            <Facebook size={20} className="text-white fill-current" />
+                            <Facebook size={20} className="text-parish-fg fill-current" />
                         </motion.div>
                         <div>
-                            <h3 className="text-white font-semibold text-lg tracking-tight">Greenacres Walkerville</h3>
+                            <h3 className="text-parish-fg font-semibold text-lg tracking-tight">Greenacres Walkerville</h3>
                             <p className="text-gray-400 text-sm">Official Parish Page</p>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ export function FacebookFeed({
                         href={`https://www.facebook.com/profile.php?id=${pageId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hidden sm:flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-full font-medium transition-all duration-300 backdrop-blur-md no-underline text-sm border border-white/5"
+                        className="hidden sm:flex items-center gap-2 bg-parish-border/10 hover:bg-parish-border/20 text-parish-fg px-5 py-2.5 rounded-full font-medium transition-all duration-300 backdrop-blur-md no-underline text-sm border border-parish-border/5"
                     >
                         Visit Page
                         <ExternalLink size={14} className="opacity-70" />
@@ -100,7 +100,7 @@ export function FacebookFeed({
                 {/* Iframe Content Area */}
                 <div
                     id="fb-container-feed"
-                    className="w-full bg-white flex justify-center"
+                    className="w-full bg-parish-surface flex justify-center"
                     style={{ minHeight: height }}
                 >
                     <div

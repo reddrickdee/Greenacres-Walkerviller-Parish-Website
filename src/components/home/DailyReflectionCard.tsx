@@ -20,7 +20,7 @@ export function DailyReflectionCard() {
 
     if (isLoading) {
         return (
-            <div className="w-full bg-white rounded-3xl p-8 shadow-sm border border-black/5 animate-pulse flex flex-col items-center justify-center min-h-[300px]">
+            <div className="w-full bg-parish-surface rounded-3xl p-8 shadow-sm border border-parish-border/5 animate-pulse flex flex-col items-center justify-center min-h-[300px]">
                 <div className="w-8 h-8 border-2 border-parish-accent border-t-transparent rounded-full animate-spin"></div>
             </div>
         );
@@ -28,7 +28,7 @@ export function DailyReflectionCard() {
 
     if (error || !reflection) {
         return (
-            <div className="w-full bg-white rounded-3xl p-8 shadow-sm border border-black/5 flex flex-col items-center justify-center min-h-[300px] text-center">
+            <div className="w-full bg-parish-surface rounded-3xl p-8 shadow-sm border border-parish-border/5 flex flex-col items-center justify-center min-h-[300px] text-center">
                 <AlertCircle className="w-10 h-10 text-parish-muted opacity-50 mb-4" />
                 <h3 className="font-display text-2xl text-parish-fg mb-2">Daily Reflection Unavailable</h3>
                 <p className="font-serif text-parish-muted">We could not load today's readings. Please check your physical Jerusalem Bible for today's Liturgy.</p>
@@ -111,12 +111,12 @@ export function DailyReflectionCard() {
     const hasReflectionContent = reflection.reflectionContext || reflection.reflectionBody || reflection.reflectionPrayer;
 
     return (
-        <div className="w-full bg-white rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] border border-black/5 overflow-hidden flex flex-col">
+        <div className="w-full bg-parish-surface rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden flex flex-col">
             {/* Liturgical Color Bar */}
             <div className={`h-2 w-full ${accentColor}`}></div>
 
             {/* Header */}
-            <div className="px-8 pt-8 pb-6 border-b border-black/5 flex justify-between items-start flex-wrap gap-4">
+            <div className="px-8 pt-8 pb-6 border-b border-parish-border/5 flex justify-between items-start flex-wrap gap-4">
                 <div>
                     <div className="flex items-center gap-2 text-parish-accent font-display tracking-widest text-sm uppercase mb-3">
                         <BookOpen className="w-4 h-4" />
@@ -130,7 +130,7 @@ export function DailyReflectionCard() {
                     <p className="font-serif italic text-parish-muted">
                         {new Date(reflection.date).toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
                     </p>
-                    <div className="inline-flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-parish-bg text-sm font-display tracking-wider border border-black/5">
+                    <div className="inline-flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-parish-bg text-sm font-display tracking-wider border border-parish-border/5">
                         <span className={`w-3 h-3 rounded-full ${accentColor}`}></span>
                         {reflection.liturgicalColor}
                     </div>
@@ -138,7 +138,7 @@ export function DailyReflectionCard() {
             </div>
 
             {/* Main Tabs */}
-            <div className="px-8 pt-4 flex gap-8 border-b border-black/5 relative">
+            <div className="px-8 pt-4 flex gap-8 border-b border-parish-border/5 relative">
                 <button
                     onClick={() => setActiveTab('readings')}
                     className={`font-display tracking-widest uppercase pb-4 transition-colors relative ${activeTab === 'readings' ? 'text-parish-fg' : 'text-parish-muted hover:text-parish-fg'}`}
@@ -161,7 +161,7 @@ export function DailyReflectionCard() {
             </div>
 
             {/* Content Area */}
-            <div className="bg-[#FAFAFA] flex-1">
+            <div className="bg-parish-elevated flex-1">
                 <AnimatePresence mode="popLayout" initial={false}>
                     {activeTab === 'readings' ? (
                         <motion.div
@@ -180,7 +180,7 @@ export function DailyReflectionCard() {
                                                 {/* Accordion Header */}
                                                 <button
                                                     onClick={() => toggleReading(reading.key)}
-                                                    className="w-full px-8 py-5 flex items-center justify-between gap-4 text-left hover:bg-black/[0.02] transition-colors"
+                                                    className="w-full px-8 py-5 flex items-center justify-between gap-4 text-left hover:bg-parish-border/[0.02] transition-colors"
                                                 >
                                                     <div className="flex-1 min-w-0">
                                                         <span className="font-display text-parish-accent tracking-widest text-xs uppercase">
@@ -253,7 +253,7 @@ export function DailyReflectionCard() {
                                 <>
                                     {/* Context Section */}
                                     {reflection.reflectionContext && (
-                                        <div className="bg-white rounded-2xl p-6 border border-black/5 shadow-sm">
+                                        <div className="bg-parish-surface rounded-2xl p-6 border border-parish-border/5 shadow-sm">
                                             <div className="flex items-center gap-2 mb-3">
                                                 <BookOpenText className="w-4 h-4 text-parish-accent" />
                                                 <h4 className="font-display text-parish-accent tracking-widest text-sm uppercase">Context</h4>
@@ -292,7 +292,7 @@ export function DailyReflectionCard() {
 
                                     {/* Author Attribution */}
                                     {reflection.reflectionAuthor && (
-                                        <p className="text-right font-serif text-sm text-parish-muted italic pt-4 border-t border-black/5">
+                                        <p className="text-right font-serif text-sm text-parish-muted italic pt-4 border-t border-parish-border/5">
                                             — {reflection.reflectionAuthor}
                                         </p>
                                     )}

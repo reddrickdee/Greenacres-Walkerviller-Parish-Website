@@ -58,14 +58,14 @@ export function PrayerWallSection() {
     };
 
     return (
-        <section className="bg-[#1C1917] py-24 px-8 md:px-24">
+        <section className="bg-parish-inverse py-24 px-8 md:px-24">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="text-parish-accent font-display tracking-widest text-sm uppercase mb-4">Community Prayer</div>
-                    <h2 className="font-display text-5xl md:text-7xl text-[#F9F8F6] leading-none mb-6">
+                    <h2 className="font-display text-5xl md:text-7xl text-parish-surface leading-none mb-6">
                         Prayer <em className="font-serif italic text-parish-accent">Wall</em>
                     </h2>
-                    <p className="font-serif text-xl text-white/50 italic max-w-2xl mx-auto">
+                    <p className="font-serif text-xl text-parish-surface/50 italic max-w-2xl mx-auto">
                         "Where two or three gather in my name, there am I with them." — Matthew 18:20
                     </p>
                 </div>
@@ -79,21 +79,21 @@ export function PrayerWallSection() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.5 }}
-                                className="bg-white/5 border border-white/10 p-8 rounded-2xl flex flex-col justify-between"
+                                className="bg-parish-surface border border-parish-surface/10 p-8 rounded-2xl flex flex-col justify-between"
                             >
-                                <p className="font-serif text-lg text-white/70 leading-relaxed italic mb-6">
+                                <p className="font-serif text-lg text-parish-surface/70 leading-relaxed italic mb-6">
                                     "{intention.text}"
                                 </p>
                                 <div className="flex justify-between items-center">
-                                    <span className="font-display tracking-widest text-[10px] uppercase text-white/30">
+                                    <span className="font-display tracking-widest text-[10px] uppercase text-parish-surface/30">
                                         {timeAgo(intention.submitted)}
                                     </span>
                                     <button
                                         onClick={() => handlePray(intention.id)}
-                                        className="flex items-center gap-2 bg-white/10 hover:bg-parish-accent/20 px-4 py-2 rounded-full transition-colors group"
+                                        className="flex items-center gap-2 bg-parish-surface/10 hover:bg-parish-accent/20 px-4 py-2 rounded-full transition-colors group"
                                     >
                                         <span className="text-parish-accent text-lg">🕯️</span>
-                                        <span className="font-display tracking-widest text-xs uppercase text-white/60 group-hover:text-parish-accent transition-colors">
+                                        <span className="font-display tracking-widest text-xs uppercase text-parish-surface/60 group-hover:text-parish-accent transition-colors">
                                             Pray ({intention.prayerCount})
                                         </span>
                                     </button>

@@ -22,7 +22,7 @@ export function SafeguardingPage() {
                     transition={{ duration: 1, delay: 0.1 }}
                     className="prose prose-lg prose-p:font-serif prose-p:text-parish-muted prose-headings:font-display prose-headings:text-parish-fg max-w-none"
                 >
-                    <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-black/5 mb-12">
+                    <div className="bg-parish-surface p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 mb-12">
                         <h2 className="text-3xl mb-6">Zero Tolerance Policy</h2>
                         <p className="text-xl leading-relaxed">
                             The Catholic Archdiocese of Adelaide and the Greenacres Walkerville Parish have a <strong>zero-tolerance approach to all forms of abuse</strong>. We are deeply committed to the care, safety, and well-being of all children, young people, and adults at risk who interact with our parish community.
@@ -38,11 +38,11 @@ export function SafeguardingPage() {
                     </p>
 
                     <h3 className="text-2xl mt-12 mb-6">Reporting Concerns</h3>
-                    <div className="bg-[#1C1917] text-white p-8 rounded-[2rem] mt-6">
-                        <p className="text-white/80 mb-6">
+                    <div className="bg-parish-inverse text-parish-surface p-8 rounded-[2rem] mt-6">
+                        <p className="text-parish-surface/80 mb-6">
                             If you have any concerns regarding the safety of a child or vulnerable adult within our parish, or if you need to report an incident, please contact the Archdiocesan Safeguarding Unit immediately.
                         </p>
-                        <ul className="list-none pl-0 space-y-4 text-white">
+                        <ul className="list-none pl-0 space-y-4 text-parish-surface">
                             <li className="flex items-center gap-4">
                                 <span className="text-parish-accent font-display text-xl">✦</span>
                                 <strong>Phone:</strong> (08) 8210 8150
@@ -52,7 +52,7 @@ export function SafeguardingPage() {
                                 <strong>Email:</strong> safeguarding@adelaide.catholic.org.au
                             </li>
                         </ul>
-                        <p className="text-white/60 text-sm mt-8 italic">
+                        <p className="text-parish-surface/60 text-sm mt-8 italic">
                             If a child or vulnerable person is in immediate danger, always call Police on 000.
                         </p>
                     </div>
