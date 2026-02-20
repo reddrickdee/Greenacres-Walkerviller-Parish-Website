@@ -143,12 +143,20 @@ export function HomePage() {
                 </div>
 
                 {/* Community News (Facebook) */}
-                <div className="mt-24 md:mt-32 max-w-4xl mx-auto">
+                <div className="mt-24 md:mt-32 max-w-4xl mx-auto px-4 md:px-0">
                     <div className="text-center mb-12">
                         <h3 className="font-display text-4xl md:text-5xl text-parish-fg mb-4">Community News</h3>
                         <div className="w-16 h-1 bg-parish-accent mx-auto"></div>
                     </div>
-                    <FacebookFeed pageId="61584973342464" height={600} />
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full"
+                    >
+                        <FacebookFeed pageId="61584973342464" height={700} />
+                    </motion.div>
                 </div>
 
                 {/* Worship at a Glance */}
