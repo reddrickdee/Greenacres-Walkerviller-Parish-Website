@@ -11,6 +11,7 @@ const NAV_LINKS = [
     { to: '/sacraments', label: 'Sacraments' },
     { to: '/news-events', label: 'News & Events' },
     { to: '/gallery', label: 'Gallery' },
+    { to: '/community', label: 'Community Hub' },
     { to: '/contact', label: 'Contact' },
     { to: '/new-here', label: "I'm New Here" },
 ];
@@ -135,6 +136,7 @@ export function RootLayout() {
                                 <Link to="/about" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">About Us</Link>
                                 <Link to="/history" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">History</Link>
                                 <Link to="/gallery" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Gallery</Link>
+                                <Link to="/community" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Community Hub</Link>
                                 <Link to="/new-here" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">I'm New Here</Link>
                             </div>
                             <div className="flex flex-col gap-4">

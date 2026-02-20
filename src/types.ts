@@ -185,3 +185,108 @@ export interface DailyReflection {
     reflectionPrayer?: string;
     reflectionAuthor?: string;
 }
+
+// ── Community Hub Models ─────────────────────────────────────────────────────
+
+export type CommunityPostType = 'prayer_request' | 'words_of_hope' | 'mini_article' | 'suggestion';
+export type CommunityStatus = 'pending' | 'approved' | 'rejected' | 'escalated';
+export type CommunityVisibility = 'public' | 'admin_private';
+export type IntentionKind = 'ill' | 'deceased' | 'general';
+export type WeeklyBatchStatus = 'draft' | 'finalized';
+
+export interface CommunityProfile {
+    id: string;
+    firstName: string | null;
+    lastName: string | null;
+    role: 'user' | 'admin';
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface CommunityPost {
+    id: string;
+    authorId: string;
+    postType: CommunityPostType;
+    status: CommunityStatus;
+    visibility: CommunityVisibility;
+    title?: string;
+    content: string;
+    isAnonymous: boolean;
+    intentionType: IntentionKind;
+    intentionName?: string;
+    createdAt: string;
+    updatedAt: string;
+
+    // Joined data
+    author?: CommunityProfile;
+    images?: CommunityPostImage[];
+    prayers?: CommunityPrayer[];
+    prayerCount?: number;
+    comments?: CommunityComment[];
+    hasPrayed?: boolean;
+}
+
+export interface CommunityPostImage {
+    id: string;
+    postId: string;
+    storagePath: string;
+    bucketId: string;
+    displayOrder: number;
+    createdAt: string;
+    // For UI convenience
+    publicUrl?: string;
+}
+
+export interface CommunityComment {
+    id: string;
+    postId: string;
+    authorId: string;
+    content: string;
+    status: CommunityStatus;
+    createdAt: string;
+    updatedAt: string;
+
+    // Joined data
+    author?: CommunityProfile;
+}
+
+export interface CommunityPrayer {
+    id: string;
+    postId: string;
+    userId: string;
+    createdAt: string;
+}
+
+export interface WeeklyIntentionBatch {
+    id: string;
+    title: string;
+    targetDate: string;
+    status: WeeklyBatchStatus;
+    createdBy?: string;
+    createdAt: string;
+    updatedAt: string;
+
+    // Joined data
+    items?: WeeklyIntentionItem[];
+}
+
+export interface WeeklyIntentionItem {
+    id: string;
+    batchId: string;
+    postId?: string;
+    intentionType: IntentionKind;
+    name: string;
+    sortOrder: number;
+    createdAt: string;
+}
+
+export interface ModerationEvent {
+    id: string;
+    adminId?: string;
+    targetType: 'post' | 'comment' | 'image';
+    targetId: string;
+    previousStatus?: string;
+    newStatus: string;
+    reason?: string;
+    createdAt: string;
+}

@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import type { PrayerIntention } from '../types';
+import { communityApi } from '../lib/communityApi';
+import { isSupabaseConfigured } from '../lib/supabaseClient';
 
 const SAMPLE_INTENTIONS: PrayerIntention[] = [
     {
@@ -50,6 +54,34 @@ function timeAgo(date: Date): string {
 
 export function PrayerWallSection() {
     const [intentions, setIntentions] = useState<PrayerIntention[]>(SAMPLE_INTENTIONS);
+
+    // Try to fetch live data from Supabase
+    useEffect(() => {
+        if (!isSupabaseConfigured()) return;
+
+        const fetchLive = async () => {
+            try {
+                const posts = await communityApi.getPublishedPosts();
+                const prayers = posts
+                    .filter((p: any) => (p.post_type ?? p.postType) === 'prayer_request')
+                    .slice(0, 6)
+                    .map((p: any) => ({
+                        id: p.id,
+                        text: p.content,
+                        submitted: new Date(p.created_at ?? p.createdAt),
+                        prayerCount: p.prayers?.length ?? p.prayerCount ?? 0,
+                    }));
+
+                if (prayers.length > 0) {
+                    setIntentions(prayers);
+                }
+            } catch {
+                // Fallback to sample data silently
+            }
+        };
+
+        fetchLive();
+    }, []);
 
     const handlePray = (id: string) => {
         setIntentions(prev =>
@@ -101,6 +133,20 @@ export function PrayerWallSection() {
                             </motion.div>
                         ))}
                     </AnimatePresence>
+                </div>
+
+                {/* CTA to full Community Hub */}
+                <div className="mt-12 text-center">
+                    <Link
+                        to="/community"
+                        className="inline-flex items-center gap-3 bg-parish-accent text-parish-inverse px-8 py-4 rounded-full font-display uppercase tracking-wider text-sm hover:opacity-90 transition-opacity shadow-lg group"
+                    >
+                        View Full Prayer Wall
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                    <p className="font-serif text-parish-surface/40 italic text-sm mt-4">
+                        Share your intentions, offer encouragement, and pray with the parish community.
+                    </p>
                 </div>
             </div>
         </section>

@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout } from './layouts/RootLayout';
+import { AuthProvider } from './context/AuthContext';
 import { HomePage } from './pages/HomePage';
 import { MassTimesPage } from './pages/MassTimesPage';
 import { ContactPage } from './pages/ContactPage';
@@ -11,6 +12,9 @@ import { SacramentsServicesPage } from './pages/SacramentsServicesPage';
 import { BulletinPage } from './pages/BulletinPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { SafeguardingPage } from './pages/SafeguardingPage';
+import { CommunityHubPage } from './pages/CommunityHubPage';
+import { AdminCommunityPage } from './pages/AdminCommunityPage';
+import { AdminGuard } from './components/community/AdminGuard';
 
 const router = createBrowserRouter([
     {
@@ -60,13 +64,25 @@ const router = createBrowserRouter([
             {
                 path: 'safeguarding',
                 element: <SafeguardingPage />,
+            },
+            {
+                path: 'community',
+                element: <CommunityHubPage />,
+            },
+            {
+                path: 'admin/community',
+                element: <AdminGuard><AdminCommunityPage /></AdminGuard>,
             }
         ]
     }
 ]);
 
 function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <AuthProvider>
+            <RouterProvider router={router} />
+        </AuthProvider>
+    );
 }
 
 export default App;
