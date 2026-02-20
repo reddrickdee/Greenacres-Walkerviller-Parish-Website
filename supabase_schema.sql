@@ -119,33 +119,3 @@ VALUES (
     'Lent is about prayer and fasting. When we think of ''fasting'' we probably think first of eating less food as a form of penance. Today Isaiah is challenging us to rethink what fasting really means. He states that God does not want to see a show of sacrifice but, rather, how that sacrifice changes our hearts.'
 ) ON CONFLICT (date) DO NOTHING;
 
-
--- ── 6. Hallow Featured Resources ──────────────────────────────────────────
-
-CREATE TABLE IF NOT EXISTS featured_resources (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  title TEXT NOT NULL,
-  description TEXT NOT NULL,
-  image_url TEXT NOT NULL,
-  link_url TEXT NOT NULL,
-  is_active BOOLEAN DEFAULT TRUE,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
-ALTER TABLE featured_resources ENABLE ROW LEVEL SECURITY;
-
-DROP POLICY IF EXISTS "Allow public read access on featured_resources." ON featured_resources;
-CREATE POLICY "Allow public read access on featured_resources."
-  ON featured_resources FOR SELECT
-  USING (true);
-
-INSERT INTO featured_resources (title, description, image_url, link_url, is_active)
-SELECT 
-  'Lent Pray40: The Return',
-  'Join Jonathan Roumie, Fr. Mike Schmitz, Mark Wahlberg, Chris Pratt, Sister Miriam, Jeff Cavins, Mother Olga, and more this Lent for Pray40 — a journey back home to the Father with The Brothers Karamazov and the Return of the Prodigal Son by Fr. Henri Nouwen. We''ll see how Dostoevsky''s famous novel brings the Parable of the Prodigal Son to life like never before, showing us how we''re all farther from God than we need to be. The good news is God is waiting for us each with open arms, running out to meet us while we are still a long way off. Join us today as we let go of what holds us back, return home to the Lord, and let Him send us out as His hands and feet.',
-  'https://assets.hallow.com/hallow-web-assets/images/challenges/pray40-2024/pray40-share-img.jpg',
-  'https://hallow.com/collections/2845?is_shared=true',
-  TRUE
-WHERE NOT EXISTS (
-  SELECT 1 FROM featured_resources WHERE title = 'Lent Pray40: The Return'
-);
