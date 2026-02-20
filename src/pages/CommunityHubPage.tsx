@@ -215,7 +215,7 @@ export function CommunityHubPage() {
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <div className="p-12 text-center rounded-2xl border border-dashed border-parish-border/20 bg-parish-surface-alt">
+                                <div className="p-12 text-center rounded-2xl border border-dashed border-parish-border/20 bg-parish-elevated">
                                     <p className="font-display tracking-wider uppercase text-parish-muted text-sm">
                                         {activeTab === 'mini_articles' ? 'Mini Articles' : 'Suggestions'} — Coming Soon
                                     </p>

@@ -55,7 +55,7 @@ export function PostCard({ post, onRequireAuth }: PostCardProps) {
                 </div>
 
                 {intentionLabel && (
-                    <span className="text-[11px] font-display uppercase tracking-widest text-parish-muted bg-parish-surface-alt px-3 py-1 rounded-full border border-parish-border/10 shrink-0">
+                    <span className="text-[11px] font-display uppercase tracking-widest text-parish-muted bg-parish-elevated px-3 py-1 rounded-full border border-parish-border/10 shrink-0">
                         {intentionLabel}
                     </span>
                 )}

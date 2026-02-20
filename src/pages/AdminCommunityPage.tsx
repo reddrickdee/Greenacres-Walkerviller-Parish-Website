@@ -108,7 +108,7 @@ export function AdminCommunityPage() {
                         ))}
                     </div>
                 ) : items.length === 0 ? (
-                    <div className="p-16 text-center rounded-2xl border border-dashed border-parish-border/20 bg-parish-surface-alt">
+                    <div className="p-16 text-center rounded-2xl border border-dashed border-parish-border/20 bg-parish-elevated">
                         <ShieldCheck size={36} className="text-green-500 mx-auto mb-4" />
                         <p className="font-display text-lg tracking-wider text-parish-fg mb-2">All Clear!</p>
                         <p className="font-serif text-parish-muted italic">No pending submissions to review.</p>

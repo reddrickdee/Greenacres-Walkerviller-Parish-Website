@@ -125,7 +125,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                     <div className="flex flex-col gap-2">
                         <label className="font-display text-xs uppercase tracking-widest text-parish-muted">Intention Type</label>
                         <div className="flex flex-wrap gap-3">
-                            <label className="flex items-center gap-2 cursor-pointer bg-parish-surface-alt px-4 py-2 rounded-lg border border-parish-border/10 hover:border-parish-accent/30 transition-colors">
+                            <label className="flex items-center gap-2 cursor-pointer bg-parish-elevated text-parish-fg px-4 py-2 rounded-lg border border-parish-border/10 hover:border-parish-accent/30 transition-colors">
                                 <input
                                     type="radio"
                                     name="intentionType"
@@ -136,7 +136,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                                 />
                                 <span className="font-sans text-sm text-parish-fg">General Request</span>
                             </label>
-                            <label className="flex items-center gap-2 cursor-pointer bg-parish-surface-alt px-4 py-2 rounded-lg border border-parish-border/10 hover:border-parish-accent/30 transition-colors">
+                            <label className="flex items-center gap-2 cursor-pointer bg-parish-elevated text-parish-fg px-4 py-2 rounded-lg border border-parish-border/10 hover:border-parish-accent/30 transition-colors">
                                 <input
                                     type="radio"
                                     name="intentionType"
@@ -147,7 +147,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                                 />
                                 <span className="font-sans text-sm text-parish-fg">For the Sick</span>
                             </label>
-                            <label className="flex items-center gap-2 cursor-pointer bg-parish-surface-alt px-4 py-2 rounded-lg border border-parish-border/10 hover:border-parish-accent/30 transition-colors">
+                            <label className="flex items-center gap-2 cursor-pointer bg-parish-elevated text-parish-fg px-4 py-2 rounded-lg border border-parish-border/10 hover:border-parish-accent/30 transition-colors">
                                 <input
                                     type="radio"
                                     name="intentionType"
@@ -178,7 +178,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                             value={intentionName}
                             onChange={e => setIntentionName(e.target.value)}
                             placeholder="e.g. John Smith"
-                            className="bg-parish-surface-alt border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans"
+                            className="bg-parish-elevated text-parish-fg border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans"
                             required
                         />
                     </motion.div>
@@ -193,7 +193,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                         value={content}
                         onChange={e => setContent(e.target.value)}
                         placeholder={isPrayer ? "Lord, please watch over..." : "May God bless..."}
-                        className="bg-parish-surface-alt border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans min-h-[120px] resize-y"
+                        className="bg-parish-elevated text-parish-fg border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans min-h-[120px] resize-y"
                         required
                     />
                 </div>
@@ -205,7 +205,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                         <select
                             value={visibility}
                             onChange={(e) => setVisibility(e.target.value as CommunityVisibility)}
-                            className="bg-parish-surface-alt border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans appearance-none"
+                            className="bg-parish-elevated text-parish-fg border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans appearance-none"
                         >
                             <option value="public">Public (Shared on the Wall)</option>
                             <option value="admin_private">Private (Admin & Priests only)</option>

@@ -95,7 +95,7 @@ export function PostFeed({ postType, onRequireAuth }: PostFeedProps) {
 
     if (posts.length === 0) {
         return (
-            <div className="p-12 text-center rounded-2xl border border-dashed border-parish-border/20 bg-parish-surface-alt">
+            <div className="p-12 text-center rounded-2xl border border-dashed border-parish-border/20 bg-parish-elevated">
                 <p className="font-serif text-parish-muted italic text-lg mb-2">
                     {postType === 'prayer_request'
                         ? 'No prayer requests yet. Be the first to share.'

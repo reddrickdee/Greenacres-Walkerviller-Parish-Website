@@ -90,7 +90,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-md bg-parish-surface-alt rounded-3xl p-8 md:p-10 shadow-xl border border-parish-border/20 z-10"
+                className="relative w-full max-w-md bg-parish-elevated rounded-3xl p-8 md:p-10 shadow-xl border border-parish-border/20 z-10"
             >
                 <button
                     onClick={handleClose}
@@ -143,7 +143,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                                     required={!isLogin}
                                     value={firstName}
                                     onChange={e => setFirstName(e.target.value)}
-                                    className="bg-parish-surface border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
+                                    className="bg-parish-surface text-parish-fg border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
                                     placeholder="John"
                                 />
                             </div>
@@ -154,7 +154,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                                     required={!isLogin}
                                     value={lastName}
                                     onChange={e => setLastName(e.target.value)}
-                                    className="bg-parish-surface border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
+                                    className="bg-parish-surface text-parish-fg border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
                                     placeholder="Doe"
                                 />
                             </div>
@@ -168,7 +168,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             required
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            className="bg-parish-surface border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
+                            className="bg-parish-surface text-parish-fg border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
                             placeholder="you@example.com"
                         />
                     </div>
@@ -180,7 +180,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             required
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            className="bg-parish-surface border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
+                            className="bg-parish-surface text-parish-fg border border-parish-border/20 rounded-xl px-4 py-3 outline-none focus:border-parish-accent/50 focus:ring-1 focus:ring-parish-accent/50 transition-all font-sans text-sm"
                             placeholder="••••••••"
                         />
                     </div>

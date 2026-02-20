@@ -51,7 +51,7 @@ export function PrayButton({ postId, initialCount, initialHasPrayed, onRequireAu
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-display uppercase tracking-widest transition-all
                 ${hasPrayed
                     ? 'bg-parish-accent/10 text-parish-accent border border-parish-accent/20'
-                    : 'bg-parish-surface-alt text-parish-muted hover:text-parish-fg hover:bg-parish-border/5 border border-transparent'
+                    : 'bg-parish-elevated text-parish-muted hover:text-parish-fg hover:bg-parish-border/5 border border-transparent'
                 }
                 ${isPending ? 'opacity-70 cursor-not-allowed' : 'active:scale-95'}
             `}

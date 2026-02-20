@@ -90,7 +90,7 @@ export function PrayerWallSection() {
     };
 
     return (
-        <section className="bg-parish-surface-alt py-24 px-8 md:px-24 border-y border-parish-border/5">
+        <section className="bg-parish-elevated py-24 px-8 md:px-24 border-y border-parish-border/5">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="text-parish-accent font-display tracking-widest text-sm uppercase mb-4">Community Prayer</div>
