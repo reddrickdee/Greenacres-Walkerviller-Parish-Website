@@ -162,15 +162,26 @@ export interface BulletinSection {
     imageFocalPoint?: { x: number; y: number };
 }
 
-// ── Daily Reflections ────────────────────────────────────────────────────────
-
 export interface DailyReflection {
     id: string;
     date: string;
     liturgicalColor: string;
     title: string;
-    firstReading?: string;
-    psalm?: string;
-    gospel?: string;
-    reflection?: string;
+    // Readings
+    firstReadingRef?: string;
+    firstReadingText?: string;
+    psalmRef?: string;
+    psalmResponse?: string;
+    psalmText?: string;
+    secondReadingRef?: string;
+    secondReadingText?: string;
+    gospelAcclamation?: string;
+    gospelRef?: string;
+    gospelText?: string;
+    sequence?: string;
+    // Structured Reflection
+    reflectionContext?: string;
+    reflectionBody?: string;
+    reflectionPrayer?: string;
+    reflectionAuthor?: string;
 }

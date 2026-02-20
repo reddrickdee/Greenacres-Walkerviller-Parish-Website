@@ -85,10 +85,23 @@ export async function loadDailyReflectionFromCMS(dateIso: string): Promise<Daily
             date: row.date as string,
             liturgicalColor: row.liturgical_color as string,
             title: row.title as string,
-            firstReading: (row.first_reading as string) ?? undefined,
-            psalm: (row.psalm as string) ?? undefined,
-            gospel: (row.gospel as string) ?? undefined,
-            reflection: (row.reflection as string) ?? undefined,
+            // Readings
+            firstReadingRef: (row.first_reading_ref as string) ?? undefined,
+            firstReadingText: (row.first_reading_text as string) ?? undefined,
+            psalmRef: (row.psalm_ref as string) ?? undefined,
+            psalmResponse: (row.psalm_response as string) ?? undefined,
+            psalmText: (row.psalm_text as string) ?? undefined,
+            secondReadingRef: (row.second_reading_ref as string) ?? undefined,
+            secondReadingText: (row.second_reading_text as string) ?? undefined,
+            gospelAcclamation: (row.gospel_acclamation as string) ?? undefined,
+            gospelRef: (row.gospel_ref as string) ?? undefined,
+            gospelText: (row.gospel_text as string) ?? undefined,
+            sequence: (row.sequence as string) ?? undefined,
+            // Structured Reflection
+            reflectionContext: (row.reflection_context as string) ?? undefined,
+            reflectionBody: (row.reflection_body as string) ?? undefined,
+            reflectionPrayer: (row.reflection_prayer as string) ?? undefined,
+            reflectionAuthor: (row.reflection_author as string) ?? undefined,
         } as DailyReflection;
     } catch {
         return null;

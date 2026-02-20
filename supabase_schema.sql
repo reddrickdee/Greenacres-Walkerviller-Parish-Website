@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS daily_reflections (
 
 ALTER TABLE daily_reflections ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Public read daily_reflections" ON daily_reflections;
+DROP POLICY IF EXISTS "Allow public read access" ON daily_reflections;
 CREATE POLICY "Public read daily_reflections"
     ON daily_reflections FOR SELECT
     USING (true);
@@ -45,6 +47,7 @@ CREATE TABLE IF NOT EXISTS mass_schedule_entries (
 
 ALTER TABLE mass_schedule_entries ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Public read mass_schedule_entries" ON mass_schedule_entries;
 CREATE POLICY "Public read mass_schedule_entries"
     ON mass_schedule_entries FOR SELECT
     USING (true);
@@ -63,6 +66,7 @@ CREATE TABLE IF NOT EXISTS newsletters (
 
 ALTER TABLE newsletters ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Public read newsletters" ON newsletters;
 CREATE POLICY "Public read newsletters"
     ON newsletters FOR SELECT
     USING (true);
