@@ -2,6 +2,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { PrayerWallSection } from '../components/PrayerWallSection';
 import { DailyReflectionCard } from '../components/home/DailyReflectionCard';
+import { FacebookFeed } from '../components/social/FacebookFeed';
+import { FeaturedResource } from '../components/spiritual/FeaturedResource';
+import { HallowAudioWidget } from '../components/spiritual/HallowAudioWidget';
 
 export function HomePage() {
     const { scrollYProgress } = useScroll();
@@ -139,6 +142,31 @@ export function HomePage() {
                 {/* Daily Reflection */}
                 <div className="mt-24 md:mt-32 max-w-4xl mx-auto">
                     <DailyReflectionCard />
+                </div>
+
+                {/* Community Integrations (Facebook & Hallow) */}
+                <div className="mt-24 md:mt-32 max-w-6xl mx-auto">
+                    <div className="text-center mb-12">
+                        <h3 className="font-display text-4xl md:text-5xl text-parish-fg mb-4">Parish Life & Resources</h3>
+                        <div className="w-16 h-1 bg-parish-accent mx-auto"></div>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                        {/* Left Column: Spiritual Resources (Hallow) */}
+                        <div className="flex flex-col gap-8">
+                            <h4 className="font-display text-2xl text-parish-muted italic">Spiritual Growth</h4>
+                            <FeaturedResource />
+                            <HallowAudioWidget />
+                        </div>
+
+                        {/* Right Column: Social Feed (Facebook) */}
+                        <div className="flex flex-col gap-8 h-[600px] lg:h-auto">
+                            <h4 className="font-display text-2xl text-parish-muted italic">Community News</h4>
+                            <div className="flex-1 min-h-[500px]">
+                                <FacebookFeed pageId="61584973342464" height={600} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Worship at a Glance */}
