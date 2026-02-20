@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '../components/ThemeToggle';
+import { AccessibilityMenu } from '../components/AccessibilityMenu';
 
 const NAV_LINKS = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About Us' },
-    { to: '/history', label: 'History' },
     { to: '/mass-times', label: 'Mass Times' },
     { to: '/sacraments', label: 'Sacraments' },
+    { to: '/community', label: 'Community Hub' },
     { to: '/news-events', label: 'News & Events' },
     { to: '/gallery', label: 'Gallery' },
-    { to: '/community', label: 'Community Hub' },
+    { to: '/history', label: 'History' },
     { to: '/contact', label: 'Contact' },
     { to: '/new-here', label: "I'm New Here" },
 ];
@@ -61,7 +62,10 @@ export function RootLayout() {
                             ))}
                         </div>
 
-                        <ThemeToggle />
+                        <div className="flex items-center gap-1">
+                            <AccessibilityMenu />
+                            <ThemeToggle />
+                        </div>
 
                         {/* Mobile Hamburger */}
                         <button

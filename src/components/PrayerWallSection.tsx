@@ -90,14 +90,14 @@ export function PrayerWallSection() {
     };
 
     return (
-        <section className="bg-parish-inverse py-24 px-8 md:px-24">
+        <section className="bg-parish-surface-alt py-24 px-8 md:px-24 border-y border-parish-border/5">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="text-parish-accent font-display tracking-widest text-sm uppercase mb-4">Community Prayer</div>
-                    <h2 className="font-display text-5xl md:text-7xl text-parish-surface leading-none mb-6">
+                    <h2 className="font-display text-5xl md:text-7xl text-parish-fg leading-none mb-6">
                         Prayer <em className="font-serif italic text-parish-accent">Wall</em>
                     </h2>
-                    <p className="font-serif text-xl text-parish-surface/50 italic max-w-2xl mx-auto">
+                    <p className="font-serif text-xl text-parish-muted italic max-w-2xl mx-auto">
                         "Where two or three gather in my name, there am I with them." — Matthew 18:20
                     </p>
                 </div>
@@ -111,21 +111,21 @@ export function PrayerWallSection() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.5 }}
-                                className="bg-parish-surface border border-parish-surface/10 p-8 rounded-2xl flex flex-col justify-between"
+                                className="bg-parish-surface border border-parish-border/10 p-8 rounded-2xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
                             >
-                                <p className="font-serif text-lg text-parish-surface/70 leading-relaxed italic mb-6">
+                                <p className="font-serif text-lg text-parish-fg/80 leading-relaxed italic mb-6">
                                     "{intention.text}"
                                 </p>
                                 <div className="flex justify-between items-center">
-                                    <span className="font-display tracking-widest text-[10px] uppercase text-parish-surface/30">
+                                    <span className="font-display tracking-widest text-[10px] uppercase text-parish-muted">
                                         {timeAgo(intention.submitted)}
                                     </span>
                                     <button
                                         onClick={() => handlePray(intention.id)}
-                                        className="flex items-center gap-2 bg-parish-surface/10 hover:bg-parish-accent/20 px-4 py-2 rounded-full transition-colors group"
+                                        className="flex items-center gap-2 bg-parish-border/5 hover:bg-parish-accent/10 px-4 py-2 rounded-full transition-colors group border border-parish-border/10 hover:border-parish-accent/20"
                                     >
                                         <span className="text-parish-accent text-lg">🕯️</span>
-                                        <span className="font-display tracking-widest text-xs uppercase text-parish-surface/60 group-hover:text-parish-accent transition-colors">
+                                        <span className="font-display tracking-widest text-xs uppercase text-parish-muted group-hover:text-parish-accent transition-colors">
                                             Pray ({intention.prayerCount})
                                         </span>
                                     </button>
@@ -144,7 +144,7 @@ export function PrayerWallSection() {
                         View Full Prayer Wall
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <p className="font-serif text-parish-surface/40 italic text-sm mt-4">
+                    <p className="font-serif text-parish-muted italic text-sm mt-4">
                         Share your intentions, offer encouragement, and pray with the parish community.
                     </p>
                 </div>

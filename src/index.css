@@ -79,6 +79,14 @@
   }
 }
 
+/* Dyslexia Accessibility Override */
+.font-dyslexic,
+.font-dyslexic * {
+  font-family: 'OpenDyslexic', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.1em !important;
+}
+
 @layer utilities {
   .noise-bg {
     position: relative;

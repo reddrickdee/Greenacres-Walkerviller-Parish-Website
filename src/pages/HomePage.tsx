@@ -32,7 +32,7 @@ export function HomePage() {
                         className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity"
                         style={{ backgroundImage: "url('/assets/images/source/hero_3.webp')" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1C1917]/50 to-[#1C1917]" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-parish-bg/50 to-parish-bg" />
                 </motion.div>
 
                 <div className="relative z-10 text-center px-6 max-w-4xl">

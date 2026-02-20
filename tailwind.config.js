@@ -26,9 +26,10 @@ export default {
                 }
             },
             fontFamily: {
-                display: ['Cinzel', 'serif'],
-                serif: ['"Cormorant Garamond"', 'serif'],
+                display: ['Merriweather', 'serif'],
+                serif: ['Lora', 'serif'],
                 body: ['Inter', 'sans-serif'],
+                dyslexic: ['OpenDyslexic', 'sans-serif'],
             },
             fontSize: {
                 // Readable base scale for elderly-friendly UI
