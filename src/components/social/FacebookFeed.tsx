@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, ExternalLink } from 'lucide-react';
 
@@ -27,22 +27,40 @@ export function FacebookFeed({
     height = 500,
     tabs = 'timeline'
 }: FacebookFeedProps) {
-    const containerRef = useRef<HTMLDivElement>(null);
+
 
     useEffect(() => {
-        // Parse the XFBML once the component mounts or updates
-        if (window.FB && window.FB.XFBML) {
-            if (containerRef.current) {
-                window.FB.XFBML.parse(containerRef.current);
-            }
-        } else {
-            // In case FB SDK is still loading, wait for it
-            window.fbAsyncInit = () => {
-                if (containerRef.current && window.FB && window.FB.XFBML) {
-                    window.FB.XFBML.parse(containerRef.current);
+        let retries = 0;
+        const maxRetries = 20; // Try for up to 10 seconds (500ms intervals)
+
+        const initFacebook = () => {
+            const container = document.getElementById('fb-container-feed');
+
+            if (window.FB && window.FB.XFBML && container) {
+                // Force XFBML parse on our specific container to avoid re-parsing the whole document
+                window.FB.XFBML.parse(container);
+
+                // Check if FB actually injected the iframe yet
+                const hasIframe = container.querySelector('iframe');
+                if (hasIframe) {
+                    clearInterval(pollInterval);
                 }
-            };
-        }
+            }
+
+            retries++;
+            if (retries >= maxRetries) {
+                clearInterval(pollInterval);
+            }
+        };
+
+        const pollInterval = setInterval(initFacebook, 500);
+
+        // Run once immediately just in case it's already loaded from a previous route
+        initFacebook();
+
+        return () => {
+            clearInterval(pollInterval);
+        };
     }, [pageId, width, height, tabs]);
 
     return (
@@ -81,23 +99,23 @@ export function FacebookFeed({
 
                 {/* Iframe Content Area */}
                 <div
-                    ref={containerRef}
-                    className="w-full flex-1 bg-white p-0 relative"
+                    id="fb-container-feed"
+                    className="w-full bg-white flex justify-center"
                     style={{ minHeight: height }}
                 >
                     <div
-                        className="fb-page absolute top-0 left-0 w-full h-full flex justify-center pb-2"
+                        className="fb-page"
                         data-href={`https://www.facebook.com/profile.php?id=${pageId}`}
                         data-tabs={tabs}
-                        data-width={width === '100%' ? '' : width}
+                        data-width="500"
                         data-height={height}
-                        data-small-header="true"
+                        data-small-header="false"
                         data-adapt-container-width="true"
-                        data-hide-cover="true"
-                        data-show-facepile="false"
+                        data-hide-cover="false"
+                        data-show-facepile="true"
                     >
-                        <blockquote cite={`https://www.facebook.com/profile.php?id=${pageId}`} className="fb-xfbml-parse-ignore truncate">
-                            <a href={`https://www.facebook.com/profile.php?id=${pageId}`}>Parish Updates</a>
+                        <blockquote cite={`https://www.facebook.com/profile.php?id=${pageId}`} className="fb-xfbml-parse-ignore">
+                            <a href={`https://www.facebook.com/profile.php?id=${pageId}`}>Greenacres Walkerville Parish</a>
                         </blockquote>
                     </div>
                 </div>
