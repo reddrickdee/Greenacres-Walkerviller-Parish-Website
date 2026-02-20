@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import { ExternalLink } from 'lucide-react';
+import { ListMusic, Star, Share2 } from 'lucide-react';
 
 interface FeaturedResourceData {
     id: string;
@@ -38,54 +38,103 @@ export function FeaturedResource() {
         fetchFeaturedResource();
     }, []);
 
-    if (loading || !resource) {
-        return null; // or a skeleton loader if preferred
+    // Calculate days left in Lent (Easter 2026 is April 5)
+    const easterDate = new Date('2026-04-05');
+    const today = new Date();
+    const diffTime = easterDate.getTime() - today.getTime();
+    const daysLeft = Math.max(0, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+
+    if (loading) {
+        return (
+            <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden animate-pulse">
+                <div className="h-[300px] bg-[#2a2a2a]" />
+                <div className="p-6 space-y-4">
+                    <div className="h-6 bg-[#2a2a2a] rounded w-3/4" />
+                    <div className="h-12 bg-[#2a2a2a] rounded-full" />
+                    <div className="h-4 bg-[#2a2a2a] rounded w-full" />
+                    <div className="h-4 bg-[#2a2a2a] rounded w-5/6" />
+                </div>
+            </div>
+        );
     }
 
-    return (
-        <div className="bg-[#121118] text-white rounded-xl overflow-hidden shadow-md border border-[#2a2835] group relative flex flex-col sm:flex-row">
-            {/* Dark gradient overlay for a more contemplative, premium feel */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1b1924] to-[#0f0e14] opacity-80 pointer-events-none"></div>
+    if (!resource) return null;
 
-            {/* Image Section */}
-            <div className="relative w-full sm:w-1/3 aspect-[4/3] sm:aspect-auto sm:min-h-[250px] overflow-hidden">
+    return (
+        <div className="bg-[#1a1a1a] text-white rounded-2xl overflow-hidden shadow-2xl shadow-black/40">
+            {/* Title Header */}
+            <div className="px-5 pt-5 pb-3">
+                <h3 className="text-2xl font-bold tracking-tight leading-tight">
+                    {resource.title}
+                </h3>
+            </div>
+
+            {/* Hero Image */}
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <img
                     src={resource.image_url}
                     alt={resource.title}
-                    className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                 />
-                {/* Shadow gradient over image for text readability if layout stacks */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#121118] sm:bg-gradient-to-r sm:from-transparent sm:to-[#121118]"></div>
             </div>
 
-            {/* Content Section */}
-            <div className="relative z-10 flex flex-col justify-center p-6 sm:p-8 sm:w-2/3">
-                <div className="flex items-center gap-2 text-[#a8a3c5] text-sm font-semibold tracking-wider uppercase mb-3">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />
-                    </svg>
-                    <span>Featured on Hallow</span>
+            {/* Join Challenge CTA */}
+            <div className="px-5 pt-4 pb-2">
+                <a
+                    href={resource.link_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full bg-white text-black font-bold text-lg py-3.5 rounded-full hover:bg-gray-100 transition-colors no-underline"
+                >
+                    Join Challenge
+                </a>
+            </div>
+
+            {/* Days Left */}
+            {daysLeft > 0 && (
+                <div className="text-center py-2">
+                    <span className="text-sm text-gray-400">
+                        <span className="text-green-400 mr-1">●</span>
+                        {daysLeft} days left
+                    </span>
                 </div>
+            )}
 
-                <h3 className="font-heading text-2xl sm:text-3xl font-bold mb-3 leading-tight tracking-tight">
-                    {resource.title}
-                </h3>
+            {/* Action Buttons Row */}
+            <div className="flex items-center justify-center gap-10 py-3 border-t border-white/10 mx-5">
+                <a
+                    href={resource.link_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-1.5 text-gray-400 hover:text-white transition-colors no-underline"
+                >
+                    <ListMusic size={22} />
+                    <span className="text-xs font-medium">Play All</span>
+                </a>
+                <button className="flex flex-col items-center gap-1.5 text-gray-400 hover:text-white transition-colors">
+                    <Star size={22} />
+                    <span className="text-xs font-medium">Favorite</span>
+                </button>
+                <button
+                    onClick={() => {
+                        if (navigator.share) {
+                            navigator.share({ title: resource.title, url: resource.link_url });
+                        } else {
+                            navigator.clipboard.writeText(resource.link_url);
+                        }
+                    }}
+                    className="flex flex-col items-center gap-1.5 text-gray-400 hover:text-white transition-colors"
+                >
+                    <Share2 size={22} />
+                    <span className="text-xs font-medium">Share</span>
+                </button>
+            </div>
 
-                <p className="text-gray-300 mb-6 leading-relaxed max-w-lg">
+            {/* Description */}
+            <div className="px-5 pb-6 pt-2">
+                <p className="text-[15px] text-gray-300 leading-relaxed">
                     {resource.description}
                 </p>
-
-                <div className="mt-auto">
-                    <a
-                        href={resource.link_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-white text-[#121118] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg shadow-black/20"
-                    >
-                        <span>Join the Challenge</span>
-                        <ExternalLink size={18} />
-                    </a>
-                </div>
             </div>
         </div>
     );

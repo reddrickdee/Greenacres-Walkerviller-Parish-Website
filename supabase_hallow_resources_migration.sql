@@ -24,7 +24,7 @@ create policy "Allow public read access on featured_resources."
 insert into featured_resources (title, description, image_url, link_url, is_active)
 select 
   'Lent Pray40: The Return',
-  'Join the 2026 Lenten challenge on Hallow. A journey back to God inspired by The Brothers Karamazov and the Parable of the Prodigal Son.',
+  'Join Jonathan Roumie, Fr. Mike Schmitz, Mark Wahlberg, Chris Pratt, Sister Miriam, Jeff Cavins, Mother Olga, and more this Lent for Pray40 — a journey back home to the Father with The Brothers Karamazov and the Return of the Prodigal Son by Fr. Henri Nouwen. We''ll see how Dostoevsky''s famous novel brings the Parable of the Prodigal Son to life like never before, showing us how we''re all farther from God than we need to be. The good news is God is waiting for us each with open arms, running out to meet us while we are still a long way off. Join us today as we let go of what holds us back, return home to the Lord, and let Him send us out as His hands and feet.',
   'https://assets.hallow.com/hallow-web-assets/images/challenges/pray40-2024/pray40-share-img.jpg',
   'https://hallow.com/collections/2845?is_shared=true',
   true
