@@ -1,6 +1,6 @@
 {
     "buildCommand": null,
-    "outputDirectory": "build/web",
+    "outputDirectory": "dist",
     "rewrites": [
         {
             "source": "/(.*)",
