@@ -44,7 +44,18 @@ async function loadMassScheduleFromCMS(): Promise<MassScheduleEntry[] | null> {
 
         if (error || !rows || rows.length === 0) return null;
 
-        return rows.map((row) => {
+        // Deduplicate rows with the same church + day + time (caused by
+        // seed SQL being run multiple times against a table without a
+        // unique constraint).
+        const seen = new Set<string>();
+        const uniqueRows = rows.filter((row) => {
+            const key = `${row.church}|${row.day_of_week}|${row.start_time}`;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+
+        return uniqueRows.map((row) => {
             const rawTime = row.start_time as string;
             const startTime = rawTime.length >= 5 ? rawTime.substring(0, 5) : rawTime;
             return {

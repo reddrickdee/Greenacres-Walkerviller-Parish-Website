@@ -58,6 +58,11 @@ CREATE TABLE IF NOT EXISTS mass_schedule_entries (
 
 ALTER TABLE mass_schedule_entries ENABLE ROW LEVEL SECURITY;
 
+-- Prevent duplicate entries for the same church/day/time
+ALTER TABLE mass_schedule_entries
+    ADD CONSTRAINT uq_mass_church_day_time
+    UNIQUE (church, day_of_week, start_time);
+
 DROP POLICY IF EXISTS "Public read mass_schedule_entries" ON mass_schedule_entries;
 CREATE POLICY "Public read mass_schedule_entries"
     ON mass_schedule_entries FOR SELECT
@@ -94,7 +99,7 @@ VALUES
     ('St Martin''s Church', 'Corner Muller and Hampstead Roads, Greenacres', 7, '09:30', 'Sunday Mass', NULL, 60, TRUE, 4),
     ('St Martin''s Church', 'Corner Muller and Hampstead Roads, Greenacres', 2, '09:00', 'Weekday Mass', NULL, 30, TRUE, 5),
     ('St Martin''s Church', 'Corner Muller and Hampstead Roads, Greenacres', 4, '09:00', 'Weekday Mass', NULL, 30, TRUE, 6)
-ON CONFLICT DO NOTHING;
+ON CONFLICT (church, day_of_week, start_time) DO NOTHING;
 
 
 -- ── 5. Seed Daily Reflection (Test Data) ────────────────────────────────────
