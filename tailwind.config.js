@@ -8,12 +8,16 @@ export default {
         extend: {
             colors: {
                 parish: {
-                    bg: '#F9F8F6',      // Warm alabaster
-                    surface: '#FFFFFF',
-                    fg: '#1C1917',      // Deep slate instead of harsh black
-                    muted: '#57534E',   // UPGRADED: darker stone for WCAG AA (7:1 contrast on white)
-                    accent: '#B8941E',  // UPGRADED: slightly darker gold for better contrast on light bg
-                    'accent-hover': '#9A7B16',
+                    bg: 'rgb(var(--color-parish-bg) / <alpha-value>)',
+                    surface: 'rgb(var(--color-parish-surface) / <alpha-value>)',
+                    elevated: 'rgb(var(--color-parish-elevated) / <alpha-value>)',
+                    fg: 'rgb(var(--color-parish-fg) / <alpha-value>)',
+                    muted: 'rgb(var(--color-parish-muted) / <alpha-value>)',
+                    accent: 'rgb(var(--color-parish-accent) / <alpha-value>)',
+                    'accent-hover': 'rgb(var(--color-parish-accent-hover) / <alpha-value>)',
+                    border: 'rgb(var(--color-parish-border) / <alpha-value>)',
+                    inverse: 'rgb(var(--color-parish-inverse) / <alpha-value>)',
+                    'inverse-muted': 'rgb(var(--color-parish-inverse-muted) / <alpha-value>)',
 
                     // Liturgical Seasons
                     advent: '#6B3FA0',
