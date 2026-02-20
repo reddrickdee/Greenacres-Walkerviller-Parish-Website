@@ -1,7 +1,9 @@
 import type { ParishContent, NewsletterArchive, MassScheduleEntry, DailyReflection } from '../types';
+import { supabase, isSupabaseConfigured } from './supabaseClient';
 
 /**
  * Loads the core parish content from the bundled JSON file.
+ * Attempts to overlay mass schedules from Supabase CMS if configured.
  */
 export async function loadParishContent(): Promise<ParishContent> {
     const res = await fetch('/data/parish_content.json');
@@ -28,30 +30,19 @@ export async function loadNewsletterArchive(): Promise<NewsletterArchive> {
 
 /**
  * Optional: Overlay mass schedule from Supabase CMS.
- * Returns null if not configured or on failure (silent fallback).
+ * Returns null if not configured or on failure (silent fallback to JSON).
  */
 async function loadMassScheduleFromCMS(): Promise<MassScheduleEntry[] | null> {
-    const endpoint = import.meta.env.VITE_SUPABASE_URL;
-    const apiKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-    if (!endpoint || !apiKey) return null;
+    if (!isSupabaseConfigured()) return null;
 
     try {
-        const res = await fetch(
-            `${endpoint}/rest/v1/mass_schedule_entries?is_active=eq.true&order=sort_order.asc`,
-            {
-                headers: {
-                    Accept: 'application/json',
-                    apikey: apiKey,
-                    Authorization: `Bearer ${apiKey}`,
-                },
-            }
-        );
+        const { data: rows, error } = await supabase
+            .from('mass_schedule_entries')
+            .select('*')
+            .eq('is_active', true)
+            .order('sort_order', { ascending: true });
 
-        if (!res.ok) return null;
-
-        const rows: Array<Record<string, unknown>> = await res.json();
-        if (rows.length === 0) return null;
+        if (error || !rows || rows.length === 0) return null;
 
         return rows.map((row) => {
             const rawTime = row.start_time as string;
@@ -74,30 +65,19 @@ async function loadMassScheduleFromCMS(): Promise<MassScheduleEntry[] | null> {
 
 /**
  * Fetch the daily reflection for a specific date from Supabase.
- * Returns null if not found or on failure.
+ * Returns null if not configured, not found, or on failure.
  */
 export async function loadDailyReflectionFromCMS(dateIso: string): Promise<DailyReflection | null> {
-    const endpoint = import.meta.env.VITE_SUPABASE_URL;
-    const apiKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-    if (!endpoint || !apiKey) return null;
+    if (!isSupabaseConfigured()) return null;
 
     try {
-        const res = await fetch(
-            `${endpoint}/rest/v1/daily_reflections?date=eq.${dateIso}`,
-            {
-                headers: {
-                    Accept: 'application/json',
-                    apikey: apiKey,
-                    Authorization: `Bearer ${apiKey}`,
-                },
-            }
-        );
+        const { data: rows, error } = await supabase
+            .from('daily_reflections')
+            .select('*')
+            .eq('date', dateIso)
+            .limit(1);
 
-        if (!res.ok) return null;
-
-        const rows: Array<Record<string, unknown>> = await res.json();
-        if (rows.length === 0) return null;
+        if (error || !rows || rows.length === 0) return null;
 
         const row = rows[0];
         return {
