@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { AccessibilityMenu } from '../components/AccessibilityMenu';
+import { ScrollToTop } from '../components/ScrollToTop';
 
 const NAV_LINKS = [
     { to: '/', label: 'Home' },
@@ -114,6 +115,7 @@ export function RootLayout() {
             </nav>
 
             {/* ── Page Content ──────────────────────────────────────── */}
+            <ScrollToTop />
             <main className="flex-1" role="main">
                 <Outlet />
             </main>
