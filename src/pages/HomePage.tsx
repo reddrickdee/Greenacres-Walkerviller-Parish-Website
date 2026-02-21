@@ -155,7 +155,7 @@ export function HomePage() {
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="w-full"
                     >
-                        <FacebookFeed pageId="61584973342464" height={700} />
+                        <FacebookFeed pageId="61584973342464" height={400} />
                     </motion.div>
                 </div>
 

@@ -24,7 +24,7 @@ interface FacebookFeedProps {
 export function FacebookFeed({
     pageId,
     width = '100%',
-    height = 500,
+    height = 400,
     tabs = 'timeline'
 }: FacebookFeedProps) {
 
@@ -100,8 +100,8 @@ export function FacebookFeed({
                 {/* Iframe Content Area */}
                 <div
                     id="fb-container-feed"
-                    className="w-full bg-parish-surface flex justify-center"
-                    style={{ minHeight: height }}
+                    className="w-full bg-parish-surface flex justify-center overflow-y-auto"
+                    style={{ maxHeight: height }}
                 >
                     <div
                         className="fb-page"
@@ -109,7 +109,7 @@ export function FacebookFeed({
                         data-tabs={tabs}
                         data-width="500"
                         data-height={height}
-                        data-small-header="false"
+                        data-small-header="true"
                         data-adapt-container-width="true"
                         data-hide-cover="false"
                         data-show-facepile="true"
