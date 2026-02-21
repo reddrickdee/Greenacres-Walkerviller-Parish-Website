@@ -15,6 +15,8 @@ export default {
                     muted: 'rgb(var(--color-parish-muted) / <alpha-value>)',
                     accent: 'rgb(var(--color-parish-accent) / <alpha-value>)',
                     'accent-hover': 'rgb(var(--color-parish-accent-hover) / <alpha-value>)',
+                    secondary: 'rgb(var(--color-parish-secondary) / <alpha-value>)',
+                    'secondary-hover': 'rgb(var(--color-parish-secondary-hover) / <alpha-value>)',
                     border: 'rgb(var(--color-parish-border) / <alpha-value>)',
                     inverse: 'rgb(var(--color-parish-inverse) / <alpha-value>)',
                     'inverse-muted': 'rgb(var(--color-parish-inverse-muted) / <alpha-value>)',

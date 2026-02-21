@@ -34,9 +34,14 @@ export function RootLayout() {
                     {/* Logo / Parish Name */}
                     <Link
                         to="/"
-                        className="font-display font-semibold tracking-wider text-base text-parish-fg no-underline hover:text-parish-accent transition-colors"
+                        className="flex items-center gap-3 font-display font-semibold tracking-wider text-base text-parish-fg no-underline hover:text-parish-accent transition-colors"
                         aria-label="Greenacres Walkerville Parish – Home"
                     >
+                        <img
+                            src="/parish-logo.png"
+                            alt="Greenacres Walkerville Parish logo"
+                            className="h-10 w-10 object-contain"
+                        />
                         Greenacres Walkerville
                     </Link>
 
@@ -54,7 +59,7 @@ export function RootLayout() {
                                             ? 'text-parish-accent bg-parish-accent/10'
                                             : 'text-parish-muted hover:text-parish-fg hover:bg-parish-border/5'}
                       ${link.to === '/new-here'
-                                            ? 'border border-parish-accent text-parish-accent hover:bg-parish-accent hover:text-parish-inverse ml-2'
+                                            ? 'border border-parish-secondary text-parish-secondary hover:bg-parish-secondary hover:text-white ml-2'
                                             : ''}
                     `}
                                 >

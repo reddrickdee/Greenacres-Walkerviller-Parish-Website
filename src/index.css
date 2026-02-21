@@ -4,31 +4,33 @@
 
 @layer base {
   :root {
-    --color-parish-bg: 249 248 246;
-    --color-parish-surface: 255 255 255;
-    --color-parish-elevated: 249 248 246;
-    --color-parish-fg: 28 25 23;
-    --color-parish-muted: 87 83 78;
-    --color-parish-accent: 184 148 30;
-    --color-parish-accent-hover: 154 123 22;
-
-    --color-parish-border: 28 25 23;
-    --color-parish-inverse: 28 25 23;
+    --color-parish-bg: 250 247 240;
+    --color-parish-surface: 255 253 248;
+    --color-parish-elevated: 247 244 237;
+    --color-parish-fg: 38 35 30;
+    --color-parish-muted: 110 100 85;
+    --color-parish-accent: 27 94 58;
+    --color-parish-accent-hover: 21 77 47;
+    --color-parish-secondary: 139 35 50;
+    --color-parish-secondary-hover: 115 28 40;
+    --color-parish-border: 38 35 30;
+    --color-parish-inverse: 38 35 30;
     /* Dark text/bg for inverse mode (i.e. if background is accent) */
-    --color-parish-inverse-muted: 87 83 78;
+    --color-parish-inverse-muted: 110 100 85;
   }
 
   html[data-theme="dark"] {
-    --color-parish-bg: 15 15 15;
-    --color-parish-surface: 24 24 24;
-    --color-parish-elevated: 34 34 34;
-    --color-parish-fg: 236 230 214;
-    --color-parish-muted: 168 162 158;
-    --color-parish-accent: 196 162 72;
-    --color-parish-accent-hover: 216 182 92;
-
-    --color-parish-border: 255 255 255;
-    --color-parish-inverse: 249 248 246;
+    --color-parish-bg: 18 16 13;
+    --color-parish-surface: 28 25 20;
+    --color-parish-elevated: 40 36 28;
+    --color-parish-fg: 240 235 222;
+    --color-parish-muted: 175 168 155;
+    --color-parish-accent: 74 160 104;
+    --color-parish-accent-hover: 94 180 124;
+    --color-parish-secondary: 180 70 85;
+    --color-parish-secondary-hover: 200 90 105;
+    --color-parish-border: 240 235 222;
+    --color-parish-inverse: 250 247 240;
     /* Light text/bg for inverse mode */
     --color-parish-inverse-muted: 214 211 209;
   }
@@ -60,7 +62,7 @@
   a:focus-visible,
   button:focus-visible,
   [role="button"]:focus-visible {
-    outline: 3px solid #B8941E;
+    outline: 3px solid #1B5E3A;
     outline-offset: 4px;
     border-radius: 4px;
   }
@@ -129,7 +131,7 @@
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  background: #d6d3d1;
+  background: #CBC5B8;
   border-radius: 3px;
 }
 
