@@ -46,8 +46,8 @@ export function RootLayout() {
                     </Link>
 
                     <div className="flex items-center gap-2 md:gap-4">
-                        {/* Desktop Links (lg and up) */}
-                        <div className="hidden lg:flex items-center gap-2">
+                        {/* Desktop Links (xl and up) */}
+                        <div className="hidden xl:flex items-center gap-2">
                             {NAV_LINKS.filter(l => l.to !== '/').map(link => (
                                 <Link
                                     key={link.to}
@@ -76,7 +76,7 @@ export function RootLayout() {
                         {/* Mobile Hamburger */}
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
-                            className="lg:hidden flex flex-col justify-center items-center w-12 h-12 rounded-lg hover:bg-parish-border/5 transition-colors"
+                            className="xl:hidden flex flex-col justify-center items-center w-12 h-12 rounded-lg hover:bg-parish-border/5 transition-colors"
                             aria-expanded={menuOpen}
                             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                         >
@@ -95,7 +95,7 @@ export function RootLayout() {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                            className="lg:hidden bg-parish-surface border-t border-parish-border/10 overflow-hidden"
+                            className="xl:hidden bg-parish-surface border-t border-parish-border/10 overflow-hidden"
                         >
                             <div className="px-6 py-6 flex flex-col gap-2">
                                 {NAV_LINKS.map(link => (

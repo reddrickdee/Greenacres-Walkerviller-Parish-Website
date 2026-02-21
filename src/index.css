@@ -20,15 +20,15 @@
   }
 
   html[data-theme="dark"] {
-    --color-parish-bg: 18 16 13;
-    --color-parish-surface: 28 25 20;
-    --color-parish-elevated: 40 36 28;
+    --color-parish-bg: 12 11 10;
+    --color-parish-surface: 32 29 25;
+    --color-parish-elevated: 45 42 36;
     --color-parish-fg: 240 235 222;
     --color-parish-muted: 175 168 155;
     --color-parish-accent: 74 160 104;
     --color-parish-accent-hover: 94 180 124;
-    --color-parish-secondary: 180 70 85;
-    --color-parish-secondary-hover: 200 90 105;
+    --color-parish-secondary: 220 80 95;
+    --color-parish-secondary-hover: 240 100 115;
     --color-parish-border: 240 235 222;
     --color-parish-inverse: 250 247 240;
     /* Light text/bg for inverse mode */

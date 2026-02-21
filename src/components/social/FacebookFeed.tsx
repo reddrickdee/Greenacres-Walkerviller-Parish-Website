@@ -82,7 +82,7 @@ export function FacebookFeed({
                         </motion.div>
                         <div>
                             <h3 className="text-parish-fg font-semibold text-lg tracking-tight">Greenacres Walkerville</h3>
-                            <p className="text-gray-400 text-sm">Official Parish Page</p>
+                            <p className="text-parish-muted text-sm">Official Parish Page</p>
                         </div>
                     </div>
 
