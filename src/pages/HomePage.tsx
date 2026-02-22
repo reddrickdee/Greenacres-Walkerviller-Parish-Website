@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { PrayerWallSection } from '../components/PrayerWallSection';
 import { DailyReflectionCard } from '../components/home/DailyReflectionCard';
+import { ReflectionDateNavigator } from '../components/home/ReflectionDateNavigator';
+import { useAvailableReflectionDates } from '../hooks/useAvailableReflectionDates';
 import { FacebookFeed } from '../components/social/FacebookFeed';
 
 export function HomePage() {
@@ -9,6 +12,8 @@ export function HomePage() {
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
     const { content, isLoading } = useParishData();
+    const [selectedDate, setSelectedDate] = useState(() => new Date().toLocaleDateString('en-CA'));
+    const { availableDates } = useAvailableReflectionDates();
 
     if (isLoading || !content) {
         return (
@@ -138,8 +143,13 @@ export function HomePage() {
                 </div>
 
                 {/* Daily Reflection */}
-                <div className="mt-24 md:mt-32 max-w-4xl mx-auto">
-                    <DailyReflectionCard />
+                <div className="mt-24 md:mt-32 max-w-4xl mx-auto space-y-6">
+                    <ReflectionDateNavigator
+                        selectedDate={selectedDate}
+                        onDateChange={setSelectedDate}
+                        availableDates={availableDates}
+                    />
+                    <DailyReflectionCard selectedDate={selectedDate} />
                 </div>
 
                 {/* Community News (Facebook) */}

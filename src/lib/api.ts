@@ -118,3 +118,24 @@ export async function loadDailyReflectionFromCMS(dateIso: string): Promise<Daily
         return null;
     }
 }
+
+/**
+ * Fetch all dates that have a daily reflection entry in Supabase.
+ * Returns an array of ISO date strings (e.g. ['2026-02-22', '2026-02-23']).
+ */
+export async function loadAvailableReflectionDates(): Promise<string[]> {
+    if (!isSupabaseConfigured()) return [];
+
+    try {
+        const { data: rows, error } = await supabase
+            .from('daily_reflections')
+            .select('date')
+            .order('date', { ascending: true });
+
+        if (error || !rows) return [];
+
+        return rows.map((row) => row.date as string);
+    } catch {
+        return [];
+    }
+}

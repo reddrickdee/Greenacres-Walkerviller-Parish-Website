@@ -12,9 +12,13 @@ interface ReadingSection {
     responseText?: string;
 }
 
-export function DailyReflectionCard() {
-    const todayStr = new Date().toLocaleDateString('en-CA');
-    const { reflection, isLoading, error } = useDailyReflection(todayStr);
+interface DailyReflectionCardProps {
+    selectedDate?: string;
+}
+
+export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) {
+    const dateIso = selectedDate || new Date().toLocaleDateString('en-CA');
+    const { reflection, isLoading, error } = useDailyReflection(dateIso);
     const [activeTab, setActiveTab] = useState<'readings' | 'reflection'>('readings');
     const [expandedReading, setExpandedReading] = useState<string>('first-reading');
 
