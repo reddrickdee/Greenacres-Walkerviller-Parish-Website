@@ -1,4 +1,6 @@
+// @ts-ignore
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+// @ts-ignore
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders } from "../_shared/cors.ts";
 
@@ -45,7 +47,10 @@ async function fetchUniversalisReadings(dateIso?: string) {
     };
 }
 
-serve(async (req) => {
+// @ts-ignore
+declare const Deno: any;
+
+serve(async (req: Request) => {
     if (req.method === 'OPTIONS') {
         return new Response('ok', { headers: corsHeaders });
     }

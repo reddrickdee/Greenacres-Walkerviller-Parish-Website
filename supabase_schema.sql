@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS mass_schedule_entries (
 ALTER TABLE mass_schedule_entries ENABLE ROW LEVEL SECURITY;
 
 -- Prevent duplicate entries for the same church/day/time
+ALTER TABLE mass_schedule_entries DROP CONSTRAINT IF EXISTS uq_mass_church_day_time;
 ALTER TABLE mass_schedule_entries
     ADD CONSTRAINT uq_mass_church_day_time
     UNIQUE (church, day_of_week, start_time);
