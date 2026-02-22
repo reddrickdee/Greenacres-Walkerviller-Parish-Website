@@ -30,36 +30,36 @@ export function RootLayout() {
                 role="navigation"
                 aria-label="Main navigation"
             >
-                <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center h-20">
+                <div className="max-w-[1480px] mx-auto px-4 md:px-6 flex justify-between items-center h-20">
                     {/* Logo / Parish Name */}
                     <Link
                         to="/"
-                        className="flex items-center gap-3 font-display font-semibold tracking-wider text-base text-parish-fg no-underline hover:text-parish-accent transition-colors"
+                        className="flex items-center gap-3 shrink-0 whitespace-nowrap font-display font-semibold tracking-wider text-base text-parish-fg no-underline hover:text-parish-accent transition-colors"
                         aria-label="Greenacres Walkerville Parish – Home"
                     >
                         <img
                             src="/parish-logo.png"
                             alt="Greenacres Walkerville Parish logo"
-                            className="h-10 w-10 object-contain"
+                            className="h-12 w-12 object-contain"
                         />
                         Greenacres Walkerville
                     </Link>
 
-                    <div className="flex items-center gap-2 md:gap-4">
-                        {/* Desktop Links (xl and up) */}
-                        <div className="hidden xl:flex items-center gap-2">
+                    <div className="flex items-center gap-2 md:gap-3">
+                        {/* Desktop Links (2xl and up) */}
+                        <div className="hidden 2xl:flex items-center">
                             {NAV_LINKS.filter(l => l.to !== '/').map(link => (
                                 <Link
                                     key={link.to}
                                     to={link.to}
                                     onClick={() => setMenuOpen(false)}
                                     className={`
-                      font-display tracking-wider text-nav uppercase px-4 py-3 rounded-lg transition-colors no-underline
+                      whitespace-nowrap font-display tracking-wider text-nav uppercase px-2 py-2.5 rounded-lg transition-colors no-underline
                       ${location.pathname === link.to
                                             ? 'text-parish-accent bg-parish-accent/10'
                                             : 'text-parish-muted hover:text-parish-fg hover:bg-parish-border/5'}
                       ${link.to === '/new-here'
-                                            ? 'border border-parish-secondary text-parish-secondary hover:bg-parish-secondary hover:text-white ml-2'
+                                            ? 'border border-parish-secondary text-parish-secondary hover:bg-parish-secondary hover:text-white ml-3 font-semibold rounded-full px-4'
                                             : ''}
                     `}
                                 >
@@ -76,7 +76,7 @@ export function RootLayout() {
                         {/* Mobile Hamburger */}
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
-                            className="xl:hidden flex flex-col justify-center items-center w-12 h-12 rounded-lg hover:bg-parish-border/5 transition-colors"
+                            className="2xl:hidden flex flex-col justify-center items-center w-12 h-12 rounded-lg hover:bg-parish-border/5 transition-colors"
                             aria-expanded={menuOpen}
                             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                         >
@@ -95,7 +95,7 @@ export function RootLayout() {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                            className="xl:hidden bg-parish-surface border-t border-parish-border/10 overflow-hidden"
+                            className="2xl:hidden bg-parish-surface border-t border-parish-border/10 overflow-hidden"
                         >
                             <div className="px-6 py-6 flex flex-col gap-2">
                                 {NAV_LINKS.map(link => (
