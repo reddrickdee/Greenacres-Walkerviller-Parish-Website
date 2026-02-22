@@ -10,6 +10,7 @@ interface ReadingSection {
     text?: string;
     isResponse?: boolean; // For psalm response styling
     responseText?: string;
+    isHtml?: boolean;
 }
 
 interface DailyReflectionCardProps {
@@ -43,49 +44,48 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
     // Build the readings array dynamically (only include readings that have content)
     const readings: ReadingSection[] = [];
 
-    if (reflection.firstReadingText) {
+    if (reflection.firstReadingHtml) {
         readings.push({
             key: 'first-reading',
             label: 'First Reading',
-            reference: reflection.firstReadingRef,
-            text: reflection.firstReadingText,
+            text: reflection.firstReadingHtml,
+            isHtml: true,
         });
     }
 
-    if (reflection.psalmText) {
+    if (reflection.psalmHtml) {
         readings.push({
             key: 'psalm',
             label: 'Responsorial Psalm',
-            reference: reflection.psalmRef,
-            text: reflection.psalmText,
-            isResponse: true,
-            responseText: reflection.psalmResponse,
+            text: reflection.psalmHtml,
+            isHtml: true,
         });
     }
 
-    if (reflection.secondReadingText) {
+    if (reflection.secondReadingHtml) {
         readings.push({
             key: 'second-reading',
             label: 'Second Reading',
-            reference: reflection.secondReadingRef,
-            text: reflection.secondReadingText,
+            text: reflection.secondReadingHtml,
+            isHtml: true,
         });
     }
 
-    if (reflection.gospelAcclamation) {
+    if (reflection.gospelAcclamationHtml) {
         readings.push({
             key: 'gospel-acclamation',
             label: 'Gospel Acclamation',
-            text: reflection.gospelAcclamation,
+            text: reflection.gospelAcclamationHtml,
+            isHtml: true,
         });
     }
 
-    if (reflection.gospelText) {
+    if (reflection.gospelHtml) {
         readings.push({
             key: 'gospel',
             label: 'Gospel',
-            reference: reflection.gospelRef,
-            text: reflection.gospelText,
+            text: reflection.gospelHtml,
+            isHtml: true,
         });
     }
 
@@ -225,9 +225,16 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
                                                                         </p>
                                                                     </div>
                                                                 )}
-                                                                <p className={`font-serif text-lg md:text-xl leading-relaxed text-parish-fg whitespace-pre-wrap ${reading.isResponse ? 'italic' : ''}`}>
-                                                                    {reading.text}
-                                                                </p>
+                                                                {reading.isHtml ? (
+                                                                    <div
+                                                                        className="font-serif text-lg md:text-xl leading-relaxed text-parish-fg universals-reading"
+                                                                        dangerouslySetInnerHTML={{ __html: reading.text || '' }}
+                                                                    />
+                                                                ) : (
+                                                                    <p className={`font-serif text-lg md:text-xl leading-relaxed text-parish-fg whitespace-pre-wrap ${reading.isResponse ? 'italic' : ''}`}>
+                                                                        {reading.text}
+                                                                    </p>
+                                                                )}
                                                             </div>
                                                         </motion.div>
                                                     )}

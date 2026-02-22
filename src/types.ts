@@ -168,16 +168,11 @@ export interface DailyReflection {
     liturgicalColor: string;
     title: string;
     // Readings
-    firstReadingRef?: string;
-    firstReadingText?: string;
-    psalmRef?: string;
-    psalmResponse?: string;
-    psalmText?: string;
-    secondReadingRef?: string;
-    secondReadingText?: string;
-    gospelAcclamation?: string;
-    gospelRef?: string;
-    gospelText?: string;
+    firstReadingHtml?: string;
+    psalmHtml?: string;
+    secondReadingHtml?: string;
+    gospelAcclamationHtml?: string;
+    gospelHtml?: string;
     sequence?: string;
     // Structured Reflection
     reflectionContext?: string;

@@ -11,16 +11,11 @@ CREATE TABLE IF NOT EXISTS daily_reflections (
     date DATE UNIQUE NOT NULL,
     liturgical_color TEXT NOT NULL,
     title TEXT NOT NULL,
-    first_reading_ref TEXT,
-    first_reading_text TEXT,
-    psalm_ref TEXT,
-    psalm_response TEXT,
-    psalm_text TEXT,
-    second_reading_ref TEXT,
-    second_reading_text TEXT,
-    gospel_acclamation TEXT,
-    gospel_ref TEXT,
-    gospel_text TEXT,
+    first_reading_html TEXT,
+    psalm_html TEXT,
+    second_reading_html TEXT,
+    gospel_acclamation_html TEXT,
+    gospel_html TEXT,
     sequence TEXT,
     reflection_context TEXT,
     reflection_body TEXT,
@@ -104,18 +99,15 @@ ON CONFLICT (church, day_of_week, start_time) DO NOTHING;
 
 -- ── 5. Seed Daily Reflection (Test Data) ────────────────────────────────────
 
-INSERT INTO daily_reflections (date, liturgical_color, title, first_reading_ref, first_reading_text, psalm_ref, psalm_response, psalm_text, gospel_ref, gospel_text, reflection_body)
+INSERT INTO daily_reflections (date, liturgical_color, title, first_reading_html, psalm_html, gospel_acclamation_html, gospel_html, reflection_body)
 VALUES (
     CURRENT_DATE,
     'Violet',
     'Friday after Ash Wednesday',
-    'Isaiah 58:1-9',
-    'Thus says the Lord: Shout for all you are worth, raise your voice like a trumpet. Proclaim their faults to my people...',
-    'Psalm 50:3-6, 12-14, 17',
-    'A broken, humbled heart, O God, you will not scorn.',
-    'A broken, humbled heart, O God, you will not scorn.',
-    'Matthew 9:14-15',
-    'John''s disciples came to Jesus and said, ''Why is it that we and the Pharisees fast, but your disciples do not?''',
+    '<div>Thus says the Lord: Shout for all you are worth, raise your voice like a trumpet. Proclaim their faults to my people...</div>',
+    '<div>A broken, humbled heart, O God, you will not scorn.</div>',
+    '<div>Glory and praise to you, Lord Jesus Christ!</div>',
+    '<div>John''s disciples came to Jesus and said, ''Why is it that we and the Pharisees fast, but your disciples do not?''</div>',
     'Lent is about prayer and fasting. When we think of ''fasting'' we probably think first of eating less food as a form of penance. Today Isaiah is challenging us to rethink what fasting really means. He states that God does not want to see a show of sacrifice but, rather, how that sacrifice changes our hearts.'
 ) ON CONFLICT (date) DO NOTHING;
 
