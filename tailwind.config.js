@@ -20,6 +20,7 @@ export default {
                     border: 'rgb(var(--color-parish-border) / <alpha-value>)',
                     inverse: 'rgb(var(--color-parish-inverse) / <alpha-value>)',
                     'inverse-muted': 'rgb(var(--color-parish-inverse-muted) / <alpha-value>)',
+                    brass: 'hsl(var(--color-parish-brass) / <alpha-value>)',
 
                     // Liturgical Seasons
                     advent: '#6B3FA0',

@@ -14,9 +14,9 @@
     --color-parish-secondary: 139 35 50;
     --color-parish-secondary-hover: 115 28 40;
     --color-parish-border: 38 35 30;
-    --color-parish-inverse: 38 35 30;
     /* Dark text/bg for inverse mode (i.e. if background is accent) */
     --color-parish-inverse-muted: 110 100 85;
+    --color-parish-brass: 45 85% 60%;
   }
 
   html[data-theme="dark"] {
@@ -30,9 +30,9 @@
     --color-parish-secondary: 220 80 95;
     --color-parish-secondary-hover: 240 100 115;
     --color-parish-border: 240 235 222;
-    --color-parish-inverse: 250 247 240;
     /* Light text/bg for inverse mode */
     --color-parish-inverse-muted: 214 211 209;
+    --color-parish-brass: 45 85% 60%;
   }
 
   html {
@@ -87,6 +87,26 @@
   font-family: 'OpenDyslexic', sans-serif !important;
   letter-spacing: 0.05em !important;
   word-spacing: 0.1em !important;
+}
+
+@layer components {
+  .sacred-container {
+    @apply bg-parish-surface/80 border border-parish-border/10 backdrop-blur-md rounded-[2rem] transition-all duration-500 ease-out;
+  }
+  .sacred-container:hover {
+    @apply bg-parish-elevated border-parish-brass/40 shadow-[0_0_30px_hsla(45,85%,60%,0.1)] -translate-y-1;
+  }
+
+  .ethereal-button {
+    @apply rounded-full border border-parish-border/30 px-8 py-4 text-nav text-parish-fg transition-all duration-300 font-medium no-underline inline-block uppercase tracking-widest;
+  }
+  .ethereal-button:hover {
+    @apply scale-[1.02] bg-parish-fg text-parish-bg border-transparent shadow-[0_0_30px_hsla(45,85%,60%,0.15)];
+  }
+
+  .section-divider {
+    @apply h-[1px] w-full bg-gradient-to-r from-transparent via-parish-border/10 to-transparent;
+  }
 }
 
 @layer utilities {

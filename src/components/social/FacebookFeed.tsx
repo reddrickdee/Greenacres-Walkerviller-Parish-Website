@@ -65,14 +65,11 @@ export function FacebookFeed({
 
     return (
         <div className="relative w-full group">
-            {/* Ambient Background Glow Effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#1877F2]/20 to-[#42b72a]/20 rounded-[2rem] blur-[24px] opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-
             {/* Bento Box Container */}
-            <div className="relative w-full h-full overflow-hidden rounded-[2rem] border border-parish-border/10 bg-parish-surface/80 backdrop-blur-2xl shadow-2xl flex flex-col">
+            <div className="relative w-full h-full sacred-container flex flex-col overflow-hidden">
 
                 {/* Custom Native Header */}
-                <div className="px-6 py-5 border-b border-parish-border/5 flex items-center justify-between bg-parish-elevated">
+                <div className="px-6 py-5 border-b border-parish-border/5 flex items-center justify-between bg-transparent">
                     <div className="flex items-center gap-4">
                         <motion.div
                             whileHover={{ rotate: 15, scale: 1.1 }}
@@ -100,7 +97,7 @@ export function FacebookFeed({
                 {/* Iframe Content Area */}
                 <div
                     id="fb-container-feed"
-                    className="w-full bg-parish-surface flex justify-center overflow-y-auto"
+                    className="w-full flex justify-center overflow-y-auto"
                     style={{ maxHeight: height }}
                 >
                     <div

@@ -115,14 +115,20 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
     const hasReflectionContent = reflection.reflectionContext || reflection.reflectionBody || reflection.reflectionPrayer;
 
     return (
-        <div className="w-full bg-parish-surface rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden flex flex-col">
+        <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full sacred-container flex flex-col overflow-hidden"
+        >
             {/* Liturgical Color Bar */}
             <div className={`h-2 w-full ${accentColor}`}></div>
 
             {/* Header */}
             <div className="px-8 pt-8 pb-6 border-b border-parish-border/5 flex justify-between items-start flex-wrap gap-4">
                 <div>
-                    <div className="flex items-center gap-2 text-parish-accent font-display tracking-widest text-sm uppercase mb-3">
+                    <div className="flex items-center gap-2 text-parish-brass font-display tracking-widest text-nav uppercase mb-4">
                         <BookOpen className="w-4 h-4" />
                         <span>God's Word - Daily Reflections</span>
                     </div>
@@ -165,7 +171,7 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
             </div>
 
             {/* Content Area */}
-            <div className="bg-parish-elevated flex-1">
+            <div className="bg-transparent flex-1">
                 <AnimatePresence mode="popLayout" initial={false}>
                     {activeTab === 'readings' ? (
                         <motion.div
@@ -187,7 +193,7 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
                                                     className="w-full px-8 py-5 flex items-center justify-between gap-4 text-left hover:bg-parish-border/[0.02] transition-colors"
                                                 >
                                                     <div className="flex-1 min-w-0">
-                                                        <span className="font-display text-parish-accent tracking-widest text-xs uppercase">
+                                                        <span className="font-display text-parish-brass tracking-widest text-xs uppercase">
                                                             {reading.label}
                                                         </span>
                                                         {reading.reference && (
@@ -266,8 +272,8 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
                                     {reflection.reflectionContext && (
                                         <div className="bg-parish-surface rounded-2xl p-6 border border-parish-border/5 shadow-sm">
                                             <div className="flex items-center gap-2 mb-3">
-                                                <BookOpenText className="w-4 h-4 text-parish-accent" />
-                                                <h4 className="font-display text-parish-accent tracking-widest text-sm uppercase">Context</h4>
+                                                <BookOpenText className="w-4 h-4 text-parish-brass" />
+                                                <h4 className="font-display text-parish-brass tracking-widest text-sm uppercase">Context</h4>
                                             </div>
                                             <p className="font-serif text-lg leading-relaxed text-parish-fg whitespace-pre-wrap">
                                                 {reflection.reflectionContext}
@@ -279,8 +285,8 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
                                     {reflection.reflectionBody && (
                                         <div>
                                             <div className="flex items-center gap-2 mb-4">
-                                                <Heart className="w-4 h-4 text-parish-accent" />
-                                                <h4 className="font-display text-parish-accent tracking-widest text-sm uppercase">Reflection</h4>
+                                                <Heart className="w-4 h-4 text-parish-brass" />
+                                                <h4 className="font-display text-parish-brass tracking-widest text-sm uppercase">Reflection</h4>
                                             </div>
                                             <p className="font-serif text-xl md:text-2xl leading-relaxed text-parish-fg whitespace-pre-wrap">
                                                 {reflection.reflectionBody}
@@ -290,10 +296,10 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
 
                                     {/* Prayer */}
                                     {reflection.reflectionPrayer && (
-                                        <div className="pl-6 border-l-2 border-parish-accent/30">
+                                        <div className="pl-6 border-l-2 border-parish-brass/30">
                                             <div className="flex items-center gap-2 mb-3">
-                                                <HandHeart className="w-4 h-4 text-parish-accent" />
-                                                <h4 className="font-display text-parish-accent tracking-widest text-sm uppercase">Prayer</h4>
+                                                <HandHeart className="w-4 h-4 text-parish-brass" />
+                                                <h4 className="font-display text-parish-brass tracking-widest text-sm uppercase">Prayer</h4>
                                             </div>
                                             <p className="font-serif text-lg md:text-xl leading-relaxed italic text-parish-fg whitespace-pre-wrap">
                                                 {reflection.reflectionPrayer}
@@ -317,6 +323,6 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
                     )}
                 </AnimatePresence>
             </div>
-        </div>
+        </motion.div>
     );
 }

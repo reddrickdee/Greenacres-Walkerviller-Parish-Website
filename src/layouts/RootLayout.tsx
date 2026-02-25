@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { AccessibilityMenu } from '../components/AccessibilityMenu';
 import { ScrollToTop } from '../components/ScrollToTop';
@@ -21,12 +21,21 @@ const NAV_LINKS = [
 export function RootLayout() {
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
+    const { scrollY } = useScroll();
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        setIsScrolled(latest > 50);
+    });
 
     return (
         <div className="min-h-screen flex flex-col">
             {/* ── Navigation ────────────────────────────────────────── */}
             <nav
-                className="fixed top-0 left-0 right-0 z-50 bg-parish-surface/95 backdrop-blur-md border-b border-parish-border/10"
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex flex-col ${isScrolled
+                        ? 'bg-parish-surface/90 backdrop-blur-md border-b border-parish-border/10 py-0 shadow-lg shadow-black/5'
+                        : 'bg-transparent border-b-0 py-2'
+                    }`}
                 role="navigation"
                 aria-label="Main navigation"
             >
