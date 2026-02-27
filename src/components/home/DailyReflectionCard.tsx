@@ -7,6 +7,7 @@ interface ReadingSection {
     key: string;
     label: string;
     reference?: string;
+    heading?: string;
     text?: string;
     isResponse?: boolean; // For psalm response styling
     responseText?: string;
@@ -48,6 +49,8 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
         readings.push({
             key: 'first-reading',
             label: 'First Reading',
+            reference: reflection.firstReadingSource,
+            heading: reflection.firstReadingHeading,
             text: reflection.firstReadingHtml,
             isHtml: true,
         });
@@ -57,6 +60,7 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
         readings.push({
             key: 'psalm',
             label: 'Responsorial Psalm',
+            reference: reflection.psalmSource,
             text: reflection.psalmHtml,
             isHtml: true,
         });
@@ -66,6 +70,8 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
         readings.push({
             key: 'second-reading',
             label: 'Second Reading',
+            reference: reflection.secondReadingSource,
+            heading: reflection.secondReadingHeading,
             text: reflection.secondReadingHtml,
             isHtml: true,
         });
@@ -75,6 +81,7 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
         readings.push({
             key: 'gospel-acclamation',
             label: 'Gospel Acclamation',
+            reference: reflection.gospelAcclamationSource,
             text: reflection.gospelAcclamationHtml,
             isHtml: true,
         });
@@ -84,6 +91,8 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
         readings.push({
             key: 'gospel',
             label: 'Gospel',
+            reference: reflection.gospelSource,
+            heading: reflection.gospelHeading,
             text: reflection.gospelHtml,
             isHtml: true,
         });
@@ -197,7 +206,7 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
                                                             {reading.label}
                                                         </span>
                                                         {reading.reference && (
-                                                            <span className="font-serif text-parish-muted ml-3 text-sm">
+                                                            <span className="font-serif text-parish-muted ml-3 text-sm italic">
                                                                 — {reading.reference}
                                                             </span>
                                                         )}
@@ -222,6 +231,14 @@ export function DailyReflectionCard({ selectedDate }: DailyReflectionCardProps) 
                                                             className="overflow-hidden"
                                                         >
                                                             <div className="px-8 pb-8">
+                                                                {/* Reading heading / summary */}
+                                                                {reading.heading && (
+                                                                    <div className="mb-4 px-4 py-3 bg-parish-accent/5 border-l-2 border-parish-brass/40 rounded-r-lg">
+                                                                        <p className="font-serif text-base italic text-parish-fg/80">
+                                                                            {reading.heading}
+                                                                        </p>
+                                                                    </div>
+                                                                )}
                                                                 {/* Psalm response line */}
                                                                 {reading.isResponse && reading.responseText && (
                                                                     <div className="mb-4 px-4 py-3 bg-parish-accent/5 border-l-2 border-parish-accent rounded-r-lg">

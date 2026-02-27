@@ -14,6 +14,7 @@ import { GalleryPage } from './pages/GalleryPage';
 import { SafeguardingPage } from './pages/SafeguardingPage';
 import { CommunityHubPage } from './pages/CommunityHubPage';
 import { AdminCommunityPage } from './pages/AdminCommunityPage';
+import { AdminReflectionsPage } from './pages/AdminReflectionsPage';
 import { AdminGuard } from './components/community/AdminGuard';
 
 const router = createBrowserRouter([
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
             {
                 path: 'admin/community',
                 element: <AdminGuard><AdminCommunityPage /></AdminGuard>,
+            },
+            {
+                path: 'admin/reflections',
+                element: <AdminGuard><AdminReflectionsPage /></AdminGuard>,
             }
         ]
     }

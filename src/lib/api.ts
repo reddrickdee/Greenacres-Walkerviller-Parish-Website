@@ -103,6 +103,15 @@ export async function loadDailyReflectionFromCMS(dateIso: string): Promise<Daily
             gospelAcclamationHtml: (row.gospel_acclamation_html as string) ?? undefined,
             gospelHtml: (row.gospel_html as string) ?? undefined,
             sequence: (row.sequence as string) ?? undefined,
+            // Source references & headings
+            firstReadingSource: (row.first_reading_source as string) ?? undefined,
+            firstReadingHeading: (row.first_reading_heading as string) ?? undefined,
+            psalmSource: (row.psalm_source as string) ?? undefined,
+            secondReadingSource: (row.second_reading_source as string) ?? undefined,
+            secondReadingHeading: (row.second_reading_heading as string) ?? undefined,
+            gospelAcclamationSource: (row.gospel_acclamation_source as string) ?? undefined,
+            gospelSource: (row.gospel_source as string) ?? undefined,
+            gospelHeading: (row.gospel_heading as string) ?? undefined,
             // Structured Reflection
             reflectionContext: (row.reflection_context as string) ?? undefined,
             reflectionBody: (row.reflection_body as string) ?? undefined,
@@ -134,3 +143,48 @@ export async function loadAvailableReflectionDates(): Promise<string[]> {
         return [];
     }
 }
+
+/**
+ * Upsert only the admin-authored reflection fields for a given date.
+ * This preserves any auto-scraped reading data already in the row.
+ */
+export async function upsertReflection(
+    dateIso: string,
+    fields: {
+        title?: string;
+        liturgicalColor?: string;
+        reflectionContext?: string;
+        reflectionBody?: string;
+        reflectionPrayer?: string;
+        reflectionAuthor?: string;
+    }
+): Promise<boolean> {
+    if (!isSupabaseConfigured()) return false;
+
+    try {
+        const payload: Record<string, unknown> = {
+            date: dateIso,
+        };
+
+        if (fields.title !== undefined) payload.title = fields.title;
+        if (fields.liturgicalColor !== undefined) payload.liturgical_color = fields.liturgicalColor;
+        if (fields.reflectionContext !== undefined) payload.reflection_context = fields.reflectionContext;
+        if (fields.reflectionBody !== undefined) payload.reflection_body = fields.reflectionBody;
+        if (fields.reflectionPrayer !== undefined) payload.reflection_prayer = fields.reflectionPrayer;
+        if (fields.reflectionAuthor !== undefined) payload.reflection_author = fields.reflectionAuthor;
+
+        const { error } = await supabase
+            .from('daily_reflections')
+            .upsert(payload, { onConflict: 'date' });
+
+        if (error) {
+            console.error('Failed to upsert reflection:', error);
+            return false;
+        }
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+

@@ -4,15 +4,17 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders } from "../_shared/cors.ts";
 
-const UNIVERSALIS_URL = "https://universalis.com/australia.adelaide/jsonpmass.js";
+const UNIVERSALIS_URL = "https://universalis.com/Australia/jsonpmass.js";
 
 async function fetchUniversalisReadings(dateIso?: string) {
     // Determine target URL with specific date if provided (e.g., YYYYMMDD)
     const formattedDate = dateIso ? dateIso.replace(/-/g, '') : '';
-    const fetchUrl = formattedDate ? `https://universalis.com/australia.adelaide/${formattedDate}/jsonpmass.js` : UNIVERSALIS_URL;
+    const basePath = formattedDate ? `https://universalis.com/Australia/${formattedDate}` : 'https://universalis.com/Australia';
+    const jsonpUrl = `${basePath}/jsonpmass.js`;
+    const htmlUrl = `${basePath}/mass.htm`;
 
-    console.log(`Fetching from Universalis: ${fetchUrl}`);
-    const response = await fetch(fetchUrl);
+    console.log(`Fetching from Universalis: ${jsonpUrl}`);
+    const response = await fetch(jsonpUrl);
 
     if (!response.ok) {
         throw new Error(`Universalis API returned ${response.status}: ${response.statusText}`);
@@ -36,14 +38,38 @@ async function fetchUniversalisReadings(dateIso?: string) {
 
     const titleStr = data.day ? data.day.replace(/<[^>]+>/g, '').trim() : 'Daily Mass';
 
+    // Fetch liturgical colour from mass.htm (server-side, no CORS)
+    let liturgicalColour = 'Green';
+    try {
+        const htmlRes = await fetch(htmlUrl);
+        if (htmlRes.ok) {
+            const htmlText = await htmlRes.text();
+            const colourMatch = htmlText.match(/Liturgical Colou?r:\s*(\w+)/i);
+            if (colourMatch) {
+                liturgicalColour = colourMatch[1]; // e.g. "Violet", "White", "Red", "Green"
+            }
+        }
+    } catch (e) {
+        console.warn('Could not fetch liturgical colour from mass.htm:', e);
+    }
+
     return {
         date: parsedDateIso,
         title: titleStr,
+        liturgical_color: liturgicalColour,
         first_reading_html: data.Mass_R1?.text || null,
+        first_reading_source: data.Mass_R1?.source || null,
+        first_reading_heading: data.Mass_R1?.heading || null,
         psalm_html: data.Mass_Ps?.text || null,
+        psalm_source: data.Mass_Ps?.source || null,
         second_reading_html: data.Mass_R2?.text || null,
+        second_reading_source: data.Mass_R2?.source || null,
+        second_reading_heading: data.Mass_R2?.heading || null,
         gospel_acclamation_html: data.Mass_GA?.text || null,
+        gospel_acclamation_source: data.Mass_GA?.source || null,
         gospel_html: data.Mass_G?.text || null,
+        gospel_source: data.Mass_G?.source || null,
+        gospel_heading: data.Mass_G?.heading || null,
     };
 }
 
@@ -96,12 +122,21 @@ serve(async (req: Request) => {
             ...(existingData || {}),
             date: readingsData.date,
             first_reading_html: readingsData.first_reading_html,
+            first_reading_source: readingsData.first_reading_source,
+            first_reading_heading: readingsData.first_reading_heading,
             psalm_html: readingsData.psalm_html,
+            psalm_source: readingsData.psalm_source,
             second_reading_html: readingsData.second_reading_html,
+            second_reading_source: readingsData.second_reading_source,
+            second_reading_heading: readingsData.second_reading_heading,
             gospel_acclamation_html: readingsData.gospel_acclamation_html,
+            gospel_acclamation_source: readingsData.gospel_acclamation_source,
             gospel_html: readingsData.gospel_html,
-            liturgical_color: existingData?.liturgical_color || 'Violet', // Default liturgical color
-            title: existingData?.title || readingsData.title,
+            gospel_source: readingsData.gospel_source,
+            gospel_heading: readingsData.gospel_heading,
+            // Scraped colour > existing DB colour > default
+            liturgical_color: readingsData.liturgical_color || existingData?.liturgical_color || 'Green',
+            title: readingsData.title || existingData?.title,
         };
 
         const { data: upsertData, error: upsertError } = await supabase
