@@ -1,6 +1,11 @@
 // src/lib/universalisApi.ts
 // Fetches daily Mass readings directly from the Universalis JSONP endpoint.
 // Primary strategy: fetch() with CORS. Fallback: JSONP script injection.
+//
+// BACKUP SOURCE (if Universalis ever becomes unavailable):
+//   Catholic Gallery — https://www.catholicgallery.org/mass-reading/
+//   Widget embed:  https://www.catholicgallery.org/widget/free-mass-readings-widget-for-your-website-or-blog/
+//   Monthly pages: https://www.catholicgallery.org/mass-reading/february-2026-download/
 
 import type { DailyReflection } from '../types';
 
@@ -79,6 +84,14 @@ function mapToReflection(data: any): DailyReflection {
         ? data.day.replace(/<[^>]+>/g, '').trim()
         : 'Daily Mass';
 
+    // Decode HTML entities in source references (e.g. &#x2010; → ‐)
+    const decodeEntities = (s?: string): string | undefined => {
+        if (!s) return undefined;
+        const el = document.createElement('span');
+        el.innerHTML = s;
+        return el.textContent || s;
+    };
+
     return {
         id: `universalis-${dateIso}`,
         date: dateIso,
@@ -90,15 +103,15 @@ function mapToReflection(data: any): DailyReflection {
         secondReadingHtml: data.Mass_R2?.text || undefined,
         gospelAcclamationHtml: data.Mass_GA?.text || undefined,
         gospelHtml: data.Mass_G?.text || undefined,
-        // Scripture references & headings
-        firstReadingSource: data.Mass_R1?.source || undefined,
-        firstReadingHeading: data.Mass_R1?.heading || undefined,
-        psalmSource: data.Mass_Ps?.source || undefined,
-        secondReadingSource: data.Mass_R2?.source || undefined,
-        secondReadingHeading: data.Mass_R2?.heading || undefined,
-        gospelAcclamationSource: data.Mass_GA?.source || undefined,
-        gospelSource: data.Mass_G?.source || undefined,
-        gospelHeading: data.Mass_G?.heading || undefined,
+        // Scripture references & headings (decoded)
+        firstReadingSource: decodeEntities(data.Mass_R1?.source),
+        firstReadingHeading: decodeEntities(data.Mass_R1?.heading),
+        psalmSource: decodeEntities(data.Mass_Ps?.source),
+        secondReadingSource: decodeEntities(data.Mass_R2?.source),
+        secondReadingHeading: decodeEntities(data.Mass_R2?.heading),
+        gospelAcclamationSource: decodeEntities(data.Mass_GA?.source),
+        gospelSource: decodeEntities(data.Mass_G?.source),
+        gospelHeading: decodeEntities(data.Mass_G?.heading),
     };
 }
 
