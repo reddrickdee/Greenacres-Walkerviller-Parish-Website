@@ -32,12 +32,37 @@ function parseJsonp(payload: string): any {
 }
 
 /**
- * Extract a plain-text liturgical colour from the JSONP `day` HTML field.
- * Falls back to 'Green' if undetectable.
+ * Infer the liturgical colour from the Universalis `day` title text.
+ * Universalis doesn't expose colour in the JSONP, but we can deduce it
+ * from the liturgical season / feast name with high accuracy.
  */
-function detectLiturgicalColour(): string {
-    // The Universalis JSONP doesn't expose colour directly, but
-    // the mass.htm page shows it. We'll keep the DB value or default.
+function detectLiturgicalColour(dayTitle: string): string {
+    const t = dayTitle.toLowerCase();
+
+    // Rose: 3rd Sunday of Advent (Gaudete) or 4th Sunday of Lent (Laetare)
+    if (t.includes('3rd sunday of advent') || t.includes('4th sunday of lent')) return 'Rose';
+
+    // Red: Palm Sunday, Pentecost, Good Friday, martyrs, Apostles
+    if (t.includes('palm sunday') || t.includes('passion sunday')) return 'Red';
+    if (t.includes('pentecost') && !t.includes('after pentecost')) return 'Red';
+    if (t.includes('good friday') || t.includes('holy cross')) return 'Red';
+    if (t.includes('martyr') || t.includes('apostle')) return 'Red';
+    if (t.includes('ss. peter and paul') || t.includes('st peter') || t.includes('st paul')) return 'Red';
+
+    // Violet / Purple: Lent and Advent
+    if (t.includes('lent') || t.includes('ash wednesday')) return 'Violet';
+    if (t.includes('advent')) return 'Violet';
+
+    // White: Easter, Christmas, solemnities, feasts of the Lord/BVM/saints (non-martyrs)
+    if (t.includes('easter') || t.includes('ascension')) return 'White';
+    if (t.includes('christmas') || t.includes('epiphany') || t.includes('baptism of the lord')) return 'White';
+    if (t.includes('holy thursday') || t.includes('holy saturday')) return 'White';
+    if (t.includes('trinity') || t.includes('corpus christi') || t.includes('sacred heart')) return 'White';
+    if (t.includes('transfiguration') || t.includes('presentation')) return 'White';
+    if (t.includes('assumption') || t.includes('immaculate') || t.includes('our lady')) return 'White';
+    if (t.includes('all saints') || t.includes('solemnity')) return 'White';
+
+    // Green: Ordinary Time (default)
     return 'Green';
 }
 
@@ -57,7 +82,7 @@ function mapToReflection(data: any): DailyReflection {
     return {
         id: `universalis-${dateIso}`,
         date: dateIso,
-        liturgicalColor: detectLiturgicalColour(),
+        liturgicalColor: detectLiturgicalColour(title),
         title,
         // Readings (HTML from Universalis)
         firstReadingHtml: data.Mass_R1?.text || undefined,

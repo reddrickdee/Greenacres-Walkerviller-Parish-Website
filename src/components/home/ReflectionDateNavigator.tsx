@@ -102,9 +102,7 @@ export function ReflectionDateNavigator({
     };
 
     const handleDateClick = (iso: string) => {
-        if (availableDates.has(iso)) {
-            onDateChange(iso);
-        }
+        onDateChange(iso);
     };
 
     const handleQuickNav = (iso: string) => {
@@ -124,8 +122,8 @@ export function ReflectionDateNavigator({
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleQuickNav(prevSunday)}
                     className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-display text-sm tracking-wider uppercase transition-all border ${selectedDate === prevSunday
-                            ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
-                            : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
+                        ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
+                        : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
                         }`}
                 >
                     <ChevronLeft className="w-4 h-4" />
@@ -138,8 +136,8 @@ export function ReflectionDateNavigator({
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleQuickNav(today)}
                     className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-display text-sm tracking-wider uppercase transition-all border ${selectedDate === today
-                            ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
-                            : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
+                        ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
+                        : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
                         }`}
                 >
                     <Calendar className="w-4 h-4" />
@@ -151,8 +149,8 @@ export function ReflectionDateNavigator({
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleQuickNav(nextSunday)}
                     className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-display text-sm tracking-wider uppercase transition-all border ${selectedDate === nextSunday
-                            ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
-                            : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
+                        ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
+                        : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
                         }`}
                 >
                     Next Sunday
@@ -200,7 +198,7 @@ export function ReflectionDateNavigator({
                             return <div key={`empty-${i}`} />;
                         }
 
-                        const hasContent = availableDates.has(cell.iso);
+                        const hasReflection = availableDates.has(cell.iso);
                         const isSelected = selectedDate === cell.iso;
                         const isToday = today === cell.iso;
                         const isSunday = new Date(cell.iso + 'T00:00:00').getDay() === 0;
@@ -209,25 +207,22 @@ export function ReflectionDateNavigator({
                             <button
                                 key={cell.iso}
                                 onClick={() => handleDateClick(cell.iso)}
-                                disabled={!hasContent}
                                 className={`
                                     relative flex flex-col items-center justify-center py-1.5 rounded-lg text-sm transition-all
-                                    ${hasContent ? 'cursor-pointer hover:bg-parish-accent/10' : 'cursor-default'}
+                                    cursor-pointer hover:bg-parish-accent/10
                                     ${isSelected
                                         ? 'bg-parish-accent text-white font-semibold shadow-md shadow-parish-accent/20'
                                         : isToday
                                             ? 'ring-2 ring-parish-accent/40 text-parish-fg font-semibold'
-                                            : hasContent
-                                                ? 'text-parish-fg font-medium'
-                                                : 'text-parish-muted/30'
+                                            : 'text-parish-fg font-medium'
                                     }
                                     ${isSunday && !isSelected ? 'text-parish-accent font-semibold' : ''}
                                 `}
-                                aria-label={`${cell.iso}${hasContent ? ' — reflection available' : ''}`}
+                                aria-label={`${cell.iso}${hasReflection ? ' — reflection available' : ''}`}
                             >
                                 <span>{cell.day}</span>
-                                {/* Availability dot */}
-                                {hasContent && !isSelected && (
+                                {/* Gold dot = admin reflection exists for this date */}
+                                {hasReflection && !isSelected && (
                                     <span className="absolute bottom-0.5 w-1 h-1 rounded-full bg-parish-accent" />
                                 )}
                             </button>
