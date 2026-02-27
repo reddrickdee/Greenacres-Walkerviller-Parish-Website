@@ -38,7 +38,7 @@ export function SafeguardingPage() {
                     </p>
 
                     <h3 className="text-2xl mt-12 mb-6">Reporting Concerns</h3>
-                    <div className="bg-parish-inverse text-parish-surface p-8 rounded-[2rem] mt-6">
+                    <div className="bg-parish-fg text-parish-surface p-8 rounded-[2rem] mt-6">
                         <p className="text-parish-surface/80 mb-6">
                             If you have any concerns regarding the safety of a child or vulnerable adult within our parish, or if you need to report an incident, please contact the Archdiocesan Safeguarding Unit immediately.
                         </p>

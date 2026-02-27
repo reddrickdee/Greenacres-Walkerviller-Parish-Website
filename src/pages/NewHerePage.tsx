@@ -31,7 +31,7 @@ export function NewHerePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.15 }}
-                    className="bg-parish-inverse p-8 md:p-12 rounded-[2rem] text-center mb-16"
+                    className="bg-parish-fg p-8 md:p-12 rounded-[2rem] text-center mb-16"
                 >
                     <p className="font-serif text-xl md:text-2xl italic text-parish-surface/80 leading-relaxed max-w-2xl mx-auto">
                         "Come to me, all you who are weary and burdened, and I will give you rest."

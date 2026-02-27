@@ -14,7 +14,7 @@
     --color-parish-secondary: 139 35 50;
     --color-parish-secondary-hover: 115 28 40;
     --color-parish-border: 38 35 30;
-    /* Dark text/bg for inverse mode (i.e. if background is accent) */
+    --color-parish-inverse: 255 255 255;
     --color-parish-inverse-muted: 110 100 85;
     --color-parish-brass: 45 85% 60%;
   }
@@ -30,7 +30,7 @@
     --color-parish-secondary: 220 80 95;
     --color-parish-secondary-hover: 240 100 115;
     --color-parish-border: 240 235 222;
-    /* Light text/bg for inverse mode */
+    --color-parish-inverse: 12 11 10;
     --color-parish-inverse-muted: 214 211 209;
     --color-parish-brass: 45 85% 60%;
   }
@@ -62,7 +62,7 @@
   a:focus-visible,
   button:focus-visible,
   [role="button"]:focus-visible {
-    outline: 3px solid #1B5E3A;
+    outline: 3px solid rgb(var(--color-parish-accent));
     outline-offset: 4px;
     border-radius: 4px;
   }
@@ -138,7 +138,7 @@
 
 /* Custom Selection */
 ::selection {
-  @apply bg-parish-accent text-white;
+  @apply bg-parish-accent text-parish-inverse;
 }
 
 /* Smooth scrollbar for newsletter archive etc */
@@ -151,7 +151,7 @@
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  background: #CBC5B8;
+  background: rgb(var(--color-parish-muted) / 0.4);
   border-radius: 3px;
 }
 

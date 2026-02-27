@@ -124,7 +124,7 @@ export function ReflectionDateNavigator({
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleQuickNav(prevSunday)}
                     className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-display text-sm tracking-wider uppercase transition-all border ${selectedDate === prevSunday
-                            ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
+                            ? 'bg-parish-accent text-parish-inverse border-parish-accent shadow-lg shadow-parish-accent/20'
                             : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
                         }`}
                 >
@@ -138,7 +138,7 @@ export function ReflectionDateNavigator({
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleQuickNav(today)}
                     className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-display text-sm tracking-wider uppercase transition-all border ${selectedDate === today
-                            ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
+                            ? 'bg-parish-accent text-parish-inverse border-parish-accent shadow-lg shadow-parish-accent/20'
                             : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
                         }`}
                 >
@@ -151,7 +151,7 @@ export function ReflectionDateNavigator({
                     whileTap={{ scale: 0.97 }}
                     onClick={() => handleQuickNav(nextSunday)}
                     className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-display text-sm tracking-wider uppercase transition-all border ${selectedDate === nextSunday
-                            ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
+                            ? 'bg-parish-accent text-parish-inverse border-parish-accent shadow-lg shadow-parish-accent/20'
                             : 'bg-parish-surface text-parish-fg border-parish-border/10 hover:border-parish-accent/40 hover:text-parish-accent'
                         }`}
                 >
@@ -214,7 +214,7 @@ export function ReflectionDateNavigator({
                                     relative flex flex-col items-center justify-center py-1.5 rounded-lg text-sm transition-all
                                     ${hasContent ? 'cursor-pointer hover:bg-parish-accent/10' : 'cursor-default'}
                                     ${isSelected
-                                        ? 'bg-parish-accent text-white font-semibold shadow-md shadow-parish-accent/20'
+                                        ? 'bg-parish-accent text-parish-inverse font-semibold shadow-md shadow-parish-accent/20'
                                         : isToday
                                             ? 'ring-2 ring-parish-accent/40 text-parish-fg font-semibold'
                                             : hasContent

@@ -89,7 +89,7 @@ export function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
-                    className="bg-parish-inverse p-8 md:p-14 rounded-[2rem] text-parish-surface mb-16 md:mb-20 text-center"
+                    className="bg-parish-fg p-8 md:p-14 rounded-[2rem] text-parish-surface mb-16 md:mb-20 text-center"
                 >
                     <h2 className="font-display text-3xl text-parish-accent mb-8">Parish Prayer</h2>
                     <p className="font-serif text-xl md:text-2xl italic leading-relaxed text-parish-surface/80 max-w-3xl mx-auto">
