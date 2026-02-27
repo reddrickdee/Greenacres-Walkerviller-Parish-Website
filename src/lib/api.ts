@@ -134,3 +134,48 @@ export async function loadAvailableReflectionDates(): Promise<string[]> {
         return [];
     }
 }
+
+/**
+ * Upsert only the admin-authored reflection fields for a given date.
+ * This preserves any auto-scraped reading data already in the row.
+ */
+export async function upsertReflection(
+    dateIso: string,
+    fields: {
+        title?: string;
+        liturgicalColor?: string;
+        reflectionContext?: string;
+        reflectionBody?: string;
+        reflectionPrayer?: string;
+        reflectionAuthor?: string;
+    }
+): Promise<boolean> {
+    if (!isSupabaseConfigured()) return false;
+
+    try {
+        const payload: Record<string, unknown> = {
+            date: dateIso,
+        };
+
+        if (fields.title !== undefined) payload.title = fields.title;
+        if (fields.liturgicalColor !== undefined) payload.liturgical_color = fields.liturgicalColor;
+        if (fields.reflectionContext !== undefined) payload.reflection_context = fields.reflectionContext;
+        if (fields.reflectionBody !== undefined) payload.reflection_body = fields.reflectionBody;
+        if (fields.reflectionPrayer !== undefined) payload.reflection_prayer = fields.reflectionPrayer;
+        if (fields.reflectionAuthor !== undefined) payload.reflection_author = fields.reflectionAuthor;
+
+        const { error } = await supabase
+            .from('daily_reflections')
+            .upsert(payload, { onConflict: 'date' });
+
+        if (error) {
+            console.error('Failed to upsert reflection:', error);
+            return false;
+        }
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+

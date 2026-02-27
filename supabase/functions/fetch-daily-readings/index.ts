@@ -4,12 +4,12 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders } from "../_shared/cors.ts";
 
-const UNIVERSALIS_URL = "https://universalis.com/australia.adelaide/jsonpmass.js";
+const UNIVERSALIS_URL = "https://universalis.com/Australia/jsonpmass.js";
 
 async function fetchUniversalisReadings(dateIso?: string) {
     // Determine target URL with specific date if provided (e.g., YYYYMMDD)
     const formattedDate = dateIso ? dateIso.replace(/-/g, '') : '';
-    const fetchUrl = formattedDate ? `https://universalis.com/australia.adelaide/${formattedDate}/jsonpmass.js` : UNIVERSALIS_URL;
+    const fetchUrl = formattedDate ? `https://universalis.com/Australia/${formattedDate}/jsonpmass.js` : UNIVERSALIS_URL;
 
     console.log(`Fetching from Universalis: ${fetchUrl}`);
     const response = await fetch(fetchUrl);
