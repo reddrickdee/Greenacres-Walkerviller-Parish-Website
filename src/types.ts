@@ -167,13 +167,22 @@ export interface DailyReflection {
     date: string;
     liturgicalColor: string;
     title: string;
-    // Readings
+    // Readings (HTML content)
     firstReadingHtml?: string;
     psalmHtml?: string;
     secondReadingHtml?: string;
     gospelAcclamationHtml?: string;
     gospelHtml?: string;
     sequence?: string;
+    // Reading references & headings (e.g. "Matthew 5:20-26")
+    firstReadingSource?: string;
+    firstReadingHeading?: string;
+    psalmSource?: string;
+    secondReadingSource?: string;
+    secondReadingHeading?: string;
+    gospelAcclamationSource?: string;
+    gospelSource?: string;
+    gospelHeading?: string;
     // Structured Reflection
     reflectionContext?: string;
     reflectionBody?: string;

@@ -65,6 +65,15 @@ function mapToReflection(data: any): DailyReflection {
         secondReadingHtml: data.Mass_R2?.text || undefined,
         gospelAcclamationHtml: data.Mass_GA?.text || undefined,
         gospelHtml: data.Mass_G?.text || undefined,
+        // Scripture references & headings
+        firstReadingSource: data.Mass_R1?.source || undefined,
+        firstReadingHeading: data.Mass_R1?.heading || undefined,
+        psalmSource: data.Mass_Ps?.source || undefined,
+        secondReadingSource: data.Mass_R2?.source || undefined,
+        secondReadingHeading: data.Mass_R2?.heading || undefined,
+        gospelAcclamationSource: data.Mass_GA?.source || undefined,
+        gospelSource: data.Mass_G?.source || undefined,
+        gospelHeading: data.Mass_G?.heading || undefined,
     };
 }
 
