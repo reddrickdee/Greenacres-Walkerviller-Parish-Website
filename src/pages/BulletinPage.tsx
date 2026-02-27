@@ -73,7 +73,7 @@ export function BulletinPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: i * 0.1 }}
-                        className="mb-16 border-t border-black/5 pt-12"
+                        className="mb-16 border-t border-parish-border/5 pt-12"
                     >
                         <h3 className="font-display text-2xl text-parish-fg mb-4">{section.title}</h3>
                         <p className="font-serif text-xl text-parish-muted leading-relaxed">{section.content}</p>

@@ -40,7 +40,7 @@ export function GalleryPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                            className={`${img.colSpan} ${img.rowSpan} rounded-3xl overflow-hidden group relative bg-black/5`}
+                            className={`${img.colSpan} ${img.rowSpan} rounded-3xl overflow-hidden group relative bg-parish-fg/5`}
                         >
                             <img
                                 src={img.src}

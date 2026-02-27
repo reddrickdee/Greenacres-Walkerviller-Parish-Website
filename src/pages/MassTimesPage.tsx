@@ -83,7 +83,7 @@ export function MassTimesPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
-                    className="mt-20 bg-parish-inverse p-8 md:p-14 rounded-[2rem] text-parish-surface"
+                    className="mt-20 bg-parish-fg p-8 md:p-14 rounded-[2rem] text-parish-surface"
                 >
                     <h2 className="font-display text-3xl md:text-4xl mb-10 text-parish-accent">Sacraments at a Glance</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

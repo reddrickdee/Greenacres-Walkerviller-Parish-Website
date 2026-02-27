@@ -33,7 +33,7 @@ export function RootLayout() {
             {/* ── Navigation ────────────────────────────────────────── */}
             <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex flex-col ${isScrolled
-                        ? 'bg-parish-surface/90 backdrop-blur-md border-b border-parish-border/10 py-0 shadow-lg shadow-black/5'
+                        ? 'bg-parish-surface/90 backdrop-blur-md border-b border-parish-border/10 py-0 shadow-lg shadow-parish-fg/5'
                         : 'bg-transparent border-b-0 py-2'
                     }`}
                 role="navigation"
@@ -68,7 +68,7 @@ export function RootLayout() {
                                             ? 'text-parish-accent bg-parish-accent/10'
                                             : 'text-parish-muted hover:text-parish-fg hover:bg-parish-border/5'}
                       ${link.to === '/new-here'
-                                            ? 'border border-parish-secondary text-parish-secondary hover:bg-parish-secondary hover:text-white ml-3 font-semibold rounded-full px-4'
+                                            ? 'border border-parish-secondary text-parish-secondary hover:bg-parish-secondary hover:text-parish-inverse ml-3 font-semibold rounded-full px-4'
                                             : ''}
                     `}
                                 >
