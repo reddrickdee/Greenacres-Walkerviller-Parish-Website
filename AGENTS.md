@@ -25,6 +25,16 @@ The app uses Supabase for Daily Reflections, Community Hub, and authentication. 
 
 Static parish content lives in `public/data/*.json`. Supabase SQL schema files are at the repo root (`supabase_*.sql`). Edge functions are in `supabase/functions/`.
 
+### Dark mode / theming
+
+The app uses a `data-theme` attribute on `<html>` (not Tailwind's default `media` or `class` strategy). The Tailwind config has `darkMode: ['selector', '[data-theme="dark"]']` to enable `dark:` variants. Theme CSS variables are defined in `src/index.css` under `:root` and `html[data-theme="dark"]`. Theme state is managed via `ThemeContext` and persisted to `localStorage`.
+
+Key conventions:
+- Use `parish-*` color tokens (e.g., `text-parish-fg`, `bg-parish-surface`) instead of hardcoded colors.
+- `parish-inverse` = white in light mode, near-black in dark mode — used for text on accent-colored buttons.
+- For "inverse sections" (dark bg in light mode, light bg in dark mode), use `bg-parish-fg text-parish-surface`.
+- Intentional exceptions: `text-white` on image overlays (Gallery), Facebook brand color `#1877F2`.
+
 ### Testing
 
 No automated test framework is currently configured (no test runner, no test directory).
