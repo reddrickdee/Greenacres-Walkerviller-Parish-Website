@@ -79,18 +79,17 @@ function mapToReflection(data: any): DailyReflection {
     const numberStr = data.number.toString();
     const dateIso = `${numberStr.substring(0, 4)}-${numberStr.substring(4, 6)}-${numberStr.substring(6, 8)}`;
 
-    // Strip HTML tags from the "day" field to get a clean title
-    const title = data.day
-        ? data.day.replace(/<[^>]+>/g, '').trim()
-        : 'Daily Mass';
-
-    // Decode HTML entities in source references (e.g. &#x2010; → ‐)
+    // Decode HTML entities (e.g. &#160; → space, &#x2010; → ‐)
     const decodeEntities = (s?: string): string | undefined => {
         if (!s) return undefined;
         const el = document.createElement('span');
         el.innerHTML = s;
         return el.textContent || s;
     };
+
+    // Strip HTML tags from the "day" field to get a clean title, then decode entities
+    const rawTitle = data.day ? data.day.replace(/<[^>]+>/g, '').trim() : 'Daily Mass';
+    const title = decodeEntities(rawTitle) || 'Daily Mass';
 
     return {
         id: `universalis-${dateIso}`,

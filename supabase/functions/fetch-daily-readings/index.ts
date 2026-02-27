@@ -36,7 +36,23 @@ async function fetchUniversalisReadings(dateIso?: string) {
     const numberStr = data.number.toString();
     const parsedDateIso = `${numberStr.substring(0, 4)}-${numberStr.substring(4, 6)}-${numberStr.substring(6, 8)}`;
 
-    const titleStr = data.day ? data.day.replace(/<[^>]+>/g, '').trim() : 'Daily Mass';
+    const rawTitle = data.day ? data.day.replace(/<[^>]+>/g, '').trim() : 'Daily Mass';
+
+    // Simple regex-based HTML entity decoder for the Edge Function (Deno) environment
+    const decodeEntities = (str?: string): string | null => {
+        if (!str) return null;
+        return str
+            .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(Number(dec)))
+            .replace(/&#x([a-fA-F0-9]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+            .replace(/&nbsp;/g, ' ')
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&apos;/g, "'");
+    };
+
+    const titleStr = decodeEntities(rawTitle) || 'Daily Mass';
 
     // Fetch liturgical colour from mass.htm (server-side, no CORS)
     let liturgicalColour = 'Green';
@@ -58,18 +74,18 @@ async function fetchUniversalisReadings(dateIso?: string) {
         title: titleStr,
         liturgical_color: liturgicalColour,
         first_reading_html: data.Mass_R1?.text || null,
-        first_reading_source: data.Mass_R1?.source || null,
-        first_reading_heading: data.Mass_R1?.heading || null,
+        first_reading_source: decodeEntities(data.Mass_R1?.source),
+        first_reading_heading: decodeEntities(data.Mass_R1?.heading),
         psalm_html: data.Mass_Ps?.text || null,
-        psalm_source: data.Mass_Ps?.source || null,
+        psalm_source: decodeEntities(data.Mass_Ps?.source),
         second_reading_html: data.Mass_R2?.text || null,
-        second_reading_source: data.Mass_R2?.source || null,
-        second_reading_heading: data.Mass_R2?.heading || null,
+        second_reading_source: decodeEntities(data.Mass_R2?.source),
+        second_reading_heading: decodeEntities(data.Mass_R2?.heading),
         gospel_acclamation_html: data.Mass_GA?.text || null,
-        gospel_acclamation_source: data.Mass_GA?.source || null,
+        gospel_acclamation_source: decodeEntities(data.Mass_GA?.source),
         gospel_html: data.Mass_G?.text || null,
-        gospel_source: data.Mass_G?.source || null,
-        gospel_heading: data.Mass_G?.heading || null,
+        gospel_source: decodeEntities(data.Mass_G?.source),
+        gospel_heading: decodeEntities(data.Mass_G?.heading),
     };
 }
 
