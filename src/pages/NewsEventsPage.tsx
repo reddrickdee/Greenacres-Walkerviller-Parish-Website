@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function NewsEventsPage() {
     const { content, newsletters, isLoading } = useParishData();
+
+    usePageSEO({
+        title: 'News & Events',
+        description: 'Stay connected with Greenacres Walkerville Parish. Parish bulletins, Connections newsletter archive, upcoming events, and community updates.',
+        path: '/news-events',
+    });
 
     if (isLoading || !content || !newsletters) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;

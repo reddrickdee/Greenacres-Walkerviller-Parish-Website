@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import App from './App.tsx'
 import { ParishDataProvider } from './context/ParishDataContext.tsx'
 import { ThemeProvider } from './context/ThemeContext.tsx'
@@ -10,6 +11,7 @@ createRoot(document.getElementById('root')!).render(
         <ThemeProvider>
             <ParishDataProvider>
                 <App />
+                <SpeedInsights />
             </ParishDataProvider>
         </ThemeProvider>
     </StrictMode>,

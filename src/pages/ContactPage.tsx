@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function ContactPage() {
     const { content, isLoading } = useParishData();
+
+    usePageSEO({
+        title: 'Contact Us',
+        description: 'Contact Greenacres Walkerville Catholic Parish. Phone (08) 8261 6200, email admin@gwparish.org.au. Office hours Mon, Wed, Thu 9am-3pm. Find St Monica\'s and St Martin\'s churches.',
+        path: '/contact',
+    });
 
     if (isLoading || !content) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;

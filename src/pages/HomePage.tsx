@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
+import { JsonLdSchema } from '../components/JsonLdSchema';
 import { PrayerWallSection } from '../components/PrayerWallSection';
 import { DailyReflectionCard } from '../components/home/DailyReflectionCard';
 import { ReflectionDateNavigator } from '../components/home/ReflectionDateNavigator';
@@ -14,6 +17,12 @@ export function HomePage() {
     const [selectedDate, setSelectedDate] = useState(() => new Date().toLocaleDateString('en-CA'));
     const { availableDates } = useAvailableReflectionDates();
 
+    usePageSEO({
+        title: 'Greenacres Walkerville Catholic Parish',
+        description: 'A welcoming and inclusive Catholic parish community in Adelaide, South Australia. Join us for Mass at St Monica\'s Walkerville and St Martin\'s Greenacres.',
+        path: '/',
+    });
+
     if (isLoading || !content) {
         return (
             <div className="h-screen flex items-center justify-center bg-parish-bg text-parish-fg font-display tracking-widest text-lg">
@@ -26,6 +35,7 @@ export function HomePage() {
 
     return (
         <>
+            <JsonLdSchema />
             <HeroSection />
 
             {/* Welcome Section */}
@@ -53,12 +63,12 @@ export function HomePage() {
                             <p className="text-xl md:text-2xl leading-relaxed text-parish-muted font-serif mb-8 italic">
                                 {content.welcomeExcerpt}
                             </p>
-                            <a href="/about" className="group inline-flex items-center gap-4 no-underline">
+                            <Link to="/about" className="group inline-flex items-center gap-4 no-underline">
                                 <span className="font-display tracking-widest uppercase text-nav text-parish-fg border-b border-parish-brass/50 pb-1 group-hover:text-parish-brass transition-colors">
                                     Learn About Us
                                 </span>
                                 <ArrowRight className="w-4 h-4 text-parish-brass group-hover:translate-x-2 transition-transform duration-300" />
-                            </a>
+                            </Link>
                         </motion.div>
                     </div>
                 </div>
@@ -123,9 +133,9 @@ export function HomePage() {
                             <div className="text-parish-brass font-display tracking-widest text-nav uppercase mb-4">Next Mass</div>
                             <h4 className="font-display text-4xl md:text-5xl mb-3">{nextMass?.startTime || "9:00 AM"}</h4>
                             <p className="text-parish-muted font-serif text-lg italic mb-8">{nextMass?.church || "St. Martin's Church"}</p>
-                            <a href="/mass-times" className="ethereal-button mt-auto">
+                            <Link to="/mass-times" className="ethereal-button mt-auto">
                                 Full Schedule
-                            </a>
+                            </Link>
                         </motion.div>
 
                         {/* Sacraments Card */}
@@ -140,9 +150,9 @@ export function HomePage() {
                             <div className="text-parish-brass font-display tracking-widest text-nav uppercase mb-4">Sacraments</div>
                             <h4 className="font-display text-2xl md:text-3xl mb-3 text-parish-fg leading-snug">Baptisms, Weddings & Funerals</h4>
                             <p className="text-parish-muted font-serif text-lg italic mb-8 mx-auto">Sacramental preparation and life celebrations.</p>
-                            <a href="/sacraments" className="ethereal-button mt-auto">
+                            <Link to="/sacraments" className="ethereal-button mt-auto">
                                 Learn More
-                            </a>
+                            </Link>
                         </motion.div>
 
                         {/* Parish Life Card */}
@@ -157,9 +167,9 @@ export function HomePage() {
                             <div className="text-parish-brass font-display tracking-widest text-nav uppercase mb-4">Parish Life</div>
                             <h4 className="font-display text-2xl md:text-3xl mb-3 text-parish-fg leading-snug">Get Involved</h4>
                             <p className="text-parish-muted font-serif text-lg italic mb-8 mx-auto">Ministries, volunteering, and community groups.</p>
-                            <a href="/community" className="ethereal-button mt-auto">
+                            <Link to="/community" className="ethereal-button mt-auto">
                                 Community Hub
-                            </a>
+                            </Link>
                         </motion.div>
                     </div>
                 </div>

@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function AboutPage() {
     const { content, isLoading } = useParishData();
+
+    usePageSEO({
+        title: 'About Us',
+        description: 'Meet the leadership team of Greenacres Walkerville Catholic Parish. Our vision, mission, pastoral council, and parish prayer.',
+        path: '/about',
+    });
 
     if (isLoading || !content) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;

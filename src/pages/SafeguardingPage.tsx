@@ -1,6 +1,13 @@
 import { motion } from 'framer-motion';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function SafeguardingPage() {
+    usePageSEO({
+        title: 'Safeguarding & Child Protection',
+        description: 'Greenacres Walkerville Parish is committed to the safety of children and vulnerable adults. Zero tolerance policy, reporting procedures, and privacy information.',
+        path: '/safeguarding',
+    });
+
     return (
         <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
             <div className="max-w-4xl mx-auto">

@@ -1,10 +1,17 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function BulletinPage() {
     const { id } = useParams<{ id: string }>();
     const { newsletters, isLoading } = useParishData();
+
+    usePageSEO({
+        title: 'Parish Bulletin',
+        description: 'Read the latest Connections newsletter from Greenacres Walkerville Catholic Parish.',
+        path: `/news-events/bulletin/${id}`,
+    });
 
     if (isLoading || !newsletters) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-sm uppercase">Loading…</div>;

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 // Using the images copied from 'Church Gallery' plus the AI-generated one
 const GALLERY_IMAGES = [
@@ -14,6 +15,12 @@ const GALLERY_IMAGES = [
 ];
 
 export function GalleryPage() {
+    usePageSEO({
+        title: 'Gallery',
+        description: 'Photos of St Monica\'s and St Martin\'s churches, parish community gatherings, and the 2019 refurbishment at Greenacres Walkerville Catholic Parish.',
+        path: '/gallery',
+    });
+
     return (
         <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
             <div className="max-w-7xl mx-auto">
@@ -45,6 +52,8 @@ export function GalleryPage() {
                             <img
                                 src={img.src}
                                 alt={img.alt}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">

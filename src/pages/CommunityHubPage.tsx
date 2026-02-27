@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, MessageCircleHeart, Newspaper, Lightbulb, ShieldAlert, Plus, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
+import { usePageSEO } from '../hooks/usePageSEO';
 import { PostFeed } from '../components/community/PostFeed';
 import { SubmitPostForm } from '../components/community/SubmitPostForm';
 import { AuthModal } from '../components/community/AuthModal';
@@ -19,6 +20,12 @@ const TAB_TO_POST_TYPE: Record<TabId, CommunityPostType> = {
 
 export function CommunityHubPage() {
     const { session, profile, isAdmin, signOut } = useAuth();
+
+    usePageSEO({
+        title: 'Community Hub',
+        description: 'Join the Greenacres Walkerville Parish community online. Share prayer requests, words of hope, and connect with fellow parishioners.',
+        path: '/community',
+    });
     const [activeTab, setActiveTab] = useState<TabId>('prayer_wall');
     const [showAuthModal, setShowAuthModal] = useState(false);
     const [showSubmitForm, setShowSubmitForm] = useState(false);

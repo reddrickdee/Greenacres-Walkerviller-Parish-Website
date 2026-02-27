@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Check, XCircle, AlertTriangle, Clock, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { communityApi } from '../lib/communityApi';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 type ReviewItem = {
     type: 'post' | 'comment';
@@ -14,6 +15,12 @@ type ReviewItem = {
 };
 
 export function AdminCommunityPage() {
+    usePageSEO({
+        title: 'Admin — Moderation',
+        description: 'Community moderation dashboard.',
+        path: '/admin/community',
+        noindex: true,
+    });
     const [items, setItems] = useState<ReviewItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [actionInProgress, setActionInProgress] = useState<string | null>(null);

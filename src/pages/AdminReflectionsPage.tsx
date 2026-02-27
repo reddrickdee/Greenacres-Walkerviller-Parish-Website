@@ -7,11 +7,18 @@ import {
 import { Link } from 'react-router-dom';
 import { fetchUniversalisReadings } from '../lib/universalisApi';
 import { loadDailyReflectionFromCMS, upsertReflection } from '../lib/api';
+import { usePageSEO } from '../hooks/usePageSEO';
 import type { DailyReflection } from '../types';
 
 type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 export function AdminReflectionsPage() {
+    usePageSEO({
+        title: 'Admin — Daily Reflection Editor',
+        description: 'Daily reflection editor for parish administrators.',
+        path: '/admin/reflections',
+        noindex: true,
+    });
     const [selectedDate, setSelectedDate] = useState(() => new Date().toLocaleDateString('en-CA'));
     const [readings, setReadings] = useState<DailyReflection | null>(null);
     const [loadingReadings, setLoadingReadings] = useState(true);

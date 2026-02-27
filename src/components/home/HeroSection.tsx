@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useParishData } from '../../context/ParishDataContext';
 
@@ -57,12 +58,12 @@ export function HeroSection() {
                     transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.7 }}
                     className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                 >
-                    <a href="/mass-times" className="ethereal-button bg-parish-brass/10 border-parish-brass/30 text-parish-brass hover:bg-parish-brass hover:text-parish-bg">
+                    <Link to="/mass-times" className="ethereal-button bg-parish-brass/10 border-parish-brass/30 text-parish-brass hover:bg-parish-brass hover:text-parish-bg">
                         Mass Times
-                    </a>
-                    <a href="/new-here" className="ethereal-button">
+                    </Link>
+                    <Link to="/new-here" className="ethereal-button">
                         I'm New Here
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
 

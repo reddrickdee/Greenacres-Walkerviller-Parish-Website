@@ -1,8 +1,16 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function SacramentsServicesPage() {
     const { content, isLoading } = useParishData();
+
+    usePageSEO({
+        title: 'Sacraments & Services',
+        description: 'Baptism, Marriage, RCIA, Reconciliation, and community services at Greenacres Walkerville Catholic Parish. Preparation pathways and how to get started.',
+        path: '/sacraments',
+    });
 
     if (isLoading || !content) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg text-parish-fg font-display tracking-widest text-lg">Loading…</div>;
@@ -90,12 +98,12 @@ export function SacramentsServicesPage() {
                                 </div>
 
                                 {journey.ctaLabel && (
-                                    <a
-                                        href={journey.ctaRoute || '/contact'}
+                                    <Link
+                                        to={journey.ctaRoute || '/contact'}
                                         className="mt-8 inline-block bg-parish-accent text-parish-inverse px-10 py-4 font-display text-base tracking-widest uppercase rounded-full hover:bg-parish-accent-hover transition-colors no-underline font-semibold"
                                     >
                                         {journey.ctaLabel}
-                                    </a>
+                                    </Link>
                                 )}
                             </motion.div>
                         ))}

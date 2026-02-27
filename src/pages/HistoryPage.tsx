@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function HistoryPage() {
     const { content, isLoading } = useParishData();
+
+    usePageSEO({
+        title: 'Parish History',
+        description: 'Over a century of Catholic faith in Adelaide — from a Druids Hall in 1912 to today\'s thriving two-church parish at Greenacres and Walkerville.',
+        path: '/history',
+    });
 
     if (isLoading || !content) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;

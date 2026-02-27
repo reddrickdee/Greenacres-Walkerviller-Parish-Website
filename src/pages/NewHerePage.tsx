@@ -1,8 +1,16 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export function NewHerePage() {
     const { content, isLoading } = useParishData();
+
+    usePageSEO({
+        title: "I'm New Here",
+        description: 'New to Greenacres Walkerville Parish? Discover what to expect at your first Mass, how to get involved, and how our community welcomes you.',
+        path: '/new-here',
+    });
 
     if (isLoading || !content) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;
@@ -64,12 +72,12 @@ export function NewHerePage() {
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16 text-center">
-                    <a href="/mass-times" className="bg-parish-fg text-parish-surface px-10 py-4 font-display tracking-widest uppercase text-base hover:bg-parish-accent transition-colors rounded-full no-underline inline-block">
+                    <Link to="/mass-times" className="bg-parish-fg text-parish-surface px-10 py-4 font-display tracking-widest uppercase text-base hover:bg-parish-accent transition-colors rounded-full no-underline inline-block">
                         Plan Your Visit
-                    </a>
-                    <a href="/contact" className="bg-parish-surface text-parish-fg border-2 border-parish-fg/20 px-10 py-4 font-display tracking-widest uppercase text-base hover:border-parish-accent hover:text-parish-accent transition-colors rounded-full no-underline inline-block">
+                    </Link>
+                    <Link to="/contact" className="bg-parish-surface text-parish-fg border-2 border-parish-fg/20 px-10 py-4 font-display tracking-widest uppercase text-base hover:border-parish-accent hover:text-parish-accent transition-colors rounded-full no-underline inline-block">
                         Contact the Office
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

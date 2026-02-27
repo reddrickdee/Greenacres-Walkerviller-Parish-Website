@@ -1,10 +1,17 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export function MassTimesPage() {
     const { content, isLoading } = useParishData();
+
+    usePageSEO({
+        title: 'Mass Times',
+        description: 'Weekend and weekday Mass schedule at St Monica\'s Walkerville (Saturday 6pm vigil) and St Martin\'s Greenacres (Sunday 9:30am). Plus weekday services and Reconciliation times.',
+        path: '/mass-times',
+    });
 
     if (isLoading || !content) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;
