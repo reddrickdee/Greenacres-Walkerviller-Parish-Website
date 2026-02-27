@@ -43,6 +43,15 @@ export function useDailyReflection(dateIso: string) {
                         secondReadingHtml: universalisData.secondReadingHtml ?? cmsData.secondReadingHtml,
                         gospelAcclamationHtml: universalisData.gospelAcclamationHtml ?? cmsData.gospelAcclamationHtml,
                         gospelHtml: universalisData.gospelHtml ?? cmsData.gospelHtml,
+                        // Source references & headings
+                        firstReadingSource: universalisData.firstReadingSource ?? cmsData.firstReadingSource,
+                        firstReadingHeading: universalisData.firstReadingHeading ?? cmsData.firstReadingHeading,
+                        psalmSource: universalisData.psalmSource ?? cmsData.psalmSource,
+                        secondReadingSource: universalisData.secondReadingSource ?? cmsData.secondReadingSource,
+                        secondReadingHeading: universalisData.secondReadingHeading ?? cmsData.secondReadingHeading,
+                        gospelAcclamationSource: universalisData.gospelAcclamationSource ?? cmsData.gospelAcclamationSource,
+                        gospelSource: universalisData.gospelSource ?? cmsData.gospelSource,
+                        gospelHeading: universalisData.gospelHeading ?? cmsData.gospelHeading,
                         // Use CMS title/colour if available (admin may have overridden)
                         title: cmsData.title || universalisData.title,
                         liturgicalColor: cmsData.liturgicalColor || universalisData.liturgicalColor,
