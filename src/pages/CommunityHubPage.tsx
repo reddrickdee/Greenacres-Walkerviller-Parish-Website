@@ -8,6 +8,7 @@ import { PostFeed } from '../components/community/PostFeed';
 import { SubmitPostForm } from '../components/community/SubmitPostForm';
 import { AuthModal } from '../components/community/AuthModal';
 import { CommunityPostType } from '../types';
+import { PageMeta } from '../components/PageMeta';
 
 type TabId = 'prayer_wall' | 'words_of_hope' | 'mini_articles' | 'suggestions';
 
@@ -66,6 +67,7 @@ export function CommunityHubPage() {
 
     return (
         <div className="bg-parish-surface min-h-screen text-parish-fg">
+            <PageMeta title="Community Hub" description="Join the Greenacres Walkerville Parish community — share prayer requests, words of hope, and connect with fellow parishioners." path="/community" />
             {/* Header Hero */}
             <header className="bg-parish-accent/5 py-16 md:py-24 border-b border-parish-border/10 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23a18a5b\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>

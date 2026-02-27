@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { PageMeta } from '../components/PageMeta';
 
 export function BulletinPage() {
     const { id } = useParams<{ id: string }>();
@@ -35,6 +36,7 @@ export function BulletinPage() {
 
     return (
         <div className="min-h-screen bg-parish-bg pt-32 pb-24 px-8 md:px-24">
+            <PageMeta title={item.title || 'Bulletin'} description="Read the latest Connections Newsletter from Greenacres Walkerville Catholic Parish." path={'/news-events/bulletin/' + id} />
             <div className="max-w-3xl mx-auto">
                 <Link to="/news-events" className="inline-block mb-12 font-display tracking-widest text-xs uppercase text-parish-muted hover:text-parish-accent transition-colors no-underline">
                     ← Back to News & Events

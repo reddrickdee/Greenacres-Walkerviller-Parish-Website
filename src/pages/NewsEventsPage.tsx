@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { PageMeta } from '../components/PageMeta';
 
 export function NewsEventsPage() {
     const { content, newsletters, isLoading } = useParishData();
@@ -17,6 +18,7 @@ export function NewsEventsPage() {
 
     return (
         <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
+            <PageMeta title="News & Events" description="Latest news, parish bulletins, and upcoming events at Greenacres Walkerville Catholic Parish." path="/news-events" />
             <div className="max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

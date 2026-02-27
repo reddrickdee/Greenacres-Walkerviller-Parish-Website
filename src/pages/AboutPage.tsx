@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { PageMeta } from '../components/PageMeta';
 
 export function AboutPage() {
     const { content, isLoading } = useParishData();
@@ -17,6 +18,7 @@ export function AboutPage() {
 
     return (
         <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
+            <PageMeta title="About Us" description="Learn about Greenacres Walkerville Catholic Parish — our priest's welcome, pastoral council, vision, mission, and parish prayer." path="/about" />
             <div className="max-w-5xl mx-auto">
                 {/* Header */}
                 <motion.div

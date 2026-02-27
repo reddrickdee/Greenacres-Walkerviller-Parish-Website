@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { PageMeta } from '../components/PageMeta';
 
 // Using the images copied from 'Church Gallery' plus the AI-generated one
 const GALLERY_IMAGES = [
@@ -23,6 +24,7 @@ export function GalleryPage() {
 
     return (
         <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
+            <PageMeta title="Gallery" description="Photo gallery of Greenacres Walkerville Catholic Parish — our churches, community gatherings, and parish life." path="/gallery" />
             <div className="max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

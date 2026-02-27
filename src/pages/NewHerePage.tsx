@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { PageMeta } from '../components/PageMeta';
 
 export function NewHerePage() {
     const { content, isLoading } = useParishData();
@@ -18,6 +19,7 @@ export function NewHerePage() {
 
     return (
         <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
+            <PageMeta title="I'm New Here" description="New to Greenacres Walkerville Catholic Parish? Welcome! Find out what to expect on your first visit, Mass times, and how to get involved." path="/new-here" />
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

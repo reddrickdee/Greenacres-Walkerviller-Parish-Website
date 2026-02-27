@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { PageMeta } from '../components/PageMeta';
 
 export function SafeguardingPage() {
     usePageSEO({
@@ -10,6 +11,7 @@ export function SafeguardingPage() {
 
     return (
         <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
+            <PageMeta title="Safeguarding & Child Protection" description="Greenacres Walkerville Parish safeguarding policies, child protection, and reporting procedures. Zero tolerance approach to all forms of abuse." path="/safeguarding" />
             <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

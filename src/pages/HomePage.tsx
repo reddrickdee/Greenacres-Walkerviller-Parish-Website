@@ -10,6 +10,7 @@ import { ReflectionDateNavigator } from '../components/home/ReflectionDateNaviga
 import { useAvailableReflectionDates } from '../hooks/useAvailableReflectionDates';
 import { FacebookFeed } from '../components/social/FacebookFeed';
 import { HeroSection } from '../components/home/HeroSection';
+import { PageMeta } from '../components/PageMeta';
 import { Clock, BookOpen, Users, ArrowRight } from 'lucide-react';
 
 export function HomePage() {
@@ -35,6 +36,7 @@ export function HomePage() {
 
     return (
         <>
+            <PageMeta description="Welcome to Greenacres Walkerville Catholic Parish in Adelaide. Join us for Mass, daily reflections, community prayer, and parish events at St Monica's and St Martin's churches." path="/" />
             <JsonLdSchema />
             <HeroSection />
 
