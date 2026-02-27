@@ -164,44 +164,61 @@ export function HomePage() {
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto">
-                    <div className="section-divider" />
-                </div>
-
-                {/* Community News (Facebook) */}
-                <div className="mt-20 md:mt-32 max-w-3xl mx-auto px-4 md:px-0 pb-32">
-                    <div className="text-center mb-12">
+                {/* Community & Connection */}
+                <div className="mt-20 md:mt-28 max-w-7xl mx-auto px-4 md:px-0 pb-24 md:pb-28">
+                    <div className="mb-12">
+                        <div className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide uppercase bg-parish-surface/80 text-parish-fg border border-parish-border/10 mb-6">
+                            Community
+                        </div>
                         <motion.h3
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="font-display text-4xl md:text-5xl text-parish-fg mb-4"
+                            className="font-display text-4xl md:text-5xl lg:text-6xl text-parish-fg mb-6 tracking-tight leading-[1.1]"
                         >
-                            Community News
+                            Gathered in Prayer <br className="hidden md:block" />
+                            <span className="font-serif italic text-parish-accent">& Parish Life</span>
                         </motion.h3>
-                        <motion.div
-                            initial={{ scaleX: 0 }}
-                            whileInView={{ scaleX: 1 }}
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-16 h-1 bg-parish-brass mx-auto"
-                        />
+                            transition={{ duration: 0.8, delay: 0.1 }}
+                            className="text-parish-muted font-serif text-xl md:text-2xl italic max-w-2xl leading-relaxed"
+                        >
+                            A dedicated space to lift each other up in prayer and stay connected to the daily pulse of our parish family.
+                        </motion.p>
                     </div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="w-full"
-                    >
-                        <FacebookFeed pageId="61584973342464" height={500} />
-                    </motion.div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 relative items-start">
+                        {/* The Prayer Wall (Left Column) */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="w-full lg:col-span-7 flex flex-col"
+                        >
+                            <PrayerWallSection embedded={true} maxItems={4} />
+                        </motion.div>
+
+                        {/* Facebook Feed (Right Column) */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                            className="w-full lg:col-span-5 flex flex-col pt-2 lg:sticky lg:top-24"
+                        >
+                            <div className="mb-8 flex justify-between items-end w-full">
+                                <h2 className="text-3xl md:text-4xl text-parish-fg font-display italic">Parish Updates</h2>
+                            </div>
+                            <FacebookFeed pageId="61584973342464" height={500} />
+                        </motion.div>
+                    </div>
                 </div>
             </section>
-
-            {/* Prayer Wall */}
-            <PrayerWallSection />
         </>
     );
 }

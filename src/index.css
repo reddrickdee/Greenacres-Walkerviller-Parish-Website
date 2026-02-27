@@ -93,15 +93,29 @@
   .sacred-container {
     @apply bg-parish-surface/80 border border-parish-border/10 backdrop-blur-md rounded-[2rem] transition-all duration-500 ease-out;
   }
+
   .sacred-container:hover {
-    @apply bg-parish-elevated border-parish-brass/40 shadow-[0_0_30px_hsla(45,85%,60%,0.1)] -translate-y-1;
+    @apply bg-parish-elevated border-parish-brass/40 shadow-[0_0_30px_hsla(var(--color-parish-brass)/0.1)] -translate-y-1;
+  }
+
+  .sacred-card {
+    @apply bg-parish-surface border border-parish-border rounded-2xl p-6 shadow-lg focus-visible:outline-none transition-all duration-500 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .constraint-widget-box {
+    @apply relative rounded-2xl overflow-hidden border border-parish-border bg-parish-surface ring-1 ring-black/5 max-h-[600px] shadow-sm flex flex-col;
+  }
+
+  .constraint-widget-fade {
+    @apply after:absolute after:bottom-0 after:left-0 after:right-0 after:h-16 after:bg-gradient-to-t after:from-parish-surface after:to-transparent after:pointer-events-none;
   }
 
   .ethereal-button {
     @apply rounded-full border border-parish-border/30 px-8 py-4 text-nav text-parish-fg transition-all duration-300 font-medium no-underline inline-block uppercase tracking-widest;
   }
+
   .ethereal-button:hover {
-    @apply scale-[1.02] bg-parish-fg text-parish-bg border-transparent shadow-[0_0_30px_hsla(45,85%,60%,0.15)];
+    @apply scale-[1.02] bg-parish-fg text-parish-bg border-transparent shadow-[0_0_30px_hsla(var(--color-parish-brass)/0.15)];
   }
 
   .section-divider {

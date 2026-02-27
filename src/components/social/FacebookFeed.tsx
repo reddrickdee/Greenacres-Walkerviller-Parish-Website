@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Facebook, ExternalLink } from 'lucide-react';
+import { Facebook, ExternalLink, RefreshCw } from 'lucide-react';
 
 declare global {
     interface Window {
@@ -23,50 +23,74 @@ interface FacebookFeedProps {
 
 export function FacebookFeed({
     pageId,
-    width = '100%',
-    height = 400,
+    height = 500,
     tabs = 'timeline'
 }: FacebookFeedProps) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [computedWidth, setComputedWidth] = useState<number>(340);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [hasFailed, setHasFailed] = useState(false);
 
+    // Measure the container to tell Facebook exactly how wide to be
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        const observer = new ResizeObserver((entries) => {
+            const width = entries[0].contentRect.width;
+            // Facebook plugin accepts width between 180 and 500
+            const clamped = Math.max(180, Math.min(width, 500));
+            setComputedWidth(clamped);
+        });
+
+        observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
+        // Wait until we have a computed width before trying to load
+        if (computedWidth === 340 && containerRef.current) return;
+
         let retries = 0;
         const maxRetries = 20; // Try for up to 10 seconds (500ms intervals)
 
         const initFacebook = () => {
-            const container = document.getElementById('fb-container-feed');
+            if (!containerRef.current) return;
+            const container = containerRef.current.querySelector('.fb-page') as HTMLElement;
 
             if (window.FB && window.FB.XFBML && container) {
                 // Force XFBML parse on our specific container to avoid re-parsing the whole document
-                window.FB.XFBML.parse(container);
+                window.FB.XFBML.parse(containerRef.current);
 
                 // Check if FB actually injected the iframe yet
-                const hasIframe = container.querySelector('iframe');
+                const hasIframe = containerRef.current.querySelector('iframe');
                 if (hasIframe) {
+                    setIsLoaded(true);
                     clearInterval(pollInterval);
+                    return;
                 }
             }
 
             retries++;
             if (retries >= maxRetries) {
                 clearInterval(pollInterval);
+                setHasFailed(true);
             }
         };
 
         const pollInterval = setInterval(initFacebook, 500);
 
-        // Run once immediately just in case it's already loaded from a previous route
+        // Run once immediately
         initFacebook();
 
         return () => {
             clearInterval(pollInterval);
         };
-    }, [pageId, width, height, tabs]);
+    }, [pageId, height, tabs, computedWidth]);
 
     return (
-        <div className="relative w-full group">
+        <div className="relative w-full max-w-[540px] mx-auto group" ref={containerRef}>
             {/* Bento Box Container */}
-            <div className="relative w-full h-full sacred-container flex flex-col overflow-hidden">
+            <div className="constraint-widget-box h-[600px] w-full constraint-widget-fade">
 
                 {/* Custom Native Header */}
                 <div className="px-6 py-5 border-b border-parish-border/5 flex items-center justify-between bg-transparent">
@@ -96,25 +120,43 @@ export function FacebookFeed({
 
                 {/* Iframe Content Area */}
                 <div
-                    id="fb-container-feed"
-                    className="w-full flex justify-center overflow-y-auto"
-                    style={{ maxHeight: height }}
+                    className="w-full flex justify-center overflow-y-auto custom-scrollbar flex-1 relative z-10"
                 >
-                    <div
-                        className="fb-page"
-                        data-href={`https://www.facebook.com/profile.php?id=${pageId}`}
-                        data-tabs={tabs}
-                        data-width="500"
-                        data-height={height}
-                        data-small-header="true"
-                        data-adapt-container-width="true"
-                        data-hide-cover="false"
-                        data-show-facepile="true"
-                    >
-                        <blockquote cite={`https://www.facebook.com/profile.php?id=${pageId}`} className="fb-xfbml-parse-ignore">
-                            <a href={`https://www.facebook.com/profile.php?id=${pageId}`}>Greenacres Walkerville Parish</a>
-                        </blockquote>
-                    </div>
+                    {!isLoaded && !hasFailed && (
+                        <div className="absolute inset-0 flex items-center justify-center text-parish-muted">
+                            <RefreshCw className="w-6 h-6 animate-spin opacity-50" />
+                        </div>
+                    )}
+                    {hasFailed && !isLoaded ? (
+                        <div className="flex flex-col items-center justify-center p-8 text-center h-full">
+                            <p className="text-parish-muted font-serif italic mb-6">Unable to load the Facebook feed. Please disable any ad-blockers or tracking protection to view this content.</p>
+                            <a
+                                href={`https://www.facebook.com/profile.php?id=${pageId}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-[#1877F2] text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-[#1877F2]/90 transition-colors inline-flex items-center gap-2"
+                            >
+                                <Facebook size={18} />
+                                View on Facebook
+                            </a>
+                        </div>
+                    ) : (
+                        <div
+                            className="fb-page w-full flex justify-center"
+                            data-href={`https://www.facebook.com/profile.php?id=${pageId}`}
+                            data-tabs={tabs}
+                            data-width={computedWidth}
+                            data-height={height}
+                            data-small-header="true"
+                            data-adapt-container-width="true"
+                            data-hide-cover="false"
+                            data-show-facepile="true"
+                        >
+                            <blockquote cite={`https://www.facebook.com/profile.php?id=${pageId}`} className="fb-xfbml-parse-ignore">
+                                <a href={`https://www.facebook.com/profile.php?id=${pageId}`}>Greenacres Walkerville Parish</a>
+                            </blockquote>
+                        </div>
+                    )}
                 </div>
 
             </div>
