@@ -103,6 +103,15 @@ export async function loadDailyReflectionFromCMS(dateIso: string): Promise<Daily
             gospelAcclamationHtml: (row.gospel_acclamation_html as string) ?? undefined,
             gospelHtml: (row.gospel_html as string) ?? undefined,
             sequence: (row.sequence as string) ?? undefined,
+            // Source references & headings
+            firstReadingSource: (row.first_reading_source as string) ?? undefined,
+            firstReadingHeading: (row.first_reading_heading as string) ?? undefined,
+            psalmSource: (row.psalm_source as string) ?? undefined,
+            secondReadingSource: (row.second_reading_source as string) ?? undefined,
+            secondReadingHeading: (row.second_reading_heading as string) ?? undefined,
+            gospelAcclamationSource: (row.gospel_acclamation_source as string) ?? undefined,
+            gospelSource: (row.gospel_source as string) ?? undefined,
+            gospelHeading: (row.gospel_heading as string) ?? undefined,
             // Structured Reflection
             reflectionContext: (row.reflection_context as string) ?? undefined,
             reflectionBody: (row.reflection_body as string) ?? undefined,
