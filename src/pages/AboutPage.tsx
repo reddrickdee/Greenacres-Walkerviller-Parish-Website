@@ -114,10 +114,22 @@ export function AboutPage() {
                     <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-10 text-center">Pastoral Council</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {content.councilMembers.map((member, i) => (
-                            <div key={i} className="bg-parish-surface p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5">
-                                <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">{member.role}</div>
-                                <div className="font-display text-2xl text-parish-fg mb-4">{member.name}</div>
-                                <p className="font-serif text-lg text-parish-muted leading-relaxed">{member.bio}</p>
+                            <div key={i} className="bg-parish-surface rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden">
+                                {member.photoAsset && (
+                                    <div className="aspect-video w-full">
+                                        <img
+                                            src={`/${member.photoAsset}`}
+                                            alt={member.name}
+                                            loading="lazy"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                )}
+                                <div className="p-8 md:p-10">
+                                    <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">{member.role}</div>
+                                    <div className="font-display text-2xl text-parish-fg mb-4">{member.name}</div>
+                                    <p className="font-serif text-lg text-parish-muted leading-relaxed">{member.bio}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
