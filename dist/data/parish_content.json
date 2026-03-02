@@ -109,24 +109,44 @@
   ],
   "eventItems": [
     {
-      "title": "Saturday Vigil Mass",
-      "dateLabel": "Weekly",
-      "description": "6:00pm at St Monica's Church, Walkerville."
+      "title": "Anointing of the Sick",
+      "dateLabel": "Sat 8 March",
+      "description": "During the 6:00pm Mass at St Monica's Church. All who are sick, infirm, or preparing for surgery are welcome."
     },
     {
-      "title": "Sunday Parish Mass",
-      "dateLabel": "Weekly",
-      "description": "9:30am at St Martin's Church, Greenacres."
+      "title": "World Day of Prayer",
+      "dateLabel": "Fri 7 March",
+      "description": "Ecumenical service bringing Christians of many traditions together to pray for the needs of the world."
     },
     {
-      "title": "Children's Liturgy",
-      "dateLabel": "1st & 3rd Weekends",
-      "description": "Children's liturgy sessions at both churches."
+      "title": "Praise & Worship Evening",
+      "dateLabel": "Sat 15 March",
+      "description": "An evening of contemporary worship music, prayer, and community. All are welcome."
     },
     {
-      "title": "Ninna Marni Social Group",
-      "dateLabel": "Mondays",
-      "description": "Over-50s social gathering from 1:30pm to 4:00pm in St Martin's Hall."
+      "title": "Stations of the Cross",
+      "dateLabel": "Fridays in Lent",
+      "description": "7:00pm at St Martin's Church. A prayerful devotion following the journey of Jesus to Calvary."
+    },
+    {
+      "title": "Golf Day Fundraiser",
+      "dateLabel": "Sat 22 March",
+      "description": "Parish Golf Day at Glenelg Golf Club. Teams of 4 welcome. Contact the Parish Office to register."
+    },
+    {
+      "title": "Eucharistic Miracles Exhibition",
+      "dateLabel": "Sat 22 March",
+      "description": "Travelling exhibition compiled by Blessed Carlo Acutis presenting documented Eucharistic miracles from around the world."
+    },
+    {
+      "title": "Synod 2026",
+      "dateLabel": "4–5 April",
+      "description": "Diocesan Synod at the Archdiocese of Adelaide. A significant moment as the local Church discerns its future direction."
+    },
+    {
+      "title": "Divine Mercy Sunday",
+      "dateLabel": "Sun 27 April",
+      "description": "Second Sunday of Easter. Devotions include the Chaplet of Divine Mercy and special prayers."
     }
   ],
   "massSchedule": [

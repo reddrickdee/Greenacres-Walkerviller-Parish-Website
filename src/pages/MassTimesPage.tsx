@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useMassCountdowns } from '../hooks/useMassCountdowns';
+import { isCoreCountdownMass } from '../lib/massCountdown';
 
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
@@ -12,6 +14,9 @@ export function MassTimesPage() {
         description: 'Weekend and weekday Mass schedule at St Monica\'s Walkerville (Saturday 6pm vigil) and St Martin\'s Greenacres (Sunday 9:30am). Plus weekday services and Reconciliation times.',
         path: '/mass-times',
     });
+
+    // Compute countdowns for all schedule entries (hook is always called)
+    const { countdownsById } = useMassCountdowns(content?.massSchedule ?? []);
 
     if (isLoading || !content) {
         return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;
@@ -49,15 +54,23 @@ export function MassTimesPage() {
                         <h2 className="font-display text-3xl mb-3">St Monica's Church</h2>
                         <p className="font-serif text-lg text-parish-muted italic mb-8">{monicaMasses[0]?.address}</p>
                         <div className="space-y-6">
-                            {monicaMasses.map(mass => (
-                                <div key={mass.id} className="border-b border-parish-border/5 pb-5 last:border-0">
-                                    <div className="flex justify-between items-baseline gap-4">
-                                        <span className="font-display text-3xl">{mass.startTime}</span>
-                                        <span className="font-display tracking-widest text-sm uppercase text-parish-accent">{WEEKDAYS[mass.dayOfWeek - 1]}</span>
+                            {monicaMasses.map(mass => {
+                                const cd = isCoreCountdownMass(mass) ? countdownsById[mass.id] : null;
+                                return (
+                                    <div key={mass.id} className="border-b border-parish-border/5 pb-5 last:border-0">
+                                        <div className="flex justify-between items-baseline gap-4">
+                                            <span className="font-display text-3xl">{mass.startTime}</span>
+                                            <span className="font-display tracking-widest text-sm uppercase text-parish-accent">{WEEKDAYS[mass.dayOfWeek - 1]}</span>
+                                        </div>
+                                        <p className="font-serif text-lg text-parish-muted mt-2">{mass.type}{mass.notes ? ` — ${mass.notes}` : ''}</p>
+                                        {cd && (
+                                            <p className="font-serif text-sm text-parish-accent/80 mt-1.5 italic" aria-live="polite">
+                                                Next in {cd.display}
+                                            </p>
+                                        )}
                                     </div>
-                                    <p className="font-serif text-lg text-parish-muted mt-2">{mass.type}{mass.notes ? ` — ${mass.notes}` : ''}</p>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </motion.div>
 
@@ -71,15 +84,23 @@ export function MassTimesPage() {
                         <h2 className="font-display text-3xl mb-3">St Martin's Church</h2>
                         <p className="font-serif text-lg text-parish-muted italic mb-8">{martinMasses[0]?.address}</p>
                         <div className="space-y-6">
-                            {martinMasses.map(mass => (
-                                <div key={mass.id} className="border-b border-parish-border/5 pb-5 last:border-0">
-                                    <div className="flex justify-between items-baseline gap-4">
-                                        <span className="font-display text-3xl">{mass.startTime}</span>
-                                        <span className="font-display tracking-widest text-sm uppercase text-parish-accent">{WEEKDAYS[mass.dayOfWeek - 1]}</span>
+                            {martinMasses.map(mass => {
+                                const cd = isCoreCountdownMass(mass) ? countdownsById[mass.id] : null;
+                                return (
+                                    <div key={mass.id} className="border-b border-parish-border/5 pb-5 last:border-0">
+                                        <div className="flex justify-between items-baseline gap-4">
+                                            <span className="font-display text-3xl">{mass.startTime}</span>
+                                            <span className="font-display tracking-widest text-sm uppercase text-parish-accent">{WEEKDAYS[mass.dayOfWeek - 1]}</span>
+                                        </div>
+                                        <p className="font-serif text-lg text-parish-muted mt-2">{mass.type}{mass.notes ? ` — ${mass.notes}` : ''}</p>
+                                        {cd && (
+                                            <p className="font-serif text-sm text-parish-accent/80 mt-1.5 italic" aria-live="polite">
+                                                Next in {cd.display}
+                                            </p>
+                                        )}
                                     </div>
-                                    <p className="font-serif text-lg text-parish-muted mt-2">{mass.type}{mass.notes ? ` — ${mass.notes}` : ''}</p>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </motion.div>
                 </div>

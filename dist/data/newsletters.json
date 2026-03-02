@@ -6,7 +6,7 @@
       "id": "1st-sun-lent",
       "title": "CONNECTIONS 1ST SUN LENT",
       "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_1ST_SUN_LENT.pdf",
-      "isCurrent": true,
+      "isCurrent": false,
       "nativeBulletin": {
         "date": "February 15, 2026",
         "coverImage": "assets/images/source/our_parish.webp",
@@ -47,8 +47,75 @@
       "id": "2nd-sun-lent",
       "title": "CONNECTIONS 2ND SUN LENT",
       "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_LENT.pdf",
-      "isCurrent": false,
-      "nativeBulletin": null
+      "isCurrent": true,
+      "nativeBulletin": {
+        "date": "March 1, 2026",
+        "priestReflection": "Today's Gospel is one of the most dramatic moments in all scripture — the transfiguration of Jesus Christ, in which our Lord appears to his chosen disciples in glory, enrobed in dazzling light, with a splendour exceeding anything of this earth, and anything of this universe. The transfiguration of our Lord is best understood as a temporary and partial dropping of the veil of appearances, so that the disciples were able to catch a glimpse of the true divine splendour of Jesus, a small rift in the misty darkness of the window which separates phenomena from noumena, which divides the illusion of this world from the truth of eternity.\n\nWhat they saw, indeed, was but the merest glance, the slightest revelation; anything more would have overwhelmed them — but it was enough to fill them with awe and wonder. And it is this same Jesus Christ who appears to us in every Mass, clothed not in raiment of dazzling white, but in the visible form of humble bread and wine. Let us therefore say at each celebration of the Eucharist, 'Lord, it is good for us to be here!'",
+        "sections": [
+          {
+            "title": "Stewardship Thought of the Week",
+            "content": "'A steward who is motivated by love feels a sense of gratitude for God's many gifts and is eager to share them with others — not with a sense of obligation, but with joy.' — Archbishop William E. Lori"
+          },
+          {
+            "title": "Anointing of the Sick",
+            "content": "Anointing of the Sick will take place on Saturday 8th March at the 6:00pm Mass at St Monica's Church. All who are sick, infirm, or preparing for surgery are welcome to receive this healing sacrament."
+          },
+          {
+            "title": "Lenten Reflection Group",
+            "content": "Join us on Tuesday evenings during Lent at 7:00pm in the St Martin's Church meeting room for our parish Lenten Reflection Group. Using the Lenten Gospel readings, we explore ideas for personal and communal growth through prayer, sharing, and discussion. All welcome."
+          },
+          {
+            "title": "Stations of the Cross",
+            "content": "Stations of the Cross will be held every Friday during Lent at 7:00pm at St Martin's Church. This prayerful devotion follows the journey of Jesus to Calvary and is a cherished Lenten tradition. All parishioners and visitors are warmly invited.",
+            "imageAsset": "assets/posters/stations_of_the_cross.png"
+          },
+          {
+            "title": "Golf Day Fundraiser",
+            "content": "The Greenacres Walkerville Parish Golf Day will be held on Saturday 22nd March at Glenelg Golf Club. This is a fun day of fellowship and fundraising for our parish community. Teams of 4 players welcome. For more details or to register your team, please contact the Parish Office.",
+            "imageAsset": "assets/posters/golf_day_fundraiser.png"
+          },
+          {
+            "title": "Baptism Congratulations",
+            "content": "Congratulations to the family of Lucas Carr who was baptised in our parish this weekend. We welcome Lucas into the Catholic faith community and pray for God's abundant blessings on him and his family."
+          },
+          {
+            "title": "World Day of Prayer",
+            "content": "World Day of Prayer will be celebrated on Friday 7th March. This ecumenical service brings together Christians of many traditions to pray for the needs of the world. Details of local services will be available at the Parish Office."
+          },
+          {
+            "title": "Adelaide Dialogue Week",
+            "content": "Adelaide Dialogue Week runs from 16th to 22nd March 2026. This annual event promotes interfaith and intercultural dialogue across metropolitan Adelaide. Various events and forums will be held throughout the week."
+          },
+          {
+            "title": "Synod 2026",
+            "content": "The 2026 Diocesan Synod will be held on Friday 4th and Saturday 5th April. This is a significant moment for our local Church as we come together to discern the direction of the Archdiocese of Adelaide. Parishioners are encouraged to stay informed and participate in pre-synod consultations.",
+            "imageAsset": "assets/posters/synod_2026.png"
+          },
+          {
+            "title": "Divine Mercy Sunday",
+            "content": "Divine Mercy Sunday will be celebrated on Sunday 27th April 2026 — the Second Sunday of Easter. Devotions include the Chaplet of Divine Mercy and special prayers. More details closer to the date.",
+            "imageAsset": "assets/posters/divine_mercy_sunday.png"
+          },
+          {
+            "title": "Praise & Worship Evening",
+            "content": "A Praise & Worship evening will be held on Saturday 15th March. Come and experience an evening of contemporary worship music, prayer, and community. All are welcome to this uplifting gathering."
+          },
+          {
+            "title": "Project Compassion",
+            "content": "Project Compassion is Caritas Australia's annual Lenten fundraising and awareness-raising appeal. Donations support programs around the world that address poverty, promote education, and empower communities. Project Compassion boxes and donation envelopes are available at both churches.",
+            "imageAsset": "assets/posters/project_compassion.png"
+          },
+          {
+            "title": "Eucharistic Miracles Exhibition",
+            "content": "An Exhibition of Eucharistic Miracles will be held on Saturday 22nd March. This travelling exhibition, originally compiled by Blessed Carlo Acutis, presents documented Eucharistic miracles from around the world through a series of informative display panels.",
+            "imageAsset": "assets/posters/eucharistic_miracles.png"
+          },
+          {
+            "title": "OLSH College Open Day",
+            "content": "Our Lady of the Sacred Heart College will hold an Open Day on Tuesday 25th March. Families interested in Catholic secondary education are invited to attend and tour the campus."
+          }
+        ]
+      }
     },
     {
       "id": "2nd-sun-ordinary-time",

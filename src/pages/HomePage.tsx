@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useMassCountdowns } from '../hooks/useMassCountdowns';
 import { JsonLdSchema } from '../components/JsonLdSchema';
 import { PrayerWallSection } from '../components/PrayerWallSection';
 import { DailyReflectionCard } from '../components/home/DailyReflectionCard';
@@ -11,6 +12,13 @@ import { useAvailableReflectionDates } from '../hooks/useAvailableReflectionDate
 import { FacebookFeed } from '../components/social/FacebookFeed';
 import { HeroSection } from '../components/home/HeroSection';
 import { Clock, BookOpen, Users, ArrowRight } from 'lucide-react';
+import {
+    isWeekdayMass,
+    isSaturdayMonicaMass,
+    isSundayMartinMass,
+    getSoonestCountdown,
+    DAY_NAMES,
+} from '../lib/massCountdown';
 
 export function HomePage() {
     const { content, isLoading } = useParishData();
@@ -23,6 +31,13 @@ export function HomePage() {
         path: '/',
     });
 
+    // Hook must be called unconditionally (Rules of Hooks)
+    const schedule = content?.massSchedule ?? [];
+    const countdownEntries = schedule.filter(
+        e => isWeekdayMass(e) || isSaturdayMonicaMass(e) || isSundayMartinMass(e)
+    );
+    const { now } = useMassCountdowns(countdownEntries);
+
     if (isLoading || !content) {
         return (
             <div className="h-screen flex items-center justify-center bg-parish-bg text-parish-fg font-display tracking-widest text-lg">
@@ -31,7 +46,18 @@ export function HomePage() {
         );
     }
 
-    const nextMass = content.massSchedule[0];
+    // Countdown timers for core masses
+    const weekdayEntries = content.massSchedule.filter(isWeekdayMass);
+    const saturdayMonicaEntry = content.massSchedule.find(isSaturdayMonicaMass);
+    const sundayMartinEntry = content.massSchedule.find(isSundayMartinMass);
+
+    const weekdayCountdown = getSoonestCountdown(weekdayEntries, now);
+    const saturdayCountdown = saturdayMonicaEntry
+        ? getSoonestCountdown([saturdayMonicaEntry], now)
+        : null;
+    const sundayCountdown = sundayMartinEntry
+        ? getSoonestCountdown([sundayMartinEntry], now)
+        : null;
 
     return (
         <>
@@ -121,7 +147,7 @@ export function HomePage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20 md:pb-32">
-                        {/* Next Mass Card */}
+                        {/* Next Mass Card — three stacked countdown timers */}
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -130,9 +156,59 @@ export function HomePage() {
                             className="sacred-container p-8 lg:p-10 flex flex-col items-center text-center"
                         >
                             <Clock className="w-8 h-8 text-parish-brass mb-6" />
-                            <div className="text-parish-brass font-display tracking-widest text-nav uppercase mb-4">Next Mass</div>
-                            <h4 className="font-display text-4xl md:text-5xl mb-3">{nextMass?.startTime || "9:00 AM"}</h4>
-                            <p className="text-parish-muted font-serif text-lg italic mb-8">{nextMass?.church || "St. Martin's Church"}</p>
+                            <div className="text-parish-brass font-display tracking-widest text-nav uppercase mb-6">Next Mass</div>
+
+                            <div className="w-full space-y-5 mb-8">
+                                {/* Weekday Masses */}
+                                <div className="border-b border-parish-border/5 pb-4">
+                                    <div className="font-display tracking-widest text-xs uppercase text-parish-muted mb-1">Weekday Masses</div>
+                                    {weekdayCountdown ? (
+                                        <>
+                                            <div className="font-display text-2xl md:text-3xl">
+                                                {DAY_NAMES[weekdayCountdown.entry.dayOfWeek - 1]} {weekdayCountdown.entry.startTime}
+                                            </div>
+                                            <div className="font-serif text-base text-parish-accent/80 italic mt-1" aria-live="polite">
+                                                {weekdayCountdown.countdown.display}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="font-display text-2xl md:text-3xl">Not scheduled</div>
+                                    )}
+                                </div>
+                                {/* Saturday Vigil */}
+                                <div className="border-b border-parish-border/5 pb-4">
+                                    <div className="font-display tracking-widest text-xs uppercase text-parish-muted mb-1">Saturday Vigil (St Monica's)</div>
+                                    {saturdayCountdown ? (
+                                        <>
+                                            <div className="font-display text-2xl md:text-3xl">
+                                                {DAY_NAMES[saturdayCountdown.entry.dayOfWeek - 1]} {saturdayCountdown.entry.startTime}
+                                            </div>
+                                            <div className="font-serif text-base text-parish-accent/80 italic mt-1" aria-live="polite">
+                                                {saturdayCountdown.countdown.display}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="font-display text-2xl md:text-3xl">Not scheduled</div>
+                                    )}
+                                </div>
+                                {/* Sunday Mass */}
+                                <div>
+                                    <div className="font-display tracking-widest text-xs uppercase text-parish-muted mb-1">Sunday Mass (St Martin's)</div>
+                                    {sundayCountdown ? (
+                                        <>
+                                            <div className="font-display text-2xl md:text-3xl">
+                                                {DAY_NAMES[sundayCountdown.entry.dayOfWeek - 1]} {sundayCountdown.entry.startTime}
+                                            </div>
+                                            <div className="font-serif text-base text-parish-accent/80 italic mt-1" aria-live="polite">
+                                                {sundayCountdown.countdown.display}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="font-display text-2xl md:text-3xl">Not scheduled</div>
+                                    )}
+                                </div>
+                            </div>
+
                             <Link to="/mass-times" className="ethereal-button mt-auto">
                                 Full Schedule
                             </Link>
