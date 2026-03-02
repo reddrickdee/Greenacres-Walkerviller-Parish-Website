@@ -83,6 +83,13 @@ export function BulletinPage() {
                         className="mb-16 border-t border-parish-border/5 pt-12"
                     >
                         <h3 className="font-display text-2xl text-parish-fg mb-4">{section.title}</h3>
+                        {section.imageAsset && (
+                            <img
+                                src={`/${section.imageAsset}`}
+                                alt={section.title}
+                                className="w-full rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.12)] mb-6"
+                            />
+                        )}
                         <p className="font-serif text-xl text-parish-muted leading-relaxed">{section.content}</p>
                     </motion.div>
                 ))}
