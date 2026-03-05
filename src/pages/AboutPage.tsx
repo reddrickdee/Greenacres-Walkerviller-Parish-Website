@@ -104,30 +104,6 @@ export function AboutPage() {
                     </p>
                 </motion.div>
 
-                {/* Staff & Leadership */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="mb-16 md:mb-20"
-                >
-                    <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-10 text-center">Our Leadership</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                        {STAFF.map((person, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: i * 0.08 }}
-                            >
-                                <StaffProfileCard {...person} />
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
                 {/* Council Members */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
