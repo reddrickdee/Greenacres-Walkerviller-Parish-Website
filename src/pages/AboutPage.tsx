@@ -1,15 +1,6 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
-import { StaffProfileCard } from '../components/ui/StaffProfileCard';
-
-const STAFF = [
-    { name: 'Fr Steve Astill', role: 'Parish Priest', imageUrl: undefined, email: 'admin@gwparish.org.au', bio: 'Leading our parish community in faith, worship and service.' },
-    { name: 'Fr David Cartwright', role: 'Assistant Priest', imageUrl: '/Profiles/Father David.jpeg', bio: 'Supporting parish ministries and sacramental life.' },
-    { name: 'Fr Dean Marin', role: 'Associate Priest', imageUrl: '/Profiles/Father Dean Marin.jpeg', bio: 'Assisting with liturgy, outreach and pastoral care.' },
-    { name: 'Sister Brenda', role: 'Pastoral Associate', imageUrl: '/Profiles/Sister Brenda.jpeg', bio: 'Coordinating community programs and faith formation.' },
-    { name: 'Deacon Andrew', role: 'Deacon', imageUrl: '/Profiles/Deacon Andrew.jpeg', bio: 'Serving the parish through liturgy and community outreach.' },
-];
 
 export function AboutPage() {
     const { content, isLoading } = useParishData();
