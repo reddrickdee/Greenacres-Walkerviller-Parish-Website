@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 import { ThemeToggle } from '../components/ThemeToggle';
 import { AccessibilityMenu } from '../components/AccessibilityMenu';
 import { ScrollToTop } from '../components/ScrollToTop';
+import { SkipLink } from '../components/SkipLink';
 
 const NAV_LINKS = [
     { to: '/', label: 'Home' },
@@ -11,6 +12,8 @@ const NAV_LINKS = [
     { to: '/mass-times', label: 'Mass Times' },
     { to: '/sacraments', label: 'Sacraments' },
     { to: '/community', label: 'Community Hub' },
+    { to: '/giving', label: 'Give' },
+    { to: '/volunteer', label: 'Volunteer' },
     { to: '/news-events', label: 'News & Events' },
     { to: '/gallery', label: 'Gallery' },
     { to: '/history', label: 'History' },
@@ -30,11 +33,13 @@ export function RootLayout() {
 
     return (
         <div className="min-h-screen flex flex-col">
+            {/* ── Skip Navigation (WCAG 2.4.1) ────────────────────────── */}
+            <SkipLink />
             {/* ── Navigation ────────────────────────────────────────── */}
             <nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex flex-col ${isScrolled
-                        ? 'bg-parish-surface/90 backdrop-blur-md border-b border-parish-border/10 py-0 shadow-lg shadow-parish-fg/5'
-                        : 'bg-transparent border-b-0 py-2'
+                    ? 'bg-parish-surface/90 backdrop-blur-md border-b border-parish-border/10 py-0 shadow-lg shadow-parish-fg/5'
+                    : 'bg-transparent border-b-0 py-2'
                     }`}
                 role="navigation"
                 aria-label="Main navigation"
@@ -130,7 +135,7 @@ export function RootLayout() {
 
             {/* ── Page Content ──────────────────────────────────────── */}
             <ScrollToTop />
-            <main className="flex-1" role="main">
+            <main id="main-content" className="flex-1" role="main">
                 <Outlet />
             </main>
 

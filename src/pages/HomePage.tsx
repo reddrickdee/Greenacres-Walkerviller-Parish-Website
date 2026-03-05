@@ -11,7 +11,7 @@ import { ReflectionDateNavigator } from '../components/home/ReflectionDateNaviga
 import { useAvailableReflectionDates } from '../hooks/useAvailableReflectionDates';
 import { FacebookFeed } from '../components/social/FacebookFeed';
 import { HeroSection } from '../components/home/HeroSection';
-import { Clock, BookOpen, Users, ArrowRight } from 'lucide-react';
+import { Clock, BookOpen, Users, ArrowRight, Heart } from 'lucide-react';
 import {
     isWeekdayMass,
     isSaturdayMonicaMass,
@@ -146,7 +146,7 @@ export function HomePage() {
                         </motion.p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20 md:pb-32">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-20 md:pb-32">
                         {/* Next Mass Card — three stacked countdown timers */}
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
@@ -245,6 +245,23 @@ export function HomePage() {
                             <p className="text-parish-muted font-serif text-lg italic mb-8 mx-auto">Ministries, volunteering, and community groups.</p>
                             <Link to="/community" className="ethereal-button mt-auto">
                                 Community Hub
+                            </Link>
+                        </motion.div>
+
+                        {/* Online Giving Card */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.45 }}
+                            className="sacred-container p-8 lg:p-10 flex flex-col items-center text-center"
+                        >
+                            <Heart className="w-8 h-8 text-parish-brass mb-6" />
+                            <div className="text-parish-brass font-display tracking-widest text-nav uppercase mb-4">Support Us</div>
+                            <h4 className="font-display text-2xl md:text-3xl mb-3 text-parish-fg leading-snug">Online Giving</h4>
+                            <p className="text-parish-muted font-serif text-lg italic mb-8 mx-auto">Support our parish mission with a one-time or recurring gift.</p>
+                            <Link to="/giving" className="ethereal-button mt-auto">
+                                Give Now
                             </Link>
                         </motion.div>
                     </div>
