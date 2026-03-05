@@ -1,6 +1,15 @@
 import { motion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { StaffProfileCard } from '../components/ui/StaffProfileCard';
+
+const STAFF = [
+    { name: 'Fr Steve Astill', role: 'Parish Priest', imageUrl: undefined, email: 'admin@gwparish.org.au', bio: 'Leading our parish community in faith, worship and service.' },
+    { name: 'Fr David Cartwright', role: 'Assistant Priest', imageUrl: '/Profiles/Father David.jpeg', bio: 'Supporting parish ministries and sacramental life.' },
+    { name: 'Fr Dean Marin', role: 'Associate Priest', imageUrl: '/Profiles/Father Dean Marin.jpeg', bio: 'Assisting with liturgy, outreach and pastoral care.' },
+    { name: 'Sister Brenda', role: 'Pastoral Associate', imageUrl: '/Profiles/Sister Brenda.jpeg', bio: 'Coordinating community programs and faith formation.' },
+    { name: 'Deacon Andrew', role: 'Deacon', imageUrl: '/Profiles/Deacon Andrew.jpeg', bio: 'Serving the parish through liturgy and community outreach.' },
+];
 
 export function AboutPage() {
     const { content, isLoading } = useParishData();
@@ -102,6 +111,30 @@ export function AboutPage() {
                     <p className="font-serif text-xl md:text-2xl italic leading-relaxed text-parish-surface/80 max-w-3xl mx-auto">
                         "{content.parishPrayerText}"
                     </p>
+                </motion.div>
+
+                {/* Staff & Leadership */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                    className="mb-16 md:mb-20"
+                >
+                    <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-10 text-center">Our Leadership</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                        {STAFF.map((person, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: i * 0.08 }}
+                            >
+                                <StaffProfileCard {...person} />
+                            </motion.div>
+                        ))}
+                    </div>
                 </motion.div>
 
                 {/* Council Members */}

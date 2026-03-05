@@ -23,6 +23,8 @@ const AdminReflectionsPage = lazy(() => import('./pages/AdminReflectionsPage').t
 const GivingPage = lazy(() => import('./pages/GivingPage').then(m => ({ default: m.GivingPage })));
 const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then(m => ({ default: m.VolunteerPage })));
 const SacramentsBookingPage = lazy(() => import('./pages/SacramentsBookingPage').then(m => ({ default: m.SacramentsBookingPage })));
+const LiveStreamPage = lazy(() => import('./pages/LiveStreamPage').then(m => ({ default: m.LiveStreamPage })));
+const HomiliesPage = lazy(() => import('./pages/HomiliesPage').then(m => ({ default: m.HomiliesPage })));
 
 // ── Lazy-load admin guard too ─────────────────────────────────────────────────
 import { AdminGuard } from './components/community/AdminGuard';
@@ -96,6 +98,8 @@ const router = createBrowserRouter([
             { path: 'giving', element: <GivingPage /> },
             { path: 'volunteer', element: <VolunteerPage /> },
             { path: 'sacraments/request', element: <SacramentsBookingPage /> },
+            { path: 'live', element: <LiveStreamPage /> },
+            { path: 'homilies', element: <HomiliesPage /> },
             { path: 'admin/community', element: <AdminGuard><AdminCommunityPage /></AdminGuard> },
             { path: 'admin/reflections', element: <AdminGuard><AdminReflectionsPage /></AdminGuard> },
         ],

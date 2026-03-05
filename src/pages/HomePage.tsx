@@ -11,6 +11,7 @@ import { ReflectionDateNavigator } from '../components/home/ReflectionDateNaviga
 import { useAvailableReflectionDates } from '../hooks/useAvailableReflectionDates';
 import { FacebookFeed } from '../components/social/FacebookFeed';
 import { HeroSection } from '../components/home/HeroSection';
+import { TestimonialsCarousel } from '../components/ui/TestimonialsCarousel';
 import { Clock, BookOpen, Users, ArrowRight, Heart } from 'lucide-react';
 import {
     isWeekdayMass,
@@ -266,6 +267,9 @@ export function HomePage() {
                         </motion.div>
                     </div>
                 </div>
+
+                {/* Testimonials */}
+                <TestimonialsCarousel />
 
                 {/* Community & Connection */}
                 <div className="mt-20 md:mt-28 max-w-7xl mx-auto px-4 md:px-0 pb-24 md:pb-28">

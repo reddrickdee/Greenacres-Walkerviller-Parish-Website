@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import type { PrayerIntention } from '../types';
 import { communityApi } from '../lib/communityApi';
-import { isSupabaseConfigured } from '../lib/supabaseClient';
+import { supabase, isSupabaseConfigured } from '../lib/supabaseClient';
 import { PrayButton } from './community/PrayButton';
 import { AuthModal } from './community/AuthModal';
 
@@ -102,6 +102,38 @@ export function PrayerWallSection({ maxItems = 4, embedded = false, onRequireAut
         };
 
         fetchLive();
+    }, [maxItems]);
+
+    // ── Real-time subscription for prayer count updates ──────────────────────
+    useEffect(() => {
+        if (!isSupabaseConfigured()) return;
+
+        const channel = supabase
+            .channel('prayer-wall-realtime')
+            .on(
+                'postgres_changes',
+                { event: '*', schema: 'public', table: 'community_posts', filter: 'post_type=eq.prayer_request' },
+                (payload) => {
+                    if (payload.eventType === 'INSERT') {
+                        const p = payload.new;
+                        setIntentions(prev => [{
+                            id: p.id,
+                            text: p.content,
+                            submitted: new Date(p.created_at),
+                            prayerCount: 0,
+                        }, ...prev].slice(0, maxItems));
+                    } else if (payload.eventType === 'UPDATE') {
+                        setIntentions(prev => prev.map(item =>
+                            item.id === payload.new.id
+                                ? { ...item, prayerCount: payload.new.prayer_count ?? item.prayerCount }
+                                : item
+                        ));
+                    }
+                }
+            )
+            .subscribe();
+
+        return () => { supabase.removeChannel(channel); };
     }, [maxItems]);
 
     const content = (

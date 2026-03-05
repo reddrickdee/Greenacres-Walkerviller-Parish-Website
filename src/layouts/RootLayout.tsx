@@ -14,6 +14,8 @@ const NAV_LINKS = [
     { to: '/community', label: 'Community Hub' },
     { to: '/giving', label: 'Give' },
     { to: '/volunteer', label: 'Volunteer' },
+    { to: '/live', label: 'Live Stream' },
+    { to: '/homilies', label: 'Homilies' },
     { to: '/news-events', label: 'News & Events' },
     { to: '/gallery', label: 'Gallery' },
     { to: '/history', label: 'History' },
