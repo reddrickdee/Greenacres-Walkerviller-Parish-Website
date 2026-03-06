@@ -88,21 +88,24 @@ export function RootLayout() {
         setIsScrolled(latest > 40);
     });
 
+    const isHome = location.pathname === '/';
+    const isHeroTransparent = isHome && !isScrolled;
+
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="flex min-h-screen flex-col">
             <SkipLink />
 
             <nav
-                className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${isScrolled
-                    ? 'border-b border-parish-border/10 bg-parish-surface/88 shadow-[0_18px_60px_-40px_rgba(0,0,0,0.55)] backdrop-blur-2xl'
-                    : 'bg-transparent'
+                className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${!isHeroTransparent
+                    ? 'border-b border-parish-border/10 bg-parish-surface/95 shadow-sanctuary backdrop-blur-2xl'
+                    : 'border-b border-transparent bg-transparent'
                     }`}
                 role="navigation"
                 aria-label="Main navigation"
             >
-                <div className="border-b border-parish-border/10 bg-parish-fg text-parish-inverse">
+                <div className="border-b border-white/5 bg-[#12100E] text-[#EDE8DC]">
                     <div className="mx-auto flex max-w-[1480px] items-center justify-center gap-3 px-4 py-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.28em] md:justify-between md:px-6">
-                        <span className="hidden md:block text-parish-inverse/70">Greenacres + Walkerville Catholic Parish</span>
+                        <span className="hidden opacity-70 md:block">Greenacres + Walkerville Catholic Parish</span>
                         <span>In the footsteps of Jesus</span>
                     </div>
                 </div>
@@ -113,18 +116,18 @@ export function RootLayout() {
                         className="flex min-w-0 items-center gap-3 no-underline"
                         aria-label="Greenacres Walkerville Catholic Parish home"
                     >
-                        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-parish-brass/35 bg-parish-surface/75 shadow-halo backdrop-blur-md">
+                        <div className={`flex h-14 w-14 items-center justify-center rounded-full border border-parish-brass/35 shadow-halo backdrop-blur-md transition-colors duration-500 ${isHeroTransparent ? 'bg-black/30' : 'bg-parish-surface/75'}`}>
                             <img
                                 src="/parish-logo.png"
                                 alt="Greenacres Walkerville Parish logo"
                                 className="h-9 w-9 object-contain"
                             />
                         </div>
-                        <div className="min-w-0">
-                            <div className="font-display text-xl leading-none text-parish-fg md:text-2xl">
+                        <div className="min-w-0 transition-colors duration-500">
+                            <div className={`font-display text-xl leading-none md:text-2xl ${isHeroTransparent ? 'text-white' : 'text-parish-fg'}`}>
                                 Greenacres Walkerville
                             </div>
-                            <div className="mt-1 truncate text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-parish-muted md:text-[0.72rem]">
+                            <div className={`mt-1 truncate text-[0.65rem] font-semibold uppercase tracking-[0.28em] md:text-[0.72rem] ${isHeroTransparent ? 'text-white/80' : 'text-parish-muted'}`}>
                                 Catholic Parish • Adelaide
                             </div>
                         </div>
@@ -136,8 +139,10 @@ export function RootLayout() {
                                 key={link.to}
                                 to={link.to}
                                 className={`rounded-full px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.24em] no-underline transition-all duration-300 ${isActive(location.pathname, link.to)
-                                    ? 'bg-parish-fg text-parish-inverse shadow-halo'
-                                    : 'text-parish-muted hover:bg-parish-border/6 hover:text-parish-fg'
+                                    ? 'bg-parish-fg text-parish-inverse shadow-halo dark:bg-white/10 dark:text-white dark:shadow-none'
+                                    : isHeroTransparent
+                                        ? 'text-white/85 hover:bg-white/10 hover:text-white'
+                                        : 'text-parish-muted hover:bg-parish-border/6 hover:text-parish-fg'
                                     }`}
                             >
                                 {link.label}
