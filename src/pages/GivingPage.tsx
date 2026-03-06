@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { Heart, CreditCard, RefreshCw, Shield, ChevronDown } from 'lucide-react';
+import { InfoCard, ScriptureBlock, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
 
 const PRESET_AMOUNTS = [20, 50, 100, 250];
 
@@ -47,101 +49,107 @@ export function GivingPage() {
     const handleSubmit = async () => {
         if (!isValid) return;
         setIsSubmitting(true);
-
-        // In production, this would call a Supabase Edge Function
-        // that creates a Stripe Checkout session and redirects the user.
-        // For now, simulate a short delay and show the thank-you state.
         await new Promise(resolve => setTimeout(resolve, 1500));
-
         setIsSubmitting(false);
         setShowThankYou(true);
     };
 
     if (showThankYou) {
         return (
-            <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-lg mx-auto text-center"
-                >
-                    <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-parish-accent/10 flex items-center justify-center">
-                        <Heart className="w-10 h-10 text-parish-accent" />
-                    </div>
-                    <h1 className="font-display text-4xl md:text-5xl text-parish-fg mb-6">Thank You</h1>
-                    <p className="font-serif text-xl text-parish-muted italic mb-4 leading-relaxed">
-                        Your generous gift of <strong className="text-parish-fg">${effectiveAmount.toFixed(2)} AUD</strong> to the{' '}
-                        <strong className="text-parish-fg">{currentFund.label}</strong> fund
-                        {isRecurring ? ' (monthly)' : ''} has been received.
-                    </p>
-                    <p className="font-serif text-lg text-parish-muted italic mb-10">
-                        "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
-                    </p>
-                    <p className="font-display tracking-widest text-sm uppercase text-parish-accent mb-10">— 2 Corinthians 9:7</p>
+            <div className="page-shell">
+                <section className="page-section">
+                    <div className="page-section-inner">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.6 }}
+                            className="mx-auto max-w-lg text-center"
+                        >
+                            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65">
+                                <Heart className="h-10 w-10 text-parish-brass" />
+                            </div>
+                            <h1 className="text-4xl text-parish-fg md:text-5xl">Thank You</h1>
+                            <p className="mt-6 text-xl leading-relaxed text-parish-muted">
+                                Your generous gift of <strong className="text-parish-fg">${effectiveAmount.toFixed(2)} AUD</strong> to the{' '}
+                                <strong className="text-parish-fg">{currentFund.label}</strong> fund
+                                {isRecurring ? ' (monthly)' : ''} has been received.
+                            </p>
 
-                    <div className="bg-parish-surface border border-parish-border/10 rounded-2xl p-6 text-left mb-8">
-                        <h3 className="font-display tracking-widest text-xs uppercase text-parish-accent mb-3">Tax Information</h3>
-                        <p className="font-serif text-base text-parish-muted leading-relaxed">
-                            Greenacres Walkerville Catholic Parish is a registered organisation. A receipt has been sent to <strong className="text-parish-fg">{donorEmail}</strong> for your records.
-                        </p>
-                    </div>
+                            <ScriptureBlock className="mt-8">
+                                <p className="text-lg leading-relaxed text-parish-inverse/85">
+                                    "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+                                </p>
+                                <p className="mt-4 text-sm uppercase tracking-[0.24em] text-parish-brass">2 Corinthians 9:7</p>
+                            </ScriptureBlock>
 
-                    <button
-                        onClick={() => {
-                            setShowThankYou(false);
-                            setSelectedAmount(50);
-                            setCustomAmount('');
-                            setDonorName('');
-                            setDonorEmail('');
-                        }}
-                        className="ethereal-button"
-                    >
-                        Make Another Gift
-                    </button>
-                </motion.div>
+                            <InfoCard className="mt-8 text-left">
+                                <div className="ornamental-kicker">Tax Information</div>
+                                <p className="mt-3 text-base leading-relaxed text-parish-muted">
+                                    Greenacres Walkerville Catholic Parish is a registered organisation. A receipt has been sent to <strong className="text-parish-fg">{donorEmail}</strong> for your records.
+                                </p>
+                            </InfoCard>
+
+                            <button
+                                onClick={() => {
+                                    setShowThankYou(false);
+                                    setSelectedAmount(50);
+                                    setCustomAmount('');
+                                    setDonorName('');
+                                    setDonorEmail('');
+                                }}
+                                className="pilgrimage-button mt-8"
+                            >
+                                Make Another Gift
+                            </button>
+                        </motion.div>
+                    </div>
+                </section>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-            <div className="max-w-4xl mx-auto">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="mb-16 text-center"
-                >
-                    <div className="text-parish-accent font-display tracking-widest text-base uppercase mb-4">Online Giving</div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-parish-fg leading-tight mb-6 text-balance">
-                        Support Our <em className="font-serif italic text-parish-accent">Parish</em>
-                    </h1>
-                    <p className="font-serif text-xl md:text-2xl text-parish-muted max-w-2xl mx-auto leading-relaxed italic">
-                        Your generosity enables our parish to worship, serve, and grow as a community of faith.
+        <UtilityPageTemplate
+            eyebrow="Online Giving"
+            title={<>Your generosity sustains the worship, service, and growth of this community.</>}
+            description="Give securely online to support parish ministries, building maintenance, youth programs, or community outreach. Choose a one-time gift or set up monthly giving."
+            imageSrc="/assets/source/hero_2.webp"
+            imageAlt="Parish community"
+            actions={(
+                <>
+                    <Link to="/contact" className="pilgrimage-button">
+                        Contact The Office
+                    </Link>
+                </>
+            )}
+            aside={(
+                <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
+                    <div className="ornamental-kicker">Secure Payments</div>
+                    <p className="mt-3 flex items-center gap-2 text-sm leading-relaxed text-parish-muted">
+                        <Shield size={14} className="text-parish-brass" />
+                        All transactions processed securely via Stripe.
                     </p>
-                </motion.div>
+                </div>
+            )}
+        >
+            <section className="page-section">
+                <div className="page-section-inner grid gap-10 lg:grid-cols-5">
+                    {/* Main Form */}
+                    <div className="lg:col-span-3">
+                        <div className="sanctuary-panel px-7 py-8 md:px-10 md:py-10">
+                            <SectionIntro
+                                eyebrow="Choose Amount"
+                                title={<>Select or enter a custom donation amount.</>}
+                            />
 
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-                    {/* ── Main Form (Left) ─────────────────────────── */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.15 }}
-                        className="lg:col-span-3"
-                    >
-                        <div className="bg-parish-surface border border-parish-border/10 rounded-[2rem] p-8 md:p-10 shadow-sm">
-                            {/* Amount Selection */}
-                            <h2 className="font-display text-2xl text-parish-fg mb-6">Choose an Amount</h2>
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
                                 {PRESET_AMOUNTS.map(amount => (
                                     <button
                                         key={amount}
                                         onClick={() => handleSelectPreset(amount)}
-                                        className={`py-4 rounded-xl font-display text-xl tracking-wide transition-all duration-200 border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent ${selectedAmount === amount
-                                            ? 'bg-parish-accent text-white border-parish-accent shadow-lg shadow-parish-accent/20'
-                                            : 'bg-parish-bg border-parish-border/10 text-parish-fg hover:border-parish-accent/40'
+                                        className={`rounded-[1.25rem] border-2 py-4 text-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-brass ${selectedAmount === amount
+                                            ? 'border-parish-brass bg-parish-fg text-parish-inverse shadow-halo'
+                                            : 'border-parish-border/10 bg-parish-bg text-parish-fg hover:border-parish-brass/40'
                                             }`}
                                         aria-pressed={selectedAmount === amount}
                                     >
@@ -150,9 +158,8 @@ export function GivingPage() {
                                 ))}
                             </div>
 
-                            {/* Custom amount */}
-                            <div className="relative mb-8">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-parish-muted font-display text-lg">$</span>
+                            <div className="relative mt-4">
+                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-parish-muted">$</span>
                                 <input
                                     type="number"
                                     min="1"
@@ -161,38 +168,38 @@ export function GivingPage() {
                                     value={customAmount}
                                     onChange={e => handleCustomChange(e.target.value)}
                                     onFocus={() => setSelectedAmount(null)}
-                                    className="w-full pl-8 pr-4 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-display text-lg focus:border-parish-accent focus:outline-none transition-colors"
+                                    className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg py-4 pl-8 pr-4 text-lg text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none"
                                     aria-label="Custom donation amount in AUD"
                                 />
                             </div>
 
-                            {/* Recurring toggle */}
-                            <div className="flex items-center justify-between mb-8 py-4 px-5 rounded-xl bg-parish-bg border border-parish-border/5">
+                            {/* Recurring */}
+                            <div className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-parish-border/5 bg-parish-bg px-5 py-4">
                                 <div className="flex items-center gap-3">
-                                    <RefreshCw size={18} className="text-parish-accent" />
-                                    <span className="font-display text-base text-parish-fg">Give Monthly (Recurring)</span>
+                                    <RefreshCw size={18} className="text-parish-brass" />
+                                    <span className="text-base text-parish-fg">Give Monthly (Recurring)</span>
                                 </div>
                                 <button
                                     role="switch"
                                     aria-checked={isRecurring}
                                     onClick={() => setIsRecurring(!isRecurring)}
-                                    className={`relative w-12 h-7 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent ${isRecurring ? 'bg-parish-accent' : 'bg-parish-border/20'}`}
+                                    className={`relative h-7 w-12 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-brass ${isRecurring ? 'bg-parish-brass' : 'bg-parish-border/20'}`}
                                 >
-                                    <span className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-200 ${isRecurring ? 'translate-x-5' : ''}`} />
+                                    <span className={`absolute left-0.5 top-0.5 h-6 w-6 rounded-full bg-white shadow-md transition-transform duration-200 ${isRecurring ? 'translate-x-5' : ''}`} />
                                 </button>
                             </div>
 
                             {/* Fund selector */}
-                            <div className="mb-8">
-                                <label className="font-display tracking-widest text-xs uppercase text-parish-accent mb-3 block">Designate Your Gift</label>
+                            <div className="mt-8">
+                                <div className="ornamental-kicker mb-3">Designate Your Gift</div>
                                 <div className="relative">
                                     <button
                                         onClick={() => setShowFundDropdown(!showFundDropdown)}
-                                        className="w-full flex items-center justify-between px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-left hover:border-parish-accent/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
+                                        className="flex w-full items-center justify-between rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-left transition-colors hover:border-parish-brass/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-brass"
                                         aria-haspopup="listbox"
                                         aria-expanded={showFundDropdown}
                                     >
-                                        <span className="font-serif text-lg text-parish-fg">{currentFund.label}</span>
+                                        <span className="text-lg text-parish-fg">{currentFund.label}</span>
                                         <ChevronDown size={18} className={`text-parish-muted transition-transform ${showFundDropdown ? 'rotate-180' : ''}`} />
                                     </button>
                                     {showFundDropdown && (
@@ -200,7 +207,7 @@ export function GivingPage() {
                                             <div className="fixed inset-0 z-40" onClick={() => setShowFundDropdown(false)} />
                                             <ul
                                                 role="listbox"
-                                                className="absolute z-50 mt-2 w-full bg-parish-surface border border-parish-border/10 rounded-xl shadow-xl overflow-hidden"
+                                                className="absolute z-50 mt-2 w-full overflow-hidden rounded-[1.25rem] border border-parish-border/10 bg-parish-surface shadow-xl"
                                             >
                                                 {FUNDS.map(fund => (
                                                     <li key={fund.id}>
@@ -208,10 +215,10 @@ export function GivingPage() {
                                                             role="option"
                                                             aria-selected={selectedFund === fund.id}
                                                             onClick={() => { setSelectedFund(fund.id); setShowFundDropdown(false); }}
-                                                            className={`w-full text-left px-5 py-4 hover:bg-parish-accent/5 transition-colors ${selectedFund === fund.id ? 'bg-parish-accent/10' : ''}`}
+                                                            className={`w-full px-5 py-4 text-left transition-colors hover:bg-parish-brass/5 ${selectedFund === fund.id ? 'bg-parish-brass/10' : ''}`}
                                                         >
-                                                            <div className="font-display text-base text-parish-fg">{fund.label}</div>
-                                                            <div className="font-serif text-sm text-parish-muted">{fund.description}</div>
+                                                            <div className="text-base text-parish-fg">{fund.label}</div>
+                                                            <div className="text-sm text-parish-muted">{fund.description}</div>
                                                         </button>
                                                     </li>
                                                 ))}
@@ -222,9 +229,9 @@ export function GivingPage() {
                             </div>
 
                             {/* Donor info */}
-                            <div className="space-y-4 mb-8">
+                            <div className="mt-8 space-y-4">
                                 <div>
-                                    <label htmlFor="donor-name" className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2 block">
+                                    <label htmlFor="donor-name" className="ornamental-kicker mb-2 block text-[0.68rem]">
                                         Your Name <span className="text-parish-muted">(optional)</span>
                                     </label>
                                     <input
@@ -233,11 +240,11 @@ export function GivingPage() {
                                         value={donorName}
                                         onChange={e => setDonorName(e.target.value)}
                                         placeholder="John Smith"
-                                        className="w-full px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-serif text-lg focus:border-parish-accent focus:outline-none transition-colors"
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none"
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="donor-email" className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2 block">
+                                    <label htmlFor="donor-email" className="ornamental-kicker mb-2 block text-[0.68rem]">
                                         Email Address <span className="text-parish-fg text-xs">*</span>
                                     </label>
                                     <input
@@ -247,7 +254,7 @@ export function GivingPage() {
                                         value={donorEmail}
                                         onChange={e => setDonorEmail(e.target.value)}
                                         placeholder="your@email.com"
-                                        className="w-full px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-serif text-lg focus:border-parish-accent focus:outline-none transition-colors"
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none"
                                     />
                                 </div>
                             </div>
@@ -256,11 +263,11 @@ export function GivingPage() {
                             <button
                                 onClick={handleSubmit}
                                 disabled={!isValid || isSubmitting}
-                                className="w-full py-5 rounded-full bg-parish-accent text-white font-display tracking-widest uppercase text-base hover:bg-parish-accent-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-parish-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent focus-visible:ring-offset-2"
+                                className="pilgrimage-button mt-8 w-full disabled:cursor-not-allowed disabled:opacity-40"
                             >
                                 {isSubmitting ? (
                                     <span className="flex items-center justify-center gap-3">
-                                        <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                        <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                                         Processing…
                                     </span>
                                 ) : (
@@ -268,71 +275,56 @@ export function GivingPage() {
                                 )}
                             </button>
 
-                            <p className="text-center text-parish-muted font-serif text-sm mt-4 flex items-center justify-center gap-2">
-                                <Shield size={14} /> Payments processed securely via Stripe
+                            <p className="mt-4 flex items-center justify-center gap-2 text-center text-sm text-parish-muted">
+                                <CreditCard size={14} className="text-parish-brass" /> Payments processed securely via Stripe
                             </p>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* ── Sidebar (Right) ──────────────────────────── */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="lg:col-span-2 space-y-6"
-                    >
-                        {/* Impact card */}
-                        <div className="bg-parish-fg text-parish-surface p-8 rounded-[2rem]">
-                            <h3 className="font-display text-2xl mb-4">Your Impact</h3>
-                            <ul className="space-y-4 font-serif text-lg leading-relaxed">
+                    {/* Sidebar */}
+                    <div className="space-y-6 lg:col-span-2">
+                        <ScriptureBlock>
+                            <div className="ornamental-kicker !text-parish-brass">Your Impact</div>
+                            <ul className="mt-4 space-y-4 text-lg leading-relaxed text-parish-inverse/85">
                                 <li className="flex items-start gap-3">
-                                    <span className="text-parish-accent text-xl mt-0.5">✦</span>
+                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
                                     <span>Supports daily Mass, liturgy, and music ministry</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-parish-accent text-xl mt-0.5">✦</span>
+                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
                                     <span>Funds youth programs and faith formation</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-parish-accent text-xl mt-0.5">✦</span>
+                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
                                     <span>Maintains our historic church buildings</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-parish-accent text-xl mt-0.5">✦</span>
+                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
                                     <span>Helps those in need through community outreach</span>
                                 </li>
                             </ul>
-                        </div>
+                        </ScriptureBlock>
 
-                        {/* Other ways */}
-                        <div className="bg-parish-surface border border-parish-border/10 p-8 rounded-[2rem]">
-                            <h3 className="font-display text-xl text-parish-fg mb-4">Other Ways to Give</h3>
-                            <div className="space-y-4 font-serif text-base text-parish-muted leading-relaxed">
+                        <InfoCard>
+                            <div className="ornamental-kicker">Other Ways To Give</div>
+                            <div className="mt-4 space-y-4 text-sm leading-relaxed text-parish-muted">
                                 <div>
-                                    <div className="font-display tracking-widest text-xs uppercase text-parish-accent mb-1">Planned Giving</div>
-                                    <p>Set up regular contributions via your bank. Contact the parish office for details.</p>
+                                    <div className="ornamental-kicker text-[0.62rem]">Planned Giving</div>
+                                    <p className="mt-1">Set up regular contributions via your bank. Contact the parish office for details.</p>
                                 </div>
                                 <div>
-                                    <div className="font-display tracking-widest text-xs uppercase text-parish-accent mb-1">Collection Plate</div>
-                                    <p>Traditional cash or envelope donations are always welcome at any Mass.</p>
+                                    <div className="ornamental-kicker text-[0.62rem]">Collection Plate</div>
+                                    <p className="mt-1">Traditional cash or envelope donations are always welcome at any Mass.</p>
                                 </div>
                                 <div>
-                                    <div className="font-display tracking-widest text-xs uppercase text-parish-accent mb-1">Direct Deposit</div>
-                                    <p>BSB: Contact parish office<br />Account: Contact parish office</p>
+                                    <div className="ornamental-kicker text-[0.62rem]">Direct Deposit</div>
+                                    <p className="mt-1">BSB: Contact parish office<br />Account: Contact parish office</p>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Security note */}
-                        <div className="flex items-start gap-3 p-5 rounded-xl bg-parish-accent/5 border border-parish-accent/10">
-                            <CreditCard size={20} className="text-parish-accent shrink-0 mt-0.5" />
-                            <p className="font-serif text-sm text-parish-muted leading-relaxed">
-                                All transactions are encrypted and processed securely. We never store your card details. Powered by Stripe with non-profit rates.
-                            </p>
-                        </div>
-                    </motion.div>
+                        </InfoCard>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </UtilityPageTemplate>
     );
 }

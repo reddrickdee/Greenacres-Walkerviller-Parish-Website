@@ -1,7 +1,9 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { usePageSEO } from '../hooks/usePageSEO';
-import { Play, Filter, BookOpen, User } from 'lucide-react';
+import { Play, BookOpen, User } from 'lucide-react';
+import { ActionBand, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
 
 interface Homily {
     id: string;
@@ -43,87 +45,103 @@ export function HomiliesPage() {
     );
 
     return (
-        <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-            <div className="max-w-5xl mx-auto">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="mb-12 text-center"
-                >
-                    <div className="text-parish-accent font-display tracking-widest text-base uppercase mb-4">Homily Archive</div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-parish-fg leading-tight mb-6 text-balance">
-                        The Word <em className="font-serif italic text-parish-accent">Proclaimed</em>
-                    </h1>
-                    <p className="font-serif text-xl text-parish-muted max-w-2xl mx-auto italic">
-                        Revisit and reflect on past homilies from our parish.
-                    </p>
-                </motion.div>
+        <HighlightPageTemplate
+            eyebrow="Homily Archive"
+            title={<>Revisit the Word proclaimed across the seasons of the year.</>}
+            description="Browse past homilies by liturgical season. Each homily is paired with its scripture reference and date so you can follow the rhythm of the liturgical year."
+            imageSrc="/assets/source/hero_4.webp"
+            imageAlt="Parish worship during liturgy"
+            actions={(
+                <>
+                    <Link to="/mass-times" className="pilgrimage-button">
+                        View Mass Times
+                    </Link>
+                    <Link to="/live" className="pilgrimage-button-secondary">
+                        Watch Live
+                    </Link>
+                </>
+            )}
+        >
+            <section className="page-section">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Browse By Season"
+                        title={<>Filter homilies by liturgical season.</>}
+                    />
 
-                {/* Season filter */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                    className="flex items-center gap-2 mb-8 flex-wrap"
-                >
-                    <Filter size={16} className="text-parish-muted" />
-                    {SEASONS.map(season => (
-                        <button
-                            key={season}
-                            onClick={() => setSelectedSeason(season)}
-                            className={`px-4 py-2 rounded-full font-display tracking-wider text-xs uppercase transition-all ${selectedSeason === season
-                                ? 'bg-parish-accent text-white shadow-md'
-                                : 'bg-parish-surface border border-parish-border/10 text-parish-muted hover:border-parish-accent/30'
-                                }`}
-                        >
-                            {season}
-                        </button>
-                    ))}
-                </motion.div>
-
-                {/* Homily cards */}
-                <div className="space-y-4">
-                    {filtered.map((homily, i) => (
-                        <motion.div
-                            key={homily.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: i * 0.05 }}
-                            className="bg-parish-surface border border-parish-border/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 hover:border-parish-accent/30 transition-colors group"
-                        >
-                            {/* Play button */}
-                            <div className="w-14 h-14 rounded-xl bg-parish-accent/10 flex items-center justify-center shrink-0 group-hover:bg-parish-accent/20 transition-colors">
-                                <Play size={20} className="text-parish-accent ml-0.5" />
-                            </div>
-
-                            {/* Info */}
-                            <div className="flex-1 min-w-0">
-                                <h3 className="font-display text-xl text-parish-fg group-hover:text-parish-accent transition-colors mb-1">{homily.title}</h3>
-                                <div className="flex flex-wrap items-center gap-3 text-sm text-parish-muted font-serif">
-                                    <span>{homily.date}</span>
-                                    <span className="w-1 h-1 rounded-full bg-parish-border/30" />
-                                    <span className="flex items-center gap-1"><User size={12} /> {homily.priest}</span>
-                                    <span className="w-1 h-1 rounded-full bg-parish-border/30" />
-                                    <span className="flex items-center gap-1"><BookOpen size={12} /> {homily.scriptureRef}</span>
-                                </div>
-                            </div>
-
-                            {/* Season badge */}
-                            <span className="px-3 py-1 bg-parish-accent/5 text-parish-accent rounded-full font-display text-xs tracking-wider uppercase shrink-0">
-                                {homily.season}
-                            </span>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {filtered.length === 0 && (
-                    <div className="text-center py-16">
-                        <p className="font-serif text-lg text-parish-muted italic">No homilies found for this season yet.</p>
+                    <div className="mt-6 flex flex-wrap items-center gap-2">
+                        {SEASONS.map(season => (
+                            <button
+                                key={season}
+                                onClick={() => setSelectedSeason(season)}
+                                className={`rounded-full px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.24em] transition-all duration-300 ${selectedSeason === season
+                                    ? 'bg-parish-fg text-parish-inverse shadow-halo'
+                                    : 'border border-parish-border/10 bg-parish-surface/70 text-parish-muted hover:border-parish-brass/30 hover:text-parish-fg'
+                                    }`}
+                            >
+                                {season}
+                            </button>
+                        ))}
                     </div>
-                )}
-            </div>
-        </div>
+
+                    <div className="mt-10 space-y-4">
+                        {filtered.map((homily, i) => (
+                            <motion.div
+                                key={homily.id}
+                                initial={{ opacity: 0, y: 18 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-60px' }}
+                                transition={{ duration: 0.55, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] }}
+                                className="sanctuary-card flex flex-col gap-4 md:flex-row md:items-center"
+                            >
+                                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65 text-parish-brass transition-colors">
+                                    <Play size={20} className="ml-0.5" />
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                    <h3 className="text-2xl text-parish-fg">{homily.title}</h3>
+                                    <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-parish-muted">
+                                        <span>{homily.date}</span>
+                                        <span className="h-1 w-1 rounded-full bg-parish-border/30" />
+                                        <span className="flex items-center gap-1"><User size={12} /> {homily.priest}</span>
+                                        <span className="h-1 w-1 rounded-full bg-parish-border/30" />
+                                        <span className="flex items-center gap-1"><BookOpen size={12} /> {homily.scriptureRef}</span>
+                                    </div>
+                                </div>
+                                <span className="ornamental-kicker shrink-0">{homily.season}</span>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {filtered.length === 0 && (
+                        <div className="py-16 text-center">
+                            <p className="text-lg italic text-parish-muted">No homilies found for this season yet.</p>
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <ActionBand>
+                        <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+                            <div className="lg:col-span-8">
+                                <span className="section-label mb-4">Join Us This Weekend</span>
+                                <h2 className="text-[clamp(2.2rem,4vw,3.9rem)] text-parish-fg">
+                                    Hear the Word proclaimed in person or watch online from home.
+                                </h2>
+                            </div>
+                            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+                                <Link to="/mass-times" className="pilgrimage-button">
+                                    View Mass Times
+                                </Link>
+                                <Link to="/live" className="pilgrimage-button-secondary">
+                                    Watch Live Stream
+                                </Link>
+                            </div>
+                        </div>
+                    </ActionBand>
+                </div>
+            </section>
+        </HighlightPageTemplate>
     );
 }

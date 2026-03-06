@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { usePageSEO } from '../hooks/usePageSEO';
-import { Radio, Clock, Play, Calendar } from 'lucide-react';
+import { Radio, Clock, Play } from 'lucide-react';
+import { ActionBand, InfoCard, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
 
 const STREAM_SCHEDULE = [
     { day: 'Saturday', time: '6:00 PM', label: 'Saturday Vigil Mass — St Monica\'s' },
@@ -26,109 +28,149 @@ export function LiveStreamPage() {
     });
 
     return (
-        <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-            <div className="max-w-5xl mx-auto">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="mb-12 text-center"
-                >
-                    <div className="text-parish-accent font-display tracking-widest text-base uppercase mb-4">Live Stream</div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-parish-fg leading-tight mb-6 text-balance">
-                        Worship <em className="font-serif italic text-parish-accent">Together</em>
-                    </h1>
-                    <p className="font-serif text-xl text-parish-muted max-w-2xl mx-auto italic">
-                        Join us for Mass from wherever you are. Our live stream brings the parish to your home.
+        <UtilityPageTemplate
+            eyebrow="Live Stream"
+            title={<>Worship together, wherever you are.</>}
+            description="Join us for Mass from home. Our live stream brings the parish to your screen during Saturday Vigil and Sunday Mass."
+            imageSrc="/assets/source/hero_4.webp"
+            imageAlt="Parish worship space"
+            actions={(
+                <>
+                    <Link to="/mass-times" className="pilgrimage-button">
+                        View Mass Times
+                    </Link>
+                    <Link to="/homilies" className="pilgrimage-button-secondary">
+                        Homily Archive
+                    </Link>
+                </>
+            )}
+            aside={(
+                <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
+                    <div className="ornamental-kicker">Stream Status</div>
+                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                        {isLive ? 'We are currently live. Join now.' : 'Currently offline. Check the schedule below for the next stream.'}
                     </p>
-                </motion.div>
+                </div>
+            )}
+        >
+            <section className="page-section">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Watch Now"
+                        title={<>The live player will activate when Mass begins.</>}
+                    />
 
-                {/* Live player area */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                    className="relative w-full aspect-video rounded-[2rem] overflow-hidden bg-parish-fg mb-12 shadow-2xl"
-                >
-                    {isLive ? (
-                        <iframe
-                            src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID&autoplay=1"
-                            title="Live Mass Stream"
-                            className="absolute inset-0 w-full h-full"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            loading="lazy"
-                        />
-                    ) : (
-                        <div className="flex flex-col items-center justify-center h-full text-parish-surface/80 gap-4 p-8">
-                            <Radio size={48} className="opacity-40" />
-                            <p className="font-display text-2xl">Currently Offline</p>
-                            <p className="font-serif text-lg text-parish-surface/50 italic text-center max-w-md">
-                                Our next scheduled stream will begin at the times shown below. Check back soon!
-                            </p>
-                        </div>
-                    )}
-                    {isLive && (
-                        <div className="absolute top-4 left-4 flex items-center gap-2 bg-red-600 text-white px-4 py-1.5 rounded-full text-sm font-display tracking-wider uppercase shadow-lg">
-                            <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                            LIVE NOW
-                        </div>
-                    )}
-                </motion.div>
-
-                {/* Schedule */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mb-16"
-                >
-                    <h2 className="font-display text-3xl text-parish-fg mb-8 flex items-center gap-3">
-                        <Calendar size={24} className="text-parish-accent" />
-                        Streaming Schedule
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        {STREAM_SCHEDULE.map((item, i) => (
-                            <div key={i} className="bg-parish-surface border border-parish-border/10 rounded-2xl p-6 hover:border-parish-accent/30 transition-colors">
-                                <div className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2">{item.day}</div>
-                                <div className="font-display text-2xl text-parish-fg mb-1 flex items-center gap-2">
-                                    <Clock size={18} className="text-parish-muted" /> {item.time}
-                                </div>
-                                <p className="font-serif text-base text-parish-muted">{item.label}</p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+                        className="image-panel relative mt-8 aspect-video w-full overflow-hidden"
+                    >
+                        {isLive ? (
+                            <iframe
+                                src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID&autoplay=1"
+                                title="Live Mass Stream"
+                                className="absolute inset-0 h-full w-full"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                loading="lazy"
+                            />
+                        ) : (
+                            <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-parish-muted">
+                                <Radio size={48} className="opacity-40" />
+                                <p className="text-2xl text-parish-fg">Currently Offline</p>
+                                <p className="max-w-md text-center text-lg italic text-parish-muted">
+                                    Our next scheduled stream will begin at the times shown below. Check back soon!
+                                </p>
                             </div>
+                        )}
+                        {isLive && (
+                            <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-red-600 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg">
+                                <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
+                                LIVE NOW
+                            </div>
+                        )}
+                    </motion.div>
+                </div>
+            </section>
+
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Streaming Schedule"
+                        title={<>Know when to tune in.</>}
+                        description="All streams are broadcast via YouTube from the parish channel."
+                    />
+                    <div className="mt-10 grid gap-5 md:grid-cols-3">
+                        {STREAM_SCHEDULE.map(item => (
+                            <InfoCard key={item.day}>
+                                <div className="ornamental-kicker">{item.day}</div>
+                                <div className="mt-3 flex items-center gap-2 text-2xl text-parish-fg">
+                                    <Clock size={18} className="text-parish-brass" />
+                                    {item.time}
+                                </div>
+                                <p className="mt-3 text-sm leading-relaxed text-parish-muted">{item.label}</p>
+                            </InfoCard>
                         ))}
                     </div>
-                </motion.div>
+                </div>
+            </section>
 
-                {/* Past Recordings */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                >
-                    <h2 className="font-display text-3xl text-parish-fg mb-8 flex items-center gap-3">
-                        <Play size={24} className="text-parish-accent" />
-                        Past Recordings
-                    </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {PAST_RECORDINGS.map(rec => (
-                            <div key={rec.id} className="bg-parish-surface border border-parish-border/10 rounded-2xl p-6 flex items-center gap-4 hover:border-parish-accent/30 transition-colors group cursor-pointer">
-                                <div className="w-14 h-14 rounded-xl bg-parish-accent/10 flex items-center justify-center shrink-0 group-hover:bg-parish-accent/20 transition-colors">
-                                    <Play size={20} className="text-parish-accent ml-0.5" />
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Past Recordings"
+                        title={<>Missed a Mass? Watch it here.</>}
+                    />
+                    <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                        {PAST_RECORDINGS.map((rec, i) => (
+                            <motion.div
+                                key={rec.id}
+                                initial={{ opacity: 0, y: 18 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-60px' }}
+                                transition={{ duration: 0.55, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                                className="sanctuary-card flex cursor-pointer items-center gap-4"
+                            >
+                                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65 text-parish-brass">
+                                    <Play size={20} className="ml-0.5" />
                                 </div>
                                 <div>
-                                    <div className="font-display text-lg text-parish-fg group-hover:text-parish-accent transition-colors">{rec.title}</div>
-                                    <div className="font-serif text-sm text-parish-muted">{rec.date}</div>
+                                    <div className="text-lg text-parish-fg">{rec.title}</div>
+                                    <div className="text-sm text-parish-muted">{rec.date}</div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                    <p className="font-serif text-sm text-parish-muted text-center mt-6 italic">
+                    <p className="mt-6 text-center text-sm italic text-parish-muted">
                         More recordings available on our YouTube channel.
                     </p>
-                </motion.div>
-            </div>
-        </div>
+                </div>
+            </section>
+
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <ActionBand>
+                        <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+                            <div className="lg:col-span-8">
+                                <span className="section-label mb-4">Prefer To Be There In Person</span>
+                                <h2 className="text-[clamp(2.2rem,4vw,3.9rem)] text-parish-fg">
+                                    Nothing replaces the experience of worshipping together. Come this weekend.
+                                </h2>
+                            </div>
+                            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+                                <Link to="/mass-times" className="pilgrimage-button">
+                                    View Mass Times
+                                </Link>
+                                <Link to="/new-here" className="pilgrimage-button-secondary">
+                                    First Visit Guide
+                                </Link>
+                            </div>
+                        </div>
+                    </ActionBand>
+                </div>
+            </section>
+        </UtilityPageTemplate>
     );
 }

@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { Send, CheckCircle, Droplets, Heart as HeartIcon, Cross, BookOpen } from 'lucide-react';
+import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
 
 const SACRAMENT_TYPES = [
     { id: 'baptism', label: 'Baptism', icon: Droplets, description: 'For infants, children, or adults seeking to receive the Sacrament of Baptism.' },
@@ -32,11 +34,7 @@ export function SacramentsBookingPage() {
         e.preventDefault();
         if (!isValid) return;
         setIsSubmitting(true);
-
-        // In production this would POST to Supabase sacrament_requests table
-        // and trigger an email notification to the parish office via Edge Function
         await new Promise(resolve => setTimeout(resolve, 1200));
-
         setIsSubmitting(false);
         setIsSubmitted(true);
     };
@@ -45,66 +43,78 @@ export function SacramentsBookingPage() {
 
     if (isSubmitted) {
         return (
-            <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-lg mx-auto text-center"
-                >
-                    <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-parish-accent/10 flex items-center justify-center">
-                        <CheckCircle className="w-10 h-10 text-parish-accent" />
+            <div className="page-shell">
+                <section className="page-section">
+                    <div className="page-section-inner">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.6 }}
+                            className="mx-auto max-w-lg text-center"
+                        >
+                            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65">
+                                <CheckCircle className="h-10 w-10 text-parish-brass" />
+                            </div>
+                            <h1 className="text-4xl text-parish-fg md:text-5xl">Request Received</h1>
+                            <p className="mt-6 text-xl leading-relaxed text-parish-muted">
+                                Thank you, {fullName}. Your request for <strong className="text-parish-fg">{currentSacrament?.label}</strong> has been submitted
+                                to the parish office.
+                            </p>
+
+                            <InfoCard className="mt-8 text-left">
+                                <div className="ornamental-kicker">What Happens Next</div>
+                                <ol className="mt-4 list-inside list-decimal space-y-3 text-base leading-relaxed text-parish-muted">
+                                    <li>A parish team member will review your request within 2–3 business days.</li>
+                                    <li>You will receive an email at <strong className="text-parish-fg">{email}</strong> to arrange an initial meeting.</li>
+                                    <li>During the meeting, we'll discuss the preparation pathway and answer your questions.</li>
+                                </ol>
+                            </InfoCard>
+
+                            <ScriptureBlock className="mt-8">
+                                <p className="text-lg leading-relaxed text-parish-inverse/85">
+                                    "I am the way, the truth, and the life."
+                                </p>
+                                <p className="mt-4 text-sm uppercase tracking-[0.24em] text-parish-brass">John 14:6</p>
+                            </ScriptureBlock>
+                        </motion.div>
                     </div>
-                    <h1 className="font-display text-4xl md:text-5xl text-parish-fg mb-6">Request Received</h1>
-                    <p className="font-serif text-xl text-parish-muted italic mb-6 leading-relaxed">
-                        Thank you, {fullName}. Your request for <strong className="text-parish-fg">{currentSacrament?.label}</strong> has been submitted
-                        to the parish office.
-                    </p>
-                    <div className="bg-parish-surface border border-parish-border/10 rounded-2xl p-6 mb-8 text-left">
-                        <h3 className="font-display tracking-widest text-xs uppercase text-parish-accent mb-3">What Happens Next</h3>
-                        <ol className="space-y-3 font-serif text-base text-parish-muted leading-relaxed list-decimal list-inside">
-                            <li>A parish team member will review your request within 2–3 business days.</li>
-                            <li>You will receive an email at <strong className="text-parish-fg">{email}</strong> to arrange an initial meeting.</li>
-                            <li>During the meeting, we'll discuss the preparation pathway and answer your questions.</li>
-                        </ol>
-                    </div>
-                    <p className="font-serif text-lg text-parish-muted italic">
-                        "I am the way, the truth, and the life." — John 14:6
-                    </p>
-                </motion.div>
+                </section>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-            <div className="max-w-4xl mx-auto">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="mb-16 text-center"
-                >
-                    <div className="text-parish-accent font-display tracking-widest text-base uppercase mb-4">Sacramental Life</div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-parish-fg leading-tight mb-6 text-balance">
-                        Begin Your <em className="font-serif italic text-parish-accent">Journey</em>
-                    </h1>
-                    <p className="font-serif text-xl md:text-2xl text-parish-muted max-w-2xl mx-auto leading-relaxed italic">
-                        Request information about receiving a Sacrament or arrange a consultation with our parish team.
+        <UtilityPageTemplate
+            eyebrow="Sacramental Life"
+            title={<>Begin your journey toward receiving a Sacrament.</>}
+            description="Request information about Baptism, Marriage, RCIA, or Anointing of the Sick. A parish team member will follow up to arrange a conversation."
+            imageSrc="/assets/refurbishment/st_monica_4.webp"
+            imageAlt="Sanctuary interior"
+            actions={(
+                <>
+                    <Link to="/sacraments" className="pilgrimage-button-secondary">
+                        View All Sacraments
+                    </Link>
+                </>
+            )}
+            aside={(
+                <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
+                    <div className="ornamental-kicker">How It Works</div>
+                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                        Select a sacrament, fill in your details, and submit. A coordinator will contact you within a few days.
                     </p>
-                </motion.div>
+                </div>
+            )}
+        >
+            <form onSubmit={handleSubmit}>
+                <section className="page-section">
+                    <div className="page-section-inner">
+                        <SectionIntro
+                            eyebrow="Which Sacrament"
+                            title={<>Select the sacrament you are enquiring about.</>}
+                        />
 
-                <form onSubmit={handleSubmit}>
-                    {/* Sacrament type selection */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.1 }}
-                        className="mb-12"
-                    >
-                        <h2 className="font-display text-2xl text-parish-fg mb-6">Which Sacrament?</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="mt-10 grid gap-4 sm:grid-cols-2">
                             {SACRAMENT_TYPES.map(sacrament => {
                                 const Icon = sacrament.icon;
                                 const isSelected = selectedSacrament === sacrament.id;
@@ -114,97 +124,112 @@ export function SacramentsBookingPage() {
                                         type="button"
                                         onClick={() => setSelectedSacrament(sacrament.id)}
                                         aria-pressed={isSelected}
-                                        className={`p-6 rounded-2xl border-2 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent group ${isSelected
-                                            ? 'bg-parish-accent/10 border-parish-accent shadow-md'
-                                            : 'bg-parish-surface border-parish-border/10 hover:border-parish-accent/30'
+                                        className={`sanctuary-card text-left transition-all ${isSelected
+                                            ? '!border-parish-brass/40 shadow-halo'
+                                            : ''
                                             }`}
                                     >
-                                        <Icon size={24} className={`mb-3 ${isSelected ? 'text-parish-accent' : 'text-parish-muted group-hover:text-parish-accent'} transition-colors`} />
-                                        <div className="font-display text-lg text-parish-fg mb-1">{sacrament.label}</div>
-                                        <p className="font-serif text-sm text-parish-muted leading-relaxed">{sacrament.description}</p>
+                                        <Icon size={24} className={`mb-3 ${isSelected ? 'text-parish-brass' : 'text-parish-muted'} transition-colors`} />
+                                        <div className="ornamental-kicker">{sacrament.label}</div>
+                                        <p className="mt-3 text-sm leading-relaxed text-parish-muted">{sacrament.description}</p>
                                     </button>
                                 );
                             })}
                         </div>
-                    </motion.div>
+                    </div>
+                </section>
 
-                    {/* Contact details */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="bg-parish-surface border border-parish-border/10 rounded-[2rem] p-8 md:p-10 shadow-sm mb-8"
-                    >
-                        <h2 className="font-display text-2xl text-parish-fg mb-6">Your Details</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label htmlFor="sac-name" className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2 block">
-                                    Full Name <span className="text-parish-fg text-xs">*</span>
-                                </label>
-                                <input id="sac-name" type="text" required value={fullName} onChange={e => setFullName(e.target.value)} placeholder="Your name"
-                                    className="w-full px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-serif text-lg focus:border-parish-accent focus:outline-none transition-colors" />
+                <section className="page-section mt-12 md:mt-16">
+                    <div className="page-section-inner">
+                        <div className="sanctuary-panel px-7 py-8 md:px-10 md:py-10">
+                            <div className="ornamental-kicker mb-6">Your Details</div>
+                            <div className="grid gap-6 md:grid-cols-2">
+                                <div>
+                                    <label htmlFor="sac-name" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                        Full Name <span className="text-parish-fg">*</span>
+                                    </label>
+                                    <input id="sac-name" type="text" required value={fullName} onChange={e => setFullName(e.target.value)} placeholder="Your name"
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                </div>
+                                <div>
+                                    <label htmlFor="sac-email" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                        Email <span className="text-parish-fg">*</span>
+                                    </label>
+                                    <input id="sac-email" type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com"
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                </div>
+                                <div>
+                                    <label htmlFor="sac-phone" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                        Phone <span className="text-parish-muted">(optional)</span>
+                                    </label>
+                                    <input id="sac-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="0412 345 678"
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                </div>
+                                <div>
+                                    <label htmlFor="sac-date" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                        Preferred Date <span className="text-parish-muted">(if applicable)</span>
+                                    </label>
+                                    <input id="sac-date" type="date" value={preferredDate} onChange={e => setPreferredDate(e.target.value)}
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                </div>
                             </div>
-                            <div>
-                                <label htmlFor="sac-email" className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2 block">
-                                    Email <span className="text-parish-fg text-xs">*</span>
+                            <div className="mt-6">
+                                <label htmlFor="sac-info" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                    Additional Information <span className="text-parish-muted">(optional)</span>
                                 </label>
-                                <input id="sac-email" type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com"
-                                    className="w-full px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-serif text-lg focus:border-parish-accent focus:outline-none transition-colors" />
+                                <textarea
+                                    id="sac-info"
+                                    rows={3}
+                                    value={additionalInfo}
+                                    onChange={e => setAdditionalInfo(e.target.value)}
+                                    placeholder="Any questions or details you'd like us to know…"
+                                    className="w-full resize-none rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none"
+                                />
                             </div>
-                            <div>
-                                <label htmlFor="sac-phone" className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2 block">
-                                    Phone <span className="text-parish-muted">(optional)</span>
-                                </label>
-                                <input id="sac-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="0412 345 678"
-                                    className="w-full px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-serif text-lg focus:border-parish-accent focus:outline-none transition-colors" />
-                            </div>
-                            <div>
-                                <label htmlFor="sac-date" className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2 block">
-                                    Preferred Date <span className="text-parish-muted">(if applicable)</span>
-                                </label>
-                                <input id="sac-date" type="date" value={preferredDate} onChange={e => setPreferredDate(e.target.value)}
-                                    className="w-full px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-serif text-lg focus:border-parish-accent focus:outline-none transition-colors" />
+
+                            <div className="mt-8 text-center">
+                                <button
+                                    type="submit"
+                                    disabled={!isValid || isSubmitting}
+                                    className="pilgrimage-button inline-flex items-center gap-3 disabled:cursor-not-allowed disabled:opacity-40"
+                                >
+                                    {isSubmitting ? (
+                                        <><span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" /> Submitting…</>
+                                    ) : (
+                                        <><Send size={18} /> Submit Request</>
+                                    )}
+                                </button>
+                                <p className="mt-4 text-sm text-parish-muted">
+                                    Your request will be reviewed by the parish office and a team member will contact you.
+                                </p>
                             </div>
                         </div>
-                        <div className="mt-6">
-                            <label htmlFor="sac-info" className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2 block">
-                                Additional Information <span className="text-parish-muted">(optional)</span>
-                            </label>
-                            <textarea
-                                id="sac-info"
-                                rows={3}
-                                value={additionalInfo}
-                                onChange={e => setAdditionalInfo(e.target.value)}
-                                placeholder="Any questions or details you'd like us to know…"
-                                className="w-full px-5 py-4 rounded-xl border-2 border-parish-border/10 bg-parish-bg text-parish-fg font-serif text-lg focus:border-parish-accent focus:outline-none transition-colors resize-none"
-                            />
-                        </div>
-                    </motion.div>
+                    </div>
+                </section>
+            </form>
 
-                    {/* Submit */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-center"
-                    >
-                        <button
-                            type="submit"
-                            disabled={!isValid || isSubmitting}
-                            className="inline-flex items-center gap-3 px-12 py-5 rounded-full bg-parish-accent text-white font-display tracking-widest uppercase text-base hover:bg-parish-accent-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-parish-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent focus-visible:ring-offset-2"
-                        >
-                            {isSubmitting ? (
-                                <><span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Submitting…</>
-                            ) : (
-                                <><Send size={18} /> Submit Request</>
-                            )}
-                        </button>
-                        <p className="font-serif text-sm text-parish-muted mt-4">
-                            Your request will be reviewed by the parish office and a team member will contact you.
-                        </p>
-                    </motion.div>
-                </form>
-            </div>
-        </div>
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <ActionBand>
+                        <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+                            <div className="lg:col-span-8">
+                                <span className="section-label mb-4">Learn More First</span>
+                                <h2 className="text-[clamp(2.2rem,4vw,3.9rem)] text-parish-fg">
+                                    Read about each sacrament and the preparation pathways before you request.
+                                </h2>
+                            </div>
+                            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+                                <Link to="/sacraments" className="pilgrimage-button">
+                                    View All Sacraments
+                                </Link>
+                                <Link to="/contact" className="pilgrimage-button-secondary">
+                                    Contact The Office
+                                </Link>
+                            </div>
+                        </div>
+                    </ActionBand>
+                </div>
+            </section>
+        </UtilityPageTemplate>
     );
 }
