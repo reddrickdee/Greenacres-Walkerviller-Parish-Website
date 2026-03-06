@@ -1,52 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --color-parish-bg: 250 247 240;
-    --color-parish-surface: 255 253 248;
-    --color-parish-elevated: 247 244 237;
-    --color-parish-fg: 38 35 30;
-    --color-parish-muted: 110 100 85;
-    --color-parish-accent: 27 94 58;
-    --color-parish-accent-hover: 21 77 47;
-    --color-parish-secondary: 139 35 50;
-    --color-parish-secondary-hover: 115 28 40;
-    --color-parish-border: 38 35 30;
-    --color-parish-inverse: 255 255 255;
-    --color-parish-inverse-muted: 110 100 85;
-    --color-parish-brass: 45 85% 60%;
+    --color-parish-bg: 244 239 230;
+    --color-parish-surface: 251 248 242;
+    --color-parish-elevated: 232 224 212;
+    --color-parish-fg: 28 27 24;
+    --color-parish-muted: 101 94 85;
+    --color-parish-accent: 92 77 59;
+    --color-parish-accent-hover: 69 57 44;
+    --color-parish-secondary: 131 83 56;
+    --color-parish-secondary-hover: 108 67 45;
+    --color-parish-border: 62 57 50;
+    --color-parish-inverse: 251 247 241;
+    --color-parish-inverse-muted: 206 196 181;
+    --color-parish-brass: 41 72% 58%;
   }
 
   html[data-theme="dark"] {
-    --color-parish-bg: 12 11 10;
-    --color-parish-surface: 32 29 25;
-    --color-parish-elevated: 45 42 36;
-    --color-parish-fg: 240 235 222;
-    --color-parish-muted: 175 168 155;
-    --color-parish-accent: 74 160 104;
-    --color-parish-accent-hover: 94 180 124;
-    --color-parish-secondary: 220 80 95;
-    --color-parish-secondary-hover: 240 100 115;
-    --color-parish-border: 240 235 222;
-    --color-parish-inverse: 12 11 10;
-    --color-parish-inverse-muted: 214 211 209;
-    --color-parish-brass: 45 85% 60%;
+    --color-parish-bg: 14 16 19;
+    --color-parish-surface: 22 25 29;
+    --color-parish-elevated: 32 36 42;
+    --color-parish-fg: 236 229 217;
+    --color-parish-muted: 170 161 148;
+    --color-parish-accent: 175 156 131;
+    --color-parish-accent-hover: 200 179 152;
+    --color-parish-secondary: 161 110 81;
+    --color-parish-secondary-hover: 188 134 102;
+    --color-parish-border: 219 208 192;
+    --color-parish-inverse: 17 19 22;
+    --color-parish-inverse-muted: 168 158 144;
+    --color-parish-brass: 41 78% 67%;
   }
 
   html {
     font-size: 18px;
-    /* Elderly-friendly base: 18px instead of 16px */
     scroll-behavior: smooth;
-    @apply overflow-x-hidden overflow-y-auto w-full min-h-screen;
+    @apply overflow-x-hidden overflow-y-auto w-full min-h-screen bg-parish-bg;
   }
 
   body {
-    @apply antialiased bg-parish-bg text-parish-fg font-body transition-colors duration-200 overflow-x-hidden w-full min-h-screen relative;
+    @apply antialiased bg-parish-bg text-parish-fg font-body transition-colors duration-300 overflow-x-hidden w-full min-h-screen relative;
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image:
+      radial-gradient(circle at top, rgb(var(--color-parish-elevated) / 0.85), transparent 40%),
+      linear-gradient(180deg, rgb(var(--color-parish-bg)) 0%, rgb(var(--color-parish-surface)) 100%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.2;
+    background:
+      linear-gradient(120deg, transparent 0%, rgb(var(--color-parish-brass) / 0.08) 45%, transparent 90%),
+      radial-gradient(circle at 20% 10%, rgb(var(--color-parish-brass) / 0.12), transparent 18%),
+      radial-gradient(circle at 80% 0%, rgb(var(--color-parish-accent) / 0.1), transparent 22%);
   }
 
   h1,
@@ -56,33 +73,32 @@
   h5,
   h6 {
     @apply font-display tracking-tight;
-    line-height: 1.15;
+    line-height: 1.08;
   }
 
-  /* Generous focus rings for keyboard navigation — essential for accessibility */
   a:focus-visible,
   button:focus-visible,
-  [role="button"]:focus-visible {
-    outline: 3px solid rgb(var(--color-parish-accent));
+  [role="button"]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid hsl(var(--color-parish-brass));
     outline-offset: 4px;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
-  /* Minimum touch target sizes for mobile (48×48px per WCAG) */
   a,
   button {
     min-height: 44px;
     min-width: 44px;
   }
 
-  /* Better link defaults */
   a {
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
   }
 }
 
-/* Dyslexia Accessibility Override */
 .font-dyslexic,
 .font-dyslexic * {
   font-family: 'OpenDyslexic', sans-serif !important;
@@ -91,36 +107,125 @@
 }
 
 @layer components {
-  .sacred-container {
-    @apply bg-parish-surface/80 border border-parish-border/10 backdrop-blur-md rounded-[2rem] transition-all duration-500 ease-out;
+  .page-shell {
+    @apply min-h-screen bg-parish-bg pt-24 pb-20 md:pt-28 md:pb-24;
   }
 
-  .sacred-container:hover {
-    @apply bg-parish-elevated border-parish-brass/40 shadow-[0_0_30px_hsla(var(--color-parish-brass)/0.1)] -translate-y-1;
+  .page-section {
+    @apply px-6 md:px-10 lg:px-16;
+  }
+
+  .page-section-inner {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-3 font-body text-[0.72rem] font-semibold uppercase tracking-[0.34em] text-parish-muted;
+  }
+
+  .section-label::before {
+    content: "";
+    @apply block h-px w-10;
+    background-color: hsl(var(--color-parish-brass) / 0.7);
+  }
+
+  .section-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-parish-border/20 to-transparent;
+  }
+
+  .sanctuary-panel {
+    @apply relative overflow-hidden rounded-[2rem] border border-parish-border/10 shadow-sanctuary backdrop-blur-xl;
+    background-color: rgb(var(--color-parish-surface) / 0.92);
+  }
+
+  .sanctuary-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(var(--color-parish-inverse) / 0.12), transparent 42%, rgb(var(--color-parish-bg) / 0.06));
+  }
+
+  .sanctuary-card {
+    @apply relative overflow-hidden rounded-[1.75rem] border border-parish-border/10 px-6 py-6 shadow-[0_24px_55px_-40px_rgba(0,0,0,0.4)] transition-all duration-500;
+    background-color: rgb(var(--color-parish-surface) / 0.94);
+  }
+
+  .sanctuary-card:hover {
+    @apply -translate-y-1 border-parish-brass/30 shadow-halo;
+  }
+
+  .sacred-container {
+    @apply sanctuary-card backdrop-blur-lg;
   }
 
   .sacred-card {
-    @apply bg-parish-surface border border-parish-border rounded-2xl p-6 shadow-lg focus-visible:outline-none transition-all duration-500 hover:shadow-xl hover:-translate-y-1;
+    @apply sanctuary-card;
+  }
+
+  .image-panel {
+    @apply relative overflow-hidden rounded-[2rem] border border-parish-border/10 bg-parish-elevated shadow-sanctuary;
+  }
+
+  .image-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.38));
+  }
+
+  .scripture-panel {
+    @apply relative overflow-hidden rounded-[2rem] border border-parish-brass/20 px-8 py-10 md:px-12 md:py-14 text-parish-inverse shadow-sanctuary;
+    background:
+      radial-gradient(circle at top left, hsl(var(--color-parish-brass) / 0.18), transparent 32%),
+      linear-gradient(145deg, rgb(var(--color-parish-fg)) 0%, rgb(var(--color-parish-accent-hover)) 100%);
+  }
+
+  .pilgrimage-button {
+    @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3.5 font-body text-[0.72rem] font-bold uppercase tracking-[0.28em] no-underline transition-all duration-300;
+    background: linear-gradient(135deg, rgb(var(--color-parish-fg)), rgb(var(--color-parish-accent-hover)));
+    color: rgb(var(--color-parish-inverse));
+    box-shadow: 0 18px 40px -25px rgba(0, 0, 0, 0.55);
+  }
+
+  .pilgrimage-button:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 22px 48px -25px rgba(0, 0, 0, 0.6);
+  }
+
+  .pilgrimage-button-secondary {
+    @apply inline-flex items-center justify-center gap-3 rounded-full border border-parish-border/15 px-6 py-3.5 font-body text-[0.72rem] font-bold uppercase tracking-[0.28em] text-parish-fg no-underline transition-all duration-300 backdrop-blur-md;
+    background-color: rgb(var(--color-parish-surface) / 0.7);
+  }
+
+  .pilgrimage-button-secondary:hover {
+    @apply -translate-y-0.5 border-parish-brass/35 bg-parish-surface;
+  }
+
+  .pilgrimage-button-ghost {
+    @apply inline-flex items-center justify-center gap-3 rounded-full px-5 py-3 font-body text-[0.72rem] font-bold uppercase tracking-[0.28em] text-parish-fg no-underline transition-all duration-300;
+  }
+
+  .pilgrimage-button-ghost:hover {
+    @apply bg-parish-border/5 text-parish-accent;
+  }
+
+  .ethereal-button {
+    @apply pilgrimage-button-secondary;
+  }
+
+  .ornamental-kicker {
+    @apply text-[0.76rem] uppercase tracking-[0.34em] text-parish-brass font-body font-semibold;
   }
 
   .constraint-widget-box {
-    @apply relative rounded-2xl overflow-hidden border border-parish-border bg-parish-surface ring-1 ring-black/5 max-h-[600px] shadow-sm flex flex-col;
+    @apply relative rounded-[2rem] overflow-hidden border border-parish-border/10 shadow-sanctuary flex flex-col;
+    background-color: rgb(var(--color-parish-surface) / 0.95);
   }
 
   .constraint-widget-fade {
     @apply after:absolute after:bottom-0 after:left-0 after:right-0 after:h-16 after:bg-gradient-to-t after:from-parish-surface after:to-transparent after:pointer-events-none;
-  }
-
-  .ethereal-button {
-    @apply rounded-full border border-parish-border/30 px-8 py-4 text-nav text-parish-fg transition-all duration-300 font-medium no-underline inline-block uppercase tracking-widest;
-  }
-
-  .ethereal-button:hover {
-    @apply scale-[1.02] bg-parish-fg text-parish-bg border-transparent shadow-[0_0_30px_hsla(var(--color-parish-brass)/0.15)];
-  }
-
-  .section-divider {
-    @apply h-[1px] w-full bg-gradient-to-r from-transparent via-parish-border/10 to-transparent;
   }
 }
 
@@ -134,11 +239,10 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 50;
-    opacity: 0.25;
-    /* Reduced: less visual noise for readability */
-    mix-blend-mode: overlay;
-    background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    z-index: 10;
+    opacity: 0.14;
+    mix-blend-mode: soft-light;
+    background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
   }
 
   .text-balance {
@@ -149,16 +253,18 @@
     line-height: 0.9;
     padding-top: 0.1em;
   }
+
+  .halo-brass {
+    box-shadow: 0 20px 60px -32px hsl(var(--color-parish-brass) / 0.45);
+  }
 }
 
-/* Custom Selection */
 ::selection {
   @apply bg-parish-accent text-parish-inverse;
 }
 
-/* Smooth scrollbar for newsletter archive etc */
 .overflow-y-auto::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .overflow-y-auto::-webkit-scrollbar-track {
@@ -166,13 +272,11 @@
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb {
-  background: rgb(var(--color-parish-muted) / 0.4);
-  border-radius: 3px;
+  background: rgb(var(--color-parish-muted) / 0.35);
+  border-radius: 999px;
 }
 
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -183,7 +287,6 @@
   }
 }
 
-/* Manual reduce-motion class (controlled via AccessibilityMenu toggle) */
 html.reduce-motion *,
 html.reduce-motion *::before,
 html.reduce-motion *::after {

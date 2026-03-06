@@ -1,130 +1,177 @@
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { MapPinned, Phone } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { ActionBand, InfoCard, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
 
 export function ContactPage() {
     const { content, isLoading } = useParishData();
 
     usePageSEO({
         title: 'Contact Us',
-        description: 'Contact Greenacres Walkerville Catholic Parish. Phone (08) 8261 6200, email admin@gwparish.org.au. Office hours Mon, Wed, Thu 9am-3pm. Find St Monica\'s and St Martin\'s churches.',
+        description: 'Contact Greenacres Walkerville Catholic Parish, find office hours, church locations, and parish school details.',
         path: '/contact',
+        ogImage: '/assets/source/hero_2.webp',
     });
 
     if (isLoading || !content) {
-        return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;
+        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
     }
 
     const { contact, schools } = content;
 
     return (
-        <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-            <div className="max-w-5xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="mb-16 md:mb-20 text-center"
-                >
-                    <div className="text-parish-accent font-display tracking-widest text-base uppercase mb-4">Get In Touch</div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-parish-fg leading-tight text-balance">
-                        Contact <em className="font-serif italic text-parish-accent">Us</em>
-                    </h1>
-                    <p className="font-serif text-xl text-parish-muted mt-6 max-w-2xl mx-auto">
-                        We'd love to hear from you. Whether you have a question, need pastoral support, or simply want to say hello.
-                    </p>
-                </motion.div>
+        <UtilityPageTemplate
+            eyebrow="Contact And Directions"
+            title={<>Reach the parish quickly, whether you need support or simply directions.</>}
+            description="This page is treated as a service page first: practical contact details, clear maps, and a direct path to schools and office help."
+            imageSrc="/assets/source/hero_2.webp"
+            imageAlt="Church exterior at Greenacres Walkerville Parish"
+            actions={(
+                <>
+                    <a href={`tel:${contact.phone}`} className="pilgrimage-button">
+                        Call The Office
+                    </a>
+                    <a href={`mailto:${contact.email}`} className="pilgrimage-button-secondary">
+                        Email The Parish
+                    </a>
+                </>
+            )}
+            aside={(
+                <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
+                    <div className="ornamental-kicker">Office Hours</div>
+                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.officeHours}</p>
+                </div>
+            )}
+        >
+            <section className="page-section">
+                <div className="page-section-inner grid gap-6 lg:grid-cols-12">
+                    <div className="lg:col-span-5">
+                        <SectionIntro
+                            eyebrow="Parish Office"
+                            title={<>Start with the office if you are unsure where your question belongs.</>}
+                            description="Pastoral care, sacraments, administration, and first-visit questions should all have an obvious home."
+                        />
+                    </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    {/* Contact Details */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.1 }}
-                        className="bg-parish-surface p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5"
-                    >
-                        <h2 className="font-display text-3xl mb-8">Parish Office</h2>
-                        <div className="space-y-6">
-                            <div>
-                                <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">Address</div>
-                                <p className="font-serif text-xl text-parish-fg">{contact.address}</p>
-                            </div>
-                            <div>
-                                <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">Postal Address</div>
-                                <p className="font-serif text-xl text-parish-fg">{contact.postalAddress}</p>
-                            </div>
-                            <div>
-                                <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">Phone</div>
-                                <a href={`tel:${contact.phone}`} className="font-serif text-xl text-parish-fg hover:text-parish-accent transition-colors underline decoration-parish-accent/30 hover:decoration-parish-accent">{contact.phone}</a>
-                            </div>
-                            <div>
-                                <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">Email</div>
-                                <a href={`mailto:${contact.email}`} className="font-serif text-xl text-parish-fg hover:text-parish-accent transition-colors underline decoration-parish-accent/30 hover:decoration-parish-accent break-all">{contact.email}</a>
-                            </div>
-                            <div>
-                                <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">Office Hours</div>
-                                <p className="font-serif text-xl text-parish-fg">{contact.officeHours}</p>
-                            </div>
-                        </div>
-                    </motion.div>
+                    <div className="grid gap-6 lg:col-span-7 md:grid-cols-2">
+                        <InfoCard>
+                            <MapPinned className="h-6 w-6 text-parish-brass" />
+                            <div className="mt-4 ornamental-kicker">Address</div>
+                            <p className="mt-3 text-lg leading-relaxed text-parish-fg">{contact.address}</p>
+                            <div className="mt-5 ornamental-kicker">Postal Address</div>
+                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.postalAddress}</p>
+                        </InfoCard>
+                        <InfoCard>
+                            <Phone className="h-6 w-6 text-parish-brass" />
+                            <div className="mt-4 ornamental-kicker">Phone</div>
+                            <a href={`tel:${contact.phone}`} className="mt-3 block text-lg text-parish-fg underline decoration-parish-brass/35 hover:text-parish-accent">
+                                {contact.phone}
+                            </a>
+                            <div className="mt-5 ornamental-kicker">Email</div>
+                            <a href={`mailto:${contact.email}`} className="mt-3 block break-all text-sm text-parish-fg underline decoration-parish-brass/35 hover:text-parish-accent">
+                                {contact.email}
+                            </a>
+                        </InfoCard>
+                    </div>
+                </div>
+            </section>
 
-                    {/* Maps */}
-                    <div className="space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 0.2 }}
-                            className="bg-parish-surface p-5 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden"
-                        >
-                            <h3 className="font-display text-xl mb-3 px-2">St Monica's Church</h3>
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Church Maps"
+                        title={<>Both churches are easy to find once the location is surfaced clearly.</>}
+                        description="Maps are retained, but now presented inside the same visual system as the rest of the site."
+                    />
+
+                    <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                        <InfoCard className="p-5 md:p-6">
+                            <div className="ornamental-kicker">St Monica&apos;s Church</div>
+                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.stMonicaQuery}</p>
                             <iframe
                                 title="St Monica's Church location"
-                                className="w-full h-52 rounded-2xl"
+                                className="mt-5 h-72 w-full rounded-[1.5rem] border border-parish-border/10"
                                 src={`https://maps.google.com/maps?q=${encodeURIComponent(contact.stMonicaQuery)}&output=embed`}
                                 loading="lazy"
                             />
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 0.3 }}
-                            className="bg-parish-surface p-5 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden"
-                        >
-                            <h3 className="font-display text-xl mb-3 px-2">St Martin's Church</h3>
+                        </InfoCard>
+
+                        <InfoCard className="p-5 md:p-6">
+                            <div className="ornamental-kicker">St Martin&apos;s Church</div>
+                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.stMartinQuery}</p>
                             <iframe
                                 title="St Martin's Church location"
-                                className="w-full h-52 rounded-2xl"
+                                className="mt-5 h-72 w-full rounded-[1.5rem] border border-parish-border/10"
                                 src={`https://maps.google.com/maps?q=${encodeURIComponent(contact.stMartinQuery)}&output=embed`}
                                 loading="lazy"
                             />
-                        </motion.div>
+                        </InfoCard>
                     </div>
                 </div>
+            </section>
 
-                {/* Parish Schools */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="mt-20"
-                >
-                    <h2 className="font-display text-3xl md:text-4xl mb-10 text-center">Parish Schools</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {schools.map((school, i) => (
-                            <div key={i} className="bg-parish-surface p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5">
-                                <h3 className="font-display text-2xl mb-4">{school.name}</h3>
-                                <div className="space-y-3 font-serif text-lg text-parish-muted">
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Parish Schools"
+                        title={<>School communities remain part of the wider parish story.</>}
+                        description="These details stay practical and readable rather than buried in dense contact blocks."
+                    />
+
+                    <div className="mt-10 grid gap-6 md:grid-cols-2">
+                        {schools.map(school => (
+                            <InfoCard key={school.name}>
+                                <div className="ornamental-kicker">{school.name}</div>
+                                <div className="mt-4 space-y-3 text-sm leading-relaxed text-parish-muted">
                                     <p>{school.address}</p>
-                                    <p>Principal: <strong className="text-parish-fg">{school.principal}</strong></p>
-                                    <p>Phone: <a href={`tel:${school.phone}`} className="text-parish-fg hover:text-parish-accent transition-colors underline decoration-parish-accent/30">{school.phone}</a></p>
-                                    <p>Website: <a href={`https://${school.website}`} target="_blank" rel="noopener noreferrer" className="text-parish-fg hover:text-parish-accent transition-colors underline decoration-parish-accent/30">{school.website}</a></p>
+                                    <p>Principal: <span className="text-parish-fg">{school.principal}</span></p>
+                                    <p>
+                                        Phone:{' '}
+                                        <a href={`tel:${school.phone}`} className="text-parish-fg underline decoration-parish-brass/35 hover:text-parish-accent">
+                                            {school.phone}
+                                        </a>
+                                    </p>
+                                    <p>
+                                        Website:{' '}
+                                        <a
+                                            href={`https://${school.website}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-parish-fg underline decoration-parish-brass/35 hover:text-parish-accent"
+                                        >
+                                            {school.website}
+                                        </a>
+                                    </p>
                                 </div>
-                            </div>
+                            </InfoCard>
                         ))}
                     </div>
-                </motion.div>
-            </div>
-        </div>
+                </div>
+            </section>
+
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <ActionBand>
+                        <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+                            <div className="lg:col-span-8">
+                                <span className="section-label mb-4">Need A Human Answer</span>
+                                <h2 className="text-[clamp(2.2rem,4vw,3.9rem)] text-parish-fg">
+                                    Email or call before you visit if that makes your first step easier.
+                                </h2>
+                            </div>
+                            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+                                <a href={`mailto:${contact.email}`} className="pilgrimage-button">
+                                    Email The Parish
+                                </a>
+                                <Link to="/new-here" className="pilgrimage-button-secondary">
+                                    Read The Welcome Guide
+                                </Link>
+                            </div>
+                        </div>
+                    </ActionBand>
+                </div>
+            </section>
+        </UtilityPageTemplate>
     );
 }

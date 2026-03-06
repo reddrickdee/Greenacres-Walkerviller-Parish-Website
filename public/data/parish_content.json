@@ -86,25 +86,25 @@
       "title": "Connections Newsletter",
       "summary": "Current and past Connections parish newsletters are published as downloadable PDFs.",
       "url": "https://www.gwparish.org.au/News/newsletters.html",
-      "imageAsset": "assets/images/source/news_connections.webp"
+      "imageAsset": "assets/source/news_connections.webp"
     },
     {
       "title": "Parish Our Story",
       "summary": "A downloadable parish story document highlighting parish journey and ministry context.",
       "url": "https://www.gwparish.org.au/News/Our_Story.pdf",
-      "imageAsset": "assets/images/source/news_our_story.webp"
+      "imageAsset": "assets/source/news_our_story.webp"
     },
     {
       "title": "Parish Financial Report",
       "summary": "Published parish financial report for transparency and stewardship.",
       "url": "https://www.gwparish.org.au/News/Parish_Financial_Report_Sep_2020.pdf",
-      "imageAsset": "assets/images/source/news_report.webp"
+      "imageAsset": "assets/source/news_report.webp"
     },
     {
       "title": "Direct Giving App",
       "summary": "Set up direct giving for first and second collections through Good Giving.",
       "url": "https://goodgiving.com.au/home/myparish",
-      "imageAsset": "assets/images/source/giving_app.webp"
+      "imageAsset": "assets/source/giving_app.webp"
     }
   ],
   "eventItems": [
@@ -356,18 +356,18 @@
     }
   ],
   "refurbishmentImages": [
-    "assets/images/refurbishment/st_monica_3.webp",
-    "assets/images/refurbishment/st_monica_4.webp",
-    "assets/images/refurbishment/st_monica_5.webp",
-    "assets/images/refurbishment/before_1.webp",
-    "assets/images/refurbishment/after_1.webp",
-    "assets/images/refurbishment/before_2.webp",
-    "assets/images/refurbishment/after_2.webp",
-    "assets/images/refurbishment/before_3.webp",
-    "assets/images/refurbishment/after_3.webp",
-    "assets/images/refurbishment/before_4.webp",
-    "assets/images/refurbishment/after_4.webp",
-    "assets/images/refurbishment/under_construction.webp"
+    "assets/refurbishment/st_monica_3.webp",
+    "assets/refurbishment/st_monica_4.webp",
+    "assets/refurbishment/st_monica_5.webp",
+    "assets/refurbishment/before_1.webp",
+    "assets/refurbishment/after_1.webp",
+    "assets/refurbishment/before_2.webp",
+    "assets/refurbishment/after_2.webp",
+    "assets/refurbishment/before_3.webp",
+    "assets/refurbishment/after_3.webp",
+    "assets/refurbishment/before_4.webp",
+    "assets/refurbishment/after_4.webp",
+    "assets/refurbishment/under_construction.webp"
   ],
   "sacramentalJourneys": [
     {

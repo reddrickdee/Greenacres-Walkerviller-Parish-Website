@@ -9,13 +9,13 @@
       "isCurrent": false,
       "nativeBulletin": {
         "date": "February 15, 2026",
-        "coverImage": "assets/images/source/our_parish.webp",
+        "coverImage": "assets/source/our_parish.webp",
         "priestReflection": "As we enter the holy season of Lent, we are invited once again to journey with Christ into the wilderness. The ashes we received on Wednesday are not merely a sign of mourning, but a call to transformation. This week, we reflect on the temptations of Jesus and how they mirror the challenges we face in our own lives today.\n\nLent is not just about giving things up; it is about making room for God. In the silence of our hearts, away from the noise of our busy lives, what is God whispering to us? We are called to prayer, fasting, and almsgiving — the three pillars that help us reorient our lives towards the Gospel.\n\nMay this season be for all of us a time of deep spiritual renewal, as we prepare our hearts for the joy of the Resurrection. Let us be patient with ourselves and with one another, knowing that God's grace is always sufficient.",
         "sections": [
           {
             "title": "Project Refurbishment Update",
             "content": "The restoration of the sanctuary floors at St Monica's is ahead of schedule. We expect the scaffolding to be removed by early March, revealing the original woodwork in all its glory.",
-            "imageAsset": "assets/images/refurbishment/after_1.webp",
+            "imageAsset": "assets/refurbishment/after_1.webp",
             "imageFocalPoint": {
               "x": 0.0,
               "y": -0.25

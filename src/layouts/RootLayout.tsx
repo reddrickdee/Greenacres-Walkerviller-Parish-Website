@@ -1,192 +1,323 @@
 import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { ArrowRight, CalendarClock, Church, Clock3, HeartHandshake, Mail, MapPinned, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { AccessibilityMenu } from '../components/AccessibilityMenu';
 import { ScrollToTop } from '../components/ScrollToTop';
 import { SkipLink } from '../components/SkipLink';
 
-const NAV_LINKS = [
+const PRIMARY_NAV = [
     { to: '/', label: 'Home' },
-    { to: '/about', label: 'About Us' },
-    { to: '/mass-times', label: 'Mass Times' },
-    { to: '/sacraments', label: 'Sacraments' },
-    { to: '/community', label: 'Community Hub' },
-    { to: '/giving', label: 'Give' },
-    { to: '/volunteer', label: 'Volunteer' },
-    { to: '/live', label: 'Live Stream' },
-    { to: '/homilies', label: 'Homilies' },
-    { to: '/news-events', label: 'News & Events' },
-    { to: '/gallery', label: 'Gallery' },
-    { to: '/history', label: 'History' },
-    { to: '/contact', label: 'Contact' },
     { to: '/new-here', label: "I'm New Here" },
+    { to: '/mass-times', label: 'Mass Times' },
+    { to: '/about', label: 'About' },
+    { to: '/news-events', label: 'News & Events' },
+    { to: '/contact', label: 'Contact' },
 ];
 
-export function RootLayout() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const location = useLocation();
-    const { scrollY } = useScroll();
-    const [isScrolled, setIsScrolled] = useState(false);
+const DRAWER_GROUPS = [
+    {
+        title: 'Explore',
+        links: [
+            { to: '/', label: 'Home' },
+            { to: '/about', label: 'About Us' },
+            { to: '/history', label: 'History' },
+            { to: '/gallery', label: 'Gallery' },
+            { to: '/new-here', label: "I'm New Here" },
+        ],
+    },
+    {
+        title: 'Worship',
+        links: [
+            { to: '/mass-times', label: 'Mass Times' },
+            { to: '/sacraments', label: 'Sacraments' },
+            { to: '/live', label: 'Live Stream' },
+            { to: '/homilies', label: 'Homilies' },
+            { to: '/news-events', label: 'News & Events' },
+        ],
+    },
+    {
+        title: 'Community',
+        links: [
+            { to: '/community', label: 'Community Hub' },
+            { to: '/volunteer', label: 'Volunteer' },
+            { to: '/giving', label: 'Give' },
+            { to: '/contact', label: 'Contact' },
+            { to: '/safeguarding', label: 'Safeguarding' },
+        ],
+    },
+];
 
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        setIsScrolled(latest > 50);
+const QUICK_ACTIONS = [
+    {
+        icon: CalendarClock,
+        title: 'Weekend Mass',
+        detail: "Sat 6:00pm St Monica's / Sun 9:30am St Martin's",
+        to: '/mass-times',
+    },
+    {
+        icon: MapPinned,
+        title: 'Plan your first visit',
+        detail: 'Find parking, contact details, and what to expect.',
+        to: '/new-here',
+    },
+    {
+        icon: Mail,
+        title: 'Speak with the parish office',
+        detail: 'Reach out for pastoral care, sacraments, or support.',
+        to: '/contact',
+    },
+];
+
+function isActive(pathname: string, to: string) {
+    if (to === '/') {
+        return pathname === '/';
+    }
+
+    return pathname === to || pathname.startsWith(`${to}/`);
+}
+
+export function RootLayout() {
+    const location = useLocation();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, 'change', latest => {
+        setIsScrolled(latest > 40);
     });
 
     return (
         <div className="min-h-screen flex flex-col">
-            {/* ── Skip Navigation (WCAG 2.4.1) ────────────────────────── */}
             <SkipLink />
-            {/* ── Navigation ────────────────────────────────────────── */}
+
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex flex-col ${isScrolled
-                    ? 'bg-parish-surface/90 backdrop-blur-md border-b border-parish-border/10 py-0 shadow-lg shadow-parish-fg/5'
-                    : 'bg-transparent border-b-0 py-2'
+                className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${isScrolled
+                    ? 'border-b border-parish-border/10 bg-parish-surface/88 shadow-[0_18px_60px_-40px_rgba(0,0,0,0.55)] backdrop-blur-2xl'
+                    : 'bg-transparent'
                     }`}
                 role="navigation"
                 aria-label="Main navigation"
             >
-                <div className="max-w-[1480px] mx-auto px-4 md:px-6 flex justify-between items-center h-20">
-                    {/* Logo / Parish Name */}
+                <div className="border-b border-parish-border/10 bg-parish-fg text-parish-inverse">
+                    <div className="mx-auto flex max-w-[1480px] items-center justify-center gap-3 px-4 py-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.28em] md:justify-between md:px-6">
+                        <span className="hidden md:block text-parish-inverse/70">Greenacres + Walkerville Catholic Parish</span>
+                        <span>In the footsteps of Jesus</span>
+                    </div>
+                </div>
+
+                <div className="mx-auto flex max-w-[1480px] items-center justify-between gap-4 px-4 py-4 md:px-6">
                     <Link
                         to="/"
-                        className="flex items-center gap-3 shrink-0 whitespace-nowrap font-display font-semibold tracking-wider text-base text-parish-fg no-underline hover:text-parish-accent transition-colors"
-                        aria-label="Greenacres Walkerville Parish – Home"
+                        className="flex min-w-0 items-center gap-3 no-underline"
+                        aria-label="Greenacres Walkerville Catholic Parish home"
                     >
-                        <img
-                            src="/parish-logo.png"
-                            alt="Greenacres Walkerville Parish logo"
-                            className="h-12 w-12 object-contain"
-                        />
-                        Greenacres Walkerville
+                        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-parish-brass/35 bg-parish-surface/75 shadow-halo backdrop-blur-md">
+                            <img
+                                src="/parish-logo.png"
+                                alt="Greenacres Walkerville Parish logo"
+                                className="h-9 w-9 object-contain"
+                            />
+                        </div>
+                        <div className="min-w-0">
+                            <div className="font-display text-xl leading-none text-parish-fg md:text-2xl">
+                                Greenacres Walkerville
+                            </div>
+                            <div className="mt-1 truncate text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-parish-muted md:text-[0.72rem]">
+                                Catholic Parish • Adelaide
+                            </div>
+                        </div>
                     </Link>
 
-                    <div className="flex items-center gap-2 md:gap-3">
-                        {/* Desktop Links (2xl and up) */}
-                        <div className="hidden 2xl:flex items-center">
-                            {NAV_LINKS.filter(l => l.to !== '/').map(link => (
-                                <Link
-                                    key={link.to}
-                                    to={link.to}
-                                    onClick={() => setMenuOpen(false)}
-                                    className={`
-                      whitespace-nowrap font-display tracking-wider text-nav uppercase px-2 py-2.5 rounded-lg transition-colors no-underline
-                      ${location.pathname === link.to
-                                            ? 'text-parish-accent bg-parish-accent/10'
-                                            : 'text-parish-muted hover:text-parish-fg hover:bg-parish-border/5'}
-                      ${link.to === '/new-here'
-                                            ? 'border border-parish-secondary text-parish-secondary hover:bg-parish-secondary hover:text-parish-inverse ml-3 font-semibold rounded-full px-4'
-                                            : ''}
-                    `}
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                        </div>
+                    <div className="hidden items-center gap-1 xl:flex">
+                        {PRIMARY_NAV.map(link => (
+                            <Link
+                                key={link.to}
+                                to={link.to}
+                                className={`rounded-full px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.24em] no-underline transition-all duration-300 ${isActive(location.pathname, link.to)
+                                    ? 'bg-parish-fg text-parish-inverse shadow-halo'
+                                    : 'text-parish-muted hover:bg-parish-border/6 hover:text-parish-fg'
+                                    }`}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
 
-                        <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-2">
+                        <Link to="/community" className="pilgrimage-button-ghost hidden lg:inline-flex">
+                            Community
+                        </Link>
+                        <Link to="/giving" className="pilgrimage-button hidden md:inline-flex">
+                            Give
+                        </Link>
+                        <div className="flex items-center gap-1 rounded-full border border-parish-border/10 bg-parish-surface/65 px-1.5 py-1 backdrop-blur-md">
                             <AccessibilityMenu />
                             <ThemeToggle />
                         </div>
-
-                        {/* Mobile Hamburger */}
                         <button
-                            onClick={() => setMenuOpen(!menuOpen)}
-                            className="2xl:hidden flex flex-col justify-center items-center w-12 h-12 rounded-lg hover:bg-parish-border/5 transition-colors"
+                            onClick={() => setMenuOpen(open => !open)}
+                            className="flex h-12 w-12 items-center justify-center rounded-full border border-parish-border/12 bg-parish-surface/70 text-parish-fg transition-colors hover:border-parish-brass/35 hover:text-parish-accent xl:hidden"
                             aria-expanded={menuOpen}
                             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                         >
-                            <span className={`block w-6 h-0.5 bg-parish-fg transition-transform duration-300 ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-                            <span className={`block w-6 h-0.5 bg-parish-fg my-1.5 transition-opacity duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-                            <span className={`block w-6 h-0.5 bg-parish-fg transition-transform duration-300 ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+                            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                         </button>
                     </div>
                 </div>
 
-                {/* Mobile Menu Drawer */}
                 <AnimatePresence>
                     {menuOpen && (
                         <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                            className="2xl:hidden bg-parish-surface border-t border-parish-border/10 overflow-hidden"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -12 }}
+                            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                            className="border-t border-parish-border/10 bg-parish-surface/96 backdrop-blur-2xl xl:hidden"
                         >
-                            <div className="px-6 py-6 flex flex-col gap-2">
-                                {NAV_LINKS.map(link => (
-                                    <Link
-                                        key={link.to}
-                                        to={link.to}
-                                        onClick={() => setMenuOpen(false)}
-                                        className={`
-                      font-display tracking-wider text-base uppercase px-5 py-4 rounded-xl transition-colors no-underline
-                      ${location.pathname === link.to
-                                                ? 'text-parish-accent bg-parish-accent/10'
-                                                : 'text-parish-muted hover:text-parish-fg hover:bg-parish-border/5'}
-                    `}
-                                    >
-                                        {link.label}
-                                    </Link>
-                                ))}
+                            <div className="mx-auto grid max-w-[1480px] gap-8 px-5 py-6 md:grid-cols-12 md:px-6">
+                                <div className="md:col-span-8 grid gap-8 md:grid-cols-3">
+                                    {DRAWER_GROUPS.map(group => (
+                                        <div key={group.title}>
+                                            <div className="ornamental-kicker mb-4">{group.title}</div>
+                                            <div className="space-y-2">
+                                                {group.links.map(link => (
+                                                    <Link
+                                                        key={link.to}
+                                                        to={link.to}
+                                                        onClick={() => setMenuOpen(false)}
+                                                        className={`flex items-center justify-between rounded-[1.25rem] px-4 py-3 no-underline transition-all ${isActive(location.pathname, link.to)
+                                                            ? 'bg-parish-fg text-parish-inverse'
+                                                            : 'bg-parish-border/5 text-parish-fg hover:bg-parish-border/10'
+                                                            }`}
+                                                    >
+                                                        <span className="text-sm font-semibold uppercase tracking-[0.18em]">{link.label}</span>
+                                                        <ArrowRight className="h-4 w-4 opacity-60" />
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="md:col-span-4 sanctuary-panel p-5">
+                                    <div className="ornamental-kicker mb-4">Quick Actions</div>
+                                    <div className="space-y-3">
+                                        {QUICK_ACTIONS.map(action => {
+                                            const Icon = action.icon;
+                                            return (
+                                                <Link
+                                                    key={action.title}
+                                                    to={action.to}
+                                                    onClick={() => setMenuOpen(false)}
+                                                    className="flex items-start gap-3 rounded-[1.5rem] bg-parish-border/5 px-4 py-4 text-parish-fg no-underline transition-all hover:bg-parish-border/8"
+                                                >
+                                                    <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-surface/70 text-parish-brass">
+                                                        <Icon className="h-5 w-5" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-sm font-semibold uppercase tracking-[0.14em]">{action.title}</div>
+                                                        <div className="mt-1 text-sm leading-relaxed text-parish-muted">{action.detail}</div>
+                                                    </div>
+                                                </Link>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
                             </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
             </nav>
 
-            {/* ── Page Content ──────────────────────────────────────── */}
             <ScrollToTop />
             <main id="main-content" className="flex-1" role="main">
                 <Outlet />
             </main>
 
-            {/* ── Footer ────────────────────────────────────────────── */}
-            <footer className="bg-parish-surface border-t border-parish-border/5 text-parish-fg px-8 md:px-16 py-20" role="contentinfo">
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between gap-16">
-                        {/* Branding */}
-                        <div className="max-w-sm">
-                            <Link to="/" className="font-display text-2xl tracking-wider text-parish-accent no-underline block mb-6">
-                                Greenacres Walkerville<br />Catholic Parish
+            <footer className="mt-8 border-t border-parish-border/10 bg-parish-fg px-6 py-16 text-parish-inverse md:px-10 lg:px-16" role="contentinfo">
+                <div className="mx-auto max-w-7xl">
+                    <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+                        <div className="lg:col-span-5">
+                            <div className="section-label !text-parish-inverse/65 before:!bg-parish-brass/80 mb-5">Sanctuary Light</div>
+                            <Link to="/" className="no-underline">
+                                <h2 className="max-w-md text-4xl text-parish-inverse md:text-5xl">
+                                    A parish that feels calm, welcoming, and unmistakably Catholic.
+                                </h2>
                             </Link>
-                            <p className="font-serif text-lg text-parish-muted italic leading-relaxed">
-                                "I can do all things through Christ who strengthens me." — Philippians 4:13
+                            <p className="mt-5 max-w-xl text-base leading-relaxed text-parish-inverse/72 md:text-lg">
+                                Greenacres Walkerville Catholic Parish gathers across St Monica&apos;s Walkerville and St Martin&apos;s Greenacres. Whether you are visiting for the first time or returning after years away, you are welcome here.
                             </p>
+                            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                                <Link to="/new-here" className="pilgrimage-button">
+                                    Plan A First Visit
+                                </Link>
+                                <Link to="/mass-times" className="pilgrimage-button-secondary !border-white/15 !bg-white/6 !text-white">
+                                    View Mass Times
+                                </Link>
+                            </div>
                         </div>
 
-                        {/* Navigation Columns */}
-                        <div className="flex gap-16 md:gap-24">
-                            <div className="flex flex-col gap-4">
-                                <span className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2">Discover</span>
-                                <Link to="/" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Home</Link>
-                                <Link to="/about" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">About Us</Link>
-                                <Link to="/history" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">History</Link>
-                                <Link to="/gallery" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Gallery</Link>
-                                <Link to="/community" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Community Hub</Link>
-                                <Link to="/new-here" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">I'm New Here</Link>
+                        <div className="lg:col-span-7 grid gap-8 md:grid-cols-3">
+                            <div>
+                                <div className="ornamental-kicker !text-parish-brass mb-4">Visit</div>
+                                <div className="space-y-4 text-parish-inverse/78">
+                                    <div className="flex gap-3">
+                                        <Church className="mt-1 h-4 w-4 text-parish-brass" />
+                                        <div className="text-sm leading-relaxed">St Monica&apos;s Church, 90 North East Road, Walkerville</div>
+                                    </div>
+                                    <div className="flex gap-3">
+                                        <Church className="mt-1 h-4 w-4 text-parish-brass" />
+                                        <div className="text-sm leading-relaxed">St Martin&apos;s Church, Corner Muller and Hampstead Roads, Greenacres</div>
+                                    </div>
+                                    <div className="flex gap-3">
+                                        <Clock3 className="mt-1 h-4 w-4 text-parish-brass" />
+                                        <div className="text-sm leading-relaxed">Weekend Masses: Saturday 6:00pm and Sunday 9:30am</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-4">
-                                <span className="font-display tracking-widest text-xs uppercase text-parish-accent mb-2">Worship</span>
-                                <Link to="/mass-times" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Mass Times</Link>
-                                <Link to="/sacraments" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Sacraments</Link>
-                                <Link to="/news-events" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">News & Events</Link>
-                                <Link to="/contact" className="text-parish-muted hover:text-parish-accent transition-colors no-underline font-serif text-lg py-1">Contact</Link>
+
+                            <div>
+                                <div className="ornamental-kicker !text-parish-brass mb-4">Explore</div>
+                                <div className="space-y-3">
+                                    {PRIMARY_NAV.map(link => (
+                                        <Link
+                                            key={link.to}
+                                            to={link.to}
+                                            className="block text-sm uppercase tracking-[0.18em] text-parish-inverse/78 no-underline transition-colors hover:text-white"
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    ))}
+                                    <Link to="/community" className="block text-sm uppercase tracking-[0.18em] text-parish-inverse/78 no-underline transition-colors hover:text-white">Community Hub</Link>
+                                    <Link to="/safeguarding" className="block text-sm uppercase tracking-[0.18em] text-parish-inverse/78 no-underline transition-colors hover:text-white">Safeguarding</Link>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className="ornamental-kicker !text-parish-brass mb-4">Belong</div>
+                                <div className="space-y-4 text-parish-inverse/78">
+                                    <Link to="/contact" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-white">
+                                        <Mail className="h-4 w-4 text-parish-brass" />
+                                        Contact the Parish Office
+                                    </Link>
+                                    <Link to="/volunteer" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-white">
+                                        <HeartHandshake className="h-4 w-4 text-parish-brass" />
+                                        Volunteer and serve
+                                    </Link>
+                                    <Link to="/giving" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-white">
+                                        <ArrowRight className="h-4 w-4 text-parish-brass" />
+                                        Support parish life
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="mt-16 pt-8 border-t border-parish-border/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-parish-muted font-serif text-base text-center md:text-left">
-                            © {new Date().getFullYear()} Greenacres Walkerville Catholic Parish<br />
-                            <Link to="/safeguarding" className="hover:text-parish-accent transition-colors">Safeguarding & Privacy</Link>
-                        </p>
-                        <p className="text-parish-muted font-serif text-sm italic text-center max-w-md">
-                            We acknowledge the Traditional Owners and Custodians of the lands on which our parish gathers. We pay our respects to Elders past, present and emerging.
-                        </p>
-                        <p className="text-parish-muted font-serif text-sm italic text-center md:text-right">
-                            In the Footsteps of Jesus
-                        </p>
+                    <div className="mt-14 border-t border-white/10 pt-6 text-sm leading-relaxed text-parish-inverse/60 md:flex md:items-center md:justify-between md:gap-6">
+                        <p>© {new Date().getFullYear()} Greenacres Walkerville Catholic Parish.</p>
+                        <p>We acknowledge the Traditional Owners and Custodians of the lands on which our parish gathers and pay our respects to Elders past, present and emerging.</p>
                     </div>
                 </div>
             </footer>

@@ -14,7 +14,7 @@ interface GalleryImage {
 const GALLERY_IMAGES: GalleryImage[] = [
     { src: '/assets/gallery/Google Chrome 2026-02-20 07.39.40.png', alt: 'Stained glass window detail', category: 'Church', colSpan: 'col-span-1 md:col-span-2', rowSpan: 'row-span-2' },
     { src: '/assets/gallery/Google Chrome 2026-02-20 07.44.20.png', alt: 'St Martin Church Exterior', category: 'Church', colSpan: 'col-span-1', rowSpan: 'row-span-1' },
-    { src: '/assets/images/parish_community_gathering.webp', alt: 'Parish community gathering outside the church', category: 'Community', colSpan: 'col-span-1 md:col-span-2', rowSpan: 'row-span-1' },
+    { src: '/assets/source/our_parish.webp', alt: 'Parish community gathering outside the church', category: 'Community', colSpan: 'col-span-1 md:col-span-2', rowSpan: 'row-span-1' },
     { src: '/assets/gallery/pomelli-image.png', alt: 'Greenacres Walkerville Parish Logo', category: 'Church', colSpan: 'col-span-1', rowSpan: 'row-span-1' },
     { src: '/assets/gallery/Google Chrome 2026-02-20 07.41.59.png', alt: 'Church interior altar view', category: 'Church', colSpan: 'col-span-1 md:col-span-2', rowSpan: 'row-span-1' },
     { src: '/assets/gallery/Google Chrome 2026-02-20 07.40.12.png', alt: 'St Monica Church altar', category: 'Church', colSpan: 'col-span-1', rowSpan: 'row-span-2' },

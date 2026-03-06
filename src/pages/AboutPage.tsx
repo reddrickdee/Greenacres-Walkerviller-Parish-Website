@@ -1,140 +1,160 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, StoryPageTemplate } from '../components/layout/PageTemplates';
 
 export function AboutPage() {
     const { content, isLoading } = useParishData();
 
     usePageSEO({
         title: 'About Us',
-        description: 'Meet the leadership team of Greenacres Walkerville Catholic Parish. Our vision, mission, pastoral council, and parish prayer.',
+        description: 'Read the vision, mission, parish prayer, and leadership story of Greenacres Walkerville Catholic Parish.',
         path: '/about',
+        ogImage: '/assets/source/our_parish.webp',
     });
 
     if (isLoading || !content) {
-        return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;
+        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
     }
 
     return (
-        <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-            <div className="max-w-5xl mx-auto">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="mb-16 md:mb-20 text-center"
-                >
-                    <div className="text-parish-accent font-display tracking-widest text-base uppercase mb-4">About Our Parish</div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-parish-fg leading-tight mx-auto max-w-3xl text-balance">
-                        Welcome and <em className="font-serif italic text-parish-accent">Mission</em>
-                    </h1>
-                </motion.div>
-
-                {/* Priest's Welcome */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
-                    className="mb-16 md:mb-20"
-                >
-                    <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-8">From the Parish Priest</h2>
-                    <p className="font-serif text-xl md:text-2xl leading-relaxed text-parish-muted">
-                        {content.priestWelcome}
-                    </p>
-                </motion.div>
-
-                {/* Pastoral Council Chair */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="bg-parish-surface p-8 md:p-12 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 mb-16 md:mb-20"
-                >
-                    <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-8">From the Pastoral Council</h2>
-                    <p className="font-serif text-xl md:text-2xl leading-relaxed text-parish-muted">
-                        {content.pastoralChairMessage}
-                    </p>
-                </motion.div>
-
-                {/* Vision + Mission */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 md:mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1 }}
-                    >
-                        <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-6">Our Vision</h2>
-                        <p className="font-serif text-xl leading-relaxed text-parish-muted">
-                            {content.visionStatement}
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.15 }}
-                    >
-                        <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-6">Our Mission</h2>
-                        <ul className="space-y-4">
-                            {content.missionPoints.map((point, i) => (
-                                <li key={i} className="font-serif text-xl leading-relaxed text-parish-muted flex gap-4 items-start">
-                                    <span className="text-parish-accent font-display text-2xl leading-none mt-1">✦</span>
-                                    <span>{point.title}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
+        <StoryPageTemplate
+            eyebrow="About Our Parish"
+            title={<>A parish story shaped by worship, welcome, and responsibility.</>}
+            description="Greenacres Walkerville Catholic Parish carries history, prayer, and pastoral care across two church communities. This page frames that story with greater clarity and visual dignity."
+            imageSrc="/assets/source/our_parish.webp"
+            imageAlt="Greenacres Walkerville parish community gathering"
+            actions={(
+                <>
+                    <Link to="/mass-times" className="pilgrimage-button">
+                        View Mass Times
+                    </Link>
+                    <Link to="/new-here" className="pilgrimage-button-secondary">
+                        I&apos;m New Here
+                    </Link>
+                </>
+            )}
+            aside={(
+                <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
+                    <div className="ornamental-kicker">Parish Vision</div>
+                    <p className="mt-3 text-base leading-relaxed text-parish-muted">{content.visionStatement}</p>
                 </div>
+            )}
+        >
+            <section className="page-section">
+                <div className="page-section-inner grid gap-8 lg:grid-cols-12 lg:gap-10">
+                    <div className="lg:col-span-5">
+                        <SectionIntro
+                            eyebrow="Pastoral Voice"
+                            title={<>Leadership here is pastoral before it is institutional.</>}
+                            description="The site now introduces the parish through actual voice and mission, rather than dropping visitors directly into dense blocks of church information."
+                        />
+                    </div>
+                    <div className="lg:col-span-7 grid gap-6">
+                        <InfoCard>
+                            <div className="ornamental-kicker">From the Parish Priest</div>
+                            <p className="mt-4 text-lg leading-relaxed text-parish-muted md:text-xl">{content.priestWelcome}</p>
+                        </InfoCard>
+                        <InfoCard>
+                            <div className="ornamental-kicker">From the Pastoral Council</div>
+                            <p className="mt-4 text-base leading-relaxed text-parish-muted md:text-lg">{content.pastoralChairMessage}</p>
+                        </InfoCard>
+                    </div>
+                </div>
+            </section>
 
-                {/* Parish Prayer */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="bg-parish-fg p-8 md:p-14 rounded-[2rem] text-parish-surface mb-16 md:mb-20 text-center"
-                >
-                    <h2 className="font-display text-3xl text-parish-accent mb-8">Parish Prayer</h2>
-                    <p className="font-serif text-xl md:text-2xl italic leading-relaxed text-parish-surface/80 max-w-3xl mx-auto">
-                        "{content.parishPrayerText}"
-                    </p>
-                </motion.div>
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner grid gap-6 lg:grid-cols-2">
+                    <ScriptureBlock>
+                        <div className="ornamental-kicker !text-parish-brass">Parish Prayer</div>
+                        <p className="mt-4 text-2xl leading-relaxed text-parish-inverse/88 md:text-[2rem]">
+                            &ldquo;{content.parishPrayerText}&rdquo;
+                        </p>
+                    </ScriptureBlock>
 
-                {/* Council Members */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >
-                    <h2 className="font-display text-3xl md:text-4xl text-parish-fg mb-10 text-center">Pastoral Council</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {content.councilMembers.map((member, i) => (
-                            <div key={i} className="bg-parish-surface rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 overflow-hidden">
-                                {member.photoAsset && (
-                                    <div className="aspect-video w-full">
+                    <InfoCard>
+                        <div className="ornamental-kicker">Mission Commitments</div>
+                        <div className="mt-4 space-y-4">
+                            {content.missionPoints.map(point => (
+                                <div key={point.title} className="flex gap-3">
+                                    <span className="mt-1 text-parish-brass">✦</span>
+                                    <p className="text-sm leading-relaxed text-parish-muted md:text-base">{point.title}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </InfoCard>
+                </div>
+            </section>
+
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Pastoral Council"
+                        title={<>The people helping carry the parish forward.</>}
+                        description="Leadership profiles are presented as a calm editorial gallery rather than generic cards."
+                        align="center"
+                    />
+
+                    <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                        {content.councilMembers.map((member, index) => (
+                            <motion.div
+                                key={member.name}
+                                initial={{ opacity: 0, y: 22 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-70px' }}
+                                transition={{ duration: 0.65, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                                className="sanctuary-card p-0"
+                            >
+                                {member.photoAsset ? (
+                                    <div className="image-panel min-h-[260px] rounded-none border-x-0 border-t-0 border-b border-parish-border/10">
                                         <img
                                             src={`/${member.photoAsset}`}
                                             alt={member.name}
                                             loading="lazy"
-                                            className="w-full h-full object-cover"
+                                            className="h-full w-full object-cover"
                                         />
                                     </div>
+                                ) : (
+                                    <div className="flex min-h-[220px] items-end rounded-t-[1.75rem] bg-gradient-to-br from-parish-elevated to-parish-surface px-6 py-6">
+                                        <div className="ornamental-kicker">Pastoral Profile</div>
+                                    </div>
                                 )}
-                                <div className="p-8 md:p-10">
-                                    <div className="font-display tracking-widest text-sm uppercase text-parish-accent mb-2">{member.role}</div>
-                                    <div className="font-display text-2xl text-parish-fg mb-4">{member.name}</div>
-                                    <p className="font-serif text-lg text-parish-muted leading-relaxed">{member.bio}</p>
+                                <div className="px-6 py-7">
+                                    <div className="ornamental-kicker">{member.role}</div>
+                                    <h3 className="mt-3 text-3xl text-parish-fg">{member.name}</h3>
+                                    <p className="mt-4 text-sm leading-relaxed text-parish-muted">{member.bio}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                </motion.div>
-            </div>
-        </div>
+                </div>
+            </section>
+
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <ActionBand>
+                        <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+                            <div className="lg:col-span-8">
+                                <span className="section-label mb-4">Next Step</span>
+                                <h2 className="text-[clamp(2.2rem,4vw,4rem)] text-parish-fg">
+                                    Learn the parish story, then come and experience it in person.
+                                </h2>
+                            </div>
+                            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+                                <Link to="/mass-times" className="pilgrimage-button">
+                                    Plan A Visit
+                                </Link>
+                                <Link to="/history" className="pilgrimage-button-secondary inline-flex items-center">
+                                    Explore Parish History
+                                    <ArrowRight className="h-4 w-4" />
+                                </Link>
+                            </div>
+                        </div>
+                    </ActionBand>
+                </div>
+            </section>
+        </StoryPageTemplate>
     );
 }

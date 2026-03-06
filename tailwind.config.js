@@ -30,9 +30,9 @@ export default {
                 }
             },
             fontFamily: {
-                display: ['Merriweather', 'serif'],
-                serif: ['Lora', 'serif'],
-                body: ['Inter', 'sans-serif'],
+                display: ['Fraunces', 'serif'],
+                serif: ['Fraunces', 'serif'],
+                body: ['Manrope', 'sans-serif'],
                 dyslexic: ['OpenDyslexic', 'sans-serif'],
             },
             fontSize: {
@@ -44,6 +44,10 @@ export default {
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            },
+            boxShadow: {
+                sanctuary: '0 35px 90px -45px rgba(0, 0, 0, 0.45)',
+                halo: '0 22px 60px -32px hsla(var(--color-parish-brass), 0.35)',
             },
             animation: {
                 'fade-in': 'fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',

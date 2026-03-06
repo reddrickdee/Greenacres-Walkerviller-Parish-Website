@@ -1,115 +1,156 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ArrowRight, CalendarRange } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { ActionBand, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
+
+function normalizeAssetPath(path?: string) {
+    if (!path) return '/assets/source/news_connections.webp';
+    return `/${path.replace('assets/images/', 'assets/')}`;
+}
 
 export function NewsEventsPage() {
     const { content, newsletters, isLoading } = useParishData();
 
     usePageSEO({
         title: 'News & Events',
-        description: 'Stay connected with Greenacres Walkerville Parish. Parish bulletins, Connections newsletter archive, upcoming events, and community updates.',
+        description: 'Stay connected with parish bulletins, the newsletter archive, and upcoming events at Greenacres Walkerville Catholic Parish.',
         path: '/news-events',
+        ogImage: '/assets/source/news_connections.webp',
     });
 
     if (isLoading || !content || !newsletters) {
-        return <div className="h-screen flex items-center justify-center bg-parish-bg font-display tracking-widest text-lg">Loading…</div>;
+        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
     }
 
     return (
-        <div className="min-h-screen bg-parish-bg pt-28 pb-24 px-6 md:px-16 lg:px-24">
-            <div className="max-w-6xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="mb-16 md:mb-20 text-center"
-                >
-                    <div className="text-parish-accent font-display tracking-widest text-base uppercase mb-4">Parish Life</div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-parish-fg leading-tight text-balance">
-                        News & <em className="font-serif italic text-parish-accent">Events</em>
-                    </h1>
-                    <p className="font-serif text-xl text-parish-muted mt-6 max-w-2xl mx-auto">
-                        Stay connected with your parish community.
+        <HighlightPageTemplate
+            eyebrow="Parish Rhythm"
+            title={<>News, bulletins, and upcoming events should feel active, not archival.</>}
+            description="This page moves from generic link listing to a more current, editorial view of parish life while preserving the bulletin archive and event detail."
+            imageSrc="/assets/source/news_connections.webp"
+            imageAlt="Parish newsletter and updates"
+            actions={(
+                <>
+                    <Link to="/community" className="pilgrimage-button">
+                        Visit Community Hub
+                    </Link>
+                    <Link to="/contact" className="pilgrimage-button-secondary">
+                        Contact The Parish
+                    </Link>
+                </>
+            )}
+            aside={(
+                <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
+                    <div className="ornamental-kicker">Current Rhythm</div>
+                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                        Upcoming events are paired with bulletins and newsletters so visitors can quickly understand what parish life looks like right now.
                     </p>
-                </motion.div>
+                </div>
+            )}
+        >
+            <section className="page-section">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Featured Resources"
+                        title={<>Key resources should be visual and immediately understandable.</>}
+                        description="The main bulletin resources are surfaced as editorial cards with their associated imagery."
+                    />
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-                    {/* Main Content */}
-                    <div className="lg:col-span-8">
-                        <h2 className="font-display text-3xl mb-8 border-b-2 border-parish-accent/20 pb-4">Parish Bulletin</h2>
-                        <div className="space-y-10">
-                            {content.newsItems.map((item, index) => (
-                                <motion.a
-                                    key={item.title}
-                                    href={item.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: "-40px" }}
-                                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                                    className="group block bg-parish-surface p-8 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 hover:border-parish-accent/30 transition-all no-underline"
-                                >
-                                    <h3 className="font-display text-2xl mb-3 text-parish-fg group-hover:text-parish-accent transition-colors">{item.title}</h3>
-                                    <p className="font-serif text-xl text-parish-muted leading-relaxed">{item.summary}</p>
-                                    <span className="mt-4 inline-block font-display tracking-widest text-sm uppercase text-parish-accent">
-                                        Open Resource →
+                    <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                        {content.newsItems.map((item, index) => (
+                            <motion.a
+                                key={item.title}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                initial={{ opacity: 0, y: 22 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-70px' }}
+                                transition={{ duration: 0.68, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                                className="sanctuary-card p-0 no-underline"
+                            >
+                                <div className="image-panel min-h-[250px] rounded-none border-x-0 border-t-0 border-b border-parish-border/10">
+                                    <img
+                                        src={normalizeAssetPath(item.imageAsset)}
+                                        alt={item.title}
+                                        className="h-full w-full object-cover"
+                                    />
+                                </div>
+                                <div className="px-6 py-7">
+                                    <div className="ornamental-kicker">Featured Resource</div>
+                                    <h3 className="mt-3 text-3xl text-parish-fg">{item.title}</h3>
+                                    <p className="mt-4 text-sm leading-relaxed text-parish-muted md:text-base">{item.summary}</p>
+                                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent">
+                                        Open resource
+                                        <ArrowRight className="h-4 w-4" />
                                     </span>
-                                </motion.a>
-                            ))}
-                        </div>
+                                </div>
+                            </motion.a>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                        {/* Events */}
-                        <h2 className="font-display text-3xl mt-20 mb-8 border-b-2 border-parish-accent/20 pb-4">Upcoming Events</h2>
-                        <div className="space-y-6">
-                            {content.eventItems.map((item, i) => (
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner grid gap-8 lg:grid-cols-12 lg:gap-10">
+                    <div className="lg:col-span-8">
+                        <SectionIntro
+                            eyebrow="Upcoming Events"
+                            title={<>Upcoming parish moments, arranged as a readable timeline.</>}
+                            description="Events are treated as the living front edge of parish life rather than secondary metadata."
+                        />
+                        <div className="mt-10 space-y-5">
+                            {content.eventItems.map((item, index) => (
                                 <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: i * 0.1 }}
-                                    className="flex flex-col sm:flex-row gap-5 items-start bg-parish-surface p-6 rounded-2xl border border-parish-border/5"
+                                    key={`${item.title}-${item.dateLabel}`}
+                                    initial={{ opacity: 0, x: -16 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true, margin: '-70px' }}
+                                    transition={{ duration: 0.6, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                                    className="sanctuary-card flex flex-col gap-4 md:flex-row md:items-start"
                                 >
-                                    <div className="bg-parish-accent text-parish-surface px-5 py-3 rounded-xl font-display text-sm tracking-widest uppercase text-center min-w-[120px] shrink-0">
-                                        {item.dateLabel}
+                                    <div className="flex min-w-[144px] items-center justify-center rounded-[1.3rem] border border-parish-brass/20 bg-parish-elevated/70 px-4 py-4 text-center">
+                                        <div>
+                                            <div className="ornamental-kicker">{item.dateLabel}</div>
+                                            <CalendarRange className="mx-auto mt-3 h-5 w-5 text-parish-brass" />
+                                        </div>
                                     </div>
                                     <div>
-                                        <h3 className="font-display text-xl mb-2">{item.title}</h3>
-                                        <p className="font-serif text-lg text-parish-muted">{item.description}</p>
+                                        <h3 className="text-2xl text-parish-fg">{item.title}</h3>
+                                        <p className="mt-3 text-sm leading-relaxed text-parish-muted md:text-base">{item.description}</p>
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Sidebar */}
                     <div className="lg:col-span-4">
-                        <div className="bg-parish-surface p-8 md:p-10 rounded-[2rem] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.06)] border border-parish-border/5 sticky top-28">
-                            <h3 className="font-display text-2xl mb-6">Bulletin Archive</h3>
-                            <p className="font-serif text-base text-parish-muted mb-6">Browse past editions of the Connections newsletter.</p>
-                            <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
+                        <div className="sanctuary-panel sticky top-32 px-6 py-7">
+                            <div className="ornamental-kicker">Newsletter Archive</div>
+                            <h3 className="mt-3 text-3xl text-parish-fg">Connections</h3>
+                            <p className="mt-4 text-sm leading-relaxed text-parish-muted">
+                                Past and current newsletter issues remain available here, with the current issue called out first.
+                            </p>
+                            <div className="mt-6 max-h-[560px] space-y-3 overflow-y-auto pr-2">
                                 {newsletters.items.map(item => (
-                                    <div key={item.id} className="group border-b border-parish-border/5 pb-3">
+                                    <div key={item.id} className="rounded-[1.25rem] border border-parish-border/10 bg-parish-border/5 px-4 py-4">
                                         {item.isCurrent && (
-                                            <span className="font-display tracking-widest text-xs uppercase text-parish-accent mb-1 block">✦ Current Issue</span>
+                                            <div className="ornamental-kicker">Current Issue</div>
                                         )}
                                         {item.nativeBulletin ? (
-                                            <a
-                                                href={`/news-events/bulletin/${item.id}`}
-                                                className="font-serif text-base text-parish-fg group-hover:text-parish-accent transition-colors no-underline block py-1"
-                                            >
+                                            <Link to={`/news-events/bulletin/${item.id}`} className="mt-2 block text-sm font-semibold uppercase tracking-[0.14em] text-parish-fg no-underline hover:text-parish-accent">
                                                 {item.title}
-                                            </a>
+                                            </Link>
                                         ) : (
                                             <a
                                                 href={item.url}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="font-serif text-base text-parish-fg group-hover:text-parish-accent transition-colors no-underline flex justify-between items-center py-1"
+                                                className="mt-2 block text-sm font-semibold uppercase tracking-[0.14em] text-parish-fg no-underline hover:text-parish-accent"
                                             >
-                                                <span>{item.title}</span>
-                                                <span className="text-parish-muted text-sm shrink-0 ml-2">PDF ↗</span>
+                                                {item.title}
                                             </a>
                                         )}
                                     </div>
@@ -118,7 +159,30 @@ export function NewsEventsPage() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <ActionBand>
+                        <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+                            <div className="lg:col-span-8">
+                                <span className="section-label mb-4">Stay Connected</span>
+                                <h2 className="text-[clamp(2.2rem,4vw,3.9rem)] text-parish-fg">
+                                    The simplest way to stay in step with parish life is to follow these updates regularly.
+                                </h2>
+                            </div>
+                            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+                                <Link to="/community" className="pilgrimage-button">
+                                    Open Community Hub
+                                </Link>
+                                <Link to="/contact" className="pilgrimage-button-secondary">
+                                    Contact The Parish
+                                </Link>
+                            </div>
+                        </div>
+                    </ActionBand>
+                </div>
+            </section>
+        </HighlightPageTemplate>
     );
 }
