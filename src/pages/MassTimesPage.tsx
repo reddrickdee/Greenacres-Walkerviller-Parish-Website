@@ -99,7 +99,7 @@ export function MassTimesPage() {
                         {content.sacraments.map((s, i) => (
                             <div key={i} className="border-b border-parish-surface/10 pb-6">
                                 <h3 className="font-display text-2xl mb-3 text-parish-surface">{s.title}</h3>
-                                <p className="font-serif text-lg text-parish-surface/70 leading-relaxed">{s.details}</p>
+                                <p className="font-serif text-lg text-parish-surface/80 leading-relaxed">{s.details}</p>
                             </div>
                         ))}
                     </div>

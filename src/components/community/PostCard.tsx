@@ -48,14 +48,14 @@ export function PostCard({ post, onRequireAuth }: PostCardProps) {
                     </div>
                     <div>
                         <p className="font-display text-sm font-medium text-parish-fg tracking-wide">{displayName}</p>
-                        <p className="flex items-center gap-1 text-parish-muted text-xs font-sans">
+                        <p className="flex items-center gap-1 text-parish-muted text-sm font-sans">
                             <Clock size={11} /> {timeAgo(post.createdAt)}
                         </p>
                     </div>
                 </div>
 
                 {intentionLabel && (
-                    <span className="text-[11px] font-display uppercase tracking-widest text-parish-muted bg-parish-elevated px-3 py-1 rounded-full border border-parish-border/10 shrink-0">
+                    <span className="text-sm font-display uppercase tracking-widest text-parish-muted bg-parish-elevated px-3 py-1 rounded-full border border-parish-border/10 shrink-0">
                         {intentionLabel}
                     </span>
                 )}

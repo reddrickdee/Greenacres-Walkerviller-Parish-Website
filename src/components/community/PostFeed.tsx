@@ -102,7 +102,7 @@ export function PostFeed({ postType, onRequireAuth }: PostFeedProps) {
                         : 'No messages of hope yet. Share yours.'
                     }
                 </p>
-                <p className="font-display text-xs uppercase tracking-widest text-parish-muted/60">
+                <p className="font-display text-xs uppercase tracking-widest text-parish-muted/80">
                     Submissions appear here after pastoral review
                 </p>
             </div>

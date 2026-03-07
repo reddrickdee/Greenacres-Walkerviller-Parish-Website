@@ -131,13 +131,13 @@ export function CommunityHubPage() {
                                     ? 'bg-parish-accent text-parish-inverse shadow-md scale-105'
                                     : tab.phase1
                                         ? 'text-parish-muted hover:bg-parish-border/5 hover:text-parish-fg'
-                                        : 'text-parish-muted/40 cursor-not-allowed'
+                                        : 'text-parish-muted/70 cursor-not-allowed'
                                 }`}
                             disabled={!tab.phase1}
                         >
                             {tab.icon}
                             {tab.label}
-                            {!tab.phase1 && <span className="text-[9px] ml-1 opacity-60">SOON</span>}
+                            {!tab.phase1 && <span className="text-xs ml-1 opacity-60">SOON</span>}
                         </button>
                     ))}
                 </div>
@@ -228,7 +228,7 @@ export function CommunityHubPage() {
                                     <p className="font-display tracking-wider uppercase text-parish-muted text-sm">
                                         {activeTab === 'mini_articles' ? 'Mini Articles' : 'Suggestions'} — Coming Soon
                                     </p>
-                                    <p className="font-serif text-parish-muted/60 text-sm mt-2 italic">
+                                    <p className="font-serif text-parish-muted/80 text-sm mt-2 italic">
                                         This feature is being prepared for the next phase.
                                     </p>
                                 </div>

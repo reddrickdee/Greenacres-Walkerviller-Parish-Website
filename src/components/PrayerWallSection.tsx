@@ -144,7 +144,7 @@ export function PrayerWallSection({ maxItems = 4, embedded = false, onRequireAut
                                     transition={{ duration: 0.5 }}
                                     className="sacred-card flex flex-col justify-between"
                                 >
-                                    <div className="flex items-center gap-2 mb-4 text-parish-fg/50 font-display tracking-widest text-[10px] uppercase">
+                                    <div className="flex items-center gap-2 mb-4 text-parish-fg/70 font-display tracking-widest text-sm uppercase">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-flame text-parish-accent/60"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>
                                         {intention.submitted.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                     </div>
@@ -152,7 +152,7 @@ export function PrayerWallSection({ maxItems = 4, embedded = false, onRequireAut
                                         "{intention.text}"
                                     </p>
                                     <div className="flex justify-between items-center">
-                                        <span className="font-display tracking-widest text-[10px] uppercase text-parish-muted">
+                                        <span className="font-display tracking-widest text-sm uppercase text-parish-muted">
                                             {timeAgo(intention.submitted)}
                                         </span>
                                         <PrayButton

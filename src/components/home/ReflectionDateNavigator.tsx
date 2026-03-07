@@ -185,7 +185,7 @@ export function ReflectionDateNavigator({
                 {/* Day-of-week headers */}
                 <div className="grid grid-cols-7 px-3 pt-2">
                     {DAY_HEADERS.map((d) => (
-                        <div key={d} className="text-center text-xs font-display tracking-wider text-parish-muted/60 uppercase py-1">
+                        <div key={d} className="text-center text-xs font-display tracking-wider text-parish-muted/80 uppercase py-1">
                             {d}
                         </div>
                     ))}

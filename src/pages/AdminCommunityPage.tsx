@@ -136,7 +136,7 @@ export function AdminCommunityPage() {
                                     <div className="flex items-start justify-between gap-4 mb-3">
                                         <div>
                                             <div className="flex items-center gap-2 mb-1">
-                                                <span className={`font-display text-[10px] uppercase tracking-widest px-2.5 py-0.5 rounded-full
+                                                <span className={`font-display text-sm uppercase tracking-widest px-2.5 py-0.5 rounded-full
                                                     ${item.type === 'post'
                                                         ? 'bg-blue-500/10 text-blue-600'
                                                         : 'bg-purple-500/10 text-purple-600'

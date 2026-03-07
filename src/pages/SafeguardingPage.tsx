@@ -61,7 +61,7 @@ export function SafeguardingPage() {
                                 <strong>Email:</strong> safeguarding@adelaide.catholic.org.au
                             </li>
                         </ul>
-                        <p className="text-parish-surface/60 text-sm mt-8 italic">
+                        <p className="text-parish-surface/80 text-sm mt-8 italic">
                             If a child or vulnerable person is in immediate danger, always call Police on 000.
                         </p>
                     </div>

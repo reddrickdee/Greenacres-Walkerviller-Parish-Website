@@ -123,7 +123,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                 {/* Intention Type (Only for Prayers) */}
                 {isPrayer && (
                     <div className="flex flex-col gap-2">
-                        <label className="font-display text-xs uppercase tracking-widest text-parish-muted">Intention Type</label>
+                        <label className="font-display text-sm uppercase tracking-widest text-parish-muted">Intention Type</label>
                         <div className="flex flex-wrap gap-3">
                             <label className="flex items-center gap-2 cursor-pointer bg-parish-elevated text-parish-fg px-4 py-2 rounded-lg border border-parish-border/10 hover:border-parish-accent/30 transition-colors">
                                 <input
@@ -169,7 +169,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                         animate={{ opacity: 1, height: 'auto' }}
                         className="flex flex-col gap-2"
                     >
-                        <label className="font-display text-xs uppercase tracking-widest text-parish-muted flex justify-between">
+                        <label className="font-display text-sm uppercase tracking-widest text-parish-muted flex justify-between">
                             <span>Name of Person</span>
                             <span className="text-red-500">*</span>
                         </label>
@@ -186,7 +186,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
 
                 {/* Content */}
                 <div className="flex flex-col gap-2">
-                    <label className="font-display text-xs uppercase tracking-widest text-parish-muted">
+                    <label className="font-display text-sm uppercase tracking-widest text-parish-muted">
                         {isPrayer ? 'Your Prayer' : 'Your Message'}
                     </label>
                     <textarea
@@ -201,7 +201,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
                     {/* Visibility */}
                     <div className="flex flex-col gap-2">
-                        <label className="font-display text-xs uppercase tracking-widest text-parish-muted">Visibility</label>
+                        <label className="font-display text-sm uppercase tracking-widest text-parish-muted">Visibility</label>
                         <select
                             value={visibility}
                             onChange={(e) => setVisibility(e.target.value as CommunityVisibility)}
@@ -234,7 +234,7 @@ export function SubmitPostForm({ postType, onSuccess, onRequireAuth }: SubmitPos
                 >
                     {submitting ? 'Submitting...' : `Submit ${isPrayer ? 'Prayer Request' : 'Message'}`}
                 </button>
-                <p className="text-center font-serif text-xs text-parish-muted italic mt-3">
+                <p className="text-center font-serif text-sm text-parish-muted italic mt-3">
                     All submissions are reviewed by our pastoral team before being published on the public wall.
                 </p>
             </div>

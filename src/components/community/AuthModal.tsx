@@ -137,7 +137,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     {!isLogin && (
                         <div className="flex gap-4">
                             <div className="flex-1 flex flex-col gap-1.5">
-                                <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">First Name</label>
+                                <label className="font-display text-sm uppercase tracking-widest text-parish-muted">First Name</label>
                                 <input
                                     type="text"
                                     required={!isLogin}
@@ -148,7 +148,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                                 />
                             </div>
                             <div className="flex-1 flex flex-col gap-1.5">
-                                <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Last Name</label>
+                                <label className="font-display text-sm uppercase tracking-widest text-parish-muted">Last Name</label>
                                 <input
                                     type="text"
                                     required={!isLogin}
@@ -162,7 +162,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     )}
 
                     <div className="flex flex-col gap-1.5">
-                        <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Email Address</label>
+                        <label className="font-display text-sm uppercase tracking-widest text-parish-muted">Email Address</label>
                         <input
                             type="email"
                             required
@@ -174,7 +174,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                        <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Password</label>
+                        <label className="font-display text-sm uppercase tracking-widest text-parish-muted">Password</label>
                         <input
                             type="password"
                             required

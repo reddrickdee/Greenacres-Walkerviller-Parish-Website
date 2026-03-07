@@ -253,7 +253,7 @@ export function AdminReflectionsPage() {
                         <div>
                             <label className="flex items-center gap-2 mb-2">
                                 <BookOpenText size={14} className="text-parish-brass" />
-                                <span className="font-display text-xs uppercase tracking-widest text-parish-brass">Context</span>
+                                <span className="font-display text-sm uppercase tracking-widest text-parish-brass">Context</span>
                             </label>
                             <textarea
                                 value={reflectionContext}
@@ -268,7 +268,7 @@ export function AdminReflectionsPage() {
                         <div>
                             <label className="flex items-center gap-2 mb-2">
                                 <Heart size={14} className="text-parish-brass" />
-                                <span className="font-display text-xs uppercase tracking-widest text-parish-brass">Reflection</span>
+                                <span className="font-display text-sm uppercase tracking-widest text-parish-brass">Reflection</span>
                             </label>
                             <textarea
                                 value={reflectionBody}
@@ -283,7 +283,7 @@ export function AdminReflectionsPage() {
                         <div>
                             <label className="flex items-center gap-2 mb-2">
                                 <HandHeart size={14} className="text-parish-brass" />
-                                <span className="font-display text-xs uppercase tracking-widest text-parish-brass">Prayer</span>
+                                <span className="font-display text-sm uppercase tracking-widest text-parish-brass">Prayer</span>
                             </label>
                             <textarea
                                 value={reflectionPrayer}
@@ -296,7 +296,7 @@ export function AdminReflectionsPage() {
 
                         {/* Author */}
                         <div className="max-w-sm">
-                            <label className="block font-display text-xs uppercase tracking-widest text-parish-brass mb-2">
+                            <label className="block font-display text-sm uppercase tracking-widest text-parish-brass mb-2">
                                 Reflection Author
                             </label>
                             <input
