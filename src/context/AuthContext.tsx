@@ -8,6 +8,7 @@ interface AuthContextType {
     user: User | null;
     profile: CommunityProfile | null;
     isAdmin: boolean;
+    canAuthorMiniArticles: boolean;
     isLoading: boolean;
     signOut: () => Promise<void>;
 }
@@ -84,6 +85,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         user,
         profile,
         isAdmin: profile?.role === 'admin',
+        canAuthorMiniArticles: profile?.role === 'admin' || profile?.role === 'contributor',
         isLoading,
         signOut
     };

@@ -223,7 +223,7 @@ export interface CommunityProfile {
     id: string;
     firstName: string | null;
     lastName: string | null;
-    role: 'user' | 'admin';
+    role: 'user' | 'contributor' | 'admin';
     createdAt: string;
     updatedAt: string;
 }
@@ -234,6 +234,7 @@ export interface CommunityPost {
     postType: CommunityPostType;
     status: CommunityStatus;
     visibility: CommunityVisibility;
+    sourcePostId?: string;
     title?: string;
     content: string;
     isAnonymous: boolean;

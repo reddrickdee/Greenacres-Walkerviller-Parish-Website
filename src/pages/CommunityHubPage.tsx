@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, MessageCircleHeart, Newspaper, Lightbulb, ShieldAlert, Plus, X } from 'lucide-react';
+import { Heart, MessageCircleHeart, Newspaper, Lightbulb, ShieldAlert, Plus, X, PenLine } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { PostFeed } from '../components/community/PostFeed';
 import { SubmitPostForm } from '../components/community/SubmitPostForm';
 import { AuthModal } from '../components/community/AuthModal';
+import { ArticleFeed } from '../components/community/ArticleFeed';
+import { SuggestionsTab } from '../components/community/SuggestionsTab';
 import { CommunityPostType } from '../types';
 import { HighlightPageTemplate } from '../components/layout/PageTemplates';
+import { isSupabaseConfigured } from '../lib/supabaseClient';
 
 type TabId = 'prayer_wall' | 'words_of_hope' | 'mini_articles' | 'suggestions';
 
@@ -20,7 +23,7 @@ const TAB_TO_POST_TYPE: Record<TabId, CommunityPostType> = {
 };
 
 export function CommunityHubPage() {
-    const { session, profile, isAdmin, signOut } = useAuth();
+    const { session, profile, isAdmin, canAuthorMiniArticles, signOut } = useAuth();
 
     usePageSEO({
         title: 'Community Hub',
@@ -31,39 +34,60 @@ export function CommunityHubPage() {
     const [showAuthModal, setShowAuthModal] = useState(false);
     const [showSubmitForm, setShowSubmitForm] = useState(false);
 
-    const tabs: { id: TabId; label: string; icon: React.ReactNode; intro: string; phase1: boolean }[] = [
+    const tabs: { id: TabId; label: string; icon: React.ReactNode; intro: string }[] = [
         {
             id: 'prayer_wall',
             label: 'Prayer Wall',
             icon: <Heart size={18} />,
             intro: 'Share your intentions with our parish family, so we may lift them up together in prayer.',
-            phase1: true,
         },
         {
             id: 'words_of_hope',
             label: 'Words of Hope',
             icon: <MessageCircleHeart size={18} />,
             intro: 'Offer short reflections, encouragements, and blessings to uplift others in our community.',
-            phase1: true,
         },
         {
             id: 'mini_articles',
             label: 'Mini Articles',
             icon: <Newspaper size={18} />,
             intro: 'Read and share longer updates, testimonies, and visual memories from parish life.',
-            phase1: false,
         },
         {
             id: 'suggestions',
             label: 'Suggestions',
             icon: <Lightbulb size={18} />,
             intro: 'Share private feedback and ideas with the parish administration to help us grow together.',
-            phase1: false,
         },
     ];
 
     const currentTab = tabs.find(t => t.id === activeTab)!;
-    const isPhase1Tab = currentTab.phase1;
+    const isPostTab = activeTab === 'prayer_wall' || activeTab === 'words_of_hope';
+
+    // If Supabase is not configured, show graceful unavailable state
+    if (!isSupabaseConfigured()) {
+        return (
+            <HighlightPageTemplate
+                eyebrow="Community Hub"
+                title={<>A digital gathering space for the parish family.</>}
+                description="Share prayer requests, offer words of hope, and stay connected with fellow parishioners — wherever you are."
+                imageSrc="/assets/source/our_parish_2.webp"
+                imageAlt="Parish community"
+            >
+                <section className="page-section">
+                    <div className="page-section-inner">
+                        <div className="sanctuary-panel px-8 py-16 text-center">
+                            <div className="ornamental-kicker">Community Hub Unavailable</div>
+                            <p className="mt-4 text-base text-parish-muted font-serif max-w-md mx-auto">
+                                The Community Hub requires a live connection to our parish backend.
+                                Please check back later or contact the parish office for assistance.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </HighlightPageTemplate>
+        );
+    }
 
     return (
         <HighlightPageTemplate
@@ -124,15 +148,11 @@ export function CommunityHubPage() {
                                 className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] transition-all duration-300
                                     ${activeTab === tab.id
                                         ? 'bg-parish-fg text-parish-inverse shadow-halo'
-                                        : tab.phase1
-                                            ? 'border border-parish-border/10 text-parish-muted hover:border-parish-brass/30 hover:text-parish-fg'
-                                            : 'text-parish-muted/40 cursor-not-allowed'
+                                        : 'border border-parish-border/10 text-parish-muted hover:border-parish-brass/30 hover:text-parish-fg'
                                     }`}
-                                disabled={!tab.phase1}
                             >
                                 {tab.icon}
                                 {tab.label}
-                                {!tab.phase1 && <span className="text-[0.55rem] ml-1 opacity-60">SOON</span>}
                             </button>
                         ))}
                     </div>
@@ -152,7 +172,8 @@ export function CommunityHubPage() {
                             </motion.p>
                         </AnimatePresence>
 
-                        {isPhase1Tab && (
+                        {/* Prayer/Hope submit button */}
+                        {isPostTab && (
                             <button
                                 onClick={() => {
                                     if (!session) {
@@ -174,11 +195,22 @@ export function CommunityHubPage() {
                                 }
                             </button>
                         )}
+
+                        {/* Mini Articles: Write Article CTA for contributors/admins */}
+                        {activeTab === 'mini_articles' && canAuthorMiniArticles && (
+                            <Link
+                                to="/community/editor/articles/new"
+                                className="flex shrink-0 items-center gap-2 rounded-full bg-parish-fg text-parish-inverse shadow-halo hover:opacity-90 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] transition-all"
+                            >
+                                <PenLine size={16} />
+                                Write Article
+                            </Link>
+                        )}
                     </div>
 
-                    {/* Submit form */}
+                    {/* Submit form (Prayer/Hope only) */}
                     <AnimatePresence>
-                        {showSubmitForm && isPhase1Tab && (
+                        {showSubmitForm && isPostTab && (
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -198,37 +230,30 @@ export function CommunityHubPage() {
                     {/* Feed */}
                     <div className="mt-8 min-h-[400px]">
                         <AnimatePresence mode="wait">
-                            {isPhase1Tab ? (
-                                <motion.div
-                                    key={activeTab}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.3 }}
-                                >
+                            <motion.div
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {isPostTab && (
                                     <PostFeed
                                         postType={TAB_TO_POST_TYPE[activeTab]}
                                         onRequireAuth={() => setShowAuthModal(true)}
                                     />
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    key={activeTab}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <div className="sanctuary-panel px-8 py-12 text-center">
-                                        <div className="ornamental-kicker">
-                                            {activeTab === 'mini_articles' ? 'Mini Articles' : 'Suggestions'} — Coming Soon
-                                        </div>
-                                        <p className="mt-3 text-sm italic text-parish-muted">
-                                            This feature is being prepared for the next phase.
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            )}
+                                )}
+
+                                {activeTab === 'mini_articles' && (
+                                    <ArticleFeed />
+                                )}
+
+                                {activeTab === 'suggestions' && (
+                                    <SuggestionsTab
+                                        onRequireAuth={() => setShowAuthModal(true)}
+                                    />
+                                )}
+                            </motion.div>
                         </AnimatePresence>
                     </div>
                 </div>

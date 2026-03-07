@@ -109,5 +109,161 @@ export const communityApi = {
 
         if (error) throw error;
         return data;
-    }
+    },
+
+    // ── Phase 2: Mini Articles & Suggestions ──────────────────────────────
+
+    async getPublicPostsByType(postType: CommunityPostType) {
+        const { data, error } = await supabase
+            .from('community_posts')
+            .select(`
+                *,
+                author:community_profiles(id, first_name, last_name, role),
+                images:community_post_images(*)
+            `)
+            .eq('post_type', postType)
+            .eq('status', 'approved')
+            .eq('visibility', 'public')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return (data || []) as unknown as CommunityPost[];
+    },
+
+    async getArticleById(id: string) {
+        const { data, error } = await supabase
+            .from('community_posts')
+            .select(`
+                *,
+                author:community_profiles(id, first_name, last_name, role),
+                images:community_post_images(*)
+            `)
+            .eq('id', id)
+            .eq('post_type', 'mini_article')
+            .single();
+
+        if (error) throw error;
+        return data as unknown as CommunityPost;
+    },
+
+    async getUserSuggestions() {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('Not authenticated');
+
+        const { data, error } = await supabase
+            .from('community_posts')
+            .select(`
+                *,
+                linked_summary:community_posts!community_posts_source_post_id_fkey(id)
+            `)
+            .eq('author_id', user.id)
+            .eq('post_type', 'suggestion')
+            .eq('visibility', 'admin_private')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return (data || []) as unknown as (CommunityPost & { linked_summary?: { id: string }[] })[];
+    },
+
+    async submitMiniArticle(payload: { title: string; body: string; coverImage?: File }) {
+        // Submit via edge function (same moderation pipeline)
+        const { data, error } = await supabase.functions.invoke('community-submit-post', {
+            body: {
+                postType: 'mini_article' as CommunityPostType,
+                visibility: 'public' as CommunityVisibility,
+                title: payload.title,
+                content: payload.body,
+            }
+        });
+
+        if (error) throw error;
+
+        // Upload cover image if provided
+        if (payload.coverImage && data?.id) {
+            const postId = data.id;
+            const ext = payload.coverImage.name.split('.').pop() || 'jpg';
+            const storagePath = `community/${postId}/cover.${ext}`;
+
+            const { error: uploadError } = await supabase.storage
+                .from('community-images')
+                .upload(storagePath, payload.coverImage, { upsert: true });
+
+            if (!uploadError) {
+                // Insert into community_post_images
+                await supabase.from('community_post_images').insert({
+                    post_id: postId,
+                    storage_path: storagePath,
+                    bucket_id: 'community-images',
+                    display_order: 0,
+                });
+            }
+        }
+
+        return data;
+    },
+
+    async submitMiniArticleDirect(payload: { title: string; body: string; coverImage?: File }) {
+        // Admin direct-publish: insert approved post directly
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('Not authenticated');
+
+        const { data, error } = await supabase
+            .from('community_posts')
+            .insert({
+                author_id: user.id,
+                post_type: 'mini_article',
+                status: 'approved',
+                visibility: 'public',
+                title: payload.title,
+                content: payload.body,
+            })
+            .select()
+            .single();
+
+        if (error) throw error;
+
+        // Upload cover image if provided
+        if (payload.coverImage && data?.id) {
+            const postId = data.id;
+            const ext = payload.coverImage.name.split('.').pop() || 'jpg';
+            const storagePath = `community/${postId}/cover.${ext}`;
+
+            const { error: uploadError } = await supabase.storage
+                .from('community-images')
+                .upload(storagePath, payload.coverImage, { upsert: true });
+
+            if (!uploadError) {
+                await supabase.from('community_post_images').insert({
+                    post_id: postId,
+                    storage_path: storagePath,
+                    bucket_id: 'community-images',
+                    display_order: 0,
+                });
+            }
+        }
+
+        return data;
+    },
+
+    async promoteSuggestion(payload: { sourcePostId: string; title: string; content: string }) {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('Not authenticated');
+
+        const { data, error } = await supabase
+            .from('community_posts')
+            .insert({
+                author_id: user.id,
+                post_type: 'suggestion',
+                status: 'approved',
+                visibility: 'public',
+                source_post_id: payload.sourcePostId,
+                title: payload.title,
+                content: payload.content,
+            })
+            .select()
+            .single();
+
+        if (error) throw error;
+        return data;
+    },
 };

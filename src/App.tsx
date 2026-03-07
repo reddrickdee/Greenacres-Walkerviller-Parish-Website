@@ -25,9 +25,12 @@ const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then(m => ({ de
 const SacramentsBookingPage = lazy(() => import('./pages/SacramentsBookingPage').then(m => ({ default: m.SacramentsBookingPage })));
 const LiveStreamPage = lazy(() => import('./pages/LiveStreamPage').then(m => ({ default: m.LiveStreamPage })));
 const HomiliesPage = lazy(() => import('./pages/HomiliesPage').then(m => ({ default: m.HomiliesPage })));
+const ArticleDetailPage = lazy(() => import('./pages/ArticleDetailPage').then(m => ({ default: m.ArticleDetailPage })));
+const ArticleEditorPage = lazy(() => import('./pages/ArticleEditorPage').then(m => ({ default: m.ArticleEditorPage })));
 
-// ── Lazy-load admin guard too ─────────────────────────────────────────────────
+// ── Route Guards ──────────────────────────────────────────────────────────────
 import { AdminGuard } from './components/community/AdminGuard';
+import { ContributorGuard } from './components/community/ContributorGuard';
 
 // ── Page Loading Skeleton ─────────────────────────────────────────────────────
 function PageSkeleton() {
@@ -95,6 +98,8 @@ const router = createBrowserRouter([
             { path: 'gallery', element: <GalleryPage /> },
             { path: 'safeguarding', element: <SafeguardingPage /> },
             { path: 'community', element: <CommunityHubPage /> },
+            { path: 'community/articles/:id', element: <ArticleDetailPage /> },
+            { path: 'community/editor/articles/new', element: <ContributorGuard><ArticleEditorPage /></ContributorGuard> },
             { path: 'giving', element: <GivingPage /> },
             { path: 'volunteer', element: <VolunteerPage /> },
             { path: 'sacraments/request', element: <SacramentsBookingPage /> },
