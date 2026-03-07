@@ -93,7 +93,7 @@ export function AboutPage() {
                     <SectionIntro
                         eyebrow="Pastoral Council"
                         title={<>The people helping carry the parish forward.</>}
-                        description="Leadership profiles are presented as a calm editorial gallery rather than generic cards."
+                        description="Meet the people who guide and support the life of our parish community."
                         align="center"
                     />
 
