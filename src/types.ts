@@ -27,6 +27,27 @@ export interface ParishContent {
     refurbishmentImages: string[];
     sacramentalJourneys: SacramentalJourney[];
     homilyRecordings: HomilyRecording[];
+    visitorInfo?: VisitorInfo;
+}
+
+export interface VisitorInfo {
+    arrivalGuidance: string;
+    whatToExpect: string;
+    accessibilitySupport: string;
+    contactPrompt: string;
+    churches: VisitorChurchInfo[];
+}
+
+export interface VisitorChurchInfo {
+    id: string;
+    name: string;
+    address: string;
+    mapQuery: string;
+    parkingSummary: string;
+    accessibilitySummary: string;
+    arrivalTip: string;
+    weekendSummary: string;
+    weekdaySummary: string;
 }
 
 export interface MissionPoint {

@@ -23,6 +23,7 @@ import { FacebookFeed } from '../components/social/FacebookFeed';
 import { HeroSection } from '../components/home/HeroSection';
 import { TestimonialsCarousel } from '../components/ui/TestimonialsCarousel';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro } from '../components/layout/PageTemplates';
+import { ContentLoading, ContentError } from '../components/ContentStates';
 import {
     isWeekdayMass,
     isSaturdayMonicaMass,
@@ -57,13 +58,8 @@ export function HomePage() {
     );
     const { now } = useMassCountdowns(countdownEntries);
 
-    if (isLoading || !content) {
-        return (
-            <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">
-                Loading…
-            </div>
-        );
-    }
+    if (isLoading) return <ContentLoading />;
+    if (!content) return <ContentError />;
 
     const weekdayEntries = content.massSchedule.filter(isWeekdayMass);
     const saturdayMonicaEntry = content.massSchedule.find(isSaturdayMonicaMass);

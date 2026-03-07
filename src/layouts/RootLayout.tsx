@@ -1,92 +1,67 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { ArrowRight, CalendarClock, Church, Clock3, HeartHandshake, Mail, MapPinned, Menu, X } from 'lucide-react';
+import { ArrowRight, Church, Clock3, HeartHandshake, Mail, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { AccessibilityMenu } from '../components/AccessibilityMenu';
 import { ScrollToTop } from '../components/ScrollToTop';
 import { SkipLink } from '../components/SkipLink';
-
-const PRIMARY_NAV = [
-    { to: '/', label: 'Home' },
-    { to: '/new-here', label: "I'm New Here" },
-    { to: '/mass-times', label: 'Mass Times' },
-    { to: '/about', label: 'About' },
-    { to: '/news-events', label: 'News & Events' },
-    { to: '/contact', label: 'Contact' },
-];
-
-const DRAWER_GROUPS = [
-    {
-        title: 'Explore',
-        links: [
-            { to: '/', label: 'Home' },
-            { to: '/about', label: 'About Us' },
-            { to: '/history', label: 'History' },
-            { to: '/gallery', label: 'Gallery' },
-            { to: '/new-here', label: "I'm New Here" },
-        ],
-    },
-    {
-        title: 'Worship',
-        links: [
-            { to: '/mass-times', label: 'Mass Times' },
-            { to: '/sacraments', label: 'Sacraments' },
-            { to: '/live', label: 'Live Stream' },
-            { to: '/homilies', label: 'Homilies' },
-            { to: '/news-events', label: 'News & Events' },
-        ],
-    },
-    {
-        title: 'Community',
-        links: [
-            { to: '/community', label: 'Community Hub' },
-            { to: '/volunteer', label: 'Volunteer' },
-            { to: '/giving', label: 'Give' },
-            { to: '/contact', label: 'Contact' },
-            { to: '/safeguarding', label: 'Safeguarding' },
-        ],
-    },
-];
-
-const QUICK_ACTIONS = [
-    {
-        icon: CalendarClock,
-        title: 'Weekend Mass',
-        detail: "Sat 6:00pm St Monica's / Sun 9:30am St Martin's",
-        to: '/mass-times',
-    },
-    {
-        icon: MapPinned,
-        title: 'Plan your first visit',
-        detail: 'Find parking, contact details, and what to expect.',
-        to: '/new-here',
-    },
-    {
-        icon: Mail,
-        title: 'Speak with the parish office',
-        detail: 'Reach out for pastoral care, sacraments, or support.',
-        to: '/contact',
-    },
-];
-
-function isActive(pathname: string, to: string) {
-    if (to === '/') {
-        return pathname === '/';
-    }
-
-    return pathname === to || pathname.startsWith(`${to}/`);
-}
+import {
+    PRIMARY_NAV,
+    DRAWER_GROUPS,
+    QUICK_ACTIONS,
+    FOOTER_EXTRA_NAV,
+    isActive,
+} from '../lib/navigation';
 
 export function RootLayout() {
     const location = useLocation();
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollY } = useScroll();
+    const hamburgerRef = useRef<HTMLButtonElement>(null);
+    const drawerRef = useRef<HTMLDivElement>(null);
 
     useMotionValueEvent(scrollY, 'change', latest => {
         setIsScrolled(latest > 40);
     });
+
+    // Close drawer on route change
+    useEffect(() => {
+        setMenuOpen(false);
+    }, [location.pathname]);
+
+    // Focus trap inside mobile drawer
+    const handleDrawerKeyDown = useCallback((e: React.KeyboardEvent) => {
+        if (e.key === 'Escape') {
+            setMenuOpen(false);
+            hamburgerRef.current?.focus();
+            return;
+        }
+        if (e.key !== 'Tab' || !drawerRef.current) return;
+
+        const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }, []);
+
+    // Return focus to hamburger when drawer closes
+    const closeDrawer = useCallback(() => {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus();
+    }, []);
 
     const isHome = location.pathname === '/';
     const isHeroTransparent = isHome && !isScrolled;
@@ -133,7 +108,7 @@ export function RootLayout() {
                         </div>
                     </Link>
 
-                    <div className="hidden items-center gap-1 xl:flex">
+                    <div className="hidden items-center gap-1 lg:flex">
                         {PRIMARY_NAV.map(link => (
                             <Link
                                 key={link.to}
@@ -151,7 +126,7 @@ export function RootLayout() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <Link to="/community" className="pilgrimage-button-ghost hidden lg:inline-flex">
+                        <Link to="/community" className="pilgrimage-button-ghost hidden xl:inline-flex">
                             Community
                         </Link>
                         <Link to="/giving" className="pilgrimage-button hidden md:inline-flex">
@@ -162,9 +137,11 @@ export function RootLayout() {
                             <ThemeToggle />
                         </div>
                         <button
+                            ref={hamburgerRef}
                             onClick={() => setMenuOpen(open => !open)}
-                            className="flex h-12 w-12 items-center justify-center rounded-full border border-parish-border/12 bg-parish-surface/70 text-parish-fg transition-colors hover:border-parish-brass/35 hover:text-parish-accent xl:hidden"
+                            className="flex h-12 w-12 items-center justify-center rounded-full border border-parish-border/12 bg-parish-surface/70 text-parish-fg transition-colors hover:border-parish-brass/35 hover:text-parish-accent lg:hidden"
                             aria-expanded={menuOpen}
+                            aria-controls="mobile-drawer"
                             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                         >
                             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -179,7 +156,13 @@ export function RootLayout() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -12 }}
                             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                            className="border-t border-parish-border/10 bg-parish-surface/96 backdrop-blur-2xl xl:hidden"
+                            className="border-t border-parish-border/10 bg-parish-surface/96 backdrop-blur-2xl lg:hidden"
+                            id="mobile-drawer"
+                            ref={drawerRef}
+                            role="dialog"
+                            aria-label="Site navigation menu"
+                            aria-modal="true"
+                            onKeyDown={handleDrawerKeyDown}
                         >
                             <div className="mx-auto grid max-w-[1480px] gap-8 px-5 py-6 md:grid-cols-12 md:px-6">
                                 <div className="md:col-span-8 grid gap-8 md:grid-cols-3">
@@ -191,7 +174,7 @@ export function RootLayout() {
                                                     <Link
                                                         key={link.to}
                                                         to={link.to}
-                                                        onClick={() => setMenuOpen(false)}
+                                                        onClick={closeDrawer}
                                                         className={`flex items-center justify-between rounded-[1.25rem] px-4 py-3 no-underline transition-all ${isActive(location.pathname, link.to)
                                                             ? 'bg-parish-fg text-parish-inverse'
                                                             : 'bg-parish-border/5 text-parish-fg hover:bg-parish-border/10'
@@ -215,7 +198,7 @@ export function RootLayout() {
                                                 <Link
                                                     key={action.title}
                                                     to={action.to}
-                                                    onClick={() => setMenuOpen(false)}
+                                                    onClick={closeDrawer}
                                                     className="flex items-start gap-3 rounded-[1.5rem] bg-parish-border/5 px-4 py-4 text-parish-fg no-underline transition-all hover:bg-parish-border/8"
                                                 >
                                                     <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-surface/70 text-parish-brass">
@@ -286,7 +269,7 @@ export function RootLayout() {
                             <div>
                                 <div className="ornamental-kicker !text-parish-brass mb-4">Explore</div>
                                 <div className="space-y-3">
-                                    {PRIMARY_NAV.map(link => (
+                                    {[...PRIMARY_NAV, ...FOOTER_EXTRA_NAV].map(link => (
                                         <Link
                                             key={link.to}
                                             to={link.to}
@@ -295,8 +278,6 @@ export function RootLayout() {
                                             {link.label}
                                         </Link>
                                     ))}
-                                    <Link to="/community" className="block text-sm uppercase tracking-[0.18em] text-parish-inverse/78 no-underline transition-colors hover:text-white">Community Hub</Link>
-                                    <Link to="/safeguarding" className="block text-sm uppercase tracking-[0.18em] text-parish-inverse/78 no-underline transition-colors hover:text-white">Safeguarding</Link>
                                 </div>
                             </div>
 

@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Settings, Check, ZoomIn, ZoomOut, Eye, Bell } from 'lucide-react';
-import { usePushNotifications } from '../hooks/usePushNotifications';
+import { Settings, Check, ZoomIn, ZoomOut, Eye } from 'lucide-react';
 
 type FontSize = 'normal' | 'large' | 'xlarge';
 
@@ -29,7 +28,6 @@ export function AccessibilityMenu() {
     const [isDyslexic, setIsDyslexic] = useState(false);
     const [fontSize, setFontSize] = useState<FontSize>('normal');
     const [reduceMotion, setReduceMotion] = useState(false);
-    const { isSupported: pushSupported, isSubscribed: pushSubscribed, loading: pushLoading, subscribe: pushSubscribe, unsubscribe: pushUnsubscribe } = usePushNotifications();
 
     // ── Restore saved preferences ────────────────────────────────────────────
     useEffect(() => {
@@ -183,21 +181,7 @@ export function AccessibilityMenu() {
                                 {reduceMotion && <Check size={16} className="text-parish-accent flex-shrink-0" aria-hidden="true" />}
                             </button>
 
-                            {/* Push notification opt-in */}
-                            {pushSupported && (
-                                <button
-                                    onClick={pushSubscribed ? pushUnsubscribe : pushSubscribe}
-                                    disabled={pushLoading}
-                                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-parish-border/5 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent disabled:opacity-50"
-                                    aria-pressed={pushSubscribed}
-                                >
-                                    <span className="text-sm font-body text-parish-fg flex items-center gap-2">
-                                        <Bell size={14} aria-hidden="true" />
-                                        {pushSubscribed ? 'Notifications on' : 'Enable notifications'}
-                                    </span>
-                                    {pushSubscribed && <Check size={16} className="text-parish-accent flex-shrink-0" aria-hidden="true" />}
-                                </button>
-                            )}
+
 
                             {/* Reset */}
                             {(isDyslexic || fontSize !== 'normal' || reduceMotion) && (

@@ -6,11 +6,12 @@
 
 @layer base {
   :root {
+    color-scheme: light;
     --color-parish-bg: 244 239 230;
     --color-parish-surface: 251 248 242;
     --color-parish-elevated: 232 224 212;
     --color-parish-fg: 28 27 24;
-    --color-parish-muted: 101 94 85;
+    --color-parish-muted: 86 79 70;
     --color-parish-accent: 92 77 59;
     --color-parish-accent-hover: 69 57 44;
     --color-parish-secondary: 131 83 56;
@@ -22,6 +23,7 @@
   }
 
   html[data-theme="dark"] {
+    color-scheme: dark;
     --color-parish-bg: 14 16 19;
     --color-parish-surface: 22 25 29;
     --color-parish-elevated: 32 36 42;
@@ -147,7 +149,8 @@
   }
 
   .sanctuary-card {
-    @apply relative overflow-hidden rounded-[1.75rem] border border-parish-border/10 px-6 py-6 shadow-[0_24px_55px_-40px_rgba(0,0,0,0.4)] transition-all duration-500;
+    @apply relative overflow-hidden rounded-[1.75rem] border border-parish-border/10 px-6 py-6 transition-all duration-500;
+    box-shadow: 0 24px 55px -40px rgba(0, 0, 0, 0.4);
     background-color: rgb(var(--color-parish-surface) / 0.94);
   }
 
@@ -216,7 +219,7 @@
   }
 
   .ornamental-kicker {
-    @apply text-[0.76rem] uppercase tracking-[0.34em] text-parish-brass font-body font-semibold;
+    @apply text-[0.76rem] uppercase tracking-[0.22em] text-parish-brass font-body font-semibold;
   }
 
   .constraint-widget-box {
@@ -277,6 +280,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

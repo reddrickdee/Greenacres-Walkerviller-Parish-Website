@@ -3,6 +3,7 @@ import { MapPinned, Phone } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, InfoCard, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
+import { ContentLoading, ContentError } from '../components/ContentStates';
 
 export function ContactPage() {
     const { content, isLoading } = useParishData();
@@ -14,9 +15,8 @@ export function ContactPage() {
         ogImage: '/assets/source/hero_2.webp',
     });
 
-    if (isLoading || !content) {
-        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
-    }
+    if (isLoading) return <ContentLoading />;
+    if (!content) return <ContentError />;
 
     const { contact, schools } = content;
 
@@ -24,7 +24,7 @@ export function ContactPage() {
         <UtilityPageTemplate
             eyebrow="Contact And Directions"
             title={<>Reach the parish quickly, whether you need support or simply directions.</>}
-            description="This page is treated as a service page first: practical contact details, clear maps, and a direct path to schools and office help."
+            description="Find the parish office, phone, email, and church locations — everything you need to reach us or plan your visit."
             imageSrc="/assets/source/hero_2.webp"
             imageAlt="Church exterior at Greenacres Walkerville Parish"
             actions={(
@@ -50,7 +50,7 @@ export function ContactPage() {
                         <SectionIntro
                             eyebrow="Parish Office"
                             title={<>Start with the office if you are unsure where your question belongs.</>}
-                            description="Pastoral care, sacraments, administration, and first-visit questions should all have an obvious home."
+                            description="The office handles pastoral care, sacraments, administration, and first-visit questions. Call or email during the hours below."
                         />
                     </div>
 
@@ -81,8 +81,8 @@ export function ContactPage() {
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Church Maps"
-                        title={<>Both churches are easy to find once the location is surfaced clearly.</>}
-                        description="Maps are retained, but now presented inside the same visual system as the rest of the site."
+                        title={<>Find either church on the map and plan your route.</>}
+                        description="Both churches are easy to reach by car or public transport. Parking details are available on the Mass Times page."
                     />
 
                     <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -115,8 +115,8 @@ export function ContactPage() {
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Parish Schools"
-                        title={<>School communities remain part of the wider parish story.</>}
-                        description="These details stay practical and readable rather than buried in dense contact blocks."
+                        title={<>Our parish is supported by two Catholic schools.</>}
+                        description="Contact the schools directly for enrolment inquiries and school-related questions."
                     />
 
                     <div className="mt-10 grid gap-6 md:grid-cols-2">

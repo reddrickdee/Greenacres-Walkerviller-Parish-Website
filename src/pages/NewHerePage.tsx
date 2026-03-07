@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CalendarClock, MapPinned } from 'lucide-react';
+import { ArrowRight, CalendarClock, MapPinned, Accessibility, Car, Users } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
+import { ContentLoading, ContentError } from '../components/ContentStates';
 
 export function NewHerePage() {
     const { content, isLoading } = useParishData();
@@ -15,15 +16,16 @@ export function NewHerePage() {
         ogImage: '/assets/source/welcome_thumb.webp',
     });
 
-    if (isLoading || !content) {
-        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
-    }
+    if (isLoading) return <ContentLoading />;
+    if (!content) return <ContentError />;
+
+    const visitorInfo = content.visitorInfo;
 
     return (
         <HighlightPageTemplate
             eyebrow="First Visit Guide"
             title={<>Come as you are. We&apos;ll help you know what comes next.</>}
-            description="This page is designed for the anxious first scroll: where to go, what to expect, and how the parish will welcome you once you arrive."
+            description="Everything you need to know before arriving — when to come, where to go, what to expect, and who to speak to."
             imageSrc="/assets/source/welcome_thumb.webp"
             imageAlt="Visitors arriving at parish grounds"
             actions={(
@@ -49,13 +51,14 @@ export function NewHerePage() {
                 </div>
             )}
         >
+            {/* What to expect at Mass */}
             <section className="page-section">
                 <div className="page-section-inner grid gap-8 lg:grid-cols-12 lg:gap-10">
                     <div className="lg:col-span-5">
                         <SectionIntro
-                            eyebrow="You Belong Here"
+                            eyebrow="What to Expect"
                             title={<>You do not need to arrive already knowing parish life.</>}
-                            description="The strongest first-visit language is warm and concrete. It lowers uncertainty without sounding generic."
+                            description={visitorInfo?.whatToExpect ?? "Sit, stand, and kneel when the congregation does — printed guides are available, and no one will mind if you simply follow along."}
                         />
                     </div>
                     <div className="lg:col-span-7">
@@ -64,18 +67,19 @@ export function NewHerePage() {
                             <p className="mt-4 text-2xl leading-relaxed text-parish-inverse/88 md:text-[2rem]">
                                 &ldquo;Come to me, all you who are weary and burdened, and I will give you rest.&rdquo;
                             </p>
-                            <p className="mt-4 text-sm uppercase tracking-[0.24em] text-parish-brass">Matthew 11:28</p>
+                            <p className="mt-4 text-sm uppercase tracking-[0.22em] text-parish-brass">Matthew 11:28</p>
                         </ScriptureBlock>
                     </div>
                 </div>
             </section>
 
+            {/* When to arrive */}
             <section className="page-section mt-16 md:mt-20">
                 <div className="page-section-inner">
                     <SectionIntro
-                        eyebrow="Your First Steps"
-                        title={<>A clearer path from curiosity to confidence.</>}
-                        description="These steps become the newcomer blueprint across the redesign."
+                        eyebrow="When to Arrive"
+                        title={<>Your first steps, clearly laid out.</>}
+                        description={visitorInfo?.arrivalGuidance ?? "Arrive 10–15 minutes before Mass so you can find a seat and settle in."}
                     />
 
                     <div className="mt-10 grid gap-5">
@@ -98,44 +102,84 @@ export function NewHerePage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
-                <div className="page-section-inner grid gap-6 lg:grid-cols-3">
-                    <InfoCard>
-                        <CalendarClock className="h-6 w-6 text-parish-brass" />
-                        <div className="mt-4 ornamental-kicker">When to Come</div>
-                        <p className="mt-3 text-sm leading-relaxed text-parish-muted">
-                            Weekend Masses are the simplest entry point if you are visiting the parish for the first time.
-                        </p>
-                        <Link to="/mass-times" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
-                            View the schedule
-                            <ArrowRight className="h-4 w-4" />
-                        </Link>
-                    </InfoCard>
-                    <InfoCard>
-                        <MapPinned className="h-6 w-6 text-parish-brass" />
-                        <div className="mt-4 ornamental-kicker">Where to Go</div>
-                        <p className="mt-3 text-sm leading-relaxed text-parish-muted">
-                            Use the contact page for maps, church addresses, and direct parish office details before you travel.
-                        </p>
-                        <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
-                            Open contact details
-                            <ArrowRight className="h-4 w-4" />
-                        </Link>
-                    </InfoCard>
-                    <InfoCard>
-                        <ArrowRight className="h-6 w-6 text-parish-brass" />
-                        <div className="mt-4 ornamental-kicker">What Happens Next</div>
-                        <p className="mt-3 text-sm leading-relaxed text-parish-muted">
-                            After your first visit, the easiest way to keep moving is through parish news, community groups, and sacramental life.
-                        </p>
-                        <Link to="/community" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
-                            Explore community life
-                            <ArrowRight className="h-4 w-4" />
-                        </Link>
-                    </InfoCard>
-                </div>
-            </section>
+            {/* Where to go — church cards with logistics */}
+            {visitorInfo && visitorInfo.churches.length > 0 && (
+                <section className="page-section mt-16 md:mt-20">
+                    <div className="page-section-inner">
+                        <SectionIntro
+                            eyebrow="Where to Go"
+                            title={<>Two churches, one welcoming parish family.</>}
+                            description="Choose whichever church suits you — both are easy to find and fully accessible."
+                        />
 
+                        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                            {visitorInfo.churches.map(church => (
+                                <InfoCard key={church.id}>
+                                    <div className="ornamental-kicker">{church.name}</div>
+                                    <p className="mt-3 text-lg text-parish-fg">{church.address}</p>
+
+                                    <div className="mt-5 space-y-3">
+                                        <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
+                                            <Car className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" />
+                                            <p className="text-sm leading-relaxed text-parish-muted">{church.parkingSummary}</p>
+                                        </div>
+                                        <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
+                                            <Accessibility className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" />
+                                            <p className="text-sm leading-relaxed text-parish-muted">{church.accessibilitySummary}</p>
+                                        </div>
+                                        <p className="text-sm leading-relaxed text-parish-muted italic">{church.arrivalTip}</p>
+                                    </div>
+
+                                    <div className="mt-5 flex flex-wrap gap-4">
+                                        <a
+                                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(church.mapQuery)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"
+                                        >
+                                            <MapPinned className="h-4 w-4" />
+                                            Directions
+                                        </a>
+                                    </div>
+                                </InfoCard>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* Accessibility support */}
+            {visitorInfo?.accessibilitySupport && (
+                <section className="page-section mt-16 md:mt-20">
+                    <div className="page-section-inner grid gap-6 lg:grid-cols-3">
+                        <InfoCard>
+                            <Accessibility className="h-6 w-6 text-parish-brass" />
+                            <div className="mt-4 ornamental-kicker">Accessibility Support</div>
+                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{visitorInfo.accessibilitySupport}</p>
+                        </InfoCard>
+                        <InfoCard>
+                            <Users className="h-6 w-6 text-parish-brass" />
+                            <div className="mt-4 ornamental-kicker">Families Welcome</div>
+                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                                Children are welcome at every Mass. Children&apos;s liturgy runs on the first and third weekends at both churches.
+                            </p>
+                        </InfoCard>
+                        <InfoCard>
+                            <CalendarClock className="h-6 w-6 text-parish-brass" />
+                            <div className="mt-4 ornamental-kicker">What Happens Next</div>
+                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                                After your first visit, the easiest way to keep moving is through community groups, parish news, and sacramental life.
+                            </p>
+                            <Link to="/community" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
+                                Explore community life
+                                <ArrowRight className="h-4 w-4" />
+                            </Link>
+                        </InfoCard>
+                    </div>
+                </section>
+            )}
+
+            {/* Contact prompt */}
             <section className="page-section mt-16 md:mt-20">
                 <div className="page-section-inner">
                     <ActionBand>
@@ -143,7 +187,7 @@ export function NewHerePage() {
                             <div className="lg:col-span-8">
                                 <span className="section-label mb-4">Ready To Come</span>
                                 <h2 className="text-[clamp(2.1rem,4vw,3.8rem)] text-parish-fg">
-                                    The most practical next step is simply choosing a Mass and arriving.
+                                    {visitorInfo?.contactPrompt ?? "The most practical next step is simply choosing a Mass and arriving."}
                                 </h2>
                             </div>
                             <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">

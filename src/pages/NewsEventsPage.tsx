@@ -4,6 +4,7 @@ import { ArrowRight, CalendarRange } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
+import { ContentLoading, ContentError } from '../components/ContentStates';
 
 function normalizeAssetPath(path?: string) {
     if (!path) return '/assets/source/news_connections.webp';
@@ -20,15 +21,14 @@ export function NewsEventsPage() {
         ogImage: '/assets/source/news_connections.webp',
     });
 
-    if (isLoading || !content || !newsletters) {
-        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
-    }
+    if (isLoading) return <ContentLoading />;
+    if (!content || !newsletters) return <ContentError />;
 
     return (
         <HighlightPageTemplate
             eyebrow="Parish Rhythm"
-            title={<>News, bulletins, and upcoming events should feel active, not archival.</>}
-            description="This page moves from generic link listing to a more current, editorial view of parish life while preserving the bulletin archive and event detail."
+            title={<>News, bulletins, and upcoming events from the parish.</>}
+            description="Stay connected with parish news, upcoming events, and the Connections newsletter archive."
             imageSrc="/assets/source/news_connections.webp"
             imageAlt="Parish newsletter and updates"
             actions={(
@@ -54,8 +54,8 @@ export function NewsEventsPage() {
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Featured Resources"
-                        title={<>Key resources should be visual and immediately understandable.</>}
-                        description="The main bulletin resources are surfaced as editorial cards with their associated imagery."
+                        title={<>Featured parish resources and publications.</>}
+                        description="Read the latest Connections newsletter or browse the archive."
                     />
 
                     <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -99,7 +99,7 @@ export function NewsEventsPage() {
                         <SectionIntro
                             eyebrow="Upcoming Events"
                             title={<>Upcoming parish moments, arranged as a readable timeline.</>}
-                            description="Events are treated as the living front edge of parish life rather than secondary metadata."
+                            description="Liturgical celebrations, community gatherings, and ways to get involved."
                         />
                         <div className="mt-10 space-y-5">
                             {content.eventItems.map((item, index) => (

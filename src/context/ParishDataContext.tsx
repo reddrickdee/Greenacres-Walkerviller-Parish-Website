@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from 'react';
 import type { ParishContent, NewsletterArchive } from '../types';
 import { loadParishContent, loadNewsletterArchive } from '../lib/api';
 
@@ -7,6 +7,7 @@ interface ParishDataState {
     newsletters: NewsletterArchive | null;
     isLoading: boolean;
     error: string | null;
+    reload: () => void;
 }
 
 const ParishDataContext = createContext<ParishDataState>({
@@ -14,46 +15,41 @@ const ParishDataContext = createContext<ParishDataState>({
     newsletters: null,
     isLoading: true,
     error: null,
+    reload: () => { },
 });
 
 export function ParishDataProvider({ children }: { children: ReactNode }) {
-    const [state, setState] = useState<ParishDataState>({
+    const [state, setState] = useState<Omit<ParishDataState, 'reload'>>({
         content: null,
         newsletters: null,
         isLoading: true,
         error: null,
     });
 
-    useEffect(() => {
-        let cancelled = false;
-
-        async function load() {
-            try {
-                const [content, newsletters] = await Promise.all([
-                    loadParishContent(),
-                    loadNewsletterArchive(),
-                ]);
-                if (!cancelled) {
-                    setState({ content, newsletters, isLoading: false, error: null });
-                }
-            } catch (err) {
-                if (!cancelled) {
-                    setState({
-                        content: null,
-                        newsletters: null,
-                        isLoading: false,
-                        error: err instanceof Error ? err.message : 'Failed to load data',
-                    });
-                }
-            }
+    const load = useCallback(async () => {
+        setState(prev => ({ ...prev, isLoading: true, error: null }));
+        try {
+            const [content, newsletters] = await Promise.all([
+                loadParishContent(),
+                loadNewsletterArchive(),
+            ]);
+            setState({ content, newsletters, isLoading: false, error: null });
+        } catch (err) {
+            setState({
+                content: null,
+                newsletters: null,
+                isLoading: false,
+                error: err instanceof Error ? err.message : 'Failed to load data',
+            });
         }
-
-        load();
-        return () => { cancelled = true; };
     }, []);
 
+    useEffect(() => {
+        load();
+    }, [load]);
+
     return (
-        <ParishDataContext.Provider value={state}>
+        <ParishDataContext.Provider value={{ ...state, reload: load }}>
             {children}
         </ParishDataContext.Provider>
     );
