@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect, Component, type ReactNode, type ErrorInfo } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout } from './layouts/RootLayout';
 import { AuthProvider } from './context/AuthContext';
@@ -42,6 +42,58 @@ function PageSkeleton() {
             </div>
         </div>
     );
+}
+
+// ── Chunk Error Boundary ──────────────────────────────────────────────────────
+// Catches stale dynamic-import errors after a Vercel redeployment and auto-refreshes.
+class ChunkErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+    constructor(props: { children: ReactNode }) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error: Error) {
+        // Detect stale chunk import failures
+        if (
+            error.message.includes('Failed to fetch dynamically imported module') ||
+            error.message.includes('Importing a module script failed') ||
+            error.message.includes('error loading dynamically imported module')
+        ) {
+            return { hasError: true };
+        }
+        throw error; // Re-throw non-chunk errors
+    }
+
+    componentDidCatch(_error: Error, _info: ErrorInfo) {
+        // Auto-reload once; use sessionStorage to prevent infinite loops
+        const key = 'chunk-reload-attempted';
+        if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, '1');
+            window.location.reload();
+        }
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div className="min-h-screen bg-parish-surface flex items-center justify-center px-6">
+                    <div className="text-center max-w-md">
+                        <p className="font-display text-lg tracking-wider text-parish-fg mb-3">Page Update Available</p>
+                        <p className="font-serif text-parish-muted text-sm mb-6">
+                            A newer version of the site is available. Please refresh to continue.
+                        </p>
+                        <button
+                            onClick={() => window.location.reload()}
+                            className="bg-parish-accent text-parish-inverse px-6 py-3 rounded-full font-display text-xs uppercase tracking-widest hover:opacity-90 transition-opacity"
+                        >
+                            Refresh Page
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+        return this.props.children;
+    }
 }
 
 // ── PWA Update Banner ─────────────────────────────────────────────────────────
@@ -114,9 +166,11 @@ const router = createBrowserRouter([
 function App() {
     return (
         <AuthProvider>
-            <Suspense fallback={<PageSkeleton />}>
-                <RouterProvider router={router} />
-            </Suspense>
+            <ChunkErrorBoundary>
+                <Suspense fallback={<PageSkeleton />}>
+                    <RouterProvider router={router} />
+                </Suspense>
+            </ChunkErrorBoundary>
             <PWAUpdateBanner />
         </AuthProvider>
     );
