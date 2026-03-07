@@ -127,10 +127,10 @@ export function GalleryPage() {
                                     decoding="async"
                                     className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-parish-overlay-bg/60 via-transparent to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                                     <div>
-                                        <p className="text-lg tracking-wide text-white">{img.alt}</p>
-                                        <span className="text-xs uppercase tracking-[0.22em] text-white/60">{img.category}</span>
+                                        <p className="text-lg tracking-wide text-parish-overlay-text">{img.alt}</p>
+                                        <span className="text-xs uppercase tracking-[0.22em] text-parish-overlay-text/60">{img.category}</span>
                                     </div>
                                 </div>
                             </motion.div>

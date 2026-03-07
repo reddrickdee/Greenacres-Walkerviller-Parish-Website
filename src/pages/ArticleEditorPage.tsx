@@ -233,7 +233,7 @@ export function ArticleEditorPage() {
                             <button
                                 onClick={() => handleSubmit(true)}
                                 disabled={submitting}
-                                className="flex-1 bg-green-600 text-white px-6 py-4 rounded-xl font-display uppercase tracking-wider text-sm hover:opacity-90 transition-all shadow-md active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2"
+                                className="flex-1 bg-green-600 text-parish-inverse px-6 py-4 rounded-xl font-display uppercase tracking-wider text-sm hover:opacity-90 transition-all shadow-md active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2"
                             >
                                 {submitting ? 'Publishing…' : 'Publish Now'}
                             </button>

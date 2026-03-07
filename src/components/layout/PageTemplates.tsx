@@ -95,9 +95,9 @@ function TemplateFrame({
                                         className="h-full w-full object-cover"
                                     />
                                     <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8">
-                                        <div className="max-w-sm rounded-[1.5rem] border border-white/15 bg-black/35 px-5 py-4 text-white/92 backdrop-blur-md">
-                                            <div className="ornamental-kicker !text-white/75">Parish Welcome</div>
-                                            <p className="mt-2 text-sm leading-relaxed text-white/85">
+                                        <div className="max-w-sm rounded-[1.5rem] border border-parish-overlay-border/15 bg-parish-overlay-bg/35 px-5 py-4 text-parish-overlay-text/92 backdrop-blur-md">
+                                            <div className="ornamental-kicker !text-parish-overlay-muted">Parish Welcome</div>
+                                            <p className="mt-2 text-sm leading-relaxed text-parish-overlay-text/85">
                                                 A calm, practical first step into the life of Greenacres Walkerville Parish.
                                             </p>
                                         </div>

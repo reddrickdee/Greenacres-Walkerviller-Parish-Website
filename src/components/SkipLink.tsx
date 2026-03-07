@@ -12,9 +12,9 @@ export function SkipLink() {
                 // Positioning and appearance when visible
                 'focus:fixed focus:top-4 focus:left-4 focus:z-[9999]',
                 'focus:px-5 focus:py-3 focus:rounded-lg',
-                'focus:bg-parish-accent focus:text-white',
+                'focus:bg-parish-accent focus:text-parish-inverse',
                 'focus:font-display focus:font-semibold focus:text-sm focus:uppercase focus:tracking-wider',
-                'focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white',
+                'focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-parish-inverse',
                 'transition-none',
             ].join(' ')}
         >

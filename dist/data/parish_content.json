@@ -536,5 +536,35 @@
       "ctaRoute": "/contact"
     }
   ],
-  "homilyRecordings": []
+  "homilyRecordings": [],
+  "visitorInfo": {
+    "arrivalGuidance": "Arrive 10–15 minutes before Mass so you can find a seat comfortably. Greeters are usually near the doors and happy to help you get oriented.",
+    "whatToExpect": "You do not need to know every response or gesture before you arrive. Sit, stand, and kneel when the congregation does — printed guides are available, and no one will mind if you simply follow along. Communion is offered to baptised Catholics; all visitors are welcome to receive a blessing by crossing their arms over their chest as they approach.",
+    "accessibilitySupport": "Both churches are accessible for wheelchair users. Hearing loops are available at St Monica's. If you have specific accessibility needs, contact the parish office before your visit and we will make sure everything is ready.",
+    "contactPrompt": "If you would like to ask a question before visiting — about Mass times, parking, accessibility, or anything else — call the office on (08) 8261 6200 or email admin@gwparish.org.au.",
+    "churches": [
+      {
+        "id": "st-monicas",
+        "name": "St Monica's Church",
+        "address": "90 North East Road, Walkerville SA 5081",
+        "mapQuery": "St Monica's Catholic Church, 90 North East Road, Walkerville SA",
+        "parkingSummary": "Street parking on North East Road and surrounding streets. A small car park is accessible from the school entrance — enter via the gate on North East Road.",
+        "accessibilitySummary": "Step-free access at the main entrance. Hearing loop available. Accessible seating in the front and side aisles.",
+        "arrivalTip": "Enter through the main doors on North East Road. If you arrive early, the church is usually open 15 minutes before Mass.",
+        "weekendSummary": "Saturday vigil Mass at 6:00pm",
+        "weekdaySummary": "Wednesday 9:00am"
+      },
+      {
+        "id": "st-martins",
+        "name": "St Martin's Church",
+        "address": "Corner Muller and Hampstead Roads, Greenacres SA 5086",
+        "mapQuery": "St Martin's Catholic Church, Corner Muller and Hampstead Roads, Greenacres SA",
+        "parkingSummary": "Car park accessible from Muller Road. Additional street parking on Hampstead Road and surrounding streets.",
+        "accessibilitySummary": "Ramp access at the side entrance. Accessible seating available. Contact the office if you need assistance.",
+        "arrivalTip": "The main entrance faces Muller Road. The church hall is next door if you would like to stay for a cup of tea after Mass.",
+        "weekendSummary": "Sunday Mass at 9:30am",
+        "weekdaySummary": "Tuesday and Thursday at 9:00am"
+      }
+    ]
+  }
 }

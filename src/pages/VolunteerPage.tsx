@@ -189,7 +189,7 @@ export function VolunteerPage() {
                                     className="pilgrimage-button inline-flex items-center gap-3 disabled:cursor-not-allowed disabled:opacity-40"
                                 >
                                     {isSubmitting ? (
-                                        <><span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" /> Submitting…</>
+                                        <><span className="h-5 w-5 animate-spin rounded-full border-2 border-current/30 border-t-current" /> Submitting…</>
                                     ) : (
                                         <><Send size={18} /> Sign Up To Volunteer</>
                                     )}

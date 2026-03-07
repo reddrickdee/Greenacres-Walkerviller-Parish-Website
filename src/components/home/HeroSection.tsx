@@ -67,7 +67,7 @@ export function HeroSection() {
                                 <Link to="/new-here" className="pilgrimage-button">
                                     Plan Your First Visit
                                 </Link>
-                                <Link to="/mass-times" className="pilgrimage-button-secondary !border-white/20 !bg-white/8 !text-white">
+                                <Link to="/mass-times" className="pilgrimage-button-secondary !border-parish-overlay-border/20 !bg-parish-overlay-bg/8 !text-parish-overlay-text">
                                     View Mass Times
                                 </Link>
                             </div>
@@ -80,29 +80,29 @@ export function HeroSection() {
                         transition={{ duration: 0.95, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                         className="lg:col-span-5"
                     >
-                        <div className="sanctuary-panel border-white/10 bg-white/10 p-6 text-white backdrop-blur-2xl md:p-7">
+                        <div className="sanctuary-panel border-parish-overlay-border/10 bg-parish-overlay-bg/10 p-6 text-parish-overlay-text backdrop-blur-2xl md:p-7">
                             {/* Next Service — live countdown */}
-                            <div className="rounded-[1.6rem] border border-white/10 bg-black/20 p-4">
+                            <div className="rounded-[1.6rem] border border-parish-overlay-border/10 bg-parish-overlay-bg/20 p-4">
                                 <div className="flex items-start gap-3">
-                                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/40 bg-white/6 text-parish-brass">
+                                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/40 bg-parish-overlay-bg/6 text-parish-brass">
                                         <CalendarClock className="h-5 w-5" />
                                     </div>
                                     <div>
-                                        <div className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-white/70">Next Service</div>
+                                        <div className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-parish-overlay-text/70">Next Service</div>
                                         {nextService ? (
                                             <>
-                                                <div className="mt-2 text-2xl font-display text-white">
+                                                <div className="mt-2 text-2xl font-display text-parish-overlay-text">
                                                     {nextDay} {nextTime}
                                                 </div>
-                                                <div className="text-sm leading-relaxed text-white/75">{nextChurch}</div>
+                                                <div className="text-sm leading-relaxed text-parish-overlay-text/75">{nextChurch}</div>
                                                 <div className="mt-2 text-sm text-parish-brass">
                                                     Begins in {nextService.countdown.display}
                                                 </div>
                                             </>
                                         ) : (
                                             <>
-                                                <div className="mt-2 text-2xl font-display text-white">Saturday 6:00pm</div>
-                                                <div className="text-sm leading-relaxed text-white/75">St Monica&apos;s Walkerville</div>
+                                                <div className="mt-2 text-2xl font-display text-parish-overlay-text">Saturday 6:00pm</div>
+                                                <div className="text-sm leading-relaxed text-parish-overlay-text/75">St Monica&apos;s Walkerville</div>
                                             </>
                                         )}
                                     </div>
@@ -110,14 +110,14 @@ export function HeroSection() {
                             </div>
 
                             {/* First-visit guidance */}
-                            <div className="mt-4 rounded-[1.6rem] border border-white/10 bg-black/20 p-4">
+                            <div className="mt-4 rounded-[1.6rem] border border-parish-overlay-border/10 bg-parish-overlay-bg/20 p-4">
                                 <div className="flex items-start gap-3">
-                                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/40 bg-white/6 text-parish-brass">
+                                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/40 bg-parish-overlay-bg/6 text-parish-brass">
                                         <MapPinned className="h-5 w-5" />
                                     </div>
                                     <div>
-                                        <div className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-white/70">First-time visitor?</div>
-                                        <p className="mt-2 text-sm leading-relaxed text-white/80">
+                                        <div className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-parish-overlay-text/70">First-time visitor?</div>
+                                        <p className="mt-2 text-sm leading-relaxed text-parish-overlay-text/80">
                                             Find the churches, know what to expect, and contact the office before your visit.
                                         </p>
                                         <Link to="/new-here" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-brass no-underline">

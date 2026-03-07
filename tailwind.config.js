@@ -23,6 +23,18 @@ export default {
                     'inverse-muted': 'rgb(var(--color-parish-inverse-muted) / <alpha-value>)',
                     brass: 'hsl(var(--color-parish-brass) / <alpha-value>)',
 
+                    // Shell surfaces (utility strip + footer)
+                    'shell-bg': 'rgb(var(--color-parish-shell-bg) / <alpha-value>)',
+                    'shell-fg': 'rgb(var(--color-parish-shell-fg) / <alpha-value>)',
+                    'shell-muted': 'rgb(var(--color-parish-shell-muted) / <alpha-value>)',
+                    'shell-border': 'rgb(var(--color-parish-shell-border) / <alpha-value>)',
+
+                    // Overlay surfaces (photographic captions + glass panels)
+                    'overlay-bg': 'rgb(var(--color-parish-overlay-bg) / <alpha-value>)',
+                    'overlay-text': 'rgb(var(--color-parish-overlay-text) / <alpha-value>)',
+                    'overlay-muted': 'rgb(var(--color-parish-overlay-muted) / <alpha-value>)',
+                    'overlay-border': 'rgb(var(--color-parish-overlay-border) / <alpha-value>)',
+
                     // Liturgical Seasons
                     advent: '#6B3FA0',
                     ordinary: '#2D5F2D',

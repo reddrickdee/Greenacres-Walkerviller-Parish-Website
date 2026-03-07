@@ -20,6 +20,18 @@
     --color-parish-inverse: 251 247 241;
     --color-parish-inverse-muted: 206 196 181;
     --color-parish-brass: 41 72% 58%;
+
+    /* Shell surfaces — utility strip + footer (persistently dark, warm tone) */
+    --color-parish-shell-bg: 18 16 14;
+    --color-parish-shell-fg: 237 232 220;
+    --color-parish-shell-muted: 178 170 156;
+    --color-parish-shell-border: 255 255 255;
+
+    /* Overlay surfaces — photographic captions + glass panels */
+    --color-parish-overlay-bg: 0 0 0;
+    --color-parish-overlay-text: 255 255 255;
+    --color-parish-overlay-muted: 210 205 195;
+    --color-parish-overlay-border: 255 255 255;
   }
 
   html[data-theme="dark"] {
@@ -37,6 +49,18 @@
     --color-parish-inverse: 17 19 22;
     --color-parish-inverse-muted: 168 158 144;
     --color-parish-brass: 41 78% 67%;
+
+    /* Shell surfaces — slightly cooler in dark mode */
+    --color-parish-shell-bg: 10 11 14;
+    --color-parish-shell-fg: 220 214 204;
+    --color-parish-shell-muted: 148 140 128;
+    --color-parish-shell-border: 220 214 204;
+
+    /* Overlay surfaces — cooler/darker translucency in dark mode */
+    --color-parish-overlay-bg: 8 10 14;
+    --color-parish-overlay-text: 240 236 228;
+    --color-parish-overlay-muted: 180 174 164;
+    --color-parish-overlay-border: 240 236 228;
   }
 
   html {

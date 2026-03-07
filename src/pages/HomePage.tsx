@@ -193,9 +193,9 @@ export function HomePage() {
                                         className="h-full w-full object-cover"
                                     />
                                     <div className="absolute inset-x-0 bottom-0 z-10 p-6">
-                                        <div className="rounded-[1.5rem] border border-white/15 bg-black/30 px-5 py-4 text-white/88 backdrop-blur-md">
-                                            <div className="ornamental-kicker !text-white/72">Sunday Welcome</div>
-                                            <p className="mt-2 text-sm leading-relaxed text-white/82">
+                                        <div className="rounded-[1.5rem] border border-parish-overlay-border/15 bg-parish-overlay-bg/30 px-5 py-4 text-parish-overlay-text/88 backdrop-blur-md">
+                                            <div className="ornamental-kicker !text-parish-overlay-muted">Sunday Welcome</div>
+                                            <p className="mt-2 text-sm leading-relaxed text-parish-overlay-text/82">
                                                 Warm hospitality, meaningful worship, and a clear path into parish life.
                                             </p>
                                         </div>

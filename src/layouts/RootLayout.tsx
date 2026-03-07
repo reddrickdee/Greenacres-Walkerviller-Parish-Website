@@ -78,7 +78,7 @@ export function RootLayout() {
                 role="navigation"
                 aria-label="Main navigation"
             >
-                <div className="border-b border-white/5 bg-[#12100E] text-[#EDE8DC]">
+                <div className="border-b border-parish-shell-border/5 bg-parish-shell-bg text-parish-shell-fg">
                     <div className="mx-auto flex max-w-[1480px] items-center justify-center gap-3 px-4 py-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.28em] md:justify-between md:px-6">
                         <span className="hidden opacity-70 md:block">Greenacres + Walkerville Catholic Parish</span>
                         <span>In the footsteps of Jesus</span>
@@ -91,7 +91,7 @@ export function RootLayout() {
                         className="flex min-w-0 items-center gap-3 no-underline"
                         aria-label="Greenacres Walkerville Catholic Parish home"
                     >
-                        <div className={`flex h-14 w-14 items-center justify-center rounded-full border border-parish-brass/35 shadow-halo backdrop-blur-md transition-colors duration-500 ${isHeroTransparent ? 'bg-black/30' : 'bg-parish-surface/75'}`}>
+                        <div className={`flex h-14 w-14 items-center justify-center rounded-full border border-parish-brass/35 shadow-halo backdrop-blur-md transition-colors duration-500 ${isHeroTransparent ? 'bg-parish-overlay-bg/30' : 'bg-parish-surface/75'}`}>
                             <img
                                 src="/parish-logo.png"
                                 alt="Greenacres Walkerville Parish logo"
@@ -114,7 +114,7 @@ export function RootLayout() {
                                 key={link.to}
                                 to={link.to}
                                 className={`rounded-full px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.24em] no-underline transition-all duration-300 ${isActive(location.pathname, link.to)
-                                    ? 'bg-parish-fg text-parish-inverse shadow-halo dark:bg-white/10 dark:text-white dark:shadow-none'
+                                    ? 'bg-parish-fg text-parish-inverse shadow-halo dark:bg-parish-shell-border/10 dark:text-parish-shell-fg dark:shadow-none'
                                     : isHeroTransparent
                                         ? 'text-white/85 hover:bg-white/10 hover:text-white'
                                         : 'text-parish-muted hover:bg-parish-border/6 hover:text-parish-fg'
@@ -224,24 +224,24 @@ export function RootLayout() {
                 <Outlet />
             </main>
 
-            <footer className="mt-8 border-t border-parish-border/10 bg-parish-fg px-6 py-16 text-parish-inverse md:px-10 lg:px-16" role="contentinfo">
+            <footer className="mt-8 border-t border-parish-shell-border/10 bg-parish-shell-bg px-6 py-16 text-parish-shell-fg md:px-10 lg:px-16" role="contentinfo">
                 <div className="mx-auto max-w-7xl">
                     <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
                         <div className="lg:col-span-5">
-                            <div className="section-label !text-parish-inverse/65 before:!bg-parish-brass/80 mb-5">Sanctuary Light</div>
+                            <div className="section-label !text-parish-shell-muted before:!bg-parish-brass/80 mb-5">Sanctuary Light</div>
                             <Link to="/" className="no-underline">
-                                <h2 className="max-w-md text-4xl text-parish-inverse md:text-5xl">
+                                <h2 className="max-w-md text-4xl text-parish-shell-fg md:text-5xl">
                                     A parish that feels calm, welcoming, and unmistakably Catholic.
                                 </h2>
                             </Link>
-                            <p className="mt-5 max-w-xl text-base leading-relaxed text-parish-inverse/72 md:text-lg">
+                            <p className="mt-5 max-w-xl text-base leading-relaxed text-parish-shell-muted md:text-lg">
                                 Greenacres Walkerville Catholic Parish gathers across St Monica&apos;s Walkerville and St Martin&apos;s Greenacres. Whether you are visiting for the first time or returning after years away, you are welcome here.
                             </p>
                             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                                 <Link to="/new-here" className="pilgrimage-button">
                                     Plan A First Visit
                                 </Link>
-                                <Link to="/mass-times" className="pilgrimage-button-secondary !border-white/15 !bg-white/6 !text-white">
+                                <Link to="/mass-times" className="pilgrimage-button-secondary !border-parish-shell-border/15 !bg-parish-shell-border/6 !text-parish-shell-fg">
                                     View Mass Times
                                 </Link>
                             </div>
@@ -250,7 +250,7 @@ export function RootLayout() {
                         <div className="lg:col-span-7 grid gap-8 md:grid-cols-3">
                             <div>
                                 <div className="ornamental-kicker !text-parish-brass mb-4">Visit</div>
-                                <div className="space-y-4 text-parish-inverse/78">
+                                <div className="space-y-4 text-parish-shell-fg/78">
                                     <div className="flex gap-3">
                                         <Church className="mt-1 h-4 w-4 text-parish-brass" />
                                         <div className="text-sm leading-relaxed">St Monica&apos;s Church, 90 North East Road, Walkerville</div>
@@ -273,7 +273,7 @@ export function RootLayout() {
                                         <Link
                                             key={link.to}
                                             to={link.to}
-                                            className="block text-sm uppercase tracking-[0.18em] text-parish-inverse/78 no-underline transition-colors hover:text-white"
+                                            className="block text-sm uppercase tracking-[0.18em] text-parish-shell-fg/78 no-underline transition-colors hover:text-parish-shell-fg"
                                         >
                                             {link.label}
                                         </Link>
@@ -283,16 +283,16 @@ export function RootLayout() {
 
                             <div>
                                 <div className="ornamental-kicker !text-parish-brass mb-4">Belong</div>
-                                <div className="space-y-4 text-parish-inverse/78">
-                                    <Link to="/contact" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-white">
+                                <div className="space-y-4 text-parish-shell-fg/78">
+                                    <Link to="/contact" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-parish-shell-fg">
                                         <Mail className="h-4 w-4 text-parish-brass" />
                                         Contact the Parish Office
                                     </Link>
-                                    <Link to="/volunteer" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-white">
+                                    <Link to="/volunteer" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-parish-shell-fg">
                                         <HeartHandshake className="h-4 w-4 text-parish-brass" />
                                         Volunteer and serve
                                     </Link>
-                                    <Link to="/giving" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-white">
+                                    <Link to="/giving" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-parish-shell-fg">
                                         <ArrowRight className="h-4 w-4 text-parish-brass" />
                                         Support parish life
                                     </Link>
@@ -301,7 +301,7 @@ export function RootLayout() {
                         </div>
                     </div>
 
-                    <div className="mt-14 border-t border-white/10 pt-6 text-sm leading-relaxed text-parish-inverse/60 md:flex md:items-center md:justify-between md:gap-6">
+                    <div className="mt-14 border-t border-parish-shell-border/10 pt-6 text-sm leading-relaxed text-parish-shell-muted/60 md:flex md:items-center md:justify-between md:gap-6">
                         <p>© {new Date().getFullYear()} Greenacres Walkerville Catholic Parish.</p>
                         <p>We acknowledge the Traditional Owners and Custodians of the lands on which our parish gathers and pay our respects to Elders past, present and emerging.</p>
                     </div>

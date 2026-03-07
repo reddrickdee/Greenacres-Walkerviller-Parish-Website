@@ -30,6 +30,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setThemeState(newTheme);
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('parish-theme', newTheme);
+        // Sync browser chrome / PWA theme-color
+        const themeColor = newTheme === 'dark' ? '#0A0B0E' : '#F4EFE6';
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor);
     };
 
     const toggleTheme = () => {
