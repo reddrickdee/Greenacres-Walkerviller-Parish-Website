@@ -24,7 +24,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         if (currentTheme && currentTheme !== theme) {
             setThemeState(currentTheme);
         }
-    }, []);
+    }, [theme]);
 
     const setTheme = (newTheme: Theme) => {
         setThemeState(newTheme);

@@ -98,10 +98,10 @@ export function HomePage() {
                                 <div className="lg:col-span-4">
                                     <span className="section-label mb-4">Start Here</span>
                                     <h2 className="text-3xl text-parish-fg md:text-4xl">
-                                        First things first: know where to go and when to arrive.
+                                        Find a Mass, get directions, or plan your first visit.
                                     </h2>
                                     <p className="mt-4 text-base leading-relaxed text-parish-muted md:text-lg">
-                                        Newcomers should be able to orient themselves in seconds. These are the three pathways most people need immediately.
+                                        These are the three things most people need straight away.
                                     </p>
                                 </div>
 
@@ -176,8 +176,8 @@ export function HomePage() {
                             <div className="lg:col-span-5">
                                 <SectionIntro
                                     eyebrow="For Newcomers"
-                                    title={<>You do not need to know everything before you arrive.</>}
-                                    description="This parish should feel calm and legible to first-time visitors. The aim is to make showing up easier than staying away."
+                                    title={<>You don't need to know everything before you arrive.</>}
+                                    description="Whether this is your first Mass or your first time in years, there are clear steps to help you feel at home."
                                 />
                             </div>
                             <div className="lg:col-span-7 grid gap-6 lg:grid-cols-12">
@@ -238,8 +238,8 @@ export function HomePage() {
                     <div className="page-section-inner">
                         <SectionIntro
                             eyebrow="Mass Locations"
-                            title={<>Worship across two churches, each with a clear rhythm and place.</>}
-                            description="The quickest way to reduce hesitation is to show visitors exactly where each church is, what Masses happen there, and when the next service begins."
+                            title={<>Two churches serving one parish community.</>}
+                            description="Check the schedule, note your nearest church, and arrive a few minutes early."
                         />
 
                         <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -350,8 +350,8 @@ export function HomePage() {
                             <div className="lg:col-span-5">
                                 <SectionIntro
                                     eyebrow="Parish Story"
-                                    title={<>A parish identity shaped by welcome, worship, and shared responsibility.</>}
-                                    description="The redesign should surface the parish mission without making it feel like a document archive. These sections turn the mission back into a lived invitation."
+                                    title={<>The story of this parish — in its own words.</>}
+                                    description="The vision, mission, and prayer that guide our parish community."
                                 />
                             </div>
                             <div className="lg:col-span-7 grid gap-6">
@@ -398,7 +398,7 @@ export function HomePage() {
                         <SectionIntro
                             eyebrow="Community Life"
                             title={<>Parish life is more than Sunday attendance.</>}
-                            description="Show the texture of the community: prayer, service, formation, and ordinary ways of belonging."
+                            description="Our parish includes Sri Lankan, Filipino, and broader Australian families who serve, pray, and celebrate together throughout the week."
                         />
 
                         <div className="mt-10 grid gap-6 lg:grid-cols-12">
@@ -468,8 +468,8 @@ export function HomePage() {
                             <div className="lg:col-span-7">
                                 <SectionIntro
                                     eyebrow="Daily Reflection"
-                                    title={<>Carry a moment of prayer into the rest of the week.</>}
-                                    description="The daily reflection remains a core interactive feature, now positioned as a contemplative stop in the overall journey."
+                                    title={<>A daily moment of prayer and reflection.</>}
+                                    description="Scripture, a short reflection, and a prayer intention — a quiet pause you can carry into the rest of your day."
                                 />
                                 <div className="mt-8 space-y-6">
                                     <ReflectionDateNavigator
@@ -514,8 +514,8 @@ export function HomePage() {
                     <div className="page-section-inner">
                         <SectionIntro
                             eyebrow="Community Pulse"
-                            title={<>See the parish breathing in real time.</>}
-                            description="The prayer wall and parish updates stay interactive, but they now sit inside the stronger visual hierarchy instead of competing with the hero."
+                            title={<>Stay connected between Sundays.</>}
+                            description="The prayer wall, parish announcements, and community updates keep you in touch with parish life through the week."
                         />
 
                         <div className="mt-10 grid items-start gap-8 lg:grid-cols-12 xl:gap-12">

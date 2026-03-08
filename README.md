@@ -1,12 +1,15 @@
 # Greenacres Walkerville Catholic Parish
 
-A modern, accessible parish website built with React, TypeScript, Tailwind CSS, and Framer Motion. This React application serves as the primary frontend for the parish, having successfully replaced the legacy Flutter project as the root repository.
+A modern, accessible parish website built with React, TypeScript, Tailwind CSS, and Framer Motion. The current frontend serves St Monica's Walkerville and St Martin's Greenacres, with release-readiness checks for accessibility, interaction, responsive behaviour, and truthful community-facing content.
 
 ## Getting Started
 
 ```bash
 # Install dependencies
 npm install
+
+# Install Playwright browser binaries for E2E checks
+npx playwright install chromium
 
 # Start development server
 npm run dev
@@ -32,10 +35,10 @@ npm run preview
 The "Sacred Editorial" design system features a robust, token-based theme engine:
 
 - **Themes**: Full support for Light and "Sacred Night" Dark modes, matching OS preferences with user overrides via `localStorage` and a modern React Context toggle.
-- **Typography**: Cinzel (headings), Cormorant Garamond (body serif), Inter (UI)
+- **Typography**: Merriweather (display headings) and Inter (body/UI), tuned for parishioners with varying digital confidence.
 - **Colors**: Semantic theme tokens replacing hardcoded values. Warm alabaster (`#F9F8F6`), deep slate (`#1C1917`), liturgical gold (`#B8941E`) in light mode; optimized deep tones in "Sacred Night" mode.
 - **Modern UI/UX**: Glassmorphism effects (e.g., custom Facebook Widget), tabbed cards for Daily Reflections.
-- **Accessibility**: 18px base font, WCAG AA contrast ratios, 44px minimum touch targets, `prefers-reduced-motion` support, ARIA labels throughout.
+- **Accessibility**: 18px base font, WCAG-aligned contrast and focus treatment, 44px minimum touch targets, reduced-motion support, semantic overlays/dialogs, and breadcrumb-based wayfinding.
 
 ## Pages & Routes
 
@@ -64,3 +67,41 @@ The "Sacred Editorial" design system features a robust, token-based theme engine
 ## Deployment
 
 The `vercel.json` is configured for Vercel deployment with SPA fallback routing.
+
+## Verification
+
+Local release checks:
+
+```bash
+npm run lint
+npm test
+npm run test:e2e
+npm run build
+```
+
+Or run the combined local gate:
+
+```bash
+npm run verify:release
+```
+
+Live deployment checks against `https://www.gwparish.org.au`:
+
+```bash
+# Runs the Playwright suite against production and writes an HTML report
+npm run test:e2e:live
+
+# Captures Lighthouse HTML reports for Home, Contact, and Giving
+npm run verify:lighthouse:live
+```
+
+You can target another deployed environment by setting `PLAYWRIGHT_BASE_URL` and `LIGHTHOUSE_BASE_URL`.
+
+The Playwright HTML report is written to `playwright-report/`. Lighthouse reports are written to `output/lighthouse/`.
+
+GitHub Actions automation:
+
+- [ci.yml](/Users/reddrick/Greenacres%20Walkerviller%20Parish%20Website/.github/workflows/ci.yml) runs lint, unit tests, Playwright E2E, and production build on push, pull request, and manual dispatch
+- [live-verification.yml](/Users/reddrick/Greenacres%20Walkerviller%20Parish%20Website/.github/workflows/live-verification.yml) runs the deployed-site Playwright and Lighthouse checks on demand against a chosen public URL
+
+See [docs/release-readiness.md](/Users/reddrick/Greenacres%20Walkerviller%20Parish%20Website/docs/release-readiness.md) for the full release checklist, manual validation steps, PR summary outline, and rollback notes.

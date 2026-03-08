@@ -272,6 +272,10 @@ export function RootLayout() {
                                         <ArrowRight className="h-4 w-4 text-parish-brass" />
                                         Support parish life
                                     </Link>
+                                    <Link to="/safeguarding" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-parish-shell-fg">
+                                        <ArrowRight className="h-4 w-4 text-parish-brass" />
+                                        Safeguarding &amp; child protection
+                                    </Link>
                                 </div>
                             </div>
                         </div>

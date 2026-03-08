@@ -36,7 +36,7 @@ export function HeroSection() {
         : "St Martin's";
 
     return (
-        <header className="relative min-h-screen overflow-hidden">
+        <header className="relative min-h-[70vh] overflow-hidden md:min-h-screen">
             <motion.div style={{ y }} className="absolute inset-0 z-0">
                 <div
                     className="absolute inset-0 bg-cover bg-center"

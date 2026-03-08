@@ -23,7 +23,7 @@ export function AboutPage() {
         <StoryPageTemplate
             eyebrow="About Our Parish"
             title={<>A parish story shaped by worship, welcome, and responsibility.</>}
-            description="Greenacres Walkerville Catholic Parish carries history, prayer, and pastoral care across two church communities. This page frames that story with greater clarity and visual dignity."
+            description="Learn about our parish: vision, leadership, pastoral council, and the people who carry this community forward."
             imageSrc="/assets/source/our_parish.webp"
             imageAlt="Greenacres Walkerville parish community gathering"
             actions={(
@@ -48,8 +48,8 @@ export function AboutPage() {
                     <div className="lg:col-span-5">
                         <SectionIntro
                             eyebrow="Pastoral Voice"
-                            title={<>Leadership here is pastoral before it is institutional.</>}
-                            description="The site now introduces the parish through actual voice and mission, rather than dropping visitors directly into dense blocks of church information."
+                            title={<>Meet the people who lead and care for this parish.</>}
+                            description="Our parish priest and pastoral council work together to guide worship, community life, and pastoral care."
                         />
                     </div>
                     <div className="lg:col-span-7 grid gap-6">

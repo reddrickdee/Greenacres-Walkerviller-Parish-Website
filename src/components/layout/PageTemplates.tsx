@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { ResponsiveImage } from '../ui/ResponsiveImage';
 
 type TemplateVariant = 'story' | 'utility' | 'highlight';
 
@@ -99,9 +100,13 @@ function TemplateFrame({
 
                             <div className="order-1 lg:order-2 lg:col-span-5">
                                 <div className="image-panel h-full min-h-[320px] rounded-none border-x-0 border-y-0 lg:min-h-[540px] lg:rounded-l-[3rem]">
-                                    <img
+                                    <ResponsiveImage
                                         src={imageSrc}
                                         alt={imageAlt}
+                                        width={1200}
+                                        height={800}
+                                        priority
+                                        sizes="(max-width: 1024px) 100vw, 42vw"
                                         className="h-full w-full object-cover"
                                     />
                                     <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8">

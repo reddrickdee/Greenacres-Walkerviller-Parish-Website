@@ -90,7 +90,7 @@ export function FacebookFeed({
     return (
         <div className="relative w-full max-w-[540px] mx-auto group" ref={containerRef}>
             {/* Bento Box Container */}
-            <div className="constraint-widget-box h-[600px] w-full constraint-widget-fade">
+            <div className="constraint-widget-box w-full constraint-widget-fade" style={{ minHeight: `${height + 80}px` }}>
 
                 {/* Custom Native Header */}
                 <div className="px-6 py-5 border-b border-parish-border/5 flex items-center justify-between bg-transparent">
@@ -121,6 +121,7 @@ export function FacebookFeed({
                 {/* Iframe Content Area */}
                 <div
                     className="w-full flex justify-center overflow-y-auto custom-scrollbar flex-1 relative z-10"
+                    style={{ minHeight: `${height}px` }}
                 >
                     {!isLoaded && !hasFailed && (
                         <div className="absolute inset-0 flex items-center justify-center text-parish-muted">

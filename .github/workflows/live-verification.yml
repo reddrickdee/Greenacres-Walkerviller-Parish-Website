@@ -1,23 +1,25 @@
-name: CI
+name: Live Verification
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
+    inputs:
+      base_url:
+        description: Public site URL to verify
+        required: true
+        default: https://www.gwparish.org.au
+        type: string
 
 permissions:
   contents: read
 
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  release-readiness:
+  verify-live-site:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      PLAYWRIGHT_BASE_URL: ${{ inputs.base_url }}
+      PLAYWRIGHT_SKIP_WEBSERVER: "1"
+      LIGHTHOUSE_BASE_URL: ${{ inputs.base_url }}
 
     steps:
       - name: Check out repository
@@ -35,14 +37,17 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Run release verification
-        run: npm run verify:release
+      - name: Run live Playwright verification
+        run: npm run test:e2e:live
+
+      - name: Run live Lighthouse verification
+        run: npm run verify:lighthouse:live
 
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: live-playwright-report
           path: playwright-report/
           if-no-files-found: ignore
           retention-days: 7
@@ -51,16 +56,16 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-test-results
+          name: live-playwright-test-results
           path: test-results/
           if-no-files-found: ignore
           retention-days: 7
 
-      - name: Upload production build
-        if: success()
+      - name: Upload Lighthouse reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: dist
-          path: dist/
-          if-no-files-found: error
+          name: lighthouse-reports
+          path: output/lighthouse/
+          if-no-files-found: ignore
           retention-days: 7

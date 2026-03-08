@@ -25,7 +25,7 @@ export function NewHerePage() {
         <HighlightPageTemplate
             eyebrow="First Visit Guide"
             title={<>Come as you are. We&apos;ll help you know what comes next.</>}
-            description="Everything you need to know before arriving — when to come, where to go, what to expect, and who to speak to."
+            description="Whether you're joining us from the local area or from further afield, our parish community — including Sri Lankan, Filipino, and broader Australian families — is glad to welcome you."
             imageSrc="/assets/source/welcome_thumb.webp"
             imageAlt="Visitors arriving at parish grounds"
             actions={(
@@ -159,9 +159,9 @@ export function NewHerePage() {
                         </InfoCard>
                         <InfoCard>
                             <Users className="h-6 w-6 text-parish-brass" />
-                            <div className="mt-4 ornamental-kicker">Families Welcome</div>
+                            <div className="mt-4 ornamental-kicker">A Diverse Parish Family</div>
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">
-                                Children are welcome at every Mass. Children&apos;s liturgy runs on the first and third weekends at both churches.
+                                Our parish includes Sri Lankan, Filipino, and broader Australian families. Children are welcome at every Mass, with children's liturgy on the first and third weekends.
                             </p>
                         </InfoCard>
                         <InfoCard>
