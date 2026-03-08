@@ -113,3 +113,33 @@ export function isActive(pathname: string, to: string): boolean {
     if (to === '/') return pathname === '/';
     return pathname === to || pathname.startsWith(`${to}/`);
 }
+
+// ── Route Metadata for Breadcrumbs ────────────────────────────────────────────
+
+export interface RouteMeta {
+    /** Display label for breadcrumb / page title fallback. */
+    label: string;
+    /** Section grouping (matches drawer group titles). */
+    section: 'Explore' | 'Worship' | 'Community' | 'Admin';
+}
+
+export const ROUTE_META: Record<string, RouteMeta> = {
+    '/': { label: 'Home', section: 'Explore' },
+    '/about': { label: 'About Us', section: 'Explore' },
+    '/history': { label: 'History', section: 'Explore' },
+    '/gallery': { label: 'Gallery', section: 'Explore' },
+    '/new-here': { label: "I'm New Here", section: 'Explore' },
+    '/mass-times': { label: 'Mass Times', section: 'Worship' },
+    '/sacraments': { label: 'Sacraments', section: 'Worship' },
+    '/sacraments/request': { label: 'Request a Sacrament', section: 'Worship' },
+    '/live': { label: 'Live Stream', section: 'Worship' },
+    '/homilies': { label: 'Homilies', section: 'Worship' },
+    '/news-events': { label: 'News & Events', section: 'Worship' },
+    '/community': { label: 'Community Hub', section: 'Community' },
+    '/volunteer': { label: 'Volunteer', section: 'Community' },
+    '/giving': { label: 'Support Our Parish', section: 'Community' },
+    '/contact': { label: 'Contact', section: 'Community' },
+    '/safeguarding': { label: 'Safeguarding', section: 'Community' },
+    '/admin/community': { label: 'Community Admin', section: 'Admin' },
+    '/admin/reflections': { label: 'Reflections Admin', section: 'Admin' },
+};

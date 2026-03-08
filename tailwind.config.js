@@ -42,9 +42,9 @@ export default {
                 }
             },
             fontFamily: {
-                display: ['Fraunces', 'serif'],
-                serif: ['Fraunces', 'serif'],
-                body: ['Manrope', 'sans-serif'],
+                display: ['Merriweather', 'serif'],
+                serif: ['Merriweather', 'serif'],
+                body: ['Inter', 'sans-serif'],
                 dyslexic: ['OpenDyslexic', 'sans-serif'],
             },
             fontSize: {
@@ -74,7 +74,15 @@ export default {
                     '0%': { opacity: '0', transform: 'translateY(20px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
                 }
-            }
+            },
+            zIndex: {
+                sticky: '20',
+                dropdown: '30',
+                overlay: '40',
+                modal: '50',
+                toast: '60',
+                skip: '70',
+            },
         },
     },
     plugins: [],

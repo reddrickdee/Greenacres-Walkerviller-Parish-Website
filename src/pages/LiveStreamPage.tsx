@@ -131,14 +131,29 @@ export function LiveStreamPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-60px' }}
                                 transition={{ duration: 0.55, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                                className="sanctuary-card flex cursor-pointer items-center gap-4"
+                                className={`sanctuary-card flex items-center gap-4 ${rec.videoId ? 'cursor-pointer' : ''}`}
+                                {...(rec.videoId ? {
+                                    role: 'link',
+                                    tabIndex: 0,
+                                    onClick: () => window.open(`https://www.youtube.com/watch?v=${rec.videoId}`, '_blank'),
+                                    onKeyDown: (e: React.KeyboardEvent) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            window.open(`https://www.youtube.com/watch?v=${rec.videoId}`, '_blank');
+                                        }
+                                    },
+                                    'aria-label': `Watch ${rec.title}`,
+                                } : {})}
                             >
-                                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65 text-parish-brass">
+                                <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65 ${rec.videoId ? 'text-parish-brass' : 'text-parish-muted'}`}>
                                     <Play size={20} className="ml-0.5" />
                                 </div>
                                 <div>
                                     <div className="text-lg text-parish-fg">{rec.title}</div>
                                     <div className="text-sm text-parish-muted">{rec.date}</div>
+                                    {!rec.videoId && (
+                                        <div className="mt-1 text-xs italic text-parish-muted">Coming soon</div>
+                                    )}
                                 </div>
                             </motion.div>
                         ))}

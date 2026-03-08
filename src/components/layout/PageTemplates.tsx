@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 type TemplateVariant = 'story' | 'utility' | 'highlight';
 
@@ -33,6 +33,13 @@ const reveal = {
     transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
 };
 
+const noMotion = {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0 },
+};
+
 function templateAccent(variant: TemplateVariant) {
     if (variant === 'utility') {
         return 'bg-gradient-to-br from-parish-surface via-parish-surface to-parish-elevated/85';
@@ -56,14 +63,17 @@ function TemplateFrame({
     aside,
     children,
 }: BaseTemplateProps & { variant: TemplateVariant }) {
+    const prefersReduced = useReducedMotion();
+    const heroMotion = prefersReduced
+        ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0 } }
+        : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } };
+
     return (
         <div className="page-shell">
             <section className="page-section">
                 <div className="page-section-inner">
                     <motion.div
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                        {...heroMotion}
                         className={`sanctuary-panel noise-bg ${templateAccent(variant)}`}
                     >
                         <div className="grid grid-cols-1 lg:grid-cols-12">
@@ -134,9 +144,12 @@ export function SectionIntro({
     description,
     align = 'left',
 }: SectionIntroProps) {
+    const prefersReduced = useReducedMotion();
+    const motionProps = prefersReduced ? noMotion : reveal;
+
     return (
         <motion.div
-            {...reveal}
+            {...motionProps}
             className={align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}
         >
             <span className="section-label mb-5">{eyebrow}</span>

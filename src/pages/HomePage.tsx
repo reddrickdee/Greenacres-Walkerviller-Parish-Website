@@ -9,6 +9,7 @@ import {
     Clock3,
     HeartHandshake,
     MapPinned,
+    Star,
     Users,
 } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
@@ -380,7 +381,7 @@ export function HomePage() {
                                         <div className="mt-4 space-y-4">
                                             {content.missionPoints.slice(0, 4).map(point => (
                                                 <div key={point.title} className="flex gap-3">
-                                                    <span className="mt-1 text-parish-brass">✦</span>
+                                                    <Star size={14} className="mt-1 shrink-0 text-parish-brass" />
                                                     <p className="text-sm leading-relaxed text-parish-muted">{point.title}</p>
                                                 </div>
                                             ))}

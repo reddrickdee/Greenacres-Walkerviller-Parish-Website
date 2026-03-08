@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useOverlay } from '../hooks/useOverlay';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { ArrowRight, Church, Clock3, HeartHandshake, Mail, Menu, X } from 'lucide-react';
@@ -20,7 +21,6 @@ export function RootLayout() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollY } = useScroll();
     const hamburgerRef = useRef<HTMLButtonElement>(null);
-    const drawerRef = useRef<HTMLDivElement>(null);
 
     useMotionValueEvent(scrollY, 'change', latest => {
         setIsScrolled(latest > 40);
@@ -31,37 +31,14 @@ export function RootLayout() {
         setMenuOpen(false);
     }, [location.pathname]);
 
-    // Focus trap inside mobile drawer
-    const handleDrawerKeyDown = useCallback((e: React.KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            setMenuOpen(false);
-            hamburgerRef.current?.focus();
-            return;
-        }
-        if (e.key !== 'Tab' || !drawerRef.current) return;
+    const closeDrawer = useCallback(() => setMenuOpen(false), []);
 
-        const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
-            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-        );
-        if (focusable.length === 0) return;
-
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-
-        if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault();
-            last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-        }
-    }, []);
-
-    // Return focus to hamburger when drawer closes
-    const closeDrawer = useCallback(() => {
-        setMenuOpen(false);
-        hamburgerRef.current?.focus();
-    }, []);
+    const { overlayRef: drawerOverlayRef } = useOverlay({
+        isOpen: menuOpen,
+        onClose: closeDrawer,
+        triggerRef: hamburgerRef,
+        skipScrollLock: true,
+    });
 
     const isHome = location.pathname === '/';
     const isHeroTransparent = isHome && !isScrolled;
@@ -71,7 +48,7 @@ export function RootLayout() {
             <SkipLink />
 
             <nav
-                className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${!isHeroTransparent
+                className={`fixed inset-x-0 top-0 z-sticky transition-all duration-500 ${!isHeroTransparent
                     ? 'border-b border-parish-border/10 bg-parish-surface/95 shadow-sanctuary backdrop-blur-2xl'
                     : 'border-b border-transparent bg-transparent'
                     }`}
@@ -158,11 +135,10 @@ export function RootLayout() {
                             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                             className="border-t border-parish-border/10 bg-parish-surface/96 backdrop-blur-2xl lg:hidden"
                             id="mobile-drawer"
-                            ref={drawerRef}
+                            ref={drawerOverlayRef}
                             role="dialog"
                             aria-label="Site navigation menu"
                             aria-modal="true"
-                            onKeyDown={handleDrawerKeyDown}
                         >
                             <div className="mx-auto grid max-w-[1480px] gap-8 px-5 py-6 md:grid-cols-12 md:px-6">
                                 <div className="md:col-span-8 grid gap-8 md:grid-cols-3">

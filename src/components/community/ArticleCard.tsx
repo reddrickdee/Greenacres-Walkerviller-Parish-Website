@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Clock, User } from 'lucide-react';
+import { Clock, Star, User } from 'lucide-react';
 import { CommunityPost } from '../../types';
 import { supabase } from '../../lib/supabaseClient';
 
@@ -57,7 +57,7 @@ export function ArticleCard({ post }: ArticleCardProps) {
                     </div>
                 ) : (
                     <div className="aspect-[16/9] bg-gradient-to-br from-parish-accent/5 to-parish-brass/10 flex items-center justify-center">
-                        <span className="font-display text-4xl text-parish-accent/20">✦</span>
+                        <Star size={36} className="text-parish-accent/20" />
                     </div>
                 )}
 

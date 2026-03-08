@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useOverlay } from '../../hooks/useOverlay';
 
 interface AuthModalProps {
     isOpen: boolean;
     onClose: () => void;
+    /** Ref to the button/element that triggered the modal so focus returns on close. */
+    triggerRef?: React.RefObject<HTMLElement | null>;
 }
 
-export function AuthModal({ isOpen, onClose }: AuthModalProps) {
+export function AuthModal({ isOpen, onClose, triggerRef }: AuthModalProps) {
     const [isLogin, setIsLogin] = useState(true);
     const [loading, setLoading] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
@@ -20,7 +23,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
 
-    if (!isOpen) return null;
+    const internalTriggerRef = useRef<HTMLElement | null>(null);
 
     const handleClose = () => {
         // Reset state on close
@@ -33,6 +36,12 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
         setIsLogin(true);
         onClose();
     };
+
+    const { overlayRef } = useOverlay({
+        isOpen,
+        onClose: handleClose,
+        triggerRef: triggerRef ?? internalTriggerRef,
+    });
 
     const handleAuth = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -76,8 +85,17 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
         }
     };
 
+    if (!isOpen) return null;
+
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div
+            ref={overlayRef}
+            className="fixed inset-0 z-modal flex items-center justify-center p-4"
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label={isLogin ? 'Sign in' : 'Create account'}
+        >
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -95,6 +113,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 <button
                     onClick={handleClose}
                     className="absolute top-4 right-4 p-2 text-parish-muted hover:text-parish-fg hover:bg-parish-border/10 rounded-full transition-colors"
+                    aria-label="Close"
                 >
                     <X size={20} />
                 </button>
@@ -117,6 +136,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             className="bg-red-500/10 text-red-500 border border-red-500/20 rounded-xl p-3 text-sm mb-6 font-medium"
+                            role="alert"
                         >
                             {errorMsg}
                         </motion.div>
@@ -127,6 +147,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             className="bg-green-500/10 text-green-600 border border-green-500/20 rounded-xl p-3 text-sm mb-6 font-medium"
+                            role="status"
                         >
                             {successMsg}
                         </motion.div>
@@ -137,8 +158,9 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     {!isLogin && (
                         <div className="flex gap-4">
                             <div className="flex-1 flex flex-col gap-1.5">
-                                <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">First Name</label>
+                                <label htmlFor="auth-first-name" className="font-display text-[10px] uppercase tracking-widest text-parish-muted">First Name</label>
                                 <input
+                                    id="auth-first-name"
                                     type="text"
                                     required={!isLogin}
                                     value={firstName}
@@ -148,8 +170,9 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                                 />
                             </div>
                             <div className="flex-1 flex flex-col gap-1.5">
-                                <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Last Name</label>
+                                <label htmlFor="auth-last-name" className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Last Name</label>
                                 <input
+                                    id="auth-last-name"
                                     type="text"
                                     required={!isLogin}
                                     value={lastName}
@@ -162,8 +185,9 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     )}
 
                     <div className="flex flex-col gap-1.5">
-                        <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Email Address</label>
+                        <label htmlFor="auth-email" className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Email Address</label>
                         <input
+                            id="auth-email"
                             type="email"
                             required
                             value={email}
@@ -174,8 +198,9 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                        <label className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Password</label>
+                        <label htmlFor="auth-password" className="font-display text-[10px] uppercase tracking-widest text-parish-muted">Password</label>
                         <input
+                            id="auth-password"
                             type="password"
                             required
                             value={password}

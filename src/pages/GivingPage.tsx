@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { usePageSEO } from '../hooks/usePageSEO';
-import { Heart, CreditCard, RefreshCw, Shield, ChevronDown } from 'lucide-react';
+import { Heart, ChevronDown, Star } from 'lucide-react';
 import { InfoCard, ScriptureBlock, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
+import { FormField } from '../components/ui/FormField';
+import { FormErrorSummary } from '../components/ui/FormErrorSummary';
 
 const PRESET_AMOUNTS = [20, 50, 100, 250];
 
@@ -25,16 +27,23 @@ export function GivingPage() {
     const [donorEmail, setDonorEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showThankYou, setShowThankYou] = useState(false);
+    const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false);
 
     usePageSEO({
-        title: 'Online Giving — Support Our Parish',
-        description: 'Give online to Greenacres Walkerville Catholic Parish. Support our ministries, building fund, youth programs, and community outreach.',
+        title: 'Support Our Parish — Pledge or Enquire',
+        description: 'Express your intent to support Greenacres Walkerville Catholic Parish. Submit a giving pledge or enquiry and the parish office will follow up with you.',
         path: '/giving',
     });
 
     const effectiveAmount = selectedAmount ?? (customAmount ? parseFloat(customAmount) : 0);
-    const isValid = effectiveAmount >= 1 && donorEmail.includes('@');
     const currentFund = FUNDS.find(f => f.id === selectedFund)!;
+
+    // Validation
+    const errors: Record<string, string> = {};
+    if (effectiveAmount < 1) errors.amount = 'Please select or enter an amount of at least $1.';
+    if (!donorEmail.trim()) errors.email = 'An email address is required so the parish office can follow up.';
+    else if (!donorEmail.includes('@')) errors.email = 'Please enter a valid email address.';
+    const isValid = Object.keys(errors).length === 0;
 
     const handleSelectPreset = (amount: number) => {
         setSelectedAmount(amount);
@@ -47,6 +56,7 @@ export function GivingPage() {
     };
 
     const handleSubmit = async () => {
+        setHasAttemptedSubmit(true);
         if (!isValid) return;
         setIsSubmitting(true);
         await new Promise(resolve => setTimeout(resolve, 1500));
@@ -70,9 +80,12 @@ export function GivingPage() {
                             </div>
                             <h1 className="text-4xl text-parish-fg md:text-5xl">Thank You</h1>
                             <p className="mt-6 text-xl leading-relaxed text-parish-muted">
-                                Your generous gift of <strong className="text-parish-fg">${effectiveAmount.toFixed(2)} AUD</strong> to the{' '}
+                                Your pledge of <strong className="text-parish-fg">${effectiveAmount.toFixed(2)} AUD</strong> to the{' '}
                                 <strong className="text-parish-fg">{currentFund.label}</strong> fund
                                 {isRecurring ? ' (monthly)' : ''} has been received.
+                            </p>
+                            <p className="mt-4 text-lg leading-relaxed text-parish-muted">
+                                The parish office will be in touch at <strong className="text-parish-fg">{donorEmail}</strong> to arrange the next steps.
                             </p>
 
                             <ScriptureBlock className="mt-8">
@@ -83,9 +96,9 @@ export function GivingPage() {
                             </ScriptureBlock>
 
                             <InfoCard className="mt-8 text-left">
-                                <div className="ornamental-kicker">Tax Information</div>
+                                <div className="ornamental-kicker">What Happens Next</div>
                                 <p className="mt-3 text-base leading-relaxed text-parish-muted">
-                                    Greenacres Walkerville Catholic Parish is a registered organisation. A receipt has been sent to <strong className="text-parish-fg">{donorEmail}</strong> for your records.
+                                    A member of the parish team will contact you to confirm your pledge and discuss giving options, including direct deposit, planned giving envelopes, or bank transfer.
                                 </p>
                             </InfoCard>
 
@@ -96,10 +109,11 @@ export function GivingPage() {
                                     setCustomAmount('');
                                     setDonorName('');
                                     setDonorEmail('');
+                                    setHasAttemptedSubmit(false);
                                 }}
                                 className="pilgrimage-button mt-8"
                             >
-                                Make Another Gift
+                                Submit Another Pledge
                             </button>
                         </motion.div>
                     </div>
@@ -110,9 +124,9 @@ export function GivingPage() {
 
     return (
         <UtilityPageTemplate
-            eyebrow="Online Giving"
+            eyebrow="Support Our Parish"
             title={<>Your generosity sustains the worship, service, and growth of this community.</>}
-            description="Give securely online to support parish ministries, building maintenance, youth programs, or community outreach. Choose a one-time gift or set up monthly giving."
+            description="Express your intent to support the parish by submitting a pledge or enquiry below. The parish office will follow up to arrange the details."
             imageSrc="/assets/source/hero_2.webp"
             imageAlt="Parish community"
             actions={(
@@ -124,10 +138,9 @@ export function GivingPage() {
             )}
             aside={(
                 <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
-                    <div className="ornamental-kicker">Secure Payments</div>
-                    <p className="mt-3 flex items-center gap-2 text-sm leading-relaxed text-parish-muted">
-                        <Shield size={14} className="text-parish-brass" />
-                        All transactions processed securely via Stripe.
+                    <div className="ornamental-kicker">How It Works</div>
+                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                        This form registers your intent to give. No payment is processed online. The parish office will contact you to arrange your preferred giving method.
                     </p>
                 </div>
             )}
@@ -139,8 +152,12 @@ export function GivingPage() {
                         <div className="sanctuary-panel px-7 py-8 md:px-10 md:py-10">
                             <SectionIntro
                                 eyebrow="Choose Amount"
-                                title={<>Select or enter a custom donation amount.</>}
+                                title={<>Select or enter a custom pledge amount.</>}
                             />
+
+                            {hasAttemptedSubmit && !isValid && (
+                                <FormErrorSummary errors={errors} className="mt-6" />
+                            )}
 
                             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
                                 {PRESET_AMOUNTS.map(amount => (
@@ -161,6 +178,7 @@ export function GivingPage() {
                             <div className="relative mt-4">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-parish-muted">$</span>
                                 <input
+                                    id="giving-custom-amount"
                                     type="number"
                                     min="1"
                                     step="0.01"
@@ -169,19 +187,23 @@ export function GivingPage() {
                                     onChange={e => handleCustomChange(e.target.value)}
                                     onFocus={() => setSelectedAmount(null)}
                                     className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg py-4 pl-8 pr-4 text-lg text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none"
-                                    aria-label="Custom donation amount in AUD"
+                                    aria-label="Custom pledge amount in AUD"
+                                    aria-describedby={hasAttemptedSubmit && errors.amount ? 'giving-custom-amount-error' : undefined}
                                 />
+                                {hasAttemptedSubmit && errors.amount && (
+                                    <p id="giving-custom-amount-error" role="alert" className="mt-1.5 text-sm text-red-500">{errors.amount}</p>
+                                )}
                             </div>
 
                             {/* Recurring */}
                             <div className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-parish-border/5 bg-parish-bg px-5 py-4">
                                 <div className="flex items-center gap-3">
-                                    <RefreshCw size={18} className="text-parish-brass" />
                                     <span className="text-base text-parish-fg">Give Monthly (Recurring)</span>
                                 </div>
                                 <button
                                     role="switch"
                                     aria-checked={isRecurring}
+                                    aria-label="Monthly recurring pledge"
                                     onClick={() => setIsRecurring(!isRecurring)}
                                     className={`relative h-7 w-12 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-brass ${isRecurring ? 'bg-parish-brass' : 'bg-parish-border/20'}`}
                                 >
@@ -191,7 +213,7 @@ export function GivingPage() {
 
                             {/* Fund selector */}
                             <div className="mt-8">
-                                <div className="ornamental-kicker mb-3">Designate Your Gift</div>
+                                <div className="ornamental-kicker mb-3">Designate Your Pledge</div>
                                 <div className="relative">
                                     <button
                                         onClick={() => setShowFundDropdown(!showFundDropdown)}
@@ -204,10 +226,10 @@ export function GivingPage() {
                                     </button>
                                     {showFundDropdown && (
                                         <>
-                                            <div className="fixed inset-0 z-40" onClick={() => setShowFundDropdown(false)} />
+                                            <div className="fixed inset-0 z-dropdown" onClick={() => setShowFundDropdown(false)} />
                                             <ul
                                                 role="listbox"
-                                                className="absolute z-50 mt-2 w-full overflow-hidden rounded-[1.25rem] border border-parish-border/10 bg-parish-surface shadow-xl"
+                                                className="absolute z-dropdown mt-2 w-full overflow-hidden rounded-[1.25rem] border border-parish-border/10 bg-parish-surface shadow-xl"
                                             >
                                                 {FUNDS.map(fund => (
                                                     <li key={fund.id}>
@@ -230,10 +252,10 @@ export function GivingPage() {
 
                             {/* Donor info */}
                             <div className="mt-8 space-y-4">
-                                <div>
-                                    <label htmlFor="donor-name" className="ornamental-kicker mb-2 block text-[0.68rem]">
-                                        Your Name <span className="text-parish-muted">(optional)</span>
-                                    </label>
+                                <FormField
+                                    id="donor-name"
+                                    label={<>Your Name <span className="text-parish-muted">(optional)</span></>}
+                                >
                                     <input
                                         id="donor-name"
                                         type="text"
@@ -242,11 +264,13 @@ export function GivingPage() {
                                         placeholder="John Smith"
                                         className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none"
                                     />
-                                </div>
-                                <div>
-                                    <label htmlFor="donor-email" className="ornamental-kicker mb-2 block text-[0.68rem]">
-                                        Email Address <span className="text-parish-fg text-xs">*</span>
-                                    </label>
+                                </FormField>
+                                <FormField
+                                    id="donor-email"
+                                    label="Email Address"
+                                    required
+                                    error={hasAttemptedSubmit ? errors.email : undefined}
+                                >
                                     <input
                                         id="donor-email"
                                         type="email"
@@ -255,28 +279,29 @@ export function GivingPage() {
                                         onChange={e => setDonorEmail(e.target.value)}
                                         placeholder="your@email.com"
                                         className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none"
+                                        aria-describedby={hasAttemptedSubmit && errors.email ? 'donor-email-error' : undefined}
                                     />
-                                </div>
+                                </FormField>
                             </div>
 
                             {/* Submit */}
                             <button
                                 onClick={handleSubmit}
-                                disabled={!isValid || isSubmitting}
+                                disabled={isSubmitting}
                                 className="pilgrimage-button mt-8 w-full disabled:cursor-not-allowed disabled:opacity-40"
                             >
                                 {isSubmitting ? (
                                     <span className="flex items-center justify-center gap-3">
                                         <span className="h-5 w-5 animate-spin rounded-full border-2 border-current/30 border-t-current" />
-                                        Processing…
+                                        Submitting…
                                     </span>
                                 ) : (
-                                    `Donate $${effectiveAmount > 0 ? effectiveAmount.toFixed(2) : '0.00'} AUD${isRecurring ? ' / month' : ''}`
+                                    `Submit Pledge — $${effectiveAmount > 0 ? effectiveAmount.toFixed(2) : '0.00'} AUD${isRecurring ? ' / month' : ''}`
                                 )}
                             </button>
 
-                            <p className="mt-4 flex items-center justify-center gap-2 text-center text-sm text-parish-muted">
-                                <CreditCard size={14} className="text-parish-brass" /> Payments processed securely via Stripe
+                            <p className="mt-4 text-center text-sm text-parish-muted">
+                                No payment is processed online. The parish office will contact you to arrange your preferred giving method.
                             </p>
                         </div>
                     </div>
@@ -287,19 +312,19 @@ export function GivingPage() {
                             <div className="ornamental-kicker !text-parish-brass">Your Impact</div>
                             <ul className="mt-4 space-y-4 text-lg leading-relaxed text-parish-inverse/85">
                                 <li className="flex items-start gap-3">
-                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
+                                    <Star size={16} className="mt-1 shrink-0 text-parish-brass" />
                                     <span>Supports daily Mass, liturgy, and music ministry</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
+                                    <Star size={16} className="mt-1 shrink-0 text-parish-brass" />
                                     <span>Funds youth programs and faith formation</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
+                                    <Star size={16} className="mt-1 shrink-0 text-parish-brass" />
                                     <span>Maintains our historic church buildings</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="mt-0.5 text-xl text-parish-brass">✦</span>
+                                    <Star size={16} className="mt-1 shrink-0 text-parish-brass" />
                                     <span>Helps those in need through community outreach</span>
                                 </li>
                             </ul>

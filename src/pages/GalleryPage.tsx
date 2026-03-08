@@ -1,9 +1,10 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ActionBand, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
+import { useOverlay } from '../hooks/useOverlay';
 
 interface GalleryImage {
     src: string;
@@ -30,6 +31,7 @@ const CATEGORIES = ['All', 'Church', 'Community', 'Sacraments', 'Events'];
 export function GalleryPage() {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+    const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
 
     usePageSEO({
         title: 'Gallery',
@@ -41,14 +43,13 @@ export function GalleryPage() {
         ? GALLERY_IMAGES
         : GALLERY_IMAGES.filter(img => img.category === selectedCategory);
 
-    const openLightbox = useCallback((index: number) => {
+    const openLightbox = useCallback((index: number, triggerEl: HTMLButtonElement) => {
+        lastTriggerRef.current = triggerEl;
         setLightboxIndex(index);
-        document.body.style.overflow = 'hidden';
     }, []);
 
     const closeLightbox = useCallback(() => {
         setLightboxIndex(null);
-        document.body.style.overflow = '';
     }, []);
 
     const goNext = useCallback(() => {
@@ -59,11 +60,17 @@ export function GalleryPage() {
         if (lightboxIndex !== null) setLightboxIndex((lightboxIndex - 1 + filtered.length) % filtered.length);
     }, [lightboxIndex, filtered.length]);
 
-    const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-        if (e.key === 'Escape') closeLightbox();
+    const { overlayRef: lightboxRef } = useOverlay({
+        isOpen: lightboxIndex !== null,
+        onClose: closeLightbox,
+        triggerRef: lastTriggerRef,
+    });
+
+    // Arrow key navigation inside the lightbox (separate from useOverlay's Tab/Escape handling)
+    const handleLightboxKeyDown = useCallback((e: React.KeyboardEvent) => {
         if (e.key === 'ArrowRight') goNext();
         if (e.key === 'ArrowLeft') goPrev();
-    }, [closeLightbox, goNext, goPrev]);
+    }, [goNext, goPrev]);
 
     return (
         <HighlightPageTemplate
@@ -113,26 +120,28 @@ export function GalleryPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-50px' }}
                                 transition={{ duration: 0.7, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                                className={`${img.colSpan} ${img.rowSpan} image-panel group relative cursor-pointer !p-0 overflow-hidden`}
-                                onClick={() => openLightbox(index)}
-                                role="button"
-                                tabIndex={0}
-                                aria-label={`View ${img.alt}`}
-                                onKeyDown={e => e.key === 'Enter' && openLightbox(index)}
+                                className={`${img.colSpan} ${img.rowSpan}`}
                             >
-                                <img
-                                    src={img.src}
-                                    alt={img.alt}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-parish-overlay-bg/60 via-transparent to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                                    <div>
-                                        <p className="text-lg tracking-wide text-parish-overlay-text">{img.alt}</p>
-                                        <span className="text-xs uppercase tracking-[0.22em] text-parish-overlay-text/60">{img.category}</span>
+                                <button
+                                    type="button"
+                                    className="image-panel group relative h-full w-full cursor-pointer !p-0 overflow-hidden border-0 bg-transparent text-left"
+                                    onClick={(e) => openLightbox(index, e.currentTarget)}
+                                    aria-label={`View ${img.alt}`}
+                                >
+                                    <img
+                                        src={img.src}
+                                        alt={img.alt}
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-parish-overlay-bg/60 via-transparent to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                                        <div>
+                                            <p className="text-lg tracking-wide text-parish-overlay-text">{img.alt}</p>
+                                            <span className="text-xs uppercase tracking-[0.22em] text-parish-overlay-text/60">{img.category}</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </button>
                             </motion.div>
                         ))}
                     </div>
@@ -173,13 +182,14 @@ export function GalleryPage() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95"
+                        className="fixed inset-0 z-modal flex items-center justify-center bg-black/95"
                         onClick={closeLightbox}
-                        onKeyDown={handleKeyDown}
+                        onKeyDown={handleLightboxKeyDown}
+                        ref={lightboxRef}
                         tabIndex={-1}
                         role="dialog"
                         aria-label="Image lightbox"
-                        ref={(el) => el?.focus()}
+                        aria-modal="true"
                     >
                         <button
                             onClick={closeLightbox}

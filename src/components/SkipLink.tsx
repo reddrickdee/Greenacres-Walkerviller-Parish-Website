@@ -10,7 +10,7 @@ export function SkipLink() {
                 // Hidden by default, shown on focus (keyboard navigation)
                 'sr-only focus:not-sr-only',
                 // Positioning and appearance when visible
-                'focus:fixed focus:top-4 focus:left-4 focus:z-[9999]',
+                'focus:fixed focus:top-4 focus:left-4 focus:z-skip',
                 'focus:px-5 focus:py-3 focus:rounded-lg',
                 'focus:bg-parish-accent focus:text-parish-inverse',
                 'focus:font-display focus:font-semibold focus:text-sm focus:uppercase focus:tracking-wider',

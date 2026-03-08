@@ -1,3 +1,4 @@
+import { Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, StoryPageTemplate } from '../components/layout/PageTemplates';
@@ -62,11 +63,11 @@ export function SafeguardingPage() {
                         </p>
                         <div className="mt-6 space-y-3">
                             <div className="flex items-center gap-3 text-parish-inverse/85">
-                                <span className="text-parish-brass">✦</span>
+                                <Star size={14} className="shrink-0 text-parish-brass" />
                                 <span className="text-base"><strong>Phone:</strong> (08) 8210 8150</span>
                             </div>
                             <div className="flex items-center gap-3 text-parish-inverse/85">
-                                <span className="text-parish-brass">✦</span>
+                                <Star size={14} className="shrink-0 text-parish-brass" />
                                 <span className="text-base"><strong>Email:</strong> safeguarding@adelaide.catholic.org.au</span>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, StoryPageTemplate } from '../components/layout/PageTemplates';
@@ -79,7 +79,7 @@ export function AboutPage() {
                         <div className="mt-4 space-y-4">
                             {content.missionPoints.map(point => (
                                 <div key={point.title} className="flex gap-3">
-                                    <span className="mt-1 text-parish-brass">✦</span>
+                                    <Star size={14} className="mt-1 shrink-0 text-parish-brass" />
                                     <p className="text-sm leading-relaxed text-parish-muted md:text-base">{point.title}</p>
                                 </div>
                             ))}
