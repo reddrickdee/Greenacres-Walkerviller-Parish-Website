@@ -66,11 +66,11 @@
   html {
     font-size: 18px;
     scroll-behavior: smooth;
-    @apply overflow-x-hidden overflow-y-auto w-full min-h-screen bg-parish-bg;
+    @apply w-full min-h-screen bg-parish-bg;
   }
 
   body {
-    @apply antialiased bg-parish-bg text-parish-fg font-body transition-colors duration-300 overflow-x-hidden w-full min-h-screen relative;
+    @apply antialiased bg-parish-bg text-parish-fg font-body transition-colors duration-300 overflow-x-clip w-full min-h-screen relative;
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -134,7 +134,7 @@
 
 @layer components {
   .page-shell {
-    @apply min-h-screen bg-parish-bg pt-24 pb-20 md:pt-28 md:pb-24;
+    @apply min-h-screen bg-parish-bg pt-36 pb-20 md:pt-40 md:pb-24;
   }
 
   .page-section {
