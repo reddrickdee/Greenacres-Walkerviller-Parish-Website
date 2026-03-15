@@ -76,8 +76,8 @@ export default {
                 }
             },
             zIndex: {
-                sticky: '20',
-                dropdown: '30',
+                sticky: '30',
+                dropdown: '35',
                 overlay: '40',
                 modal: '50',
                 toast: '60',

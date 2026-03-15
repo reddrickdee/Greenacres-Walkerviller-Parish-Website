@@ -84,7 +84,7 @@ export function HomePage() {
             <JsonLdSchema />
             <HeroSection />
 
-            <div className="relative z-20 -mt-16 pb-24 md:pb-32">
+            <div className="relative z-10 -mt-16 pb-24 md:pb-32">
                 <section className="page-section">
                     <div className="page-section-inner">
                         <motion.div
