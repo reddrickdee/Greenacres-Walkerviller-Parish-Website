@@ -464,45 +464,20 @@ export function HomePage() {
 
                 <section className="page-section mt-16 md:mt-24">
                     <div className="page-section-inner">
-                        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-                            <div className="lg:col-span-7">
-                                <SectionIntro
-                                    eyebrow="Daily Reflection"
-                                    title={<>A daily moment of prayer and reflection.</>}
-                                    description="Scripture, a short reflection, and a prayer intention — a quiet pause you can carry into the rest of your day."
+                        <div className="mx-auto max-w-3xl">
+                            <SectionIntro
+                                eyebrow="Daily Reflection"
+                                title={<>A daily moment of prayer and reflection.</>}
+                                description="Scripture, a short reflection, and a prayer intention — a quiet pause you can carry into the rest of your day."
+                                align="center"
+                            />
+                            <div className="mt-10 space-y-6">
+                                <ReflectionDateNavigator
+                                    selectedDate={selectedDate}
+                                    onDateChange={setSelectedDate}
+                                    availableDates={availableDates}
                                 />
-                                <div className="mt-8 space-y-6">
-                                    <ReflectionDateNavigator
-                                        selectedDate={selectedDate}
-                                        onDateChange={setSelectedDate}
-                                        availableDates={availableDates}
-                                    />
-                                    <DailyReflectionCard selectedDate={selectedDate} />
-                                </div>
-                            </div>
-
-                            <div className="lg:col-span-5">
-                                <InfoCard className="h-full">
-                                    <div className="ornamental-kicker">Why People Stay</div>
-                                    <h3 className="mt-3 text-3xl text-parish-fg">A parish website should feel like the parish itself.</h3>
-                                    <p className="mt-4 text-base leading-relaxed text-parish-muted">
-                                        Reverence matters. So does clarity. The strongest church website is one that lowers anxiety, respects tradition, and gives people a clear next step.
-                                    </p>
-                                    <div className="mt-6 grid gap-4">
-                                        <div className="rounded-[1.5rem] border border-parish-border/10 bg-parish-border/5 px-5 py-5">
-                                            <div className="ornamental-kicker">Practical</div>
-                                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">Mass times, maps, office contact, and first-visit details are surfaced early.</p>
-                                        </div>
-                                        <div className="rounded-[1.5rem] border border-parish-border/10 bg-parish-border/5 px-5 py-5">
-                                            <div className="ornamental-kicker">Prayerful</div>
-                                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">Scripture, reflections, prayer intentions, and visual calm give the site a devotional center.</p>
-                                        </div>
-                                        <div className="rounded-[1.5rem] border border-parish-border/10 bg-parish-border/5 px-5 py-5">
-                                            <div className="ornamental-kicker">Personal</div>
-                                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">Newcomers can move from curiosity to belonging without decoding church jargon.</p>
-                                        </div>
-                                    </div>
-                                </InfoCard>
+                                <DailyReflectionCard selectedDate={selectedDate} />
                             </div>
                         </div>
                     </div>

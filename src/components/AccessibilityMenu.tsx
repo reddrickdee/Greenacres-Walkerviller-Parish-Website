@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Settings, Check, ZoomIn, ZoomOut, Eye } from 'lucide-react';
+import { useOverlay } from '../hooks/useOverlay';
 
 type FontSize = 'normal' | 'large' | 'xlarge';
 
@@ -28,6 +29,15 @@ export function AccessibilityMenu() {
     const [isDyslexic, setIsDyslexic] = useState(false);
     const [fontSize, setFontSize] = useState<FontSize>('normal');
     const [reduceMotion, setReduceMotion] = useState(false);
+    const triggerRef = useRef<HTMLButtonElement>(null);
+
+    // ── useOverlay for focus trapping, Escape, and scroll lock ──────────────
+    const closeMenu = useCallback(() => setIsOpen(false), []);
+    const { overlayRef } = useOverlay({
+        isOpen,
+        onClose: closeMenu,
+        triggerRef,
+    });
 
     // ── Restore saved preferences ────────────────────────────────────────────
     useEffect(() => {
@@ -48,14 +58,6 @@ export function AccessibilityMenu() {
             applyReducedMotion(true);
         }
     }, []);
-
-    // ── Close on Escape key ──────────────────────────────────────────────────
-    useEffect(() => {
-        if (!isOpen) return;
-        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') setIsOpen(false); };
-        window.addEventListener('keydown', handler);
-        return () => window.removeEventListener('keydown', handler);
-    }, [isOpen]);
 
     // ── Toggles ──────────────────────────────────────────────────────────────
     const toggleDyslexic = useCallback(() => {
@@ -97,6 +99,7 @@ export function AccessibilityMenu() {
     return (
         <div className="relative">
             <button
+                ref={triggerRef}
                 id="accessibility-menu-btn"
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 rounded-lg text-parish-muted hover:text-parish-fg hover:bg-parish-border/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
@@ -114,11 +117,12 @@ export function AccessibilityMenu() {
                     <div
                         className="fixed inset-0 z-40"
                         aria-hidden="true"
-                        onClick={() => setIsOpen(false)}
+                        onClick={closeMenu}
                     />
 
-                    {/* Panel */}
+                    {/* Panel — focus-trapped via useOverlay */}
                     <div
+                        ref={overlayRef}
                         role="dialog"
                         aria-label="Accessibility settings"
                         aria-modal="true"
