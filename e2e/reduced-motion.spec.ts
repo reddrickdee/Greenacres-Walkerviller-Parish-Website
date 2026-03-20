@@ -36,7 +36,7 @@ test.describe('Reduced motion', () => {
 
         await page.emulateMedia({ reducedMotion: 'reduce' });
         await page.goto('/');
-        await page.waitForLoadState('networkidle');
+        await page.locator('main, footer').first().waitFor({ state: 'visible' });
 
         expect(errors).toHaveLength(0);
     });

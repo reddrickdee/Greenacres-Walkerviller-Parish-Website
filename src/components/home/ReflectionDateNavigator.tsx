@@ -160,7 +160,7 @@ export function ReflectionDateNavigator({
             </div>
 
             {/* Mini Calendar */}
-            <div className="bg-parish-surface rounded-2xl border border-parish-border/5 shadow-sm overflow-hidden max-w-sm mx-auto">
+            <div className="bg-parish-surface rounded-2xl border border-parish-border/5 shadow-sm overflow-hidden max-w-sm mx-auto w-full">
                 {/* Month/Year header */}
                 <div className="flex items-center justify-between px-4 py-3 border-b border-parish-border/5">
                     <button
@@ -183,16 +183,16 @@ export function ReflectionDateNavigator({
                 </div>
 
                 {/* Day-of-week headers */}
-                <div className="grid grid-cols-7 px-3 pt-2">
+                <div className="grid grid-cols-7 px-2 pt-2">
                     {DAY_HEADERS.map((d) => (
-                        <div key={d} className="text-center text-xs font-display tracking-wider text-parish-muted/60 uppercase py-1">
+                        <div key={d} className="text-center text-xs font-display tracking-wider text-parish-muted/60 uppercase py-1" style={{ minWidth: 'auto' }}>
                             {d}
                         </div>
                     ))}
                 </div>
 
                 {/* Calendar grid */}
-                <div className="grid grid-cols-7 px-3 pb-3 gap-y-0.5">
+                <div className="grid grid-cols-7 px-2 pb-3 gap-y-0.5">
                     {calendarDays.map((cell, i) => {
                         if (!cell) {
                             return <div key={`empty-${i}`} />;
@@ -207,6 +207,7 @@ export function ReflectionDateNavigator({
                             <button
                                 key={cell.iso}
                                 onClick={() => handleDateClick(cell.iso)}
+                                style={{ minWidth: 'auto', minHeight: 'auto' }}
                                 className={`
                                     relative flex flex-col items-center justify-center py-1.5 rounded-lg text-sm transition-all
                                     cursor-pointer hover:bg-parish-accent/10

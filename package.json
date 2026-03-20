@@ -13,7 +13,9 @@
     "test:e2e:install": "playwright install chromium",
     "test:e2e": "playwright test",
     "test:e2e:live": "PLAYWRIGHT_BASE_URL=${PLAYWRIGHT_BASE_URL:-https://www.gwparish.org.au} PLAYWRIGHT_SKIP_WEBSERVER=1 playwright test",
-    "verify:release": "npm run lint && npm test && npm run test:e2e && npm run build",
+    "typecheck": "tsc -b",
+    "test:coverage": "vitest run --coverage",
+    "verify:release": "npm run lint && npm run typecheck && npm test && npm run test:e2e && npm run build",
     "verify:lighthouse:live": "node scripts/run-live-lighthouse.mjs",
     "verify:release:live": "npm run test:e2e:live && npm run verify:lighthouse:live"
   },

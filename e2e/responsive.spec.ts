@@ -7,7 +7,8 @@ test.describe('Responsive — no horizontal overflow at 375px', () => {
         test(`no x-overflow on ${path}`, async ({ page }) => {
             await page.setViewportSize({ width: 375, height: 812 });
             await page.goto(path);
-            await page.waitForLoadState('networkidle');
+            // Wait for app content instead of networkidle (third-party scripts make it nondeterministic)
+            await page.locator('main, footer').first().waitFor({ state: 'visible' });
 
             const documentWidth = await page.evaluate(() => document.documentElement.scrollWidth);
             const viewportWidth = await page.evaluate(() => document.documentElement.clientWidth);

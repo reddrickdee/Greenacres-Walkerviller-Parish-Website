@@ -23,5 +23,13 @@ npm-debug.log*
 # TypeScript
 *.tsbuildinfo
 
+# Playwright
+playwright-report/
+test-results/
+
+# Generated Vite config (tsc output)
+vite.config.js
+vite.config.d.ts
+
 # Misc
 .npm-cache/
