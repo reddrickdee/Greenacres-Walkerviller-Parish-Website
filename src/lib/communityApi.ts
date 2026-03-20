@@ -1,10 +1,9 @@
 import { supabase } from './supabaseClient';
-import {
-    CommunityPost,
-    CommunityComment,
+import type {
     CommunityPostType,
     CommunityVisibility
 } from '../types';
+import { mapPost, mapComment, type PostRow, type CommentRow } from './communityMappers';
 
 export const communityApi = {
     // ── Posts ─────────────────────────────────────────────────────────────
@@ -28,10 +27,7 @@ export const communityApi = {
         if (error) throw error;
 
         // Transform comments array mapping and prayer count
-        return (data || []).map(post => ({
-            ...post,
-            prayerCount: post.prayers?.length || 0
-        })) as unknown as CommunityPost[];
+        return (data || []).map(row => mapPost(row as unknown as PostRow));
     },
 
     async submitPost(payload: {
@@ -97,8 +93,8 @@ export const communityApi = {
         if (commentsData.error) throw commentsData.error;
 
         return {
-            posts: postsData.data as unknown as CommunityPost[],
-            comments: commentsData.data as unknown as CommunityComment[]
+            posts: (postsData.data || []).map(row => mapPost(row as unknown as PostRow)),
+            comments: (commentsData.data || []).map(row => mapComment(row as unknown as CommentRow)),
         };
     },
 
@@ -127,7 +123,7 @@ export const communityApi = {
             .order('created_at', { ascending: false });
 
         if (error) throw error;
-        return (data || []) as unknown as CommunityPost[];
+        return (data || []).map(row => mapPost(row as unknown as PostRow));
     },
 
     async getArticleById(id: string) {
@@ -143,7 +139,7 @@ export const communityApi = {
             .single();
 
         if (error) throw error;
-        return data as unknown as CommunityPost;
+        return mapPost(data as unknown as PostRow);
     },
 
     async getUserSuggestions() {
@@ -162,7 +158,10 @@ export const communityApi = {
             .order('created_at', { ascending: false });
 
         if (error) throw error;
-        return (data || []) as unknown as (CommunityPost & { linked_summary?: { id: string }[] })[];
+        return (data || []).map(row => ({
+            ...mapPost(row as unknown as PostRow),
+            linked_summary: (row as Record<string, unknown>).linked_summary as { id: string }[] | undefined,
+        }));
     },
 
     async submitMiniArticle(payload: { title: string; body: string; coverImage?: File }) {

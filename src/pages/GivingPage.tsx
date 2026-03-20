@@ -55,7 +55,8 @@ export function GivingPage() {
         setSelectedAmount(null);
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e?: React.FormEvent) => {
+        e?.preventDefault();
         setHasAttemptedSubmit(true);
         if (!isValid) return;
         setIsSubmitting(true);
@@ -149,7 +150,7 @@ export function GivingPage() {
                 <div className="page-section-inner grid gap-10 lg:grid-cols-5">
                     {/* Main Form */}
                     <div className="lg:col-span-3">
-                        <div className="sanctuary-panel px-7 py-8 md:px-10 md:py-10">
+                        <form onSubmit={handleSubmit} noValidate className="sanctuary-panel px-7 py-8 md:px-10 md:py-10">
                             <SectionIntro
                                 eyebrow="Choose Amount"
                                 title={<>Select or enter a custom pledge amount.</>}
@@ -286,7 +287,7 @@ export function GivingPage() {
 
                             {/* Submit */}
                             <button
-                                onClick={handleSubmit}
+                                type="submit"
                                 disabled={isSubmitting}
                                 className="pilgrimage-button mt-8 w-full disabled:cursor-not-allowed disabled:opacity-40"
                             >
@@ -303,7 +304,7 @@ export function GivingPage() {
                             <p className="mt-4 text-center text-sm text-parish-muted">
                                 No payment is processed online. The parish office will contact you to arrange your preferred giving method.
                             </p>
-                        </div>
+                        </form>
                     </div>
 
                     {/* Sidebar */}
