@@ -27,6 +27,9 @@ npm-debug.log*
 playwright-report/
 test-results/
 
+# Coverage
+coverage/
+
 # Generated Vite config (tsc output)
 vite.config.js
 vite.config.d.ts
