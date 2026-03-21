@@ -135,32 +135,35 @@ function PWAUpdateBanner() {
 }
 
 // ── Router ────────────────────────────────────────────────────────────────────
+/** Strip leading "/" so PATHS constants work as relative child routes. */
+const rel = (p: string) => p.replace(/^\//, '');
+
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: PATHS.HOME,
         element: <RootLayout />,
         children: [
             { index: true, element: <HomePage /> },
-            { path: 'mass-times', element: <MassTimesPage /> },
-            { path: 'contact', element: <ContactPage /> },
-            { path: 'about', element: <AboutPage /> },
-            { path: 'history', element: <HistoryPage /> },
-            { path: 'new-here', element: <NewHerePage /> },
-            { path: 'news-events', element: <NewsEventsPage /> },
-            { path: 'sacraments', element: <SacramentsServicesPage /> },
-            { path: 'news-events/bulletin/:id', element: <BulletinPage /> },
-            { path: 'gallery', element: <GalleryPage /> },
-            { path: 'safeguarding', element: <SafeguardingPage /> },
-            { path: 'community', element: <CommunityHubPage /> },
-            { path: 'community/articles/:id', element: <ArticleDetailPage /> },
-            { path: 'community/editor/articles/new', element: <ContributorGuard><ArticleEditorPage /></ContributorGuard> },
-            { path: 'giving', element: <GivingPage /> },
-            { path: 'volunteer', element: <VolunteerPage /> },
-            { path: 'sacraments/request', element: <SacramentsBookingPage /> },
-            { path: 'live', element: <LiveStreamPage /> },
-            { path: 'homilies', element: <HomiliesPage /> },
-            { path: 'admin/community', element: <AdminGuard><AdminCommunityPage /></AdminGuard> },
-            { path: 'admin/reflections', element: <AdminGuard><AdminReflectionsPage /></AdminGuard> },
+            { path: rel(PATHS.MASS_TIMES), element: <MassTimesPage /> },
+            { path: rel(PATHS.CONTACT), element: <ContactPage /> },
+            { path: rel(PATHS.ABOUT), element: <AboutPage /> },
+            { path: rel(PATHS.HISTORY), element: <HistoryPage /> },
+            { path: rel(PATHS.NEW_HERE), element: <NewHerePage /> },
+            { path: rel(PATHS.NEWS_EVENTS), element: <NewsEventsPage /> },
+            { path: rel(PATHS.SACRAMENTS), element: <SacramentsServicesPage /> },
+            { path: rel(PATHS.BULLETIN), element: <BulletinPage /> },
+            { path: rel(PATHS.GALLERY), element: <GalleryPage /> },
+            { path: rel(PATHS.SAFEGUARDING), element: <SafeguardingPage /> },
+            { path: rel(PATHS.COMMUNITY), element: <CommunityHubPage /> },
+            { path: rel(PATHS.ARTICLE_DETAIL), element: <ArticleDetailPage /> },
+            { path: rel(PATHS.ARTICLE_NEW), element: <ContributorGuard><ArticleEditorPage /></ContributorGuard> },
+            { path: rel(PATHS.GIVING), element: <GivingPage /> },
+            { path: rel(PATHS.VOLUNTEER), element: <VolunteerPage /> },
+            { path: rel(PATHS.SACRAMENTS_REQUEST), element: <SacramentsBookingPage /> },
+            { path: rel(PATHS.LIVE), element: <LiveStreamPage /> },
+            { path: rel(PATHS.HOMILIES), element: <HomiliesPage /> },
+            { path: rel(PATHS.ADMIN_COMMUNITY), element: <AdminGuard><AdminCommunityPage /></AdminGuard> },
+            { path: rel(PATHS.ADMIN_REFLECTIONS), element: <AdminGuard><AdminReflectionsPage /></AdminGuard> },
         ],
     },
 ]);
