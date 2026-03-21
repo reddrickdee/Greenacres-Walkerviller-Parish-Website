@@ -32,6 +32,7 @@ const ArticleEditorPage = lazy(() => import('./pages/ArticleEditorPage').then(m 
 // ── Route Guards ──────────────────────────────────────────────────────────────
 import { AdminGuard } from './components/community/AdminGuard';
 import { ContributorGuard } from './components/community/ContributorGuard';
+import { PATHS } from './lib/routes';
 
 // ── Page Loading Skeleton ─────────────────────────────────────────────────────
 function PageSkeleton() {
