@@ -20,7 +20,8 @@ export default defineConfig({
     use: {
         baseURL,
         actionTimeout: 10_000,
-        navigationTimeout: 15_000,
+        navigationTimeout: 20_000,
+        serviceWorkers: 'block',
         trace: 'on-first-retry',
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',

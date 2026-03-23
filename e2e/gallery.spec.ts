@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { gotoRoute } from './support/navigation';
 
 test.describe('Gallery lightbox', () => {
     test('gallery tile opens lightbox via Enter key', async ({ page }) => {
-        await page.goto('/gallery');
+        await gotoRoute(page, '/gallery');
         // Find the first gallery tile button and focus it
         const firstTile = page.locator('button').filter({ has: page.locator('img') }).first();
         await firstTile.focus();
@@ -14,7 +15,7 @@ test.describe('Gallery lightbox', () => {
     });
 
     test('gallery tile opens lightbox via Space key', async ({ page }) => {
-        await page.goto('/gallery');
+        await gotoRoute(page, '/gallery');
         const firstTile = page.locator('button').filter({ has: page.locator('img') }).first();
         await firstTile.focus();
         await page.keyboard.press('Space');
@@ -24,7 +25,7 @@ test.describe('Gallery lightbox', () => {
     });
 
     test('lightbox closes on Escape', async ({ page }) => {
-        await page.goto('/gallery');
+        await gotoRoute(page, '/gallery');
         const firstTile = page.locator('button').filter({ has: page.locator('img') }).first();
         await firstTile.click();
 

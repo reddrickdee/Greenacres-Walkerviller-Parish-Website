@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { gotoRoute } from './support/navigation';
 
 /**
  * Route smoke tests — verify every public route loads without a React error
@@ -24,9 +25,7 @@ const PUBLIC_ROUTES = [
 test.describe('Route smoke — public pages', () => {
     for (const route of PUBLIC_ROUTES) {
         test(`${route} renders without error`, async ({ page }) => {
-            await page.goto(route);
-            // Wait for the app shell to mount
-            await page.locator('main, footer').first().waitFor({ state: 'visible' });
+            await gotoRoute(page, route);
 
             // No React error boundary message
             const body = await page.textContent('body');

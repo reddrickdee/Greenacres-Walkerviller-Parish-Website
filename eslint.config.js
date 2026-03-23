@@ -13,6 +13,7 @@ export default tseslint.config(
             'node_modules/**',
             'output/**',
             'playwright-report/**',
+            'test-results/**',
             'coverage/**',
             'skills/**',
             'frontend/**',

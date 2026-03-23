@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { gotoRoute } from './support/navigation';
 
 test.describe('Giving page (pledge/enquiry)', () => {
     test('page does not contain Stripe or payment processing language', async ({ page }) => {
-        await page.goto('/giving');
+        await gotoRoute(page, '/giving');
         const body = await page.textContent('body');
         expect(body?.toLowerCase()).not.toContain('stripe');
         expect(body?.toLowerCase()).not.toContain('receipt');
@@ -11,13 +12,13 @@ test.describe('Giving page (pledge/enquiry)', () => {
     });
 
     test('page frames giving as a pledge or enquiry', async ({ page }) => {
-        await page.goto('/giving');
+        await gotoRoute(page, '/giving');
         const title = await page.title();
         expect(title.toLowerCase()).toMatch(/pledge|enquir/);
     });
 
     test('form shows error summary when submitted without email', async ({ page }) => {
-        await page.goto('/giving');
+        await gotoRoute(page, '/giving');
         // Find and click the submit button
         const submitBtn = page.locator('button').filter({ hasText: /submit|send|pledge/i }).first();
         if (await submitBtn.isVisible()) {

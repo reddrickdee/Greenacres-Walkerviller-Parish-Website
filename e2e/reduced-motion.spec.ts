@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { gotoRoute } from './support/navigation';
 
 test.describe('Reduced motion', () => {
     test('animations are suppressed when prefers-reduced-motion is set', async ({ page }) => {
         // Emulate reduced motion preference
         await page.emulateMedia({ reducedMotion: 'reduce' });
-        await page.goto('/');
+        await gotoRoute(page, '/');
 
         // Framer Motion sets data-framer-appear="false" or equivalent when
         // motion is disabled. Alternatively, check style properties.
@@ -35,8 +36,7 @@ test.describe('Reduced motion', () => {
         page.on('pageerror', (err) => errors.push(err.message));
 
         await page.emulateMedia({ reducedMotion: 'reduce' });
-        await page.goto('/');
-        await page.locator('main, footer').first().waitFor({ state: 'visible' });
+        await gotoRoute(page, '/');
 
         expect(errors).toHaveLength(0);
     });

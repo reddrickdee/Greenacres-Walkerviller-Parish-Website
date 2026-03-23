@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { gotoRoute } from './support/navigation';
 
 test.describe('Forms accessibility', () => {
     test('giving form fields have associated labels', async ({ page }) => {
-        await page.goto('/giving');
+        await gotoRoute(page, '/giving');
         // All visible labels should have a matching input via htmlFor/id
         const labels = page.locator('label[for]');
         const count = await labels.count();
@@ -18,7 +19,7 @@ test.describe('Forms accessibility', () => {
     });
 
     test('volunteer form fields have associated labels', async ({ page }) => {
-        await page.goto('/volunteer');
+        await gotoRoute(page, '/volunteer');
         const labels = page.locator('label[for]');
         const count = await labels.count();
         expect(count).toBeGreaterThan(0);
