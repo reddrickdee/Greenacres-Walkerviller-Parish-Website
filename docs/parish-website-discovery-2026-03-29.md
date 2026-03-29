@@ -329,6 +329,228 @@ Working interpretation:
 - The page should surface only the key notices in a clear structure.
 - The PDF remains attached as supporting access to the full bulletin.
 
+### 12. Consistency of weekly section headings
+
+Question:
+Should the weekly bulletin page use the same section headings every week, mostly the same headings with some flexibility, or different headings each week?
+
+User response:
+
+> B
+
+Working interpretation:
+
+- The weekly bulletin page should have a recognisable default structure.
+- It should still allow some headings to change when the week's bulletin needs it.
+
+### 13. Preferred starter structure for weekly bulletin pages
+
+Question:
+Which starter structure feels closest?
+
+- A. `This Week`, `Coming Up`, `Parish Notices`, `Download PDF`
+- B. `Mass & Liturgy`, `Important Dates`, `Parish Groups`, `Other Notices`, `Download PDF`
+- C. `Top Notices`, `This Week at the Parish`, `Community & School`, `Download PDF`
+
+User response:
+
+> C
+
+Working interpretation:
+
+- The preferred default structure is more editorially simple and reader-friendly than a formal ministry-by-ministry bulletin structure.
+- A likely default weekly page shape is:
+  - `Top Notices`
+  - `This Week at the Parish`
+  - `Community & School`
+  - `Download PDF`
+- This should remain flexible rather than forced every single week.
+
+### 14. Homepage treatment of weekly notices
+
+Question:
+Should parishioners see the full weekly notice content on the homepage, or just a short preview linking to the full weekly bulletin page?
+
+- A. Full weekly notices on the homepage
+- B. A short preview on the homepage, with a link to the full weekly bulletin page
+
+User response:
+
+> A
+
+Working interpretation:
+
+- The homepage should function as the primary weekly bulletin destination.
+- The current week's key notices should appear in full on the homepage, not merely as a teaser.
+- The dedicated bulletin detail page can still exist for archive, sharing, and older issues.
+
+### 15. Role of `News & Events`
+
+Question:
+If the homepage carries the full current week's notices, what should `News & Events` mainly become?
+
+- A. An archive of past weekly bulletins and PDFs
+- B. An archive of past bulletins plus occasional special event/news posts
+- C. A broader mixed news page, separate from the homepage bulletin role
+
+User response:
+
+> A
+
+Working interpretation:
+
+- `News & Events` should primarily become the bulletin archive.
+- It does not need to remain a broad mixed-content news page.
+
+### 16. Prominence of the PDF download
+
+Question:
+How prominent should the PDF download be on the weekly homepage bulletin?
+
+- A. Near the top, visible without much scrolling
+- B. After the web notices, as a secondary option
+- C. At both the top and bottom
+
+User response:
+
+> A
+
+Working interpretation:
+
+- The PDF download should be available near the top of the homepage bulletin.
+- Parishioners should be able to choose the PDF format immediately if they prefer it.
+
+### 17. Length of each weekly notice
+
+Question:
+For each notice on the weekly page, what length feels right?
+
+- A. One short paragraph per notice
+- B. A heading plus 2-4 short sentences
+- C. A heading plus a longer mini-article if needed
+
+User response:
+
+> B
+
+Working interpretation:
+
+- Each notice should have a short heading and a small body of supporting copy.
+- The intended unit is concise but not skeletal.
+- Weekly notices should read like clean web summaries, not article features.
+
+### 18. Use of dates and times inside notices
+
+Question:
+When a notice involves an action or event, should the exact date and time usually be written inside the notice itself?
+
+- A. Yes, usually repeat the exact date/time for clarity
+- B. Only if the notice would be confusing without it
+- C. No, keep most notices cleaner and lighter
+
+User response:
+
+> A and B
+
+Working interpretation:
+
+- Dates and times should usually be written directly into notices when they help parishioners act quickly or avoid confusion.
+- They do not need to be forced into every notice if the item is already clear without them.
+- Clarity takes priority over minimalism.
+
+### 19. Preferred visual direction
+
+Question:
+Which visual direction would worry you least for launch?
+
+- A. Very plain and quiet, almost bulletin-board simple
+- B. Clean and modern, but restrained and familiar
+- C. Visibly designed and elegant, with strong photography and atmosphere
+
+User response:
+
+> C
+
+Working interpretation:
+
+- The user does not want the site to be visually flat or purely utilitarian.
+- A designed, elegant presentation is welcome.
+- The risk is not design itself, but design that feels showy, gimmicky, insincere, or disconnected from parish life.
+
+### 20. What makes the site feel "too much"
+
+Question:
+What is most likely to make an elegant parish site feel "too much"?
+
+- A. Too much animation or motion
+- B. Too much branding language or polished copy
+- C. Too many sections, cards, or features competing for attention
+- D. Photography/design that feels fake, trendy, or AI-made
+
+User response:
+
+> C and D
+
+Working interpretation:
+
+- The biggest visual risks are clutter and inauthenticity.
+- The site should avoid crowded homepage composition and excessive feature blocks.
+- Photography and design choices must feel real, grounded, and parish-specific.
+
+### 21. Homepage hero scale
+
+Question:
+For launch, should the homepage hero area be:
+
+- A. Short and calm, then quickly into the weekly notices
+- B. Visually rich and atmospheric, but still compact
+- C. Large and cinematic, with the weekly notices starting further down the page
+
+User response:
+
+> B
+
+Working interpretation:
+
+- The homepage should retain a designed top section.
+- That top section should still be compact enough that weekly notices remain close to the top of the experience.
+
+### 22. Hero image treatment
+
+Question:
+Should there be one clear photo-led hero image at the top, or should the design stay mostly typographic?
+
+- A. One strong photo-led hero image
+- B. Mostly typographic, with smaller supporting imagery
+- C. No strong preference
+
+User response:
+
+> A
+
+Working interpretation:
+
+- The homepage should use one strong, authentic parish image as the leading visual.
+- The top of the site should feel grounded in real parish photography rather than abstract styling.
+
+### 23. Homepage placement of Mass Times
+
+Question:
+Where should `Mass Times` appear in the homepage hierarchy?
+
+- A. Inside the hero/top area because parishioners need it constantly
+- B. Near the top, but below the weekly notices
+- C. Only as a separate page in navigation, not a homepage priority
+
+User response:
+
+> A
+
+Working interpretation:
+
+- Mass times are a top-level homepage need.
+- The hero/top area should include clear access to regular Mass information.
+
 ## Direction Emerging So Far
 
 This is the strongest current read of the intended product direction.
@@ -351,8 +573,10 @@ Not the primary job:
 The homepage should likely:
 
 - open with a short, calm parish welcome
-- then move quickly into the latest weekly parish notices
+- then move quickly into the latest weekly parish notices in full
+- include Mass Times in the top/hero area
 - feel warm and current without being flashy
+- use one strong parish image in a visually rich but compact hero
 
 ### 3. The tone should be polished but restrained
 
@@ -365,6 +589,18 @@ The desired voice is:
 - not overly modern
 - not pushy
 - not obviously AI-generated
+
+### 3A. The visual language should be elegant, not plain
+
+The desired visual feel is:
+
+- visibly designed
+- elegant
+- atmospheric
+- supported by strong photography
+- still restrained enough to avoid feeling gimmicky or inauthentic
+- not crowded with too many competing sections or cards
+- not reliant on fake, trendy, or AI-looking imagery
 
 ### 4. The public site should be narrower than the current build
 
@@ -405,6 +641,11 @@ Because the user expects to do the updates personally in about 15-30 minutes:
 - the notices should be limited to the top 5-8 items
 - the rest can remain in the PDF download
 - weekly bulletin pages should avoid magazine-style editorial expansion
+- weekly bulletin pages should feel familiar from week to week without becoming formulaic
+- `News & Events` should mostly function as an archive, not an active mixed-content newsroom
+- the PDF should be available near the top of the weekly homepage bulletin
+- each notice should usually be a heading plus 2-4 short sentences
+- dates and times should be written directly into notices when that improves clarity
 
 ## Provisional Product Statement
 
@@ -412,14 +653,166 @@ If reduced to one working sentence, the product currently appears to be:
 
 > A calm, trustworthy parish website whose main job is to publish the week's most important bulletin notices in a polished web format, while still providing the full bulletin PDF for download.
 
+## Wrap-Up Synthesis
+
+### What the user actually wants
+
+The website should stop trying to be a large parish platform and instead become a smaller, clearer parish website built around the weekly bulletin.
+
+The desired public experience is:
+
+- a compact but elegant homepage
+- one authentic parish image at the top
+- a short welcome that feels real rather than branded
+- regular Mass Times and parish office contact details visible near the top
+- the full current week's key notices on the homepage
+- a PDF download visible near the top for parishioners who prefer the bulletin as-is
+- a simple archive page for older bulletins
+
+The site is not trying to be:
+
+- a social network for parishioners
+- a feature-rich digital ministry platform
+- an online community publishing space
+- a magazine-style editorial experience
+
+### The key design tension
+
+The user does want the site to feel designed and current.
+
+The user does not want it to feel:
+
+- cluttered
+- over-featured
+- fake
+- trendy for its own sake
+- AI-made
+- disconnected from the real parish
+
+So the correct direction is:
+
+- elegant but compact
+- polished but restrained
+- warm but not promotional
+- practical first, atmospheric second
+
+## Recommended Execution Plan
+
+This is the recommended version of the task tracker based on the interview and the current codebase.
+
+### Phase 1: Route and Navigation Cleanup
+
+- Update [src/lib/routes.ts](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/lib/routes.ts) so only the intended public pages remain in the manifest.
+- Update [src/lib/navigation.ts](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/lib/navigation.ts) to reflect the smaller site and remove dead-end navigation paths.
+- Update [src/App.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/App.tsx) to remove any remaining cut routes and route imports.
+- Update [src/layouts/RootLayout.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/layouts/RootLayout.tsx) to remove `Community` and `Give` emphasis and simplify the footer around the new core site.
+
+Implementation note:
+
+- `AuthProvider` is not currently mounted in [src/main.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/main.tsx), so "remove AuthProvider" is no longer an active task.
+- `App.tsx` has already been partly simplified compared with the wider route list in the repository, so route cleanup should start from the actual current router rather than an older assumption.
+
+### Phase 2: Bulletin-First Data Model
+
+- Create `public/data/weekly_notices.json` for the current homepage bulletin content.
+- Seed that file from the March 28-29, 2026 `Connections` bulletin.
+- Keep [public/data/newsletters.json](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/public/data/newsletters.json) as the archive source, but simplify its role toward archive metadata rather than rich editorial content.
+- Prefer a reusable `WeeklyNotices` component instead of hard-coding the bulletin structure directly into the homepage.
+
+Recommended content shape for the current weekly bulletin:
+
+- issue title/date
+- PDF URL
+- top Mass/liturgy summary
+- top notices
+- this week at the parish
+- community and school notices
+
+### Phase 3: Homepage Transformation
+
+- Rewrite [src/pages/HomePage.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/pages/HomePage.tsx) around the current weekly bulletin rather than reflections, prayer-wall, Facebook, testimonial, and other mixed homepage modules.
+- Use one strong, authentic parish image.
+- Keep the hero compact but atmospheric.
+- Include:
+  - short welcome copy
+  - weekend and key weekday Mass Times
+  - parish office phone/email
+  - PDF download near the top
+  - full weekly notices on the homepage
+
+Recommended homepage order:
+
+1. Hero with parish image, welcome, Mass Times, and office contact
+2. PDF download and current issue metadata
+3. `Top Notices`
+4. `This Week at the Parish`
+5. `Community & School`
+6. Link into the archive
+
+### Phase 4: Archive Simplification
+
+- Rework [src/pages/NewsEventsPage.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/pages/NewsEventsPage.tsx) so it primarily becomes the bulletin archive.
+- Rework [src/pages/BulletinPage.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/pages/BulletinPage.tsx) so archived issues follow the same practical notice structure instead of the current magazine-style template.
+
+### Phase 5: Dead Code Cleanup
+
+- Remove homepage dependencies that no longer fit the bulletin-first model, especially reflections, prayer-wall, Facebook feed, testimonials, and related hooks/components if they become unused.
+- Remove cut-route components and their dead imports once the kept pages are stable.
+- Remove community/auth/admin code only after route cleanup is complete and the build is green, because that code is spread across pages, components, API helpers, and Supabase utilities.
+
+Implementation note:
+
+- Supabase is still used by shared API code in [src/lib/api.ts](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/lib/api.ts) for optional overlays and reflections. Do not rip out Supabase wholesale in the first pass unless you intentionally replace or remove those features.
+
+### Phase 6: Content and Copy Audit
+
+- Soften branded or abstract copy that currently feels more like a design system demo than a parish website.
+- Prioritize fixes in:
+  - [src/pages/HomePage.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/pages/HomePage.tsx)
+  - [src/layouts/RootLayout.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/layouts/RootLayout.tsx)
+  - [src/pages/NewsEventsPage.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/pages/NewsEventsPage.tsx)
+  - [src/pages/BulletinPage.tsx](/Users/reddrick/Greenacres-Walkerviller-Parish-Website/src/pages/BulletinPage.tsx)
+
+The target voice is:
+
+- warm
+- plain enough to trust
+- polished enough to feel current
+- never salesy
+- never ornate for its own sake
+
+### Phase 7: Verification
+
+- `npx tsc -b`
+- `npm run build`
+- local dev-server visual check with attention to:
+  - homepage hierarchy
+  - readability for older parishioners
+  - PDF prominence
+  - archive usability
+  - navigation simplicity
+
+## Decision Log
+
+- Core website job chosen: publish weekly parish happenings from the bulletin in web form.
+- Homepage chosen as the primary current-week destination.
+- `News & Events` chosen as the archive, not the main live bulletin surface.
+- Weekly notices limited to roughly 5-8 key items.
+- Notice tone chosen: polished parish-website copy, not raw bulletin text and not strong marketing copy.
+- Weekly notice structure chosen: mostly consistent, with a default rhythm close to `Top Notices`, `This Week at the Parish`, `Community & School`, plus PDF access.
+- PDF download chosen to be near the top.
+- Dates and times chosen to appear directly in notices when they improve clarity.
+- Visual direction chosen: elegant and photo-led, but compact and authentic.
+- Primary risks identified: clutter and fake/trendy/AI-looking design.
+
 ## Open Questions
 
 These questions remain unresolved:
 
-- Should each weekly bulletin page be a simple list of 5-8 notices under clear headings, with minimal extra storytelling?
 - What exact notice structure should appear every week on the web page?
-- How prominent should the PDF download be relative to the rewritten notice content?
 - How much visual refinement is welcome before it starts to feel too designed or too modern?
+- How visually plain or refined should the final site feel?
+- How much Mass Times information should appear in the homepage top area versus the dedicated page?
 - What should `Volunteer` actually do in the final site: express interest, read opportunities, or simply contact the office?
 - Should `News & Events` remain a broader archive page, or become almost entirely a bulletin archive plus current weekly notice landing page?
 

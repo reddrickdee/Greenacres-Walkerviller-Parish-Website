@@ -1,7 +1,6 @@
 import { lazy, Suspense, useState, useEffect, Component, type ReactNode, type ErrorInfo } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout } from './layouts/RootLayout';
-import { AuthProvider } from './context/AuthContext';
 import { Sparkles, X } from 'lucide-react';
 
 // ── Route-level Code Splitting ────────────────────────────────────────────────
@@ -14,24 +13,10 @@ const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m
 const HistoryPage = lazy(() => import('./pages/HistoryPage').then(m => ({ default: m.HistoryPage })));
 const NewHerePage = lazy(() => import('./pages/NewHerePage').then(m => ({ default: m.NewHerePage })));
 const NewsEventsPage = lazy(() => import('./pages/NewsEventsPage').then(m => ({ default: m.NewsEventsPage })));
-const SacramentsServicesPage = lazy(() => import('./pages/SacramentsServicesPage').then(m => ({ default: m.SacramentsServicesPage })));
 const BulletinPage = lazy(() => import('./pages/BulletinPage').then(m => ({ default: m.BulletinPage })));
-const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
 const SafeguardingPage = lazy(() => import('./pages/SafeguardingPage').then(m => ({ default: m.SafeguardingPage })));
-const CommunityHubPage = lazy(() => import('./pages/CommunityHubPage').then(m => ({ default: m.CommunityHubPage })));
-const AdminCommunityPage = lazy(() => import('./pages/AdminCommunityPage').then(m => ({ default: m.AdminCommunityPage })));
-const AdminReflectionsPage = lazy(() => import('./pages/AdminReflectionsPage').then(m => ({ default: m.AdminReflectionsPage })));
-const GivingPage = lazy(() => import('./pages/GivingPage').then(m => ({ default: m.GivingPage })));
 const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then(m => ({ default: m.VolunteerPage })));
-const SacramentsBookingPage = lazy(() => import('./pages/SacramentsBookingPage').then(m => ({ default: m.SacramentsBookingPage })));
-const LiveStreamPage = lazy(() => import('./pages/LiveStreamPage').then(m => ({ default: m.LiveStreamPage })));
-const HomiliesPage = lazy(() => import('./pages/HomiliesPage').then(m => ({ default: m.HomiliesPage })));
-const ArticleDetailPage = lazy(() => import('./pages/ArticleDetailPage').then(m => ({ default: m.ArticleDetailPage })));
-const ArticleEditorPage = lazy(() => import('./pages/ArticleEditorPage').then(m => ({ default: m.ArticleEditorPage })));
 
-// ── Route Guards ──────────────────────────────────────────────────────────────
-import { AdminGuard } from './components/community/AdminGuard';
-import { ContributorGuard } from './components/community/ContributorGuard';
 import { PATHS } from './lib/routes';
 
 // ── Page Loading Skeleton ─────────────────────────────────────────────────────
@@ -150,34 +135,21 @@ const router = createBrowserRouter([
             { path: rel(PATHS.HISTORY), element: <HistoryPage /> },
             { path: rel(PATHS.NEW_HERE), element: <NewHerePage /> },
             { path: rel(PATHS.NEWS_EVENTS), element: <NewsEventsPage /> },
-            { path: rel(PATHS.SACRAMENTS), element: <SacramentsServicesPage /> },
             { path: rel(PATHS.BULLETIN), element: <BulletinPage /> },
-            { path: rel(PATHS.GALLERY), element: <GalleryPage /> },
             { path: rel(PATHS.SAFEGUARDING), element: <SafeguardingPage /> },
-            { path: rel(PATHS.COMMUNITY), element: <CommunityHubPage /> },
-            { path: rel(PATHS.ARTICLE_DETAIL), element: <ArticleDetailPage /> },
-            { path: rel(PATHS.ARTICLE_NEW), element: <ContributorGuard><ArticleEditorPage /></ContributorGuard> },
-            { path: rel(PATHS.GIVING), element: <GivingPage /> },
             { path: rel(PATHS.VOLUNTEER), element: <VolunteerPage /> },
-            { path: rel(PATHS.SACRAMENTS_REQUEST), element: <SacramentsBookingPage /> },
-            { path: rel(PATHS.LIVE), element: <LiveStreamPage /> },
-            { path: rel(PATHS.HOMILIES), element: <HomiliesPage /> },
-            { path: rel(PATHS.ADMIN_COMMUNITY), element: <AdminGuard><AdminCommunityPage /></AdminGuard> },
-            { path: rel(PATHS.ADMIN_REFLECTIONS), element: <AdminGuard><AdminReflectionsPage /></AdminGuard> },
         ],
     },
 ]);
 
 function App() {
     return (
-        <AuthProvider>
-            <ChunkErrorBoundary>
-                <Suspense fallback={<PageSkeleton />}>
-                    <RouterProvider router={router} />
-                </Suspense>
-            </ChunkErrorBoundary>
+        <ChunkErrorBoundary>
+            <Suspense fallback={<PageSkeleton />}>
+                <RouterProvider router={router} />
+            </Suspense>
             <PWAUpdateBanner />
-        </AuthProvider>
+        </ChunkErrorBoundary>
     );
 }
 

@@ -51,7 +51,6 @@ export const DRAWER_GROUPS: NavGroup[] = [
             { to: PATHS.HOME, label: 'Home' },
             { to: PATHS.ABOUT, label: 'About Us' },
             { to: PATHS.HISTORY, label: 'History' },
-            { to: PATHS.GALLERY, label: 'Gallery' },
             { to: PATHS.NEW_HERE, label: "I'm New Here" },
         ],
     },
@@ -59,18 +58,13 @@ export const DRAWER_GROUPS: NavGroup[] = [
         title: 'Worship',
         links: [
             { to: PATHS.MASS_TIMES, label: 'Mass Times' },
-            { to: PATHS.SACRAMENTS, label: 'Sacraments' },
-            { to: PATHS.LIVE, label: 'Live Stream' },
-            { to: PATHS.HOMILIES, label: 'Homilies' },
             { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
         ],
     },
     {
         title: 'Community',
         links: [
-            { to: PATHS.COMMUNITY, label: 'Community Hub' },
             { to: PATHS.VOLUNTEER, label: 'Volunteer' },
-            { to: PATHS.GIVING, label: 'Give' },
             { to: PATHS.CONTACT, label: 'Contact' },
             { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
         ],
@@ -103,8 +97,7 @@ export const QUICK_ACTIONS: QuickAction[] = [
 // ── Footer-only extras (appended to PRIMARY_NAV in footer Explore column) ────
 
 export const FOOTER_EXTRA_NAV: NavItem[] = [
-    { to: PATHS.SACRAMENTS, label: 'Sacraments & Services' },
-    { to: PATHS.COMMUNITY, label: 'Community Hub' },
+    { to: PATHS.VOLUNTEER, label: 'Volunteer' },
     { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
 ];
 

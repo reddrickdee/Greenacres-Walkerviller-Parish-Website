@@ -103,12 +103,6 @@ export function RootLayout() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <Link to="/community" className="pilgrimage-button-ghost hidden xl:inline-flex">
-                            Community
-                        </Link>
-                        <Link to="/giving" className="pilgrimage-button hidden md:inline-flex">
-                            Give
-                        </Link>
                         <div className="flex items-center gap-1 rounded-full border border-parish-border/10 bg-parish-surface/65 px-1.5 py-1 backdrop-blur-md">
                             <AccessibilityMenu />
                             <ThemeToggle />
