@@ -170,8 +170,8 @@ export function NewHerePage() {
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">
                                 After your first visit, the easiest way to keep moving is through community groups, parish news, and sacramental life.
                             </p>
-                            <Link to="/community" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
-                                Explore community life
+                            <Link to="/news-events" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
+                                Weekly bulletin &amp; news
                                 <ArrowRight className="h-4 w-4" />
                             </Link>
                         </InfoCard>

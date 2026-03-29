@@ -18,6 +18,7 @@ export const PATHS = {
     NEWS_EVENTS: '/news-events',
     SAFEGUARDING: '/safeguarding',
     VOLUNTEER: '/volunteer',
+    GALLERY: '/gallery',
     // Dynamic routes (param segments)
     BULLETIN: '/news-events/bulletin/:id',
 } as const;
@@ -55,6 +56,7 @@ export const ROUTE_MANIFEST: RouteEntry[] = [
     { path: PATHS.NEWS_EVENTS, label: 'News & Events', section: 'Worship' },
     // Community
     { path: PATHS.VOLUNTEER, label: 'Volunteer', section: 'Community' },
+    { path: PATHS.GALLERY, label: 'Gallery', section: 'Community' },
     { path: PATHS.CONTACT, label: 'Contact', section: 'Community' },
     { path: PATHS.SAFEGUARDING, label: 'Safeguarding', section: 'Community' },
 ];

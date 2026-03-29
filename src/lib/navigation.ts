@@ -51,6 +51,7 @@ export const DRAWER_GROUPS: NavGroup[] = [
             { to: PATHS.HOME, label: 'Home' },
             { to: PATHS.ABOUT, label: 'About Us' },
             { to: PATHS.HISTORY, label: 'History' },
+            { to: PATHS.GALLERY, label: 'Gallery' },
             { to: PATHS.NEW_HERE, label: "I'm New Here" },
         ],
     },
@@ -97,6 +98,7 @@ export const QUICK_ACTIONS: QuickAction[] = [
 // ── Footer-only extras (appended to PRIMARY_NAV in footer Explore column) ────
 
 export const FOOTER_EXTRA_NAV: NavItem[] = [
+    { to: PATHS.GALLERY, label: 'Gallery' },
     { to: PATHS.VOLUNTEER, label: 'Volunteer' },
     { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
 ];

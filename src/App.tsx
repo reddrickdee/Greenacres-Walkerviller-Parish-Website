@@ -16,6 +16,7 @@ const NewsEventsPage = lazy(() => import('./pages/NewsEventsPage').then(m => ({ 
 const BulletinPage = lazy(() => import('./pages/BulletinPage').then(m => ({ default: m.BulletinPage })));
 const SafeguardingPage = lazy(() => import('./pages/SafeguardingPage').then(m => ({ default: m.SafeguardingPage })));
 const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then(m => ({ default: m.VolunteerPage })));
+const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
 
 import { PATHS } from './lib/routes';
 
@@ -138,6 +139,7 @@ const router = createBrowserRouter([
             { path: rel(PATHS.BULLETIN), element: <BulletinPage /> },
             { path: rel(PATHS.SAFEGUARDING), element: <SafeguardingPage /> },
             { path: rel(PATHS.VOLUNTEER), element: <VolunteerPage /> },
+            { path: rel(PATHS.GALLERY), element: <GalleryPage /> },
         ],
     },
 ]);

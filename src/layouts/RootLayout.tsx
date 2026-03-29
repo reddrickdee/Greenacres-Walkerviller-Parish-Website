@@ -262,9 +262,9 @@ export function RootLayout() {
                                         <HeartHandshake className="h-4 w-4 text-parish-brass" />
                                         Volunteer and serve
                                     </Link>
-                                    <Link to="/giving" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-parish-shell-fg">
+                                    <Link to="/news-events" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-parish-shell-fg">
                                         <ArrowRight className="h-4 w-4 text-parish-brass" />
-                                        Support parish life
+                                        Weekly bulletin archive
                                     </Link>
                                     <Link to="/safeguarding" className="flex items-center gap-3 no-underline text-sm leading-relaxed transition-colors hover:text-parish-shell-fg">
                                         <ArrowRight className="h-4 w-4 text-parish-brass" />

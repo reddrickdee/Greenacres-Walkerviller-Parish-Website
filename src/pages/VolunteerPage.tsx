@@ -101,8 +101,8 @@ export function VolunteerPage() {
             imageAlt="Parish community volunteers"
             actions={(
                 <>
-                    <Link to="/community" className="pilgrimage-button">
-                        Community Hub
+                    <Link to="/news-events" className="pilgrimage-button">
+                        Parish Bulletins
                     </Link>
                     <Link to="/contact" className="pilgrimage-button-secondary">
                         Contact The Office
