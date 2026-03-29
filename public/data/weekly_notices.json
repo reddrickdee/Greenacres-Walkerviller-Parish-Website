@@ -1,0 +1,79 @@
+{
+  "weekOf": "2026-03-28",
+  "issueTitle": "Connections — 28th / 29th March 2026",
+  "pdfUrl": "/bulletins/connections-2026-03-28.pdf",
+  "liturgicalInfo": {
+    "sundayTitle": "Fifth Sunday of Lent — Year C",
+    "weekdayReadings": "Week 5 of Lent",
+    "note": "Daylight Saving ends Sunday 5 April — clocks go back one hour."
+  },
+  "massChanges": {
+    "heading": "Mass Schedule This Week",
+    "body": "Weekday Masses continue as usual: Tuesday and Thursday at 9:00am (St Martin's), Wednesday at 9:00am (St Monica's). Weekend Masses: Saturday 6:00pm Vigil (St Monica's), Sunday 9:30am (St Martin's)."
+  },
+  "topNotices": [
+    {
+      "heading": "Holy Week and Easter Triduum Schedule",
+      "body": "Palm Sunday Masses: Saturday 4 April at 6:00pm (St Monica's) and Sunday 5 April at 9:30am (St Martin's). Holy Thursday Mass of the Lord's Supper: 7:00pm at St Martin's. Good Friday Passion of the Lord: 3:00pm at St Monica's. Easter Vigil: Saturday 19 April at 6:00pm at St Monica's. Easter Sunday: 9:30am at St Martin's."
+    },
+    {
+      "heading": "Fr Roy Joins the Parish",
+      "body": "Fr Roy Elavumkal CMI will commence as our new Parish Priest on 11-12 April. We warmly welcome him and look forward to this next chapter for our parish community."
+    },
+    {
+      "heading": "Project Compassion — Fifth Week of Lent",
+      "body": "Your continued generosity in Project Compassion supports communities across the globe through Caritas Australia. Boxes and envelopes can be returned at any Mass during Holy Week or dropped off at the parish office."
+    }
+  ],
+  "thisWeek": [
+    {
+      "heading": "Stations of the Cross",
+      "body": "Friday evenings during Lent at 7:00pm, St Martin's Church. A prayerful devotion following the journey of Jesus to Calvary. All welcome."
+    },
+    {
+      "heading": "Reconciliation Available",
+      "body": "Saturday 5:30–5:50pm at St Monica's before the Vigil Mass, or by appointment. Contact the parish office to arrange a time."
+    },
+    {
+      "heading": "Cuppa After Mass",
+      "body": "Tea and coffee are available after the 9:30am Sunday Mass at St Martin's Hall. A great chance to catch up with fellow parishioners."
+    },
+    {
+      "heading": "Adelaide Diocesan Synod 2026",
+      "body": "The Diocesan Synod will be held 4–5 April. This is an important moment as the local Church gathers to discern its future direction. Please keep the Synod in your prayers."
+    }
+  ],
+  "communitySchool": [
+    {
+      "heading": "St Martin's School News",
+      "body": "St Martin's Catholic Primary School welcomes enrolment enquiries for 2027. Contact the school office on (08) 8211 2400 or visit smg.catholic.edu.au for details."
+    },
+    {
+      "heading": "Ninna Marni Social Group",
+      "body": "The over-50s social group meets each Monday afternoon at St Martin's Hall. New members always welcome — just turn up and join in."
+    },
+    {
+      "heading": "Good Giving Online",
+      "body": "Support the parish through online giving via Good Giving. Set up a regular contribution at goodgiving.com.au/home/myparish or contact the office for details."
+    }
+  ],
+  "roster": {
+    "heading": "This Weekend's Roster",
+    "saturday": {
+      "label": "Saturday 6:00pm — St Monica's",
+      "roles": [
+        { "role": "Reader", "name": "J. Santos" },
+        { "role": "Eucharistic Minister", "name": "M. D'Cruz" },
+        { "role": "Hospitality", "name": "L. Perera" }
+      ]
+    },
+    "sunday": {
+      "label": "Sunday 9:30am — St Martin's",
+      "roles": [
+        { "role": "Reader", "name": "K. Thompson" },
+        { "role": "Eucharistic Minister", "name": "S. Wijesinghe" },
+        { "role": "Hospitality", "name": "P. Morelli" }
+      ]
+    }
+  }
+}
