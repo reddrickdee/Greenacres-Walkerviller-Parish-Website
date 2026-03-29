@@ -30,8 +30,8 @@ export function HistoryPage() {
                     <Link to="/about" className="pilgrimage-button">
                         About The Parish
                     </Link>
-                    <Link to="/gallery" className="pilgrimage-button-secondary">
-                        View Gallery
+                    <Link to="/contact" className="pilgrimage-button-secondary">
+                        Contact Us
                     </Link>
                 </>
             )}

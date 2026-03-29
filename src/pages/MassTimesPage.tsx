@@ -98,24 +98,7 @@ export function MassTimesPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
-                <div className="page-section-inner">
-                    <SectionIntro
-                        eyebrow="Sacraments"
-                        title={<>The wider rhythm of sacramental life.</>}
-                        description="Reconciliation, baptisms, weddings, and preparation programs are available alongside the regular Mass schedule."
-                    />
 
-                    <div className="mt-10 grid gap-5 md:grid-cols-2">
-                        {content.sacraments.map(item => (
-                            <InfoCard key={item.title}>
-                                <div className="ornamental-kicker">{item.title}</div>
-                                <p className="mt-4 text-sm leading-relaxed text-parish-muted md:text-base">{item.details}</p>
-                            </InfoCard>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             <section className="page-section mt-16 md:mt-20">
                 <div className="page-section-inner">
@@ -131,8 +114,8 @@ export function MassTimesPage() {
                                 <Link to="/contact" className="pilgrimage-button">
                                     Contact The Parish Office
                                 </Link>
-                                <Link to="/sacraments" className="pilgrimage-button-secondary">
-                                    Explore Sacraments
+                                <Link to="/new-here" className="pilgrimage-button-secondary">
+                                    First Visit Guide
                                 </Link>
                             </div>
                         </div>
