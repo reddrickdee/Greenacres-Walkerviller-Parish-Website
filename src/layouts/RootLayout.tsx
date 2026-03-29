@@ -201,11 +201,11 @@ export function RootLayout() {
                             <div className="section-label !text-parish-shell-muted before:!bg-parish-brass/80 mb-5">Sanctuary Light</div>
                             <Link to="/" className="no-underline">
                                 <h2 className="max-w-md text-4xl text-parish-shell-fg md:text-5xl">
-                                    A parish that feels calm, welcoming, and unmistakably Catholic.
+                                    A welcoming community of faith across Greenacres and Walkerville.
                                 </h2>
                             </Link>
                             <p className="mt-5 max-w-xl text-base leading-relaxed text-parish-shell-muted md:text-lg">
-                                Greenacres Walkerville Catholic Parish gathers across St Monica&apos;s Walkerville and St Martin&apos;s Greenacres. Whether you are visiting for the first time or returning after years away, you are welcome here.
+                                Whether you are visiting for the first time or returning after years away, you are welcome here.
                             </p>
                             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                                 <Link to="/new-here" className="pilgrimage-button">

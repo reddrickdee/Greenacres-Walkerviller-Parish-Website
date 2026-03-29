@@ -22,8 +22,8 @@ export function AboutPage() {
     return (
         <StoryPageTemplate
             eyebrow="About Our Parish"
-            title={<>A parish story shaped by worship, welcome, and responsibility.</>}
-            description="Learn about our parish: vision, leadership, pastoral council, and the people who carry this community forward."
+            title={<>Our story of worship, community, and service.</>}
+            description="Learn about our vision, our leadership, and the people who serve our community."
             imageSrc="/assets/source/our_parish.webp"
             imageAlt="Greenacres Walkerville parish community gathering"
             actions={(
@@ -48,7 +48,7 @@ export function AboutPage() {
                     <div className="lg:col-span-5">
                         <SectionIntro
                             eyebrow="Pastoral Voice"
-                            title={<>Meet the people who lead and care for this parish.</>}
+                            title={<>Meet our parish leadership.</>}
                             description="Our parish priest and pastoral council work together to guide worship, community life, and pastoral care."
                         />
                     </div>
@@ -92,8 +92,8 @@ export function AboutPage() {
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Pastoral Council"
-                        title={<>The people helping carry the parish forward.</>}
-                        description="Meet the people who guide and support the life of our parish community."
+                        title={<>Our Pastoral Council.</>}
+                        description="Guiding and supporting our parish."
                         align="center"
                     />
 
@@ -139,7 +139,7 @@ export function AboutPage() {
                             <div className="lg:col-span-8">
                                 <span className="section-label mb-4">Next Step</span>
                                 <h2 className="text-[clamp(2.2rem,4vw,4rem)] text-parish-fg">
-                                    Learn the parish story, then come and experience it in person.
+                                    Join our community.
                                 </h2>
                             </div>
                             <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">

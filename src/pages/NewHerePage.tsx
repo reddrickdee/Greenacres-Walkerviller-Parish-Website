@@ -24,8 +24,8 @@ export function NewHerePage() {
     return (
         <HighlightPageTemplate
             eyebrow="First Visit Guide"
-            title={<>Come as you are. We&apos;ll help you know what comes next.</>}
-            description="Whether you're joining us from the local area or from further afield, our parish community — including Sri Lankan, Filipino, and broader Australian families — is glad to welcome you."
+            title={<>Welcome to our parish.</>}
+            description="We are a diverse community of Sri Lankan, Filipino, and Australian families. We look forward to seeing you at Mass."
             imageSrc="/assets/source/welcome_thumb.webp"
             imageAlt="Visitors arriving at parish grounds"
             actions={(
@@ -57,7 +57,7 @@ export function NewHerePage() {
                     <div className="lg:col-span-5">
                         <SectionIntro
                             eyebrow="What to Expect"
-                            title={<>You do not need to arrive already knowing parish life.</>}
+                            title={<>What to Expect at Mass</>}
                             description={visitorInfo?.whatToExpect ?? "Sit, stand, and kneel when the congregation does — printed guides are available, and no one will mind if you simply follow along."}
                         />
                     </div>
@@ -78,7 +78,7 @@ export function NewHerePage() {
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="When to Arrive"
-                        title={<>Your first steps, clearly laid out.</>}
+                        title={<>Arriving for Mass</>}
                         description={visitorInfo?.arrivalGuidance ?? "Arrive 10–15 minutes before Mass so you can find a seat and settle in."}
                     />
 
@@ -108,8 +108,8 @@ export function NewHerePage() {
                     <div className="page-section-inner">
                         <SectionIntro
                             eyebrow="Where to Go"
-                            title={<>Two churches, one welcoming parish family.</>}
-                            description="Choose whichever church suits you — both are easy to find and fully accessible."
+                            title={<>Our Churches</>}
+                            description="We have two churches located in Greenacres and Walkerville."
                         />
 
                         <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -187,7 +187,7 @@ export function NewHerePage() {
                             <div className="lg:col-span-8">
                                 <span className="section-label mb-4">Ready To Come</span>
                                 <h2 className="text-[clamp(2.1rem,4vw,3.8rem)] text-parish-fg">
-                                    {visitorInfo?.contactPrompt ?? "The most practical next step is simply choosing a Mass and arriving."}
+                                    We look forward to welcoming you.
                                 </h2>
                             </div>
                             <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">

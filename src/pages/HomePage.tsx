@@ -136,10 +136,10 @@ export function HomePage() {
                                 <div className="lg:col-span-7">
                                     <span className="section-label mb-4">Come This Weekend</span>
                                     <h2 className="text-[clamp(2rem,4vw,3.4rem)] text-parish-fg">
-                                        Everyone is welcome at Mass — no preparation needed.
+                                        Everyone is welcome at Mass.
                                     </h2>
                                     <p className="mt-4 max-w-2xl text-base leading-relaxed text-parish-muted md:text-lg">
-                                        If this is your first visit, start with the Mass times and let the rest unfold from there. There is already space for you here.
+                                        Join us this weekend for Mass at St Monica&apos;s or St Martin&apos;s. We look forward to welcoming you.
                                     </p>
                                 </div>
                                 <div className="flex flex-col gap-3 lg:col-span-5 lg:items-end">
