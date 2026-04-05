@@ -14,9 +14,11 @@ import {
     FOOTER_EXTRA_NAV,
     isActive,
 } from '../lib/navigation';
+import { useLiturgicalSeason } from '../hooks/useLiturgicalSeason';
 
 export function RootLayout() {
     const location = useLocation();
+    const season = useLiturgicalSeason();
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollY } = useScroll();
@@ -200,7 +202,9 @@ export function RootLayout() {
                 <div className="mx-auto max-w-7xl">
                     <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
                         <div className="lg:col-span-5">
-                            <div className="section-label !text-parish-shell-muted before:!bg-parish-brass/80 mb-5">Sanctuary Light</div>
+                            <div className={`section-label !text-parish-shell-muted before:!${season.colorClass.replace('text-', 'bg-')} mb-5`}>
+                                Season of {season.label}
+                            </div>
                             <Link to="/" className="no-underline">
                                 <h2 className="max-w-md text-4xl text-parish-shell-fg md:text-5xl">
                                     A welcoming community of faith across Greenacres and Walkerville.
