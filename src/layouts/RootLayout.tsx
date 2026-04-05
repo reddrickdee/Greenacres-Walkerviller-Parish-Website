@@ -202,7 +202,15 @@ export function RootLayout() {
                 <div className="mx-auto max-w-7xl">
                     <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
                         <div className="lg:col-span-5">
-                            <div className={`section-label !text-parish-shell-muted before:!${season.colorClass.replace('text-', 'bg-')} mb-5`}>
+                            <div
+                                className="section-label !text-parish-shell-muted mb-5"
+                                style={{ '--season-color': season.cssColor } as React.CSSProperties}
+                            >
+                                <span
+                                    className="mr-2 inline-block h-2 w-2 rounded-full"
+                                    style={{ backgroundColor: season.cssColor }}
+                                    aria-hidden="true"
+                                />
                                 Season of {season.label}
                             </div>
                             <Link to="/" className="no-underline">
