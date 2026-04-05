@@ -1,8 +1,10 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Phone, Mail, ArrowRight, Droplets, Heart, BookOpen, Users } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useJsonLd } from '../hooks/useJsonLd';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
 import { ContentLoading, ContentError } from '../components/ContentStates';
 
@@ -37,6 +39,65 @@ export function SacramentsPage() {
         description: 'Information about Reconciliation, Baptism, Weddings, and the Sacramental Program at Greenacres Walkerville Catholic Parish.',
         path: '/sacraments',
     });
+
+    const sacramentsSchema = useMemo(() => ({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Sacraments — Greenacres Walkerville Catholic Parish',
+        description: 'Information about Reconciliation, Baptism, Weddings, and the Sacramental Program at Greenacres Walkerville Catholic Parish.',
+        url: 'https://www.gwparish.org.au/sacraments',
+        mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: [
+                {
+                    '@type': 'ListItem',
+                    position: 1,
+                    item: {
+                        '@type': 'Service',
+                        name: 'Sacrament of Reconciliation',
+                        description: 'The Sacrament of Reconciliation (Confession) is available at Greenacres Walkerville Catholic Parish.',
+                        provider: { '@id': 'https://www.gwparish.org.au/#organization' },
+                        areaServed: { '@type': 'City', name: 'Adelaide', addressRegion: 'SA', addressCountry: 'AU' },
+                    },
+                },
+                {
+                    '@type': 'ListItem',
+                    position: 2,
+                    item: {
+                        '@type': 'Service',
+                        name: 'Baptism',
+                        description: 'Infant and adult Baptism preparation and celebration at Greenacres Walkerville Catholic Parish.',
+                        provider: { '@id': 'https://www.gwparish.org.au/#organization' },
+                        areaServed: { '@type': 'City', name: 'Adelaide', addressRegion: 'SA', addressCountry: 'AU' },
+                    },
+                },
+                {
+                    '@type': 'ListItem',
+                    position: 3,
+                    item: {
+                        '@type': 'Service',
+                        name: 'Catholic Weddings',
+                        description: 'Wedding preparation and celebration in the Catholic tradition at Greenacres Walkerville Catholic Parish.',
+                        provider: { '@id': 'https://www.gwparish.org.au/#organization' },
+                        areaServed: { '@type': 'City', name: 'Adelaide', addressRegion: 'SA', addressCountry: 'AU' },
+                    },
+                },
+                {
+                    '@type': 'ListItem',
+                    position: 4,
+                    item: {
+                        '@type': 'Service',
+                        name: 'Sacramental Program',
+                        description: 'Preparation for First Communion, Confirmation, and RCIA at Greenacres Walkerville Catholic Parish.',
+                        provider: { '@id': 'https://www.gwparish.org.au/#organization' },
+                        areaServed: { '@type': 'City', name: 'Adelaide', addressRegion: 'SA', addressCountry: 'AU' },
+                    },
+                },
+            ],
+        },
+    }), []);
+
+    useJsonLd(sacramentsSchema, 'sacraments-page');
 
     if (isLoading) return <ContentLoading />;
     if (!content) return <ContentError />;

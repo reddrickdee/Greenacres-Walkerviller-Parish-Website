@@ -1,6 +1,8 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, ExternalLink, Shield, RefreshCw, CreditCard } from 'lucide-react';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useJsonLd } from '../hooks/useJsonLd';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
 
 export function GivePage() {
@@ -9,6 +11,31 @@ export function GivePage() {
         description: 'Support Greenacres Walkerville Catholic Parish through online giving, planned giving, or direct deposit. Your generosity sustains our community.',
         path: '/give',
     });
+
+    const giveSchema = useMemo(() => ({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Give — Support Greenacres Walkerville Catholic Parish',
+        description: 'Support Greenacres Walkerville Catholic Parish through online giving, planned giving, or direct deposit.',
+        url: 'https://www.gwparish.org.au/give',
+        mainEntity: {
+            '@type': 'DonateAction',
+            name: 'Donate to Greenacres Walkerville Catholic Parish',
+            description: 'Support the pastoral, educational, and outreach mission of the parish through online or planned giving.',
+            recipient: {
+                '@type': 'Organization',
+                '@id': 'https://www.gwparish.org.au/#organization',
+                name: 'Greenacres Walkerville Catholic Parish',
+            },
+            target: {
+                '@type': 'EntryPoint',
+                urlTemplate: 'https://goodgiving.com.au/home/myparish',
+                actionPlatform: 'https://schema.org/DesktopWebPlatform',
+            },
+        },
+    }), []);
+
+    useJsonLd(giveSchema, 'give-page');
 
     return (
         <HighlightPageTemplate
