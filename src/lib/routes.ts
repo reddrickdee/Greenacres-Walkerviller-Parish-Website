@@ -11,6 +11,7 @@
 export const PATHS = {
     HOME: '/',
     MASS_TIMES: '/mass-times',
+    SACRAMENTS: '/sacraments',
     CONTACT: '/contact',
     ABOUT: '/about',
     HISTORY: '/history',
@@ -19,6 +20,7 @@ export const PATHS = {
     SAFEGUARDING: '/safeguarding',
     VOLUNTEER: '/volunteer',
     GALLERY: '/gallery',
+    GIVE: '/give',
     // Dynamic routes (param segments)
     BULLETIN: '/news-events/bulletin/:id',
 } as const;
@@ -46,17 +48,19 @@ export interface RouteEntry {
 // Dynamic and admin routes follow.
 
 export const ROUTE_MANIFEST: RouteEntry[] = [
+    // Worship
+    { path: PATHS.HOME, label: 'Home', section: 'Worship' },
+    { path: PATHS.MASS_TIMES, label: 'Mass Times', section: 'Worship' },
+    { path: PATHS.SACRAMENTS, label: 'Sacraments', section: 'Worship' },
+    { path: PATHS.NEWS_EVENTS, label: 'News & Events', section: 'Worship' },
     // Explore
-    { path: PATHS.HOME, label: 'Home', section: 'Explore' },
     { path: PATHS.ABOUT, label: 'About Us', section: 'Explore' },
     { path: PATHS.HISTORY, label: 'History', section: 'Explore' },
     { path: PATHS.NEW_HERE, label: "I'm New Here", section: 'Explore' },
-    // Worship
-    { path: PATHS.MASS_TIMES, label: 'Mass Times', section: 'Worship' },
-    { path: PATHS.NEWS_EVENTS, label: 'News & Events', section: 'Worship' },
+    { path: PATHS.GALLERY, label: 'Gallery', section: 'Explore' },
     // Community
     { path: PATHS.VOLUNTEER, label: 'Volunteer', section: 'Community' },
-    { path: PATHS.GALLERY, label: 'Gallery', section: 'Community' },
+    { path: PATHS.GIVE, label: 'Give', section: 'Community' },
     { path: PATHS.CONTACT, label: 'Contact', section: 'Community' },
     { path: PATHS.SAFEGUARDING, label: 'Safeguarding', section: 'Community' },
 ];

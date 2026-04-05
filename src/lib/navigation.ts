@@ -5,7 +5,7 @@
  * Path constants and ROUTE_META are centralised in ./routes.ts.
  */
 import type { LucideIcon } from 'lucide-react';
-import { CalendarClock, Mail, MapPinned } from 'lucide-react';
+import { CalendarClock, Heart, Mail, MapPinned, Droplets } from 'lucide-react';
 import { PATHS } from './routes';
 
 // Re-export ROUTE_META so existing consumers (Breadcrumbs, tests) keep working
@@ -34,17 +34,25 @@ export interface QuickAction {
 // ── Primary Nav (header bar + footer Explore base) ────────────────────────────
 
 export const PRIMARY_NAV: NavItem[] = [
-    { to: PATHS.HOME, label: 'Home' },
     { to: PATHS.MASS_TIMES, label: 'Mass Times' },
+    { to: PATHS.SACRAMENTS, label: 'Sacraments' },
     { to: PATHS.NEW_HERE, label: "I'm New Here" },
-    { to: PATHS.CONTACT, label: 'Contact' },
-    { to: PATHS.ABOUT, label: 'About' },
     { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
+    { to: PATHS.GIVE, label: 'Give' },
+    { to: PATHS.CONTACT, label: 'Contact' },
 ];
 
 // ── Mobile Drawer Groups ──────────────────────────────────────────────────────
 
 export const DRAWER_GROUPS: NavGroup[] = [
+    {
+        title: 'Worship',
+        links: [
+            { to: PATHS.MASS_TIMES, label: 'Mass Times' },
+            { to: PATHS.SACRAMENTS, label: 'Sacraments' },
+            { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
+        ],
+    },
     {
         title: 'Explore',
         links: [
@@ -56,16 +64,10 @@ export const DRAWER_GROUPS: NavGroup[] = [
         ],
     },
     {
-        title: 'Worship',
-        links: [
-            { to: PATHS.MASS_TIMES, label: 'Mass Times' },
-            { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
-        ],
-    },
-    {
         title: 'Community',
         links: [
             { to: PATHS.VOLUNTEER, label: 'Volunteer' },
+            { to: PATHS.GIVE, label: 'Give' },
             { to: PATHS.CONTACT, label: 'Contact' },
             { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
         ],
@@ -82,10 +84,22 @@ export const QUICK_ACTIONS: QuickAction[] = [
         to: PATHS.MASS_TIMES,
     },
     {
+        icon: Droplets,
+        title: 'Sacraments',
+        detail: 'Baptism, Reconciliation, Weddings, and more.',
+        to: PATHS.SACRAMENTS,
+    },
+    {
         icon: MapPinned,
         title: 'Plan your first visit',
         detail: 'Find parking, contact details, and what to expect.',
         to: PATHS.NEW_HERE,
+    },
+    {
+        icon: Heart,
+        title: 'Give to the parish',
+        detail: 'Support a living parish through online giving.',
+        to: PATHS.GIVE,
     },
     {
         icon: Mail,
