@@ -43,7 +43,31 @@ export function VolunteerPage() {
         e.preventDefault();
         if (!isValid) return;
         setIsSubmitting(true);
-        await new Promise(resolve => setTimeout(resolve, 1200));
+
+        // Build the mailto body with form data
+        const selectedLabels = selectedMinistries
+            .map(id => MINISTRIES.find(m => m.id === id)?.label)
+            .filter(Boolean)
+            .join(', ');
+
+        const subject = encodeURIComponent(`Volunteer Interest — ${name.trim()}`);
+        const body = encodeURIComponent(
+            [
+                `Name: ${name.trim()}`,
+                `Email: ${email.trim()}`,
+                phone ? `Phone: ${phone.trim()}` : null,
+                `Ministries: ${selectedLabels}`,
+                message ? `Additional Info: ${message.trim()}` : null,
+            ]
+                .filter(Boolean)
+                .join('\n')
+        );
+
+        // Open mailto — this works universally, even without a backend
+        window.location.href = `mailto:admin@gwparish.org.au?subject=${subject}&body=${body}`;
+
+        // Brief delay for visual feedback before showing success
+        await new Promise(resolve => setTimeout(resolve, 600));
         setIsSubmitting(false);
         setIsSubmitted(true);
     };

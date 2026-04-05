@@ -24,6 +24,9 @@
     content="Welcome to Greenacres Walkerville Catholic Parish in Adelaide. Mass times, sacraments, community events, and daily reflections." />
   <meta name="twitter:image" content="https://www.gwparish.org.au/parish-logo.png" />
   <title>Greenacres Walkerville Catholic Parish</title>
+  <!-- Preload critical above-the-fold assets for faster LCP -->
+  <link rel="preload" href="/assets/source/hero_4.webp" as="image" type="image/webp" />
+  <link rel="preload" href="/icons/parish-logo-72.webp" as="image" type="image/webp" />
   <!-- We will use Cinzel for display and Inter for body, to give a sacred, high-end editorial feel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,9 +50,6 @@
 
 <body
   class="bg-parish-bg text-parish-fg font-body min-h-screen antialiased selection:bg-parish-brass/20 selection:text-parish-fg">
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 

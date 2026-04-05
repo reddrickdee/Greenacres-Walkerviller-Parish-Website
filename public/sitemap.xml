@@ -21,23 +21,18 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gwparish.org.au/sacraments</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.gwparish.org.au/new-here</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.gwparish.org.au/community</loc>
+    <loc>https://www.gwparish.org.au/news-events</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.gwparish.org.au/news-events</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.gwparish.org.au/volunteer</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>

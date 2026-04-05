@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, CalendarClock, MapPinned } from 'lucide-react';
 import { useParishData } from '../../context/ParishDataContext';
+import { useLiturgicalSeason } from '../../hooks/useLiturgicalSeason';
 import { useMassCountdowns } from '../../hooks/useMassCountdowns';
 import {
     isCoreCountdownMass,
@@ -22,6 +23,8 @@ export function HeroSection() {
 
     if (!content) return null;
 
+    const liturgicalSeason = useLiturgicalSeason();
+
     // Format next service info
     const nextDay = nextService ? DAY_NAMES[(nextService.entry.dayOfWeek - 1) % 7] : null;
     const nextTime = nextService?.entry.startTime
@@ -38,9 +41,15 @@ export function HeroSection() {
     return (
         <header className="relative min-h-[70vh] overflow-hidden md:min-h-screen">
             <motion.div style={{ y }} className="absolute inset-0 z-0">
-                <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/assets/source/hero_4.webp')" }}
+                <img
+                    src="/assets/source/hero_4.webp"
+                    alt=""
+                    role="presentation"
+                    width={1920}
+                    height={1080}
+                    fetchPriority="high"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(118deg,rgba(9,10,11,0.92)_0%,rgba(18,20,24,0.74)_48%,rgba(23,20,17,0.42)_100%)]" />
                 <div className="absolute inset-0 noise-bg opacity-60" />
@@ -139,6 +148,10 @@ export function HeroSection() {
                 >
                     <div className="h-px w-14 bg-white/30" />
                     <span className="text-[0.72rem] font-semibold uppercase tracking-[0.22em]">{content.tagline}</span>
+                    <span className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] opacity-60">·</span>
+                    <span className={`text-[0.72rem] font-semibold uppercase tracking-[0.22em] ${liturgicalSeason.colorClass}`}>
+                        {liturgicalSeason.label}
+                    </span>
                 </motion.div>
             </div>
         </header>

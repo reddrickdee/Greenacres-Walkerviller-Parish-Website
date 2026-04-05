@@ -70,8 +70,10 @@ export function RootLayout() {
                     >
                         <div className={`flex h-14 w-14 items-center justify-center rounded-full border border-parish-brass/35 shadow-halo backdrop-blur-md transition-colors duration-500 ${isHeroTransparent ? 'bg-parish-overlay-bg/30' : 'bg-parish-surface/75'}`}>
                             <img
-                                src="/parish-logo.png"
+                                src="/icons/parish-logo-72.webp"
                                 alt="Greenacres Walkerville Parish logo"
+                                width={36}
+                                height={36}
                                 className="h-9 w-9 object-contain"
                             />
                         </div>
