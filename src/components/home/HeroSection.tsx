@@ -20,10 +20,9 @@ export function HeroSection() {
     const countdownEntries = schedule.filter(isCoreCountdownMass);
     const { now } = useMassCountdowns(countdownEntries);
     const nextService = getSoonestCountdown(countdownEntries, now);
+    const liturgicalSeason = useLiturgicalSeason();
 
     if (!content) return null;
-
-    const liturgicalSeason = useLiturgicalSeason();
 
     // Format next service info
     const nextDay = nextService ? DAY_NAMES[(nextService.entry.dayOfWeek - 1) % 7] : null;
