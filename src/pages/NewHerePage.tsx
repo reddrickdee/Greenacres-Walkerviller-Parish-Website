@@ -89,7 +89,7 @@ export function NewHerePage() {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, margin: '-70px' }}
-                                transition={{ duration: 0.62, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                                transition={{ duration: 0.62, delay: index * 0.06, ease: [0.32, 0.72, 0, 1] }}
                                 className="sanctuary-card flex flex-col gap-4 md:flex-row md:items-start"
                             >
                                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/75 font-semibold text-parish-brass">

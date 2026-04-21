@@ -44,8 +44,15 @@ export default {
             fontFamily: {
                 display: ['Merriweather', 'serif'],
                 serif: ['Merriweather', 'serif'],
-                body: ['Inter', 'sans-serif'],
+                body: ['Outfit', 'sans-serif'],
                 dyslexic: ['OpenDyslexic', 'sans-serif'],
+            },
+            transitionTimingFunction: {
+                premium: 'cubic-bezier(0.32, 0.72, 0, 1)',
+            },
+            spacing: {
+                section: '6rem',
+                'section-lg': '10rem',
             },
             fontSize: {
                 // Readable base scale for elderly-friendly UI

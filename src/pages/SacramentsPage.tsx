@@ -16,10 +16,10 @@ const SACRAMENT_ICONS: Record<string, typeof Droplets> = {
 };
 
 const reveal = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
+    initial: { opacity: 0, y: 20, filter: 'blur(6px)' },
+    whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
     viewport: { once: true, margin: '-60px' },
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.75, ease: [0.32, 0.72, 0, 1] as const },
 };
 
 const noMotion = {

@@ -63,7 +63,7 @@ export function BulletinPage() {
                         initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.78, ease: [0.32, 0.72, 0, 1] }}
                     >
                         <div className="ornamental-kicker">Priest&apos;s Reflection</div>
                         <div className="mt-6">
@@ -92,7 +92,7 @@ export function BulletinPage() {
                             initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.68, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                            transition={{ duration: 0.68, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
                             className="border-t border-parish-border/5 pt-10"
                         >
                             <div className="ornamental-kicker">{section.title}</div>

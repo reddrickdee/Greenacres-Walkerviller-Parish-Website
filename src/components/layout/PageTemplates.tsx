@@ -28,10 +28,10 @@ interface SurfaceProps {
 }
 
 const reveal = {
-    initial: { opacity: 0, y: 28 },
-    whileInView: { opacity: 1, y: 0 },
+    initial: { opacity: 0, y: 28, filter: 'blur(8px)' },
+    whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
     viewport: { once: true, margin: '-80px' },
-    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.8, ease: [0.32, 0.72, 0, 1] as const },
 };
 
 const noMotion = {
@@ -67,7 +67,7 @@ function TemplateFrame({
     const prefersReduced = useReducedMotion();
     const heroMotion = prefersReduced
         ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0 } }
-        : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } };
+        : { initial: { opacity: 0, y: 24, filter: 'blur(6px)' }, animate: { opacity: 1, y: 0, filter: 'blur(0px)' }, transition: { duration: 0.85, ease: [0.32, 0.72, 0, 1] } };
 
     return (
         <div className="page-shell">
@@ -125,7 +125,7 @@ function TemplateFrame({
                 </div>
             </section>
 
-            <div className="mt-12 md:mt-16">
+            <div className="mt-16 md:mt-24">
                 {children}
             </div>
         </div>

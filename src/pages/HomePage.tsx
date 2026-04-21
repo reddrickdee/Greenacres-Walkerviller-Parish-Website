@@ -17,10 +17,10 @@ import { ContentLoading, ContentError } from '../components/ContentStates';
 // ── Animation helpers ─────────────────────────────────────────────────────────
 
 const reveal = {
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
+    initial: { opacity: 0, y: 24, filter: 'blur(8px)' },
+    whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
     viewport: { once: true, margin: '-60px' },
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.8, ease: [0.32, 0.72, 0, 1] as const },
 };
 
 const noMotion = {
@@ -53,7 +53,7 @@ export function HomePage() {
             <JsonLdSchema />
             <HeroSection />
 
-            <div className="relative z-10 -mt-16 pb-24 md:pb-32">
+            <div className="relative z-10 -mt-16 pb-32 md:pb-40">
                 {/* ── Quick-Access Strip ─────────────────────────────── */}
                 <section className="page-section">
                     <div className="page-section-inner">
@@ -124,12 +124,12 @@ export function HomePage() {
                 </section>
 
                 {/* ── Weekly Notices (bulletin content) ──────────────── */}
-                <div className="mt-12 md:mt-16">
+                <div className="mt-16 md:mt-24">
                     <WeeklyNotices />
                 </div>
 
                 {/* ── Come This Weekend CTA ──────────────────────────── */}
-                <section className="page-section mt-12 md:mt-16">
+                <section className="page-section mt-16 md:mt-24">
                     <div className="page-section-inner">
                         <ActionBand>
                             <div className="grid gap-6 lg:grid-cols-12 lg:items-center">

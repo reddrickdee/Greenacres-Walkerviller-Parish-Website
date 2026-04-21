@@ -104,7 +104,7 @@ export function AboutPage() {
                                 initial={{ opacity: 0, y: 22 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-70px' }}
-                                transition={{ duration: 0.65, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                                transition={{ duration: 0.65, delay: index * 0.05, ease: [0.32, 0.72, 0, 1] }}
                                 className="sanctuary-card p-0"
                             >
                                 {member.photoAsset ? (

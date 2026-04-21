@@ -13,6 +13,7 @@ import {
 export function HeroSection() {
     const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], ['0%', '24%']);
+    const heroScale = useTransform(scrollYProgress, [0, 0.3], [1.05, 1]);
     const { content } = useParishData();
 
     // Live countdown for the next upcoming Mass
@@ -38,8 +39,8 @@ export function HeroSection() {
         : "St Martin's";
 
     return (
-        <header className="relative min-h-[70vh] overflow-hidden md:min-h-screen">
-            <motion.div style={{ y }} className="absolute inset-0 z-0">
+        <header className="relative min-h-[70vh] overflow-hidden md:min-h-[100dvh]">
+            <motion.div style={{ y, scale: heroScale }} className="absolute inset-0 z-0">
                 <img
                     src="/assets/source/hero_4.webp"
                     alt=""
@@ -55,13 +56,13 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-parish-bg" />
             </motion.div>
 
-            <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-6 pb-14 pt-32 md:px-10 lg:px-16 lg:pb-20">
+            <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-7xl flex-col justify-end px-6 pb-14 pt-32 md:px-10 lg:px-16 lg:pb-20">
                 <div className="grid items-end gap-8 lg:grid-cols-12">
                     <div className="lg:col-span-7">
                         <motion.div
-                            initial={{ opacity: 0, y: 28 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                            initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
+                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                            transition={{ duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
                         >
                             <span className="section-label !text-white/70 before:!bg-parish-brass/80">Catholic Parish in Adelaide</span>
                             <h1 className="mt-6 max-w-5xl text-[clamp(3.4rem,8vw,7.4rem)] leading-[0.9] text-white text-balance">
@@ -83,9 +84,9 @@ export function HeroSection() {
                     </div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 36 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.95, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        initial={{ opacity: 0, y: 36, filter: 'blur(6px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ duration: 0.95, delay: 0.25, ease: [0.32, 0.72, 0, 1] }}
                         className="lg:col-span-5"
                     >
                         <div className="sanctuary-panel border-parish-overlay-border/10 bg-parish-overlay-bg/10 p-6 text-parish-overlay-text backdrop-blur-2xl md:p-7">

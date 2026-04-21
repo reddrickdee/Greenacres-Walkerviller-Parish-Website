@@ -23,10 +23,10 @@ function humanTitle(raw: string): string {
 // ── animation ──────────────────────────────────────────────────────────────────
 
 const reveal = {
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
+    initial: { opacity: 0, y: 24, filter: 'blur(8px)' },
+    whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
     viewport: { once: true, margin: '-60px' },
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.8, ease: [0.32, 0.72, 0, 1] as const },
 };
 
 const noMotion = {
@@ -159,7 +159,7 @@ export function NewsEventsPage() {
                                 transition={{
                                     duration: prefersReduced ? 0 : 0.55,
                                     delay: prefersReduced ? 0 : (index % 6) * 0.04,
-                                    ease: [0.22, 1, 0.36, 1],
+                                    ease: [0.32, 0.72, 0, 1],
                                 }}
                                 className="sanctuary-card flex items-center justify-between gap-4 px-5 py-4"
                             >

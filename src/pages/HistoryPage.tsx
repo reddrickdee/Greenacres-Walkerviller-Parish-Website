@@ -51,7 +51,7 @@ export function HistoryPage() {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, margin: '-60px' }}
-                                transition={{ duration: 0.7, delay: Math.min(index * 0.05, 0.4), ease: [0.22, 1, 0.36, 1] }}
+                                transition={{ duration: 0.7, delay: Math.min(index * 0.05, 0.4), ease: [0.32, 0.72, 0, 1] }}
                                 className="relative mb-10 pl-10 md:pl-14"
                             >
                                 <div className="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-parish-brass ring-4 ring-parish-bg" />
