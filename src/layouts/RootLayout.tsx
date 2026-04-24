@@ -14,11 +14,14 @@ import {
     FOOTER_EXTRA_NAV,
     isActive,
 } from '../lib/navigation';
+import { PATHS } from '../lib/routes';
 import { useLiturgicalSeason } from '../hooks/useLiturgicalSeason';
+import { useParishData } from '../context/ParishDataContext';
 
 export function RootLayout() {
     const location = useLocation();
     const season = useLiturgicalSeason();
+    const { content } = useParishData();
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollY } = useScroll();
@@ -42,8 +45,7 @@ export function RootLayout() {
         skipScrollLock: true,
     });
 
-    const isHome = location.pathname === '/';
-    const isHeroTransparent = isHome && !isScrolled;
+    const isHeroTransparent = false;
 
     return (
         <div className="flex min-h-screen flex-col">
@@ -67,7 +69,7 @@ export function RootLayout() {
                     <div
                         className={`flex w-full max-w-[1480px] items-center justify-between gap-4 rounded-full px-5 py-3 transition-all duration-700 ease-premium ${isHeroTransparent
                             ? 'border border-white/10 bg-parish-overlay-bg/20 shadow-lg backdrop-blur-2xl'
-                            : 'border border-parish-border/10 bg-parish-surface/92 shadow-sanctuary backdrop-blur-2xl'
+                            : `border border-parish-border/10 bg-parish-surface/92 ${isScrolled ? 'shadow-sanctuary' : 'shadow-lg'} backdrop-blur-2xl`
                         }`}
                     >
                         <Link
@@ -95,20 +97,29 @@ export function RootLayout() {
                         </Link>
 
                         <div className="hidden items-center gap-0.5 lg:flex">
-                            {PRIMARY_NAV.map(link => (
-                                <Link
-                                    key={link.to}
-                                    to={link.to}
-                                    className={`rounded-full px-3.5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] no-underline transition-all duration-700 ease-premium ${isActive(location.pathname, link.to)
-                                        ? 'bg-parish-fg text-parish-inverse shadow-halo dark:bg-parish-shell-border/10 dark:text-parish-shell-fg dark:shadow-none'
-                                        : isHeroTransparent
-                                            ? 'text-white/85 hover:bg-white/10 hover:text-white'
-                                            : 'text-parish-muted hover:bg-parish-border/6 hover:text-parish-fg'
-                                    }`}
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
+                            {PRIMARY_NAV.map(link => {
+                                const active = isActive(location.pathname, link.to);
+                                const isMass = link.to === PATHS.MASS_TIMES;
+                                const isNew = link.to === PATHS.NEW_HERE;
+                                const emphasis = isMass
+                                    ? 'bg-parish-fg text-parish-inverse shadow-halo hover:bg-parish-accent-hover'
+                                    : isNew
+                                        ? 'border border-parish-border/15 bg-parish-surface text-parish-fg hover:border-parish-brass/35'
+                                        : 'text-parish-muted hover:bg-parish-border/6 hover:text-parish-fg';
+
+                                return (
+                                    <Link
+                                        key={link.to}
+                                        to={link.to}
+                                        className={`rounded-full px-3.5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] no-underline transition-all duration-200 ${active
+                                            ? 'bg-parish-fg text-parish-inverse shadow-halo dark:bg-parish-shell-border/10 dark:text-parish-shell-fg dark:shadow-none'
+                                            : emphasis
+                                        }`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                );
+                            })}
                         </div>
 
                         <div className="flex items-center gap-2">
@@ -329,6 +340,9 @@ export function RootLayout() {
                     <div className="mt-14 border-t border-parish-shell-border/10 pt-6 text-sm leading-relaxed text-parish-shell-muted/60 md:flex md:items-center md:justify-between md:gap-6">
                         <p>© {new Date().getFullYear()} Greenacres Walkerville Catholic Parish.</p>
                         <p>We acknowledge the Traditional Owners and Custodians of the lands on which our parish gathers and pay our respects to Elders past, present and emerging.</p>
+                        {content?.lastVerified && (
+                            <p>Parish information last checked {content.lastVerified}.</p>
+                        )}
                     </div>
                 </div>
             </footer>

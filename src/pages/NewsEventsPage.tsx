@@ -109,11 +109,9 @@ export function NewsEventsPage() {
                                     <h2 className="mt-3 text-3xl text-parish-fg md:text-4xl">
                                         {humanTitle(currentIssue.title)}
                                     </h2>
-                                    {currentIssue.nativeBulletin && (
-                                        <p className="mt-3 text-base text-parish-muted">
-                                            {currentIssue.nativeBulletin.date}
-                                        </p>
-                                    )}
+                                    <p className="mt-3 text-base text-parish-muted">
+                                        {currentIssue.nativeBulletin?.date ?? `Bulletin archive last checked ${newsletters.lastVerified}.`}
+                                    </p>
                                 </div>
                                 <div className="flex flex-col gap-3 md:col-span-4 md:items-end">
                                     <a

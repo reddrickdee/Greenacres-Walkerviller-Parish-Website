@@ -1,78 +1,78 @@
 {
-  "weekOf": "2026-03-28",
-  "issueTitle": "Connections — Holy Week 2026",
-  "pdfUrl": "/bulletins/connections-2026-03-28.pdf",
+  "weekOf": "2026-04-26",
+  "issueTitle": "Connections — Second Sunday of Easter 2026",
+  "pdfUrl": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUNDAY_EASTER.pdf",
   "liturgicalInfo": {
-    "sundayTitle": "Palm Sunday of the Passion of the Lord",
-    "weekdayReadings": "Holy Week",
-    "note": "Daylight Saving ends Sunday 5 April — clocks go back one hour."
+    "sundayTitle": "Second Sunday of Easter",
+    "weekdayReadings": "Easter Season",
+    "note": "Divine Mercy Sunday"
   },
   "massChanges": {
-    "heading": "Holy Week Mass Schedule",
-    "body": "There are no ordinary weekday Masses this week. Please see the full Holy Week and Easter Triduum schedule below."
+    "heading": "Weekend Masses",
+    "body": "Saturday 6:00pm at St Monica's Walkerville and Sunday 9:30am at St Martin's Greenacres. Please contact the parish office if you need help with directions, accessibility, or first-visit questions."
   },
   "topNotices": [
     {
-      "heading": "✝ Holy Week 2026 Schedule",
-      "body": "Palm Sunday — Saturday 28 March: 6:00pm Vigil Mass (St Monica's). Sunday 29 March: 9:30am Mass (St Martin's). Palms will be blessed at both Masses.\n\nHoly Thursday (2 April) — Mass of the Lord's Supper: 7:00pm at St Martin's Church. Adoration at the Altar of Repose from the end of Mass until 9:30pm in St Martin's Church Hall.\n\nGood Friday (3 April) — Stations of the Cross: 9:45am safely gathered at St Monica's School. Celebration of the Lord's Passion: 3:00pm at St Monica's Church.\n\nHoly Saturday (4 April) — The Easter Vigil: 8:00pm at St Martin's Church.\n\nEaster Sunday (5 April) — Mass of the Resurrection of the Lord: 9:30am at St Martin's Church."
+      "heading": "Divine Mercy Sunday",
+      "body": "The Second Sunday of Easter is Divine Mercy Sunday. Parishioners and visitors are warmly welcome at the regular Sunday 9:30am Mass at St Martin's Greenacres."
     },
     {
-      "heading": "Fr Roy Joins the Parish",
-      "body": "Fr Roy Elavumkal CMI will be installed as our new Parish Priest at the Easter Sunday Mass on 5 April. We warmly welcome him and look forward to this next chapter for our parish community."
+      "heading": "St Martin's School — Term 2",
+      "body": "St Martin's Catholic Primary School begins Term 2 on Monday 28 April. Enrolment enquiries for 2027 are welcome through the school office on (08) 8211 2400."
     },
     {
-      "heading": "Project Compassion — Final Collection",
-      "body": "This is the last week to return your Project Compassion boxes and envelopes. Please bring them to any Holy Week or Easter Mass, or drop them at the parish office by Good Friday, 3 April."
+      "heading": "Parish Office",
+      "body": "For Mass times, sacraments, pastoral care, planned giving, or first-visit questions, contact the parish office on (08) 8261 6200 or email admin@gwparish.org.au."
     }
   ],
   "thisWeek": [
     {
-      "heading": "Chrism Mass — Adelaide Cathedral",
-      "body": "The Chrism Mass will be celebrated at St Francis Xavier's Cathedral on Monday 30 March at 6:00pm. All parishioners are welcome to attend this special diocesan liturgy where the sacred oils are blessed for the year."
+      "heading": "Regular Weekday Mass",
+      "body": "Weekday Masses continue according to the parish schedule. Please check the Mass Times page before travelling, especially around public holidays or school term changes."
     },
     {
-      "heading": "Stations of the Cross — Good Friday",
-      "body": "9:45am at St Monica's School. A prayerful devotion following the journey of Jesus to Calvary. This is in addition to the 3:00pm Passion Liturgy at St Monica's Church."
+      "heading": "Good Giving Online",
+      "body": "Parish giving can be arranged through Good Giving or by contacting the parish office for planned giving and direct deposit details."
     },
     {
-      "heading": "Church Decoration — Holy Saturday",
-      "body": "Volunteers are needed on Saturday 4 April to help prepare the churches for Easter. Please bring flowers if you are able. Contact the parish office to help."
+      "heading": "First-Time Visitors",
+      "body": "If you are coming to Mass for the first time, arrive 10-15 minutes early so you can find a seat comfortably. Greeters and parishioners are happy to help."
     },
     {
-      "heading": "Easter Collection",
-      "body": "The Easter collection is a personal gift to the priests of the parish. Envelopes are available at the doors of both churches."
+      "heading": "Safeguarding",
+      "body": "Greenacres Walkerville Parish is committed to the care, safety, and dignity of every person. Safeguarding information and reporting contacts are available on the Safeguarding page."
     }
   ],
   "communitySchool": [
     {
-      "heading": "Parish Office — Easter Closure",
-      "body": "The parish office will be closed from Thursday 2 April through to Tuesday 7 April inclusive. For urgent pastoral matters during this time, please phone (08) 8261 6200 and leave a message."
+      "heading": "Community Welcome",
+      "body": "Our parish includes Sri Lankan, Filipino, and broader Australian families across Greenacres and Walkerville. Children are welcome at Mass."
     },
     {
-      "heading": "St Martin's School News",
-      "body": "St Martin's Catholic Primary School wishes all families a blessed and safe Easter. Term 2 begins Monday 28 April. Enrolment enquiries for 2027 are welcome — contact (08) 8211 2400."
+      "heading": "Volunteer and Serve",
+      "body": "Readers, hospitality ministers, music volunteers, altar servers, and outreach helpers all contribute to parish life. Contact the office if you would like to serve."
     },
     {
-      "heading": "Good Giving Online",
-      "body": "Support the parish through online giving via Good Giving. Set up a regular contribution at goodgiving.com.au/home/myparish or contact the office for details."
+      "heading": "Bulletin Archive",
+      "body": "Past Connections bulletins remain available through the News & Events page for parishioners who want to catch up on earlier notices."
     }
   ],
   "roster": {
-    "heading": "Palm Sunday Roster",
+    "heading": "Weekend Ministry Roster",
     "saturday": {
-      "label": "Saturday 28 March — Palm Sunday Vigil 6:00pm (St Monica's)",
+      "label": "Saturday 26 April — Vigil Mass 6:00pm (St Monica's)",
       "roles": [
-        { "role": "Reader", "name": "J. Santos" },
-        { "role": "Eucharistic Minister", "name": "M. D'Cruz" },
-        { "role": "Hospitality", "name": "L. Perera" }
+        { "role": "Reader", "name": "See bulletin" },
+        { "role": "Eucharistic Minister", "name": "See bulletin" },
+        { "role": "Hospitality", "name": "See bulletin" }
       ]
     },
     "sunday": {
-      "label": "Sunday 29 March — Palm Sunday 9:30am (St Martin's)",
+      "label": "Sunday 27 April — Mass 9:30am (St Martin's)",
       "roles": [
-        { "role": "Reader", "name": "K. Thompson" },
-        { "role": "Eucharistic Minister", "name": "S. Wijesinghe" },
-        { "role": "Hospitality", "name": "P. Morelli" }
+        { "role": "Reader", "name": "See bulletin" },
+        { "role": "Eucharistic Minister", "name": "See bulletin" },
+        { "role": "Hospitality", "name": "See bulletin" }
       ]
     }
   }

@@ -7,24 +7,24 @@
 @layer base {
   :root {
     color-scheme: light;
-    --color-parish-bg: 244 239 230;
-    --color-parish-surface: 251 248 242;
-    --color-parish-elevated: 232 224 212;
-    --color-parish-fg: 28 27 24;
-    --color-parish-muted: 86 79 70;
-    --color-parish-accent: 92 77 59;
-    --color-parish-accent-hover: 69 57 44;
-    --color-parish-secondary: 131 83 56;
-    --color-parish-secondary-hover: 108 67 45;
-    --color-parish-border: 62 57 50;
-    --color-parish-inverse: 251 247 241;
-    --color-parish-inverse-muted: 206 196 181;
-    --color-parish-brass: 41 72% 58%;
+    --color-parish-bg: 249 246 239;
+    --color-parish-surface: 255 252 246;
+    --color-parish-elevated: 239 232 219;
+    --color-parish-fg: 36 31 27;
+    --color-parish-muted: 91 80 69;
+    --color-parish-accent: 103 76 50;
+    --color-parish-accent-hover: 78 56 36;
+    --color-parish-secondary: 112 79 56;
+    --color-parish-secondary-hover: 92 61 42;
+    --color-parish-border: 112 96 78;
+    --color-parish-inverse: 255 252 246;
+    --color-parish-inverse-muted: 222 211 194;
+    --color-parish-brass: 42 61% 50%;
 
     /* Shell surfaces — utility strip + footer (persistently dark, warm tone) */
-    --color-parish-shell-bg: 18 16 14;
-    --color-parish-shell-fg: 237 232 220;
-    --color-parish-shell-muted: 178 170 156;
+    --color-parish-shell-bg: 31 27 23;
+    --color-parish-shell-fg: 246 240 229;
+    --color-parish-shell-muted: 205 194 177;
     --color-parish-shell-border: 255 255 255;
 
     /* Overlay surfaces — photographic captions + glass panels */
@@ -75,8 +75,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image:
-      radial-gradient(circle at top, rgb(var(--color-parish-elevated) / 0.85), transparent 40%),
-      linear-gradient(180deg, rgb(var(--color-parish-bg)) 0%, rgb(var(--color-parish-surface)) 100%);
+      linear-gradient(180deg, rgb(var(--color-parish-bg)) 0%, rgb(var(--color-parish-surface)) 45%, rgb(var(--color-parish-bg)) 100%);
   }
 
   body::before {
@@ -85,11 +84,11 @@
     inset: 0;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.16;
     background:
       linear-gradient(120deg, transparent 0%, rgb(var(--color-parish-brass) / 0.08) 45%, transparent 90%),
-      radial-gradient(circle at 20% 10%, rgb(var(--color-parish-brass) / 0.12), transparent 18%),
-      radial-gradient(circle at 80% 0%, rgb(var(--color-parish-accent) / 0.1), transparent 22%);
+      radial-gradient(circle at 12% 10%, rgb(var(--color-parish-brass) / 0.10), transparent 14%),
+      radial-gradient(circle at 88% 4%, rgb(var(--color-parish-secondary) / 0.08), transparent 18%);
   }
 
   h1,
@@ -146,7 +145,7 @@
   }
 
   .section-label {
-    @apply inline-flex items-center gap-2.5 rounded-full border border-parish-border/10 bg-parish-elevated/50 px-4 py-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-parish-muted;
+    @apply inline-flex items-center gap-2.5 rounded-full border border-parish-border/15 bg-parish-surface/80 px-4 py-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-parish-muted shadow-sm;
   }
 
   .section-label::before {
@@ -160,9 +159,9 @@
   }
 
   .sanctuary-panel {
-    @apply relative overflow-hidden rounded-[2rem] p-[5px] shadow-sanctuary;
-    background-color: rgb(var(--color-parish-bg) / 0.5);
-    outline: 1px solid rgb(var(--color-parish-border) / 0.08);
+    @apply relative overflow-hidden rounded-2xl p-[4px] shadow-sanctuary;
+    background-color: rgb(var(--color-parish-surface) / 0.86);
+    outline: 1px solid rgb(var(--color-parish-border) / 0.12);
     outline-offset: -1px;
   }
 
@@ -174,40 +173,39 @@
   .sanctuary-panel::before {
     content: "";
     position: absolute;
-    inset: 5px;
-    border-radius: calc(2rem - 5px);
+    inset: 4px;
+    border-radius: calc(1rem - 4px);
     pointer-events: none;
-    backdrop-filter: blur(20px);
-    background-color: rgb(var(--color-parish-surface) / 0.92);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
-    border: 1px solid rgb(var(--color-parish-border) / 0.06);
+    background-color: rgb(var(--color-parish-surface) / 0.96);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.65);
+    border: 1px solid rgb(var(--color-parish-border) / 0.08);
     z-index: 0;
   }
 
   .sanctuary-panel::after {
     content: "";
     position: absolute;
-    inset: 5px;
-    border-radius: calc(2rem - 5px);
+    inset: 4px;
+    border-radius: calc(1rem - 4px);
     pointer-events: none;
     z-index: 0;
-    background: linear-gradient(180deg, rgb(var(--color-parish-inverse) / 0.10), transparent 42%, rgb(var(--color-parish-bg) / 0.04));
+    background: linear-gradient(180deg, rgb(var(--color-parish-inverse) / 0.42), transparent 48%, rgb(var(--color-parish-elevated) / 0.14));
   }
 
   .sanctuary-card {
-    @apply relative overflow-hidden rounded-[calc(2rem-0.375rem)] border border-parish-border/10 px-6 py-6;
-    transition: all 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    @apply relative overflow-hidden rounded-xl border border-parish-border/12 px-6 py-6;
+    transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
     box-shadow:
-      0 24px 55px -40px rgba(0, 0, 0, 0.35),
-      inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    background-color: rgb(var(--color-parish-surface) / 0.96);
+      0 18px 46px -36px rgba(47, 37, 26, 0.42),
+      inset 0 1px 1px rgba(255, 255, 255, 0.65);
+    background-color: rgb(var(--color-parish-surface) / 0.98);
   }
 
   .sanctuary-card:hover {
     @apply -translate-y-1 border-parish-brass/25;
     box-shadow:
-      0 22px 60px -32px hsla(var(--color-parish-brass), 0.30),
-      inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      0 24px 60px -36px hsla(var(--color-parish-brass), 0.30),
+      inset 0 1px 1px rgba(255, 255, 255, 0.65);
   }
 
   .sacred-container {
@@ -219,7 +217,7 @@
   }
 
   .image-panel {
-    @apply relative overflow-hidden rounded-[2rem] border border-parish-border/10 bg-parish-elevated shadow-sanctuary;
+    @apply relative overflow-hidden rounded-2xl border border-parish-border/10 bg-parish-elevated shadow-sanctuary;
   }
 
   .image-panel::after {
@@ -231,15 +229,15 @@
   }
 
   .scripture-panel {
-    @apply relative overflow-hidden rounded-[2rem] border border-parish-brass/20 px-8 py-10 md:px-12 md:py-14 text-parish-inverse shadow-sanctuary;
+    @apply relative overflow-hidden rounded-2xl border border-parish-brass/20 px-8 py-10 md:px-12 md:py-14 text-parish-inverse shadow-sanctuary;
     background:
       radial-gradient(circle at top left, hsl(var(--color-parish-brass) / 0.18), transparent 32%),
       linear-gradient(145deg, rgb(var(--color-parish-fg)) 0%, rgb(var(--color-parish-accent-hover)) 100%);
   }
 
   .pilgrimage-button {
-    @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.22em] no-underline;
-    transition: all 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.16em] no-underline;
+    transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
     background: linear-gradient(135deg, rgb(var(--color-parish-fg)), rgb(var(--color-parish-accent-hover)));
     color: rgb(var(--color-parish-inverse));
     box-shadow: 0 18px 40px -25px rgba(0, 0, 0, 0.55);
@@ -255,9 +253,9 @@
   }
 
   .pilgrimage-button-secondary {
-    @apply inline-flex items-center justify-center gap-3 rounded-full border border-parish-border/10 px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.22em] text-parish-fg no-underline backdrop-blur-md;
-    transition: all 700ms cubic-bezier(0.32, 0.72, 0, 1);
-    background-color: rgb(var(--color-parish-surface) / 0.7);
+    @apply inline-flex items-center justify-center gap-3 rounded-full border border-parish-border/18 px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.16em] text-parish-fg no-underline;
+    transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
+    background-color: rgb(var(--color-parish-surface) / 0.86);
     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
   }
 

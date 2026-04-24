@@ -73,6 +73,9 @@ export function MassTimesPage() {
                     <p className="mt-3 text-sm leading-relaxed text-parish-muted">
                         Saturday 6:00pm at St Monica&apos;s Walkerville and Sunday 9:30am at St Martin&apos;s Greenacres.
                     </p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-parish-accent">
+                        Schedule last checked {content.lastVerified}
+                    </p>
                 </div>
             )}
         >

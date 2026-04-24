@@ -6,6 +6,7 @@ import {
     Calendar,
     Church,
     Download,
+    ShieldCheck,
     Users,
 } from 'lucide-react';
 
@@ -83,7 +84,7 @@ function NoticeCard({ item, index }: { item: NoticeItem; index: number }) {
     return (
         <motion.div
             {...motionProps}
-            className="rounded-2xl border border-parish-border/10 bg-parish-surface px-5 py-5 md:px-6 md:py-6"
+            className="rounded-xl border border-parish-border/12 bg-parish-surface px-5 py-5 shadow-sm md:px-6 md:py-6"
         >
             <h3 className="text-lg font-display text-parish-fg md:text-xl">
                 {item.heading}
@@ -132,7 +133,7 @@ function RosterSection({ roster }: { roster: Roster }) {
                 {[roster.saturday, roster.sunday].map(mass => (
                     <div
                         key={mass.label}
-                        className="rounded-2xl border border-parish-border/10 bg-parish-surface px-5 py-5"
+                        className="rounded-xl border border-parish-border/12 bg-parish-surface px-5 py-5 shadow-sm"
                     >
                         <div className="text-sm font-semibold text-parish-fg">{mass.label}</div>
                         <div className="mt-3 space-y-2">
@@ -188,6 +189,10 @@ export function WeeklyNotices() {
                             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] text-parish-fg">
                                 {data.issueTitle}
                             </h2>
+                            <p className="mt-2 inline-flex items-center gap-2 text-sm text-parish-muted">
+                                <ShieldCheck className="h-4 w-4 text-parish-brass" />
+                                Current parish notices for the week of {data.weekOf}.
+                            </p>
                         </div>
                         <a
                             href={data.pdfUrl}
@@ -201,7 +206,7 @@ export function WeeklyNotices() {
                     </div>
 
                     {/* Liturgical info strip */}
-                    <div className="mt-5 rounded-2xl border border-parish-border/10 bg-parish-elevated/50 px-5 py-4 md:px-6">
+                    <div className="mt-5 rounded-xl border border-parish-border/12 bg-parish-elevated/45 px-5 py-4 md:px-6">
                         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-parish-muted">
                             <span className="font-medium text-parish-fg">
                                 {data.liturgicalInfo.sundayTitle}
@@ -218,7 +223,7 @@ export function WeeklyNotices() {
 
                     {/* Mass schedule this week */}
                     {data.massChanges && (
-                        <div className="mt-4 rounded-2xl border border-parish-brass/15 bg-parish-brass/5 px-5 py-4 md:px-6">
+                        <div className="mt-4 rounded-xl border border-parish-brass/20 bg-parish-brass/8 px-5 py-4 md:px-6">
                             <div className="flex items-start gap-3">
                                 <Church className="h-5 w-5 mt-0.5 shrink-0 text-parish-brass" />
                                 <div>

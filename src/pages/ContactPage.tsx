@@ -41,6 +41,9 @@ export function ContactPage() {
                 <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
                     <div className="ornamental-kicker">Office Hours</div>
                     <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.officeHours}</p>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-parish-accent">
+                        Details last checked {content.lastVerified}
+                    </p>
                 </div>
             )}
         >
