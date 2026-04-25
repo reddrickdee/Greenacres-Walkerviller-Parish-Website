@@ -31,13 +31,15 @@ export interface QuickAction {
     to: string;
 }
 
-// ── Primary Nav (header bar + footer Explore base) ────────────────────────────
+// ── Primary Nav (header bar) ──────────────────────────────────────────────────
 
 export const PRIMARY_NAV: NavItem[] = [
     { to: PATHS.MASS_TIMES, label: 'Mass Times' },
     { to: PATHS.SACRAMENTS, label: 'Sacraments' },
     { to: PATHS.NEW_HERE, label: "I'm New Here" },
+    { to: PATHS.ABOUT, label: 'Our Parish' },
     { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
+    { to: PATHS.VOLUNTEER, label: 'Get Involved' },
     { to: PATHS.GIVE, label: 'Give' },
     { to: PATHS.CONTACT, label: 'Contact' },
 ];
@@ -50,23 +52,22 @@ export const DRAWER_GROUPS: NavGroup[] = [
         links: [
             { to: PATHS.MASS_TIMES, label: 'Mass Times' },
             { to: PATHS.SACRAMENTS, label: 'Sacraments' },
-            { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
         ],
     },
     {
-        title: 'Explore',
+        title: 'Visit',
         links: [
-            { to: PATHS.HOME, label: 'Home' },
+            { to: PATHS.NEW_HERE, label: "I'm New Here" },
             { to: PATHS.ABOUT, label: 'About Us' },
             { to: PATHS.HISTORY, label: 'History' },
             { to: PATHS.GALLERY, label: 'Gallery' },
-            { to: PATHS.NEW_HERE, label: "I'm New Here" },
         ],
     },
     {
         title: 'Community',
         links: [
-            { to: PATHS.VOLUNTEER, label: 'Volunteer' },
+            { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
+            { to: PATHS.VOLUNTEER, label: 'Get Involved' },
             { to: PATHS.GIVE, label: 'Give' },
             { to: PATHS.CONTACT, label: 'Contact' },
             { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
@@ -107,6 +108,18 @@ export const QUICK_ACTIONS: QuickAction[] = [
         detail: 'Reach out for pastoral care, sacraments, or support.',
         to: PATHS.CONTACT,
     },
+];
+
+// ── Footer quick links ──────────────────────────────────────────────────────
+
+export const FOOTER_QUICK_LINKS: NavItem[] = [
+    { to: PATHS.MASS_TIMES, label: 'Mass Times' },
+    { to: PATHS.NEW_HERE, label: "I'm New Here" },
+    { to: PATHS.SACRAMENTS, label: 'Sacraments' },
+    { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
+    { to: PATHS.VOLUNTEER, label: 'Get Involved' },
+    { to: PATHS.GIVE, label: 'Give' },
+    { to: PATHS.CONTACT, label: 'Contact' },
 ];
 
 // ── Footer-only extras (appended to PRIMARY_NAV in footer Explore column) ────

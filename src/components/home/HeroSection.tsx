@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, CalendarClock, FileText, MapPinned, Phone } from 'lucide-react';
+import { CalendarClock } from 'lucide-react';
 import { useParishData } from '../../context/ParishDataContext';
 import { useLiturgicalSeason } from '../../hooks/useLiturgicalSeason';
 import { useMassCountdowns } from '../../hooks/useMassCountdowns';
@@ -39,7 +39,8 @@ export function HeroSection() {
         : "St Martin's";
 
     return (
-        <header className="relative overflow-hidden bg-parish-bg pt-44 md:pt-48">
+        <header className="relative overflow-hidden bg-parish-bg pt-36 md:pt-40">
+            {/* Hero photo with warm overlay */}
             <motion.div style={{ y, scale: heroScale }} className="absolute inset-0 z-0">
                 <img
                     src="/assets/source/hero_4.webp"
@@ -50,110 +51,87 @@ export function HeroSection() {
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(106deg,rgba(249,246,239,0.98)_0%,rgba(249,246,239,0.92)_38%,rgba(249,246,239,0.62)_62%,rgba(249,246,239,0.36)_100%)] dark:bg-[linear-gradient(106deg,rgba(14,16,19,0.96)_0%,rgba(14,16,19,0.88)_42%,rgba(14,16,19,0.52)_100%)]" />
-                <div className="absolute inset-0 bg-gradient-to-b from-parish-bg/40 via-transparent to-parish-bg" />
+                {/* Warm cream overlay — lets the church photo show through on the right */}
+                <div className="absolute inset-0 bg-[linear-gradient(106deg,rgba(245,241,233,0.97)_0%,rgba(245,241,233,0.92)_35%,rgba(245,241,233,0.55)_65%,rgba(245,241,233,0.3)_100%)] dark:bg-[linear-gradient(106deg,rgba(14,16,19,0.96)_0%,rgba(14,16,19,0.88)_42%,rgba(14,16,19,0.52)_100%)]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-parish-bg/30 via-transparent to-parish-bg" />
             </motion.div>
 
-            <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-start px-6 pb-14 md:px-10 lg:min-h-[78dvh] lg:justify-end lg:px-16 lg:pb-16">
+            <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-start px-6 pb-14 md:px-10 lg:min-h-[72dvh] lg:justify-end lg:px-16 lg:pb-16">
                 <div className="grid items-end gap-8 lg:grid-cols-12">
                     <div className="lg:col-span-7">
                         <motion.div
-                            initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
+                            initial={{ opacity: 0, y: 28, filter: 'blur(4px)' }}
                             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                             transition={{ duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
                         >
-                            <span className="section-label">Catholic Parish in Adelaide</span>
-                            <h1 className="mt-6 max-w-5xl text-[clamp(3rem,7vw,6.8rem)] leading-[0.92] text-parish-fg text-balance">
-                                Greenacres Walkerville <span className="text-parish-accent">Catholic Parish</span>
+                            <h1 className="max-w-3xl text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.05] text-parish-fg text-balance">
+                                A welcoming community of faith in Adelaide
                             </h1>
-                            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-parish-muted md:text-xl">
-                                Join us for Mass at St Monica&apos;s Walkerville or St Martin&apos;s Greenacres. Find this weekend&apos;s times, the latest bulletin, and a simple first-visit guide in one place.
+                            <p className="mt-5 max-w-xl text-lg leading-relaxed text-parish-muted md:text-xl">
+                                We are a Catholic Parish serving Greenacres, Walkerville and the surrounding communities.
                             </p>
                             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                                 <Link to="/mass-times" className="pilgrimage-button">
                                     View Mass Times
                                 </Link>
-                                <Link to="/new-here" className="pilgrimage-button">
-                                    Plan Your First Visit
-                                </Link>
-                                <Link to="/news-events" className="pilgrimage-button-secondary">
-                                    Read Bulletin
+                                <Link to="/new-here" className="pilgrimage-button-secondary">
+                                    I&apos;m New Here
                                 </Link>
                             </div>
                         </motion.div>
                     </div>
 
+                    {/* Right panel: Next Mass countdown + church badge */}
                     <motion.div
-                        initial={{ opacity: 0, y: 36, filter: 'blur(6px)' }}
+                        initial={{ opacity: 0, y: 36, filter: 'blur(4px)' }}
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                         transition={{ duration: 0.95, delay: 0.25, ease: [0.32, 0.72, 0, 1] }}
-                        className="hidden lg:col-span-5 lg:block"
+                        className="hidden lg:col-span-5 lg:flex lg:flex-col lg:items-end lg:gap-4"
                     >
-                        <div className="sanctuary-panel bg-parish-surface/95 p-5 md:p-6">
-                            {/* Next Service — live countdown */}
-                            <div className="rounded-xl border border-parish-border/10 bg-parish-elevated/35 p-4">
-                                <div className="flex items-start gap-3">
-                                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/35 bg-parish-surface text-parish-brass">
-                                        <CalendarClock className="h-5 w-5" />
-                                    </div>
-                                    <div>
-                                        <div className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">Next Mass</div>
-                                        {nextService ? (
-                                            <>
-                                                <div className="mt-2 text-2xl font-display text-parish-fg">
-                                                    {nextDay} {nextTime}
-                                                </div>
-                                                <div className="text-sm leading-relaxed text-parish-muted">{nextChurch}</div>
-                                                <div className="mt-2 text-sm text-parish-brass">
-                                                    Begins in {nextService.countdown.display}
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <div className="mt-2 text-2xl font-display text-parish-fg">Saturday 6:00pm</div>
-                                                <div className="text-sm leading-relaxed text-parish-muted">St Monica&apos;s Walkerville</div>
-                                            </>
-                                        )}
-                                    </div>
+                        {/* Next Mass widget */}
+                        <div className="sanctuary-panel bg-parish-surface/95 p-5 max-w-sm w-full">
+                            <div className="flex items-start gap-3">
+                                <div className="mt-0.5 flex h-11 w-11 items-center justify-center rounded-full bg-parish-accent/10 text-parish-accent">
+                                    <CalendarClock className="h-5 w-5" />
+                                </div>
+                                <div>
+                                    <div className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">Next Mass</div>
+                                    {nextService ? (
+                                        <>
+                                            <div className="mt-2 text-2xl font-display text-parish-fg">
+                                                {nextDay} {nextTime}
+                                            </div>
+                                            <div className="text-sm leading-relaxed text-parish-muted">{nextChurch}</div>
+                                            <div className="mt-2 text-sm text-parish-accent font-semibold">
+                                                Begins in {nextService.countdown.display}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="mt-2 text-2xl font-display text-parish-fg">Saturday 6:00pm</div>
+                                            <div className="text-sm leading-relaxed text-parish-muted">St Monica&apos;s Walkerville</div>
+                                        </>
+                                    )}
                                 </div>
                             </div>
+                        </div>
 
-                            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                                <Link to="/news-events" className="rounded-xl border border-parish-border/10 bg-parish-surface px-4 py-4 text-parish-fg no-underline transition hover:border-parish-brass/35">
-                                    <div className="flex items-start gap-3">
-                                        <FileText className="mt-1 h-5 w-5 text-parish-brass" />
-                                        <div>
-                                            <div className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">This Week</div>
-                                            <p className="mt-1 text-sm leading-relaxed text-parish-muted">Read the current Connections bulletin and parish notices.</p>
-                                        </div>
+                        {/* Church badge */}
+                        <div className="rounded-xl border border-parish-border/15 bg-parish-surface/90 backdrop-blur-sm px-4 py-3 max-w-xs">
+                            <div className="flex items-center gap-3">
+                                <img
+                                    src="/icons/parish-logo-72.webp"
+                                    alt=""
+                                    width={32}
+                                    height={32}
+                                    className="h-8 w-8 object-contain"
+                                />
+                                <div>
+                                    <div className="text-xs font-semibold uppercase tracking-[0.12em] text-parish-fg">
+                                        St Monica&apos;s
                                     </div>
-                                </Link>
-                                <a href={`tel:${content.contact.phone}`} className="rounded-xl border border-parish-border/10 bg-parish-surface px-4 py-4 text-parish-fg no-underline transition hover:border-parish-brass/35">
-                                    <div className="flex items-start gap-3">
-                                        <Phone className="mt-1 h-5 w-5 text-parish-brass" />
-                                        <div>
-                                            <div className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">Parish Office</div>
-                                            <p className="mt-1 text-sm leading-relaxed text-parish-muted">{content.contact.phone}</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            {/* First-visit guidance */}
-                            <div className="mt-4 rounded-xl border border-parish-border/10 bg-parish-elevated/35 p-4">
-                                <div className="flex items-start gap-3">
-                                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/35 bg-parish-surface text-parish-brass">
-                                        <MapPinned className="h-5 w-5" />
-                                    </div>
-                                    <div>
-                                        <div className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">First-time visitor?</div>
-                                        <p className="mt-2 text-sm leading-relaxed text-parish-muted">
-                                            Find the churches, know what to expect, and contact the office before your visit.
-                                        </p>
-                                        <Link to="/new-here" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-parish-accent no-underline">
-                                            Your first visit guide
-                                            <ArrowRight className="h-4 w-4" />
-                                        </Link>
+                                    <div className="text-[0.65rem] text-parish-muted">
+                                        Catholic Church
                                     </div>
                                 </div>
                             </div>

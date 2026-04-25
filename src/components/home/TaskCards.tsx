@@ -1,0 +1,123 @@
+import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
+import {
+    CalendarClock,
+    MapPinned,
+    Newspaper,
+    Heart,
+    Phone,
+    ArrowRight,
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+interface TaskCard {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+    to: string;
+    linkLabel: string;
+}
+
+const TASKS: TaskCard[] = [
+    {
+        icon: CalendarClock,
+        title: 'Mass Times',
+        description: 'Weekend and weekday Mass times for both St Monica\u2019s and St Martin\u2019s.',
+        to: '/mass-times',
+        linkLabel: 'View Mass Times',
+    },
+    {
+        icon: MapPinned,
+        title: "I'm New Here",
+        description: 'Everything you need to know for your first visit. We can\u2019t wait to welcome you.',
+        to: '/new-here',
+        linkLabel: 'Plan Your Visit',
+    },
+    {
+        icon: Newspaper,
+        title: "This Week's Bulletin",
+        description: 'Read the latest bulletin and find what\u2019s happening in our Parish this week.',
+        to: '/news-events',
+        linkLabel: 'Read Bulletin',
+    },
+    {
+        icon: Heart,
+        title: 'Give Online',
+        description: 'Your generosity helps our Parish to continue our mission and ministries.',
+        to: '/give',
+        linkLabel: 'Give Now',
+    },
+    {
+        icon: Phone,
+        title: 'Contact the Office',
+        description: 'Get in touch with our Parish Office. We\u2019re here to help.',
+        to: '/contact',
+        linkLabel: 'Contact Us',
+    },
+];
+
+const reveal = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-40px' },
+    transition: { duration: 0.6, ease: [0.32, 0.72, 0, 1] as const },
+};
+
+const noMotion = {
+    initial: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0 },
+};
+
+export function TaskCards() {
+    const prefersReduced = useReducedMotion();
+
+    return (
+        <section className="page-section" id="help-today">
+            <div className="page-section-inner">
+                <motion.h2
+                    {...(prefersReduced ? noMotion : reveal)}
+                    className="text-center text-[clamp(1.6rem,3.5vw,2.6rem)] text-parish-fg mb-10 md:mb-14"
+                >
+                    How can we help you today?
+                </motion.h2>
+
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+                    {TASKS.map((task, index) => {
+                        const Icon = task.icon;
+                        const motionProps = prefersReduced
+                            ? noMotion
+                            : {
+                                ...reveal,
+                                transition: { ...reveal.transition, delay: index * 0.08 },
+                            };
+
+                        return (
+                            <motion.div key={task.title} {...motionProps}>
+                                <Link
+                                    to={task.to}
+                                    className="group flex flex-col items-center text-center rounded-2xl border border-parish-border/15 bg-parish-surface px-5 py-8 no-underline transition-all duration-500 hover:-translate-y-1 hover:border-parish-accent/20 hover:shadow-card-hover"
+                                >
+                                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-parish-accent/8 text-parish-accent transition-colors duration-300 group-hover:bg-parish-accent/15">
+                                        <Icon className="h-7 w-7" strokeWidth={1.5} />
+                                    </div>
+                                    <h3 className="mt-5 text-lg font-display text-parish-fg">
+                                        {task.title}
+                                    </h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-parish-muted">
+                                        {task.description}
+                                    </p>
+                                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-parish-accent">
+                                        {task.linkLabel}
+                                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                                    </span>
+                                </Link>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
+    );
+}

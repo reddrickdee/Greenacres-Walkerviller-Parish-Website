@@ -39,6 +39,8 @@ export default {
                     advent: '#6B3FA0',
                     ordinary: '#2D5F2D',
                     martyrs: '#8B2332',
+                    christmas: '#C5A55A',
+                    easter: '#C5A55A',
                 }
             },
             fontFamily: {
@@ -65,8 +67,11 @@ export default {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
             },
             boxShadow: {
-                sanctuary: '0 35px 90px -45px rgba(0, 0, 0, 0.45)',
-                halo: '0 22px 60px -32px hsla(var(--color-parish-brass), 0.35)',
+                sanctuary: '0 4px 16px -4px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)',
+                halo: '0 8px 32px -8px rgba(45, 95, 45, 0.2)',
+                'halo-brass': '0 8px 32px -8px hsla(var(--color-parish-brass), 0.25)',
+                card: '0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px -8px rgba(0, 0, 0, 0.08)',
+                'card-hover': '0 4px 12px rgba(0, 0, 0, 0.08), 0 12px 32px -8px rgba(0, 0, 0, 0.1)',
             },
             animation: {
                 'fade-in': 'fadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',

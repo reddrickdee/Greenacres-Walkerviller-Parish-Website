@@ -7,24 +7,25 @@
 @layer base {
   :root {
     color-scheme: light;
-    --color-parish-bg: 249 246 239;
-    --color-parish-surface: 255 252 246;
-    --color-parish-elevated: 239 232 219;
-    --color-parish-fg: 36 31 27;
-    --color-parish-muted: 91 80 69;
-    --color-parish-accent: 103 76 50;
-    --color-parish-accent-hover: 78 56 36;
-    --color-parish-secondary: 112 79 56;
-    --color-parish-secondary-hover: 92 61 42;
-    --color-parish-border: 112 96 78;
-    --color-parish-inverse: 255 252 246;
-    --color-parish-inverse-muted: 222 211 194;
-    --color-parish-brass: 42 61% 50%;
+    /* ── Warm Parish — Light Mode (Default) ──────────────────────── */
+    --color-parish-bg: 245 241 233;
+    --color-parish-surface: 252 250 245;
+    --color-parish-elevated: 238 233 224;
+    --color-parish-fg: 35 33 30;
+    --color-parish-muted: 107 99 88;
+    --color-parish-accent: 45 95 45;
+    --color-parish-accent-hover: 35 75 35;
+    --color-parish-secondary: 181 156 80;
+    --color-parish-secondary-hover: 155 132 62;
+    --color-parish-border: 200 192 178;
+    --color-parish-inverse: 255 255 255;
+    --color-parish-inverse-muted: 200 192 178;
+    --color-parish-brass: 41 72% 50%;
 
-    /* Shell surfaces — utility strip + footer (persistently dark, warm tone) */
-    --color-parish-shell-bg: 31 27 23;
-    --color-parish-shell-fg: 246 240 229;
-    --color-parish-shell-muted: 205 194 177;
+    /* Shell surfaces — utility strip + footer */
+    --color-parish-shell-bg: 45 95 45;
+    --color-parish-shell-fg: 255 255 255;
+    --color-parish-shell-muted: 200 230 200;
     --color-parish-shell-border: 255 255 255;
 
     /* Overlay surfaces — photographic captions + glass panels */
@@ -36,27 +37,28 @@
 
   html[data-theme="dark"] {
     color-scheme: dark;
+    /* ── Sacred Night — Dark Mode ────────────────────────────────── */
     --color-parish-bg: 14 16 19;
     --color-parish-surface: 22 25 29;
     --color-parish-elevated: 32 36 42;
     --color-parish-fg: 236 229 217;
     --color-parish-muted: 170 161 148;
-    --color-parish-accent: 175 156 131;
-    --color-parish-accent-hover: 200 179 152;
-    --color-parish-secondary: 161 110 81;
-    --color-parish-secondary-hover: 188 134 102;
-    --color-parish-border: 219 208 192;
+    --color-parish-accent: 90 155 90;
+    --color-parish-accent-hover: 120 180 120;
+    --color-parish-secondary: 181 156 80;
+    --color-parish-secondary-hover: 200 175 100;
+    --color-parish-border: 60 56 50;
     --color-parish-inverse: 17 19 22;
     --color-parish-inverse-muted: 168 158 144;
-    --color-parish-brass: 41 78% 67%;
+    --color-parish-brass: 41 78% 55%;
 
-    /* Shell surfaces — slightly cooler in dark mode */
+    /* Shell surfaces — darker in dark mode */
     --color-parish-shell-bg: 10 11 14;
     --color-parish-shell-fg: 220 214 204;
     --color-parish-shell-muted: 148 140 128;
-    --color-parish-shell-border: 220 214 204;
+    --color-parish-shell-border: 60 56 50;
 
-    /* Overlay surfaces — cooler/darker translucency in dark mode */
+    /* Overlay surfaces */
     --color-parish-overlay-bg: 8 10 14;
     --color-parish-overlay-text: 240 236 228;
     --color-parish-overlay-muted: 180 174 164;
@@ -74,21 +76,6 @@
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image:
-      linear-gradient(180deg, rgb(var(--color-parish-bg)) 0%, rgb(var(--color-parish-surface)) 45%, rgb(var(--color-parish-bg)) 100%);
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.16;
-    background:
-      linear-gradient(120deg, transparent 0%, rgb(var(--color-parish-brass) / 0.08) 45%, transparent 90%),
-      radial-gradient(circle at 12% 10%, rgb(var(--color-parish-brass) / 0.10), transparent 14%),
-      radial-gradient(circle at 88% 4%, rgb(var(--color-parish-secondary) / 0.08), transparent 18%);
   }
 
   h1,
@@ -144,80 +131,56 @@
     @apply max-w-7xl mx-auto;
   }
 
+  /* ── Section label pill ─────────────────────────────────────── */
   .section-label {
-    @apply inline-flex items-center gap-2.5 rounded-full border border-parish-border/15 bg-parish-surface/80 px-4 py-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-parish-muted shadow-sm;
+    @apply inline-flex items-center gap-2.5 rounded-full border border-parish-accent/15 bg-parish-accent/8 px-4 py-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-parish-accent;
   }
 
   .section-label::before {
     content: "";
-    @apply block h-1.5 w-1.5 rounded-full;
-    background-color: hsl(var(--color-parish-brass) / 0.8);
+    @apply block h-1.5 w-1.5 rounded-full bg-parish-accent;
   }
 
   .section-divider {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-parish-border/20 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-parish-border/30 to-transparent;
   }
 
+  /* ── Sanctuary panel — clean elevated card ──────────────────── */
   .sanctuary-panel {
-    @apply relative overflow-hidden rounded-2xl p-[4px] shadow-sanctuary;
-    background-color: rgb(var(--color-parish-surface) / 0.86);
-    outline: 1px solid rgb(var(--color-parish-border) / 0.12);
-    outline-offset: -1px;
-  }
-
-  .sanctuary-panel > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .sanctuary-panel::before {
-    content: "";
-    position: absolute;
-    inset: 4px;
-    border-radius: calc(1rem - 4px);
-    pointer-events: none;
-    background-color: rgb(var(--color-parish-surface) / 0.96);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.65);
-    border: 1px solid rgb(var(--color-parish-border) / 0.08);
-    z-index: 0;
-  }
-
-  .sanctuary-panel::after {
-    content: "";
-    position: absolute;
-    inset: 4px;
-    border-radius: calc(1rem - 4px);
-    pointer-events: none;
-    z-index: 0;
-    background: linear-gradient(180deg, rgb(var(--color-parish-inverse) / 0.42), transparent 48%, rgb(var(--color-parish-elevated) / 0.14));
-  }
-
-  .sanctuary-card {
-    @apply relative overflow-hidden rounded-xl border border-parish-border/10 px-6 py-6;
-    transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+    @apply relative overflow-hidden rounded-2xl bg-parish-surface border border-parish-border/15;
     box-shadow:
-      0 18px 46px -36px rgba(47, 37, 26, 0.42),
-      inset 0 1px 1px rgba(255, 255, 255, 0.65);
-    background-color: rgb(var(--color-parish-surface) / 0.98);
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      0 8px 24px -8px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ── Sanctuary card — interactive elevated card ─────────────── */
+  .sanctuary-card {
+    @apply relative overflow-hidden rounded-2xl border border-parish-border/15 bg-parish-surface px-6 py-6;
+    transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      0 6px 20px -6px rgba(0, 0, 0, 0.06);
   }
 
   .sanctuary-card:hover {
-    @apply -translate-y-1 border-parish-brass/25;
+    @apply -translate-y-0.5 border-parish-accent/20;
     box-shadow:
-      0 24px 60px -36px hsla(var(--color-parish-brass), 0.30),
-      inset 0 1px 1px rgba(255, 255, 255, 0.65);
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      0 12px 32px -8px rgba(0, 0, 0, 0.1);
   }
 
   .sacred-container {
-    @apply sanctuary-card backdrop-blur-lg;
+    @apply sanctuary-card;
   }
 
   .sacred-card {
     @apply sanctuary-card;
   }
 
+  /* ── Image panel ────────────────────────────────────────────── */
   .image-panel {
-    @apply relative overflow-hidden rounded-2xl border border-parish-border/10 bg-parish-elevated shadow-sanctuary;
+    @apply relative overflow-hidden rounded-2xl border border-parish-border/15 bg-parish-elevated;
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
   }
 
   .image-panel::after {
@@ -228,65 +191,70 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.38));
   }
 
+  /* ── Scripture panel — green/gold accent ─────────────────────── */
   .scripture-panel {
-    @apply relative overflow-hidden rounded-2xl border border-parish-brass/20 px-8 py-10 md:px-12 md:py-14 text-parish-inverse shadow-sanctuary;
+    @apply relative overflow-hidden rounded-2xl border border-parish-accent/20 px-8 py-10 md:px-12 md:py-14 text-white;
     background:
-      radial-gradient(circle at top left, hsl(var(--color-parish-brass) / 0.18), transparent 32%),
-      linear-gradient(145deg, rgb(var(--color-parish-fg)) 0%, rgb(var(--color-parish-accent-hover)) 100%);
+      radial-gradient(circle at top left, rgba(45, 95, 45, 0.15), transparent 40%),
+      linear-gradient(145deg, rgb(var(--color-parish-accent)) 0%, rgb(35, 60, 35) 100%);
+    box-shadow: 0 8px 32px -8px rgba(45, 95, 45, 0.3);
   }
 
+  /* ── Primary button — forest green ──────────────────────────── */
   .pilgrimage-button {
-    @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.16em] no-underline;
-    transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
-    background: linear-gradient(135deg, rgb(var(--color-parish-fg)), rgb(var(--color-parish-accent-hover)));
-    color: rgb(var(--color-parish-inverse));
-    box-shadow: 0 18px 40px -25px rgba(0, 0, 0, 0.55);
+    @apply inline-flex items-center justify-center gap-3 rounded-full px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.22em] no-underline text-white;
+    transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    background: linear-gradient(135deg, rgb(var(--color-parish-accent)), rgb(var(--color-parish-accent-hover)));
+    box-shadow: 0 4px 16px -4px rgba(45, 95, 45, 0.4);
   }
 
   .pilgrimage-button:hover {
     @apply -translate-y-0.5;
-    box-shadow: 0 22px 48px -25px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 24px -6px rgba(45, 95, 45, 0.5);
   }
 
   .pilgrimage-button:active {
     transform: scale(0.98) translateY(0);
   }
 
+  /* ── Secondary button — outlined ────────────────────────────── */
   .pilgrimage-button-secondary {
-    @apply inline-flex items-center justify-center gap-3 rounded-full border border-parish-border/20 px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.16em] text-parish-fg no-underline;
-    transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
-    background-color: rgb(var(--color-parish-surface) / 0.86);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    @apply inline-flex items-center justify-center gap-3 rounded-full border border-parish-accent/30 px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.22em] text-parish-accent no-underline;
+    transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    background-color: transparent;
   }
 
   .pilgrimage-button-secondary:hover {
-    @apply -translate-y-0.5 border-parish-brass/35 bg-parish-surface;
+    @apply -translate-y-0.5 bg-parish-accent/5 border-parish-accent/50;
   }
 
   .pilgrimage-button-secondary:active {
     transform: scale(0.98) translateY(0);
   }
 
+  /* ── Ghost button ───────────────────────────────────────────── */
   .pilgrimage-button-ghost {
     @apply inline-flex items-center justify-center gap-3 rounded-full px-5 py-3 font-body text-[0.78rem] font-bold uppercase tracking-[0.22em] text-parish-fg no-underline;
-    transition: all 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
   }
 
   .pilgrimage-button-ghost:hover {
-    @apply bg-parish-border/5 text-parish-accent;
+    @apply bg-parish-accent/5 text-parish-accent;
   }
 
   .ethereal-button {
     @apply pilgrimage-button-secondary;
   }
 
+  /* ── Ornamental kicker — green accent ───────────────────────── */
   .ornamental-kicker {
-    @apply text-[0.82rem] uppercase tracking-[0.22em] text-parish-brass font-body font-semibold;
+    @apply text-[0.82rem] uppercase tracking-[0.22em] text-parish-accent font-body font-semibold;
   }
 
+  /* ── Constraint widget box ──────────────────────────────────── */
   .constraint-widget-box {
-    @apply relative rounded-[2rem] overflow-hidden border border-parish-border/10 shadow-sanctuary flex flex-col;
-    background-color: rgb(var(--color-parish-surface) / 0.95);
+    @apply relative rounded-2xl overflow-hidden border border-parish-border/15 flex flex-col bg-parish-surface;
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.06);
   }
 
   .constraint-widget-fade {
@@ -301,7 +269,7 @@
 
   .motion-premium {
     transition-property: all;
-    transition-duration: 700ms;
+    transition-duration: 500ms;
     transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
   }
 
@@ -315,7 +283,7 @@
     inset: 0;
     pointer-events: none;
     z-index: 10;
-    opacity: 0.14;
+    opacity: 0.06;
     mix-blend-mode: soft-light;
     background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
   }
@@ -329,13 +297,17 @@
     padding-top: 0.1em;
   }
 
+  .halo-green {
+    box-shadow: 0 8px 32px -8px rgba(45, 95, 45, 0.25);
+  }
+
   .halo-brass {
-    box-shadow: 0 20px 60px -32px hsl(var(--color-parish-brass) / 0.45);
+    box-shadow: 0 8px 32px -8px hsl(var(--color-parish-brass) / 0.3);
   }
 }
 
 ::selection {
-  @apply bg-parish-accent text-parish-inverse;
+  @apply bg-parish-accent text-white;
 }
 
 .overflow-y-auto::-webkit-scrollbar {
