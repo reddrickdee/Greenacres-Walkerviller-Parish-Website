@@ -37,7 +37,7 @@ export function HomePage() {
                 addressCountry: 'AU',
             },
         ],
-    });
+    }, 'home-church');
 
     return (
         <>
