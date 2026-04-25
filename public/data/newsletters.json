@@ -6,7 +6,7 @@
       "id": "1st-sun-lent",
       "title": "CONNECTIONS 1ST SUN LENT",
       "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_1ST_SUN_LENT.pdf",
-      "isCurrent": true,
+      "isCurrent": false,
       "nativeBulletin": {
         "date": "February 15, 2026",
         "coverImage": "assets/source/our_parish.webp",
@@ -40,7 +40,7 @@
       "id": "2nd-sun-easter",
       "title": "CONNECTIONS 2ND SUNDAY EASTER",
       "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUNDAY_EASTER.pdf",
-      "isCurrent": false,
+      "isCurrent": true,
       "nativeBulletin": null
     },
     {

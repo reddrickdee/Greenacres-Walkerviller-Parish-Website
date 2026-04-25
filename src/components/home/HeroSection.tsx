@@ -39,7 +39,7 @@ export function HeroSection() {
         : "St Martin's";
 
     return (
-        <header className="relative overflow-hidden bg-parish-bg pt-28 md:pt-32">
+        <header className="relative overflow-hidden bg-parish-bg pt-44 md:pt-48">
             <motion.div style={{ y, scale: heroScale }} className="absolute inset-0 z-0">
                 <img
                     src="/assets/source/hero_4.webp"
@@ -47,7 +47,6 @@ export function HeroSection() {
                     role="presentation"
                     width={1920}
                     height={1080}
-                    fetchPriority="high"
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -55,7 +54,7 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-b from-parish-bg/40 via-transparent to-parish-bg" />
             </motion.div>
 
-            <div className="relative z-10 mx-auto flex min-h-[78dvh] max-w-7xl flex-col justify-end px-6 pb-14 md:px-10 lg:px-16 lg:pb-16">
+            <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-start px-6 pb-14 md:px-10 lg:min-h-[78dvh] lg:justify-end lg:px-16 lg:pb-16">
                 <div className="grid items-end gap-8 lg:grid-cols-12">
                     <div className="lg:col-span-7">
                         <motion.div
@@ -88,11 +87,11 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 36, filter: 'blur(6px)' }}
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                         transition={{ duration: 0.95, delay: 0.25, ease: [0.32, 0.72, 0, 1] }}
-                        className="lg:col-span-5"
+                        className="hidden lg:col-span-5 lg:block"
                     >
                         <div className="sanctuary-panel bg-parish-surface/95 p-5 md:p-6">
                             {/* Next Service — live countdown */}
-                            <div className="rounded-xl border border-parish-border/12 bg-parish-elevated/35 p-4">
+                            <div className="rounded-xl border border-parish-border/10 bg-parish-elevated/35 p-4">
                                 <div className="flex items-start gap-3">
                                     <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/35 bg-parish-surface text-parish-brass">
                                         <CalendarClock className="h-5 w-5" />
@@ -120,7 +119,7 @@ export function HeroSection() {
                             </div>
 
                             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                                <Link to="/news-events" className="rounded-xl border border-parish-border/12 bg-parish-surface px-4 py-4 text-parish-fg no-underline transition hover:border-parish-brass/35">
+                                <Link to="/news-events" className="rounded-xl border border-parish-border/10 bg-parish-surface px-4 py-4 text-parish-fg no-underline transition hover:border-parish-brass/35">
                                     <div className="flex items-start gap-3">
                                         <FileText className="mt-1 h-5 w-5 text-parish-brass" />
                                         <div>
@@ -129,7 +128,7 @@ export function HeroSection() {
                                         </div>
                                     </div>
                                 </Link>
-                                <a href={`tel:${content.contact.phone}`} className="rounded-xl border border-parish-border/12 bg-parish-surface px-4 py-4 text-parish-fg no-underline transition hover:border-parish-brass/35">
+                                <a href={`tel:${content.contact.phone}`} className="rounded-xl border border-parish-border/10 bg-parish-surface px-4 py-4 text-parish-fg no-underline transition hover:border-parish-brass/35">
                                     <div className="flex items-start gap-3">
                                         <Phone className="mt-1 h-5 w-5 text-parish-brass" />
                                         <div>
@@ -141,7 +140,7 @@ export function HeroSection() {
                             </div>
 
                             {/* First-visit guidance */}
-                            <div className="mt-4 rounded-xl border border-parish-border/12 bg-parish-elevated/35 p-4">
+                            <div className="mt-4 rounded-xl border border-parish-border/10 bg-parish-elevated/35 p-4">
                                 <div className="flex items-start gap-3">
                                     <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/35 bg-parish-surface text-parish-brass">
                                         <MapPinned className="h-5 w-5" />

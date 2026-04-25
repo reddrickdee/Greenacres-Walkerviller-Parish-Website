@@ -1,0 +1,163 @@
+- generic [ref=e3]:
+  - link "Skip to main content" [ref=e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e5]:
+    - generic [ref=e8]: In the footsteps of Jesus
+    - generic [ref=e10]:
+      - link "Greenacres Walkerville Catholic Parish home" [ref=e11] [cursor=pointer]:
+        - /url: /
+        - img "Greenacres Walkerville Parish logo" [ref=e13]
+        - generic [ref=e15]: Greenacres Walkerville
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - button "Accessibility Settings" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+          - button "Switch to dark mode" [ref=e23] [cursor=pointer]:
+            - img [ref=e24]
+        - button "Open menu" [ref=e26] [cursor=pointer]
+  - main [ref=e29]:
+    - generic [ref=e34]:
+      - generic [ref=e37]:
+        - generic [ref=e38]: Catholic Parish in Adelaide
+        - heading "Greenacres Walkerville Catholic Parish" [level=1] [ref=e39]
+        - paragraph [ref=e40]: Join us for Mass at St Monica's Walkerville or St Martin's Greenacres. Find this weekend's times, the latest bulletin, and a simple first-visit guide in one place.
+        - generic [ref=e41]:
+          - link "View Mass Times" [ref=e42] [cursor=pointer]:
+            - /url: /mass-times
+          - link "Plan Your First Visit" [ref=e43] [cursor=pointer]:
+            - /url: /new-here
+          - link "Read Bulletin" [ref=e44] [cursor=pointer]:
+            - /url: /news-events
+      - generic [ref=e45]:
+        - generic [ref=e47]: In the Footsteps of Jesus
+        - generic [ref=e48]: ·
+        - generic [ref=e49]: Easter
+    - generic [ref=e50]:
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]: Parish Today
+            - heading "The practical things most people need first." [level=2] [ref=e57]
+          - paragraph [ref=e58]: Content last checked 2026-02-12. Please contact the parish office if anything looks out of date.
+        - generic [ref=e59]:
+          - link "Come to Mass Saturday 6:00pm at St Monica's and Sunday 9:30am at St Martin's. View Mass Times" [ref=e60] [cursor=pointer]:
+            - /url: /mass-times
+            - img [ref=e62]
+            - heading "Come to Mass" [level=3] [ref=e66]
+            - paragraph [ref=e67]: Saturday 6:00pm at St Monica's and Sunday 9:30am at St Martin's.
+            - generic [ref=e68]:
+              - text: View Mass Times
+              - img [ref=e69]
+          - link "Plan a First Visit Find parking, accessibility notes, what to expect, and how to arrive. First Visit Guide" [ref=e71] [cursor=pointer]:
+            - /url: /new-here
+            - img [ref=e73]
+            - heading "Plan a First Visit" [level=3] [ref=e77]
+            - paragraph [ref=e78]: Find parking, accessibility notes, what to expect, and how to arrive.
+            - generic [ref=e79]:
+              - text: First Visit Guide
+              - img [ref=e80]
+          - link "Read This Week's Bulletin Current notices, Mass changes, rosters, and parish news in one place. Read Notices" [ref=e82] [cursor=pointer]:
+            - /url: "#weekly-notices"
+            - img [ref=e84]
+            - heading "Read This Week's Bulletin" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Current notices, Mass changes, rosters, and parish news in one place.
+            - generic [ref=e89]:
+              - text: Read Notices
+              - img [ref=e90]
+          - link "Contact the Office (08) 8261 6200 · Monday, Wednesday, Thursday, 9:00am to 3:00pm Contact Us" [ref=e92] [cursor=pointer]:
+            - /url: /contact
+            - img [ref=e94]
+            - heading "Contact the Office" [level=3] [ref=e96]
+            - paragraph [ref=e97]: (08) 8261 6200 · Monday, Wednesday, Thursday, 9:00am to 3:00pm
+            - generic [ref=e98]:
+              - text: Contact Us
+              - img [ref=e99]
+      - generic [ref=e107]:
+        - generic [ref=e108]:
+          - generic [ref=e109]: Come This Weekend
+          - heading "Everyone is welcome at Mass." [level=2] [ref=e110]
+          - paragraph [ref=e111]: Join us this weekend for Mass at St Monica's or St Martin's. We look forward to welcoming you.
+          - generic [ref=e112]:
+            - generic [ref=e113]:
+              - img [ref=e114]
+              - text: admin@gwparish.org.au
+            - link "Safeguarding" [ref=e117] [cursor=pointer]:
+              - /url: /safeguarding
+              - img [ref=e118]
+              - text: Safeguarding
+        - generic [ref=e121]:
+          - link "View Mass Times" [ref=e122] [cursor=pointer]:
+            - /url: /mass-times
+          - link "Read the First-Visit Guide" [ref=e123] [cursor=pointer]:
+            - /url: /new-here
+  - contentinfo [ref=e124]:
+    - generic [ref=e125]:
+      - generic [ref=e126]:
+        - generic [ref=e127]:
+          - generic [ref=e128]: Season of Easter
+          - link "A welcoming community of faith across Greenacres and Walkerville." [ref=e130] [cursor=pointer]:
+            - /url: /
+            - heading "A welcoming community of faith across Greenacres and Walkerville." [level=2] [ref=e131]
+          - paragraph [ref=e132]: Whether you are visiting for the first time or returning after years away, you are welcome here.
+          - generic [ref=e133]:
+            - link "Plan A First Visit" [ref=e134] [cursor=pointer]:
+              - /url: /new-here
+            - link "View Mass Times" [ref=e135] [cursor=pointer]:
+              - /url: /mass-times
+        - generic [ref=e136]:
+          - generic [ref=e137]:
+            - generic [ref=e138]: Visit
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - img [ref=e141]
+                - generic [ref=e145]: St Monica's Church, 90 North East Road, Walkerville
+              - generic [ref=e146]:
+                - img [ref=e147]
+                - generic [ref=e151]: St Martin's Church, Corner Muller and Hampstead Roads, Greenacres
+              - generic [ref=e152]:
+                - img [ref=e153]
+                - generic [ref=e156]: "Weekend Masses: Saturday 6:00pm and Sunday 9:30am"
+          - generic [ref=e157]:
+            - generic [ref=e158]: Explore
+            - generic [ref=e159]:
+              - link "Mass Times" [ref=e160] [cursor=pointer]:
+                - /url: /mass-times
+              - link "Sacraments" [ref=e161] [cursor=pointer]:
+                - /url: /sacraments
+              - link "I'm New Here" [ref=e162] [cursor=pointer]:
+                - /url: /new-here
+              - link "News & Events" [ref=e163] [cursor=pointer]:
+                - /url: /news-events
+              - link "Give" [ref=e164] [cursor=pointer]:
+                - /url: /give
+              - link "Contact" [ref=e165] [cursor=pointer]:
+                - /url: /contact
+              - link "Gallery" [ref=e166] [cursor=pointer]:
+                - /url: /gallery
+              - link "Volunteer" [ref=e167] [cursor=pointer]:
+                - /url: /volunteer
+              - link "Safeguarding" [ref=e168] [cursor=pointer]:
+                - /url: /safeguarding
+          - generic [ref=e169]:
+            - generic [ref=e170]: Belong
+            - generic [ref=e171]:
+              - link "Contact the Parish Office" [ref=e172] [cursor=pointer]:
+                - /url: /contact
+                - img [ref=e173]
+                - text: Contact the Parish Office
+              - link "Volunteer and serve" [ref=e176] [cursor=pointer]:
+                - /url: /volunteer
+                - img [ref=e177]
+                - text: Volunteer and serve
+              - link "Weekly bulletin archive" [ref=e179] [cursor=pointer]:
+                - /url: /news-events
+                - img [ref=e180]
+                - text: Weekly bulletin archive
+              - link "Safeguarding & child protection" [ref=e182] [cursor=pointer]:
+                - /url: /safeguarding
+                - img [ref=e183]
+                - text: Safeguarding & child protection
+      - generic [ref=e185]:
+        - paragraph [ref=e186]: © 2026 Greenacres Walkerville Catholic Parish.
+        - paragraph [ref=e187]: We acknowledge the Traditional Owners and Custodians of the lands on which our parish gathers and pay our respects to Elders past, present and emerging.
+        - paragraph [ref=e188]: Parish information last checked 2026-02-12.

@@ -128,11 +128,11 @@ export function HomePage() {
                                         Join us this weekend for Mass at St Monica&apos;s or St Martin&apos;s. We look forward to welcoming you.
                                     </p>
                                     <div className="mt-5 flex flex-wrap gap-3 text-sm text-parish-muted">
-                                        <span className="inline-flex items-center gap-2 rounded-full border border-parish-border/12 bg-parish-surface px-4 py-2">
+                                        <span className="inline-flex items-center gap-2 rounded-full border border-parish-border/10 bg-parish-surface px-4 py-2">
                                             <Mail className="h-4 w-4 text-parish-brass" />
                                             {content.contact.email}
                                         </span>
-                                        <Link to="/safeguarding" className="inline-flex items-center gap-2 rounded-full border border-parish-border/12 bg-parish-surface px-4 py-2 text-parish-muted no-underline hover:text-parish-accent">
+                                        <Link to="/safeguarding" className="inline-flex items-center gap-2 rounded-full border border-parish-border/10 bg-parish-surface px-4 py-2 text-parish-muted no-underline hover:text-parish-accent">
                                             <ShieldCheck className="h-4 w-4 text-parish-brass" />
                                             Safeguarding
                                         </Link>
@@ -169,7 +169,7 @@ function TaskCard({
     cta: string;
 }) {
     const isAnchor = to.startsWith('#');
-    const className = "group block rounded-xl border border-parish-border/12 bg-parish-surface px-5 py-5 text-parish-fg no-underline shadow-sm transition hover:-translate-y-0.5 hover:border-parish-brass/35 hover:shadow-sanctuary";
+    const className = "group block rounded-xl border border-parish-border/10 bg-parish-surface px-5 py-5 text-parish-fg no-underline shadow-sm transition hover:-translate-y-0.5 hover:border-parish-brass/35 hover:shadow-sanctuary";
     const content = (
         <>
             <div className="flex h-11 w-11 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/55 text-parish-brass">

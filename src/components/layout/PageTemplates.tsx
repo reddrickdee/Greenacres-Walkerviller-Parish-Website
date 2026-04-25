@@ -104,7 +104,6 @@ function TemplateFrame({
                                         src={imageSrc}
                                         alt={imageAlt}
                                         loading="eager"
-                                        fetchPriority="high"
                                         decoding="async"
                                         width={800}
                                         height={540}

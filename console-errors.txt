@@ -1,0 +1,26 @@
+Total messages: 5 (Errors: 1, Warnings: 0)
+Returning 1 messages for level "error"
+
+[ERROR] Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority 
+    at img
+    at div
+    at MotionComponent (http://127.0.0.1:5173/node_modules/.vite/deps/framer-motion.js?v=5a6d7692:945:40)
+    at header
+    at HeroSection (http://127.0.0.1:5173/src/components/home/HeroSection.tsx:31:31)
+    at HomePage (http://127.0.0.1:5173/src/pages/HomePage.tsx:50:34)
+    at RenderedRoute (http://127.0.0.1:5173/node_modules/.vite/deps/react-router-dom.js?v=5a6d7692:6301:26)
+    at Outlet (http://127.0.0.1:5173/node_modules/.vite/deps/react-router-dom.js?v=5a6d7692:7082:26)
+    at main
+    at div
+    at RootLayout (http://127.0.0.1:5173/src/layouts/RootLayout.tsx:39:20)
+    at RenderedRoute (http://127.0.0.1:5173/node_modules/.vite/deps/react-router-dom.js?v=5a6d7692:6301:26)
+    at RenderErrorBoundary (http://127.0.0.1:5173/node_modules/.vite/deps/react-router-dom.js?v=5a6d7692:6211:5)
+    at DataRoutes (http://127.0.0.1:5173/node_modules/.vite/deps/react-router-dom.js?v=5a6d7692:6999:3)
+    at Router (http://127.0.0.1:5173/node_modules/.vite/deps/react-router-dom.js?v=5a6d7692:7091:13)
+    at RouterProvider (http://127.0.0.1:5173/node_modules/.vite/deps/react-router-dom.js?v=5a6d7692:6765:11)
+    at RouterProvider2
+    at Suspense
+    at ChunkErrorBoundary (http://127.0.0.1:5173/src/App.tsx:76:5)
+    at App
+    at ParishDataProvider (http://127.0.0.1:5173/src/context/ParishDataContext.tsx:28:38)
+    at ThemeProvider (http://127.0.0.1:5173/src/context/ThemeContext.tsx:20:33) @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-PJEEZAML.js?v=5a6d7692:520

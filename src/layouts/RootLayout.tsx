@@ -88,9 +88,10 @@ export function RootLayout() {
                             </div>
                             <div className="min-w-0 transition-colors duration-500">
                                 <div className={`font-display text-lg leading-none md:text-xl ${isHeroTransparent ? 'text-white' : 'text-parish-fg'}`}>
-                                    Greenacres Walkerville
+                                    <span className="sm:hidden">Greenacres</span>
+                                    <span className="hidden sm:inline">Greenacres Walkerville</span>
                                 </div>
-                                <div className={`mt-0.5 truncate text-[0.6rem] font-semibold uppercase tracking-[0.28em] md:text-[0.65rem] ${isHeroTransparent ? 'text-white/70' : 'text-parish-muted'}`}>
+                                <div className={`mt-0.5 hidden truncate text-[0.6rem] font-semibold uppercase tracking-[0.28em] sm:block md:text-[0.65rem] ${isHeroTransparent ? 'text-white/70' : 'text-parish-muted'}`}>
                                     Catholic Parish
                                 </div>
                             </div>
