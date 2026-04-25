@@ -1,0 +1,84 @@
+{
+    "events": [
+        {
+            "date": "2026-04-26",
+            "title": "Saturday Vigil Mass",
+            "time": "6:00pm",
+            "location": "St Monica's Church, Walkerville",
+            "description": "Weekend Mass at St Monica's with Fr Anthony.",
+            "category": "Mass"
+        },
+        {
+            "date": "2026-04-27",
+            "title": "Sunday Mass",
+            "time": "9:00am",
+            "location": "St Martin's Church, Greenacres",
+            "description": "Sunday Mass at St Martin's.",
+            "category": "Mass"
+        },
+        {
+            "date": "2026-04-27",
+            "title": "Sunday Mass",
+            "time": "9:30am",
+            "location": "St Monica's Church, Walkerville",
+            "description": "Sunday Mass at St Monica's.",
+            "category": "Mass"
+        },
+        {
+            "date": "2026-04-29",
+            "title": "Reconciliation",
+            "time": "5:15pm – 5:45pm",
+            "location": "St Monica's Church, Walkerville",
+            "description": "Sacrament of Reconciliation available before weekday Mass.",
+            "category": "Sacrament"
+        },
+        {
+            "date": "2026-04-30",
+            "title": "Parish Pastoral Council Meeting",
+            "time": "7:00pm",
+            "location": "St Monica's Church Hall",
+            "description": "Monthly meeting of the Parish Pastoral Council. All parishioners welcome to attend.",
+            "category": "Meeting"
+        },
+        {
+            "date": "2026-05-01",
+            "title": "St Joseph the Worker – Feast Day",
+            "time": "9:15am",
+            "location": "Both Churches",
+            "description": "Feast Day Mass celebrating St Joseph the Worker.",
+            "category": "Feast"
+        },
+        {
+            "date": "2026-05-03",
+            "title": "First Saturday Devotion",
+            "time": "9:00am",
+            "location": "St Monica's Church, Walkerville",
+            "description": "Rosary and devotion to Our Lady on the first Saturday of the month.",
+            "category": "Devotion"
+        },
+        {
+            "date": "2026-05-04",
+            "title": "Mother's Day Morning Tea",
+            "time": "After 9:30am Mass",
+            "location": "St Monica's Church Hall",
+            "description": "Join us for a special morning tea after Mass to celebrate all mothers in our parish.",
+            "category": "Community"
+        },
+        {
+            "date": "2026-05-10",
+            "title": "Youth Group Meeting",
+            "time": "4:00pm – 5:30pm",
+            "location": "St Martin's Church Hall",
+            "description": "Activities and faith sharing for young parishioners aged 12–18.",
+            "category": "Youth"
+        },
+        {
+            "date": "2026-05-17",
+            "title": "Parish Working Bee",
+            "time": "9:00am – 12:00pm",
+            "location": "St Monica's Church Grounds",
+            "description": "Help us keep our parish grounds beautiful. Morning tea provided.",
+            "category": "Community"
+        }
+    ]
+}

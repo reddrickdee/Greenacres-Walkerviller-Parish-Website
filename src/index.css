@@ -133,7 +133,9 @@
 
   /* ── Section label pill ─────────────────────────────────────── */
   .section-label {
-    @apply inline-flex items-center gap-2.5 rounded-full border border-parish-accent/15 bg-parish-accent/8 px-4 py-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-parish-accent;
+    @apply inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-parish-accent;
+    border-color: rgb(var(--color-parish-accent) / 0.15);
+    background-color: rgb(var(--color-parish-accent) / 0.08);
   }
 
   .section-label::before {
@@ -142,12 +144,14 @@
   }
 
   .section-divider {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-parish-border/30 to-transparent;
+    @apply h-px w-full;
+    background: linear-gradient(to right, transparent, rgb(var(--color-parish-border) / 0.3), transparent);
   }
 
   /* ── Sanctuary panel — clean elevated card ──────────────────── */
   .sanctuary-panel {
-    @apply relative overflow-hidden rounded-2xl bg-parish-surface border border-parish-border/15;
+    @apply relative overflow-hidden rounded-2xl bg-parish-surface border;
+    border-color: rgb(var(--color-parish-border) / 0.15);
     box-shadow:
       0 1px 3px rgba(0, 0, 0, 0.06),
       0 8px 24px -8px rgba(0, 0, 0, 0.08);
@@ -155,7 +159,8 @@
 
   /* ── Sanctuary card — interactive elevated card ─────────────── */
   .sanctuary-card {
-    @apply relative overflow-hidden rounded-2xl border border-parish-border/15 bg-parish-surface px-6 py-6;
+    @apply relative overflow-hidden rounded-2xl border bg-parish-surface px-6 py-6;
+    border-color: rgb(var(--color-parish-border) / 0.15);
     transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
     box-shadow:
       0 1px 3px rgba(0, 0, 0, 0.05),
@@ -163,7 +168,8 @@
   }
 
   .sanctuary-card:hover {
-    @apply -translate-y-0.5 border-parish-accent/20;
+    @apply -translate-y-0.5;
+    border-color: rgb(var(--color-parish-accent) / 0.2);
     box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.08),
       0 12px 32px -8px rgba(0, 0, 0, 0.1);
@@ -179,7 +185,8 @@
 
   /* ── Image panel ────────────────────────────────────────────── */
   .image-panel {
-    @apply relative overflow-hidden rounded-2xl border border-parish-border/15 bg-parish-elevated;
+    @apply relative overflow-hidden rounded-2xl border bg-parish-elevated;
+    border-color: rgb(var(--color-parish-border) / 0.15);
     box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
   }
 
@@ -193,7 +200,8 @@
 
   /* ── Scripture panel — green/gold accent ─────────────────────── */
   .scripture-panel {
-    @apply relative overflow-hidden rounded-2xl border border-parish-accent/20 px-8 py-10 md:px-12 md:py-14 text-white;
+    @apply relative overflow-hidden rounded-2xl border px-8 py-10 md:px-12 md:py-14 text-white;
+    border-color: rgb(var(--color-parish-accent) / 0.2);
     background:
       radial-gradient(circle at top left, rgba(45, 95, 45, 0.15), transparent 40%),
       linear-gradient(145deg, rgb(var(--color-parish-accent)) 0%, rgb(35, 60, 35) 100%);
@@ -219,13 +227,16 @@
 
   /* ── Secondary button — outlined ────────────────────────────── */
   .pilgrimage-button-secondary {
-    @apply inline-flex items-center justify-center gap-3 rounded-full border border-parish-accent/30 px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.22em] text-parish-accent no-underline;
+    @apply inline-flex items-center justify-center gap-3 rounded-full border px-6 py-3.5 font-body text-[0.78rem] font-bold uppercase tracking-[0.22em] text-parish-accent no-underline;
+    border-color: rgb(var(--color-parish-accent) / 0.3);
     transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
     background-color: transparent;
   }
 
   .pilgrimage-button-secondary:hover {
-    @apply -translate-y-0.5 bg-parish-accent/5 border-parish-accent/50;
+    @apply -translate-y-0.5;
+    background-color: rgb(var(--color-parish-accent) / 0.05);
+    border-color: rgb(var(--color-parish-accent) / 0.5);
   }
 
   .pilgrimage-button-secondary:active {
@@ -239,7 +250,8 @@
   }
 
   .pilgrimage-button-ghost:hover {
-    @apply bg-parish-accent/5 text-parish-accent;
+    @apply text-parish-accent;
+    background-color: rgb(var(--color-parish-accent) / 0.05);
   }
 
   .ethereal-button {
@@ -253,7 +265,8 @@
 
   /* ── Constraint widget box ──────────────────────────────────── */
   .constraint-widget-box {
-    @apply relative rounded-2xl overflow-hidden border border-parish-border/15 flex flex-col bg-parish-surface;
+    @apply relative rounded-2xl overflow-hidden border flex flex-col bg-parish-surface;
+    border-color: rgb(var(--color-parish-border) / 0.15);
     box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.06);
   }
 

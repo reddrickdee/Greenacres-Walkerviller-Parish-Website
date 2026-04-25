@@ -7,6 +7,7 @@ import { isCoreCountdownMass } from '../lib/massCountdown';
 import type { MassCountdown } from '../lib/massCountdown';
 import { ActionBand, InfoCard, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
 import { ContentLoading, ContentError } from '../components/ContentStates';
+import { ChurchMap } from '../components/ui/ChurchMap';
 import type { MassScheduleEntry, VisitorChurchInfo } from '../types';
 
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -101,7 +102,37 @@ export function MassTimesPage() {
                 </div>
             </section>
 
+            {/* Find Our Churches — Maps */}
+            <section className="page-section mt-16 md:mt-20">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="Find Us"
+                        title={<>Directions to our churches</>}
+                        description="Both churches have street parking and are accessible by public transport."
+                    />
 
+                    <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                        <div>
+                            <h3 className="ornamental-kicker mb-3">St Monica&apos;s Church</h3>
+                            <p className="text-sm text-parish-muted mb-4">90 North East Road, Walkerville SA 5081</p>
+                            <ChurchMap
+                                name="St Monica's Church"
+                                address="90 North East Road, Walkerville SA 5081"
+                                query="St Monica's Catholic Church Walkerville"
+                            />
+                        </div>
+                        <div>
+                            <h3 className="ornamental-kicker mb-3">St Martin&apos;s Church</h3>
+                            <p className="text-sm text-parish-muted mb-4">Corner Muller &amp; Hampstead Roads, Greenacres SA 5086</p>
+                            <ChurchMap
+                                name="St Martin's Church"
+                                address="Corner Muller & Hampstead Roads, Greenacres SA 5086"
+                                query="St Martin's Catholic Church Greenacres"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section className="page-section mt-16 md:mt-20">
                 <div className="page-section-inner">

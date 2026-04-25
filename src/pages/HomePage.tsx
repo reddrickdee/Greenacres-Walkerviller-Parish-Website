@@ -5,6 +5,8 @@ import { TaskCards } from '../components/home/TaskCards';
 import { ThisWeekend } from '../components/home/ThisWeekend';
 import { LatestBulletin } from '../components/home/LatestBulletin';
 import { ParishLifeStrip } from '../components/home/ParishLifeStrip';
+import { EventsList } from '../components/home/EventsList';
+import { LiturgicalWidget } from '../components/home/LiturgicalWidget';
 
 export function HomePage() {
     usePageSEO({
@@ -57,6 +59,12 @@ export function HomePage() {
 
                 {/* Latest Bulletin — cover image + download */}
                 <LatestBulletin />
+
+                {/* Upcoming Events */}
+                <EventsList limit={5} />
+
+                {/* Liturgical Season Widget */}
+                <LiturgicalWidget />
 
                 {/* Divider */}
                 <div className="page-section">
