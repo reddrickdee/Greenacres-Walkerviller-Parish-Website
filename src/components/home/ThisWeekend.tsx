@@ -54,9 +54,7 @@ export function ThisWeekend() {
                         {/* Left: Mass info */}
                         <div className="lg:col-span-7 px-6 py-8 md:px-10 md:py-10">
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-parish-accent/10 text-parish-accent">
-                                    <Cross className="h-5 w-5" />
-                                </div>
+                                <Cross className="h-5 w-5 text-parish-accent shrink-0" />
                                 <div>
                                     <h2 className="text-2xl font-display text-parish-fg md:text-3xl">
                                         This Weekend

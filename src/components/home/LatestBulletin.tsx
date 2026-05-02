@@ -50,7 +50,7 @@ export function LatestBulletin() {
                     <div className="grid md:grid-cols-12 gap-0">
                         {/* Bulletin cover image */}
                         <div className="md:col-span-4 relative bg-parish-elevated p-6 md:p-8 flex items-center justify-center min-h-[240px]">
-                            <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-lg overflow-hidden shadow-card bg-white">
+                            <div className="relative w-full max-w-[200px] aspect-[3/4] rounded-lg overflow-hidden shadow-card bg-parish-surface">
                                 <img
                                     src="/assets/source/news_connections.webp"
                                     alt={`Parish bulletin: ${data.issueTitle}`}

@@ -36,13 +36,13 @@ export function LiturgicalWidget() {
                     >
                         <div className="flex items-start gap-4">
                             <div
-                                className="flex h-12 w-12 items-center justify-center rounded-full shrink-0"
+                                className="flex h-10 w-10 items-center justify-center rounded-xl shrink-0"
                                 style={{
-                                    backgroundColor: `${season.cssColor}15`,
+                                    backgroundColor: `${season.cssColor}12`,
                                     color: season.cssColor,
                                 }}
                             >
-                                <Sparkles className="h-6 w-6" />
+                                <Sparkles className="h-5 w-5" />
                             </div>
                             <div>
                                 <div className="ornamental-kicker mb-1">This Week in the Church</div>

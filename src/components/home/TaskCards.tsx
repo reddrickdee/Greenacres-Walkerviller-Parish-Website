@@ -97,18 +97,19 @@ export function TaskCards() {
                             <motion.div key={task.title} {...motionProps}>
                                 <Link
                                     to={task.to}
-                                    className="group flex flex-col items-center text-center rounded-2xl border border-parish-border/15 bg-parish-surface px-5 py-8 no-underline transition-all duration-500 hover:-translate-y-1 hover:border-parish-accent/20 hover:shadow-card-hover"
+                                    className="group flex flex-col rounded-2xl border border-parish-border/15 bg-parish-surface px-5 py-6 no-underline transition-all duration-500 hover:-translate-y-0.5 hover:border-parish-accent/15 hover:shadow-card-hover"
                                 >
-                                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-parish-accent/8 text-parish-accent transition-colors duration-300 group-hover:bg-parish-accent/15">
-                                        <Icon className="h-7 w-7" strokeWidth={1.5} />
-                                    </div>
-                                    <h3 className="mt-5 text-lg font-display text-parish-fg">
+                                    <Icon
+                                        className="h-6 w-6 text-parish-accent"
+                                        strokeWidth={1.5}
+                                    />
+                                    <h3 className="mt-3 text-base font-display text-parish-fg">
                                         {task.title}
                                     </h3>
                                     <p className="mt-2 text-sm leading-relaxed text-parish-muted">
                                         {task.description}
                                     </p>
-                                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-parish-accent">
+                                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-parish-accent">
                                         {task.linkLabel}
                                         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                                     </span>

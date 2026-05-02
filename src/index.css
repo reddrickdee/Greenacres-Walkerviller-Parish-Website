@@ -133,7 +133,7 @@
 
   /* ── Section label pill ─────────────────────────────────────── */
   .section-label {
-    @apply inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5 font-body text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-parish-accent;
+    @apply inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5 font-body text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-parish-accent;
     border-color: rgb(var(--color-parish-accent) / 0.15);
     background-color: rgb(var(--color-parish-accent) / 0.08);
   }

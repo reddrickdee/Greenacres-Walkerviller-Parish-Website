@@ -13,12 +13,12 @@ interface ParishEvent {
 
 const CATEGORY_COLORS: Record<string, string> = {
     Mass: 'text-parish-accent',
-    Sacrament: 'text-purple-600',
-    Meeting: 'text-blue-600',
-    Feast: 'text-amber-600',
-    Devotion: 'text-rose-600',
+    Sacrament: 'text-purple-600 dark:text-purple-400',
+    Meeting: 'text-blue-600 dark:text-blue-400',
+    Feast: 'text-amber-600 dark:text-amber-400',
+    Devotion: 'text-rose-600 dark:text-rose-400',
     Community: 'text-parish-secondary',
-    Youth: 'text-cyan-600',
+    Youth: 'text-cyan-600 dark:text-cyan-400',
 };
 
 const reveal = {
@@ -103,7 +103,7 @@ export function EventsList({ limit = 8, showHeading = true }: EventsListProps) {
                                     <span className="text-lg font-bold leading-none">
                                         {new Date(event.date + 'T00:00:00').getDate()}
                                     </span>
-                                    <span className="text-[0.55rem] font-semibold uppercase tracking-wider">
+                                    <span className="text-[0.65rem] font-semibold uppercase tracking-wider">
                                         {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][new Date(event.date + 'T00:00:00').getMonth()]}
                                     </span>
                                 </div>

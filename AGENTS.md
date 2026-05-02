@@ -37,4 +37,16 @@ Key conventions:
 
 ### Testing
 
-No automated test framework is currently configured (no test runner, no test directory).
+- **Unit tests:** `npm test` (Vitest with jsdom, Testing Library)
+- **E2E tests:** `npm run test:e2e` (Playwright with Chromium)
+- **Live E2E:** `npm run test:e2e:live` (runs against production `gwparish.org.au`)
+- **Coverage:** `npm run test:coverage`
+- **Full verification:** `npm run verify:release` (lint + typecheck + unit + E2E + build)
+
+### GStack Quality Gates (extracted skills)
+
+Three quality gate skills adapted from [GStack](https://github.com/garrytan/gstack) (Garry Tan's AI development toolkit, MIT licensed):
+
+- **`gstack-design-quality`** — AI slop detection, typography checks, spacing/layout audit, interaction state verification, parish design system compliance. Use before merging frontend changes.
+- **`gstack-security-audit`** — Supabase RLS verification, secrets archaeology, dependency supply chain, OWASP Top 10 adapted for SPA + Supabase, STRIDE threat model. Use before deploying auth or data changes.
+- **`gstack-code-review`** — Two-pass review (critical + informational), Fix-First methodology (auto-fix mechanical issues, ask about ambiguous ones), documentation staleness detection. Use before merging any branch.

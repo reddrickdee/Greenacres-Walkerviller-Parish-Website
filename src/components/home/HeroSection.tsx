@@ -91,7 +91,7 @@ export function HeroSection() {
                         {/* Next Mass widget */}
                         <div className="sanctuary-panel bg-parish-surface/95 p-5 max-w-sm w-full">
                             <div className="flex items-start gap-3">
-                                <div className="mt-0.5 flex h-11 w-11 items-center justify-center rounded-full bg-parish-accent/10 text-parish-accent">
+                                <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl bg-parish-accent/8 text-parish-accent">
                                     <CalendarClock className="h-5 w-5" />
                                 </div>
                                 <div>
@@ -130,7 +130,7 @@ export function HeroSection() {
                                     <div className="text-xs font-semibold uppercase tracking-[0.12em] text-parish-fg">
                                         St Monica&apos;s
                                     </div>
-                                    <div className="text-[0.65rem] text-parish-muted">
+                                    <div className="text-[0.72rem] text-parish-muted">
                                         Catholic Church
                                     </div>
                                 </div>
