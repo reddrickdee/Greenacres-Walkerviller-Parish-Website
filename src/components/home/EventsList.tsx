@@ -11,6 +11,9 @@ interface ParishEvent {
     category: string;
 }
 
+// Intentional exception to parish-* design tokens: category colors use Tailwind
+// palette values because these are semantic event-type indicators, not theme-level
+// tokens. They need distinct hues that don't change with the parish colour scheme.
 const CATEGORY_COLORS: Record<string, string> = {
     Mass: 'text-parish-accent',
     Sacrament: 'text-purple-600 dark:text-purple-400',
@@ -51,6 +54,7 @@ interface EventsListProps {
 
 export function EventsList({ limit = 8, showHeading = true }: EventsListProps) {
     const [events, setEvents] = useState<ParishEvent[]>([]);
+    const [loaded, setLoaded] = useState(false);
     const prefersReduced = useReducedMotion();
 
     useEffect(() => {
@@ -68,10 +72,14 @@ export function EventsList({ limit = 8, showHeading = true }: EventsListProps) {
                     .slice(0, limit);
                 setEvents(upcoming);
             })
-            .catch(() => { /* silently fail — events are optional */ });
+            .catch((err) => {
+                if (import.meta.env.DEV) console.warn('EventsList: failed to load events', err);
+            })
+            .finally(() => setLoaded(true));
     }, [limit]);
 
-    if (events.length === 0) return null;
+    // Don't render until fetch completes to avoid layout shift
+    if (!loaded || events.length === 0) return null;
 
     return (
         <section className="page-section" id="upcoming-events">
@@ -92,6 +100,8 @@ export function EventsList({ limit = 8, showHeading = true }: EventsListProps) {
                             : { ...reveal, transition: { ...reveal.transition, delay: index * 0.05 } };
                         const colorClass = CATEGORY_COLORS[event.category] ?? 'text-parish-muted';
 
+                        const eventDate = new Date(event.date + 'T00:00:00');
+
                         return (
                             <motion.div
                                 key={`${event.date}-${event.title}`}
@@ -101,10 +111,10 @@ export function EventsList({ limit = 8, showHeading = true }: EventsListProps) {
                                 {/* Date badge */}
                                 <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-xl bg-parish-accent/8 text-parish-accent">
                                     <span className="text-lg font-bold leading-none">
-                                        {new Date(event.date + 'T00:00:00').getDate()}
+                                        {eventDate.getDate()}
                                     </span>
                                     <span className="text-[0.65rem] font-semibold uppercase tracking-wider">
-                                        {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][new Date(event.date + 'T00:00:00').getMonth()]}
+                                        {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][eventDate.getMonth()]}
                                     </span>
                                 </div>
 

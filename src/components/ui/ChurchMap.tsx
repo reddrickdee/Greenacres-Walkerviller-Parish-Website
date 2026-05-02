@@ -26,7 +26,7 @@ export function ChurchMap({
     const src = `https://maps.google.com/maps?q=${searchQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
     return (
-        <div className={`overflow-hidden rounded-2xl border border-parish-border/15 ${className}`.trim()}>
+        <div className={`overflow-hidden rounded-2xl border ${className}`.trim()} style={{ borderColor: 'rgb(var(--color-parish-border) / 0.15)' }}>
             <iframe
                 title={`Map showing ${name}`}
                 src={src}
@@ -35,6 +35,7 @@ export function ChurchMap({
                 style={{ border: 0, display: 'block' }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin"
                 allowFullScreen
                 aria-label={`Google Maps view of ${name} at ${address}`}
             />

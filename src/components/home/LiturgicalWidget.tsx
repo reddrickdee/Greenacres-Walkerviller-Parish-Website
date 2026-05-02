@@ -68,6 +68,9 @@ export function LiturgicalWidget() {
                                     {season.label === 'Ordinary Time' && (
                                         <>We walk with Jesus through his public ministry, growing deeper in our understanding of his teachings and example.</>
                                     )}
+                                    {!['Easter', 'Lent', 'Advent', 'Christmas', 'Ordinary Time'].includes(season.label) && (
+                                        <>We gather in faith as a parish community, growing closer to God through prayer and worship.</>
+                                    )}
                                 </p>
                             </div>
                         </div>

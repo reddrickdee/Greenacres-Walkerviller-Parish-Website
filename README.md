@@ -35,7 +35,7 @@ npm run preview
 The "Sacred Editorial" design system features a robust, token-based theme engine:
 
 - **Themes**: Full support for Light and "Sacred Night" Dark modes, matching OS preferences with user overrides via `localStorage` and a modern React Context toggle.
-- **Typography**: Merriweather (display headings) and Inter (body/UI), tuned for parishioners with varying digital confidence.
+- **Typography**: Merriweather (display headings), Outfit (body/UI), and Inter (fallback), tuned for parishioners with varying digital confidence.
 - **Colors**: Semantic theme tokens replacing hardcoded values. Warm alabaster (`#F9F8F6`), deep slate (`#1C1917`), liturgical gold (`#B8941E`) in light mode; optimized deep tones in "Sacred Night" mode.
 - **Modern UI/UX**: Glassmorphism effects (e.g., custom Facebook Widget), tabbed cards for Daily Reflections.
 - **Accessibility**: 18px base font, WCAG-aligned contrast and focus treatment, 44px minimum touch targets, reduced-motion support, semantic overlays/dialogs, and breadcrumb-based wayfinding.
@@ -44,7 +44,7 @@ The "Sacred Editorial" design system features a robust, token-based theme engine
 
 | Route | Page |
 |---|---|
-| `/` | Home — Hero, welcome, worship glance, daily reflections, facebook feed |
+| `/` | Home — Hero, welcome, this weekend, daily reflections, events, liturgical season, facebook feed |
 | `/about` | About — Priest welcome, pastoral council, vision & mission |
 | `/history` | History — Interactive timeline (1912–present) |
 | `/mass-times` | Mass Times — Schedules grouped by church |
