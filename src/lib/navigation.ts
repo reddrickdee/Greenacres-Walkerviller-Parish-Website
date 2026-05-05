@@ -36,6 +36,7 @@ export interface QuickAction {
 export const PRIMARY_NAV: NavItem[] = [
     { to: PATHS.MASS_TIMES, label: 'Mass Times' },
     { to: PATHS.SACRAMENTS, label: 'Sacraments' },
+    { to: PATHS.DAILY_READINGS, label: "Today's Readings" },
     { to: PATHS.NEW_HERE, label: "I'm New Here" },
     { to: PATHS.ABOUT, label: 'Our Parish' },
     { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
@@ -52,6 +53,7 @@ export const DRAWER_GROUPS: NavGroup[] = [
         links: [
             { to: PATHS.MASS_TIMES, label: 'Mass Times' },
             { to: PATHS.SACRAMENTS, label: 'Sacraments' },
+            { to: PATHS.DAILY_READINGS, label: "Today's Readings" },
         ],
     },
     {
@@ -114,6 +116,7 @@ export const QUICK_ACTIONS: QuickAction[] = [
 
 export const FOOTER_QUICK_LINKS: NavItem[] = [
     { to: PATHS.MASS_TIMES, label: 'Mass Times' },
+    { to: PATHS.DAILY_READINGS, label: "Today's Readings" },
     { to: PATHS.NEW_HERE, label: "I'm New Here" },
     { to: PATHS.SACRAMENTS, label: 'Sacraments' },
     { to: PATHS.NEWS_EVENTS, label: 'News & Events' },

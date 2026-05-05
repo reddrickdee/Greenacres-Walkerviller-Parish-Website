@@ -1,0 +1,4 @@
+{
+    "_comment": "Local liturgical colour overrides keyed by YYYY-MM-DD. Values: white, green, purple, red, rose. Add feast/memorial colour corrections here when the generic season colour is not accurate enough.",
+    "overrides": {}
+}
