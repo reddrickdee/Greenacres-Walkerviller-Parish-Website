@@ -19,6 +19,7 @@ const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then(m => ({ de
 const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
 const SacramentsPage = lazy(() => import('./pages/SacramentsPage').then(m => ({ default: m.SacramentsPage })));
 const GivePage = lazy(() => import('./pages/GivePage').then(m => ({ default: m.GivePage })));
+const DailyReadingsPage = lazy(() => import('./pages/DailyReadingsPage').then(m => ({ default: m.DailyReadingsPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 import { PATHS } from './lib/routes';
@@ -145,6 +146,7 @@ const router = createBrowserRouter([
             { path: rel(PATHS.GALLERY), element: <GalleryPage /> },
             { path: rel(PATHS.SACRAMENTS), element: <SacramentsPage /> },
             { path: rel(PATHS.GIVE), element: <GivePage /> },
+            { path: rel(PATHS.DAILY_READINGS), element: <DailyReadingsPage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },
