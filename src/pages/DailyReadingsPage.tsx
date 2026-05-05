@@ -302,17 +302,17 @@ export function DailyReadingsPage() {
             )}
 
             {/* Reflection links */}
-            <section className="page-section" id="reflections">
+            <section className="page-section pt-8 md:pt-12" id="reflections">
                 <div className="page-section-inner max-w-3xl">
                     <motion.div {...m}>
                         <h2 className="text-2xl font-display text-parish-fg mb-2">
                             Reflection Links
                         </h2>
-                        <p className="text-sm text-parish-muted mb-6">
+                        <p className="text-sm text-parish-muted mb-8">
                             Deepen your prayer with these trusted daily reflection sources.
                         </p>
                     </motion.div>
-                    <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-5 sm:grid-cols-2">
                         {REFLECTION_LINKS.map((link, i) => (
                             <motion.a
                                 key={link.name}
@@ -320,14 +320,14 @@ export function DailyReadingsPage() {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex flex-col rounded-2xl border border-parish-border/15 bg-parish-surface px-5 py-5 no-underline transition-all duration-500 hover:-translate-y-0.5 hover:border-parish-accent/15 hover:shadow-card-hover"
+                                className="group flex flex-col rounded-2xl border border-parish-border/15 bg-parish-surface px-6 py-6 no-underline transition-all duration-500 hover:-translate-y-0.5 hover:border-parish-accent/15 hover:shadow-card-hover"
                             >
                                 <span className="flex items-center gap-2 text-base font-display text-parish-fg">
                                     <BookOpen className="h-4 w-4 text-parish-accent shrink-0" />
                                     {link.name}
                                     <ExternalLink className="h-3 w-3 text-parish-muted opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </span>
-                                <span className="mt-1.5 text-sm text-parish-muted leading-relaxed">
+                                <span className="mt-2 text-sm text-parish-muted leading-relaxed">
                                     {link.description}
                                 </span>
                             </motion.a>
@@ -337,10 +337,10 @@ export function DailyReadingsPage() {
             </section>
 
             {/* Source + Copyright */}
-            <section className="page-section pb-16" id="source">
+            <section className="page-section pt-12 pb-16 md:pt-16" id="source">
                 <div className="page-section-inner max-w-3xl">
-                    <motion.div {...m} className="sanctuary-panel px-6 py-6 md:px-10 md:py-8">
-                        <h3 className="text-sm font-display uppercase tracking-widest text-parish-muted mb-3">
+                    <motion.div {...m} className="sanctuary-panel px-6 py-8 md:px-10 md:py-10">
+                        <h3 className="text-sm font-display uppercase tracking-widest text-parish-muted mb-4">
                             Source
                         </h3>
                         <p className="text-sm text-parish-muted leading-relaxed">
@@ -355,7 +355,7 @@ export function DailyReadingsPage() {
                             </a>
                             , using the Australia&nbsp;&ndash;&nbsp;Adelaide liturgical calendar.
                         </p>
-                        <p className="mt-2">
+                        <p className="mt-3">
                             <a
                                 href={universalisUrl}
                                 target="_blank"
@@ -368,7 +368,7 @@ export function DailyReadingsPage() {
                         </p>
                         {status === 'success' && data?.copyright?.text && (
                             <div
-                                className="mt-4 text-xs text-parish-muted/70 leading-relaxed [&_a]:text-parish-accent [&_a]:underline"
+                                className="mt-6 pt-5 border-t border-parish-border/10 text-xs text-parish-muted/60 leading-relaxed [&_a]:text-parish-accent [&_a]:underline"
                                 dangerouslySetInnerHTML={{
                                     __html: sanitiseReadingHtml(data.copyright.text),
                                 }}
