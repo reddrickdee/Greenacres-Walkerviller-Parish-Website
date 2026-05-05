@@ -43,6 +43,11 @@ Key conventions:
 - **Coverage:** `npm run test:coverage`
 - **Full verification:** `npm run verify:release` (lint + typecheck + unit + E2E + build)
 
+### Known pre-existing test issues
+
+- **E2E test (`tests/home.spec.ts`):** The test asserts text `/Catholic Parish in Adelaide/i` but the actual hero copy reads "Catholic Parish serving Greenacres, Walkerville…". This causes `npm run test:e2e` to fail out of the box. The failure is **not** caused by environment setup.
+- **Node.js 22** is required (matches CI). The Cloud VM does not ship Node pre-installed; the update script handles `npm install` and `npx playwright install chromium`.
+
 ### GStack Quality Gates (extracted skills)
 
 Three quality gate skills adapted from [GStack](https://github.com/garrytan/gstack) (Garry Tan's AI development toolkit, MIT licensed):
