@@ -79,12 +79,10 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
         const cbName = `__universalisCb_${++callbackCounter}`;
         const url = buildUniversalisUrl(dateKey, cbName);
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (window as any)[cbName] = (payload: UniversalisData) => {
             settledRef.current = true;
             setData(payload);
             setStatus('success');
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             delete (window as any)[cbName];
             cleanup();
         };
@@ -97,7 +95,6 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
         script.onerror = () => {
             settledRef.current = true;
             setStatus('error');
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             delete (window as any)[cbName];
             cleanup();
         };
@@ -109,14 +106,12 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
             if (!settledRef.current) {
                 settledRef.current = true;
                 setStatus('timeout');
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 delete (window as any)[cbName];
                 cleanup();
             }
         }, TIMEOUT_MS);
 
         return () => {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             delete (window as any)[cbName];
             cleanup();
         };

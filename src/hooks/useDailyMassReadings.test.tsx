@@ -29,7 +29,6 @@ const fakePayload: UniversalisData = {
 function fireJsonpCallback(payload: UniversalisData = fakePayload) {
     const cbName = Object.keys(window).find(k => k.startsWith('__universalisCb_'));
     if (!cbName) throw new Error('No JSONP callback found on window');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any)[cbName](payload);
 }
 
@@ -58,7 +57,6 @@ describe('useDailyMassReadings', () => {
         // Clean up any leftover global callbacks
         Object.keys(window)
             .filter(k => k.startsWith('__universalisCb_'))
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .forEach(k => delete (window as any)[k]);
     });
 
