@@ -52,6 +52,7 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
     const [retryCount, setRetryCount] = useState(0);
     const scriptRef = useRef<HTMLScriptElement | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const settledRef = useRef(false);
 
     const universalisUrl = `https://universalis.com/Australia.Adelaide/mass.htm`;
 
@@ -71,6 +72,7 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
     }, []);
 
     useEffect(() => {
+        settledRef.current = false;
         setStatus('loading');
         setData(null);
 
@@ -79,6 +81,7 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (window as any)[cbName] = (payload: UniversalisData) => {
+            settledRef.current = true;
             setData(payload);
             setStatus('success');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -92,6 +95,7 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
         script.async = true;
 
         script.onerror = () => {
+            settledRef.current = true;
             setStatus('error');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             delete (window as any)[cbName];
@@ -102,7 +106,8 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
         document.head.appendChild(script);
 
         timeoutRef.current = setTimeout(() => {
-            if (status === 'loading') {
+            if (!settledRef.current) {
+                settledRef.current = true;
                 setStatus('timeout');
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 delete (window as any)[cbName];

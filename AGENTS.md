@@ -14,7 +14,7 @@ Greenacres Walkerville Catholic Parish — a React 18 + TypeScript SPA built wit
 
 ### Lint and type checking
 
-- **Lint:** `npm run lint` — requires an `eslint.config.js` (flat config for ESLint v9). The repo currently has no ESLint config file, so this command will fail. This is a known pre-existing gap.
+- **Lint:** `npm run lint` — uses `eslint.config.js` (flat config for ESLint v9). Currently passes (exit 0) with warnings only.
 - **TypeScript:** `npx tsc -b` — passes cleanly as of initial setup.
 
 ### Supabase (backend)
