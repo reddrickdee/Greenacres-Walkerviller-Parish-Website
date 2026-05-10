@@ -5,6 +5,8 @@ import { usePageSEO } from '../hooks/usePageSEO';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
 
+const GOOD_GIVING_URL = 'https://adelaide.goodgiving.com.au/qr/parish/greenacres';
+
 export function GivePage() {
     usePageSEO({
         title: 'Give — Support Our Parish',
@@ -29,7 +31,7 @@ export function GivePage() {
             },
             target: {
                 '@type': 'EntryPoint',
-                urlTemplate: 'https://goodgiving.com.au/home/myparish',
+                urlTemplate: GOOD_GIVING_URL,
                 actionPlatform: 'https://schema.org/DesktopWebPlatform',
             },
         },
@@ -47,7 +49,7 @@ export function GivePage() {
             actions={(
                 <>
                     <a
-                        href="https://goodgiving.com.au/home/myparish"
+                        href={GOOD_GIVING_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="pilgrimage-button inline-flex items-center gap-2"
@@ -78,7 +80,7 @@ export function GivePage() {
                                 Use the Good Giving platform to make a one-time or recurring contribution securely online. Supports both first and second collections.
                             </p>
                             <a
-                                href="https://goodgiving.com.au/home/myparish"
+                                href={GOOD_GIVING_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"

@@ -15,6 +15,8 @@ import {
 interface NoticeItem {
     heading: string;
     body: string;
+    imageAsset?: string;
+    imageAlt?: string;
 }
 
 interface RosterRole {
@@ -84,14 +86,24 @@ function NoticeCard({ item, index }: { item: NoticeItem; index: number }) {
     return (
         <motion.div
             {...motionProps}
-            className="rounded-xl border border-parish-border/10 bg-parish-surface px-5 py-5 shadow-sm md:px-6 md:py-6"
+            className="overflow-hidden rounded-xl border border-parish-border/10 bg-parish-surface shadow-sm"
         >
-            <h3 className="text-lg font-display text-parish-fg md:text-xl">
-                {item.heading}
-            </h3>
-            <p className="mt-2 text-base leading-relaxed text-parish-muted">
-                {item.body}
-            </p>
+            {item.imageAsset && (
+                <img
+                    src={`/${item.imageAsset}`}
+                    alt={item.imageAlt ?? item.heading}
+                    className="aspect-square w-full object-cover"
+                    loading="lazy"
+                />
+            )}
+            <div className="px-5 py-5 md:px-6 md:py-6">
+                <h3 className="text-lg font-display text-parish-fg md:text-xl">
+                    {item.heading}
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-parish-muted">
+                    {item.body}
+                </p>
+            </div>
         </motion.div>
     );
 }

@@ -1,7 +1,50 @@
 {
-  "lastVerified": "2026-02-12",
+  "lastVerified": "2026-05-10",
   "source": "https://www.gwparish.org.au/News/PastNewsletters.html",
   "items": [
+    {
+      "id": "connections-2026-05-10",
+      "title": "CONNECTIONS 6TH SUNDAY EASTER",
+      "url": "/assets/bulletins/connections-2026-05-10.pdf",
+      "isCurrent": true,
+      "nativeBulletin": {
+        "date": "May 10, 2026",
+        "coverImage": "assets/source/news_connections.webp",
+        "priestReflection": "The Holy Mass is the highest form of worship and the very heart of our Christian life; a sacred journey where we gather, listen, offer, consecrate, receive, and are sent forth. It is not merely a routine obligation, but a living encounter with Christ, who nourishes us with His Word and His Body.\n\nI warmly encourage everyone to arrive on time for Mass. When we come late, we miss the grace of gathering as one Body and preparing our hearts to fully receive what God desires to give us. Every part of the Mass is sacred and leads us deeper into communion with the Lord.\n\nI also invite you to be mindful of the use of mobile phones and multimedia during Mass. Let us preserve the silence, reverence, and sacredness of this holy celebration. Minimizing distractions helps us to pray more deeply and to truly listen to God speaking within our hearts.\n\nThe Eucharistic action at the altar and the proclamation of the Word of God from the ambo are sacred realities that cannot be replaced by what is projected on a screen. Multimedia may be used only when necessary, for example, to assist with hymns and responses. At all other times, let the focus remain on the living liturgy being celebrated before us. Let us make the Holy Mass the centre of our lives, participating with devotion, reverence, and full attention.\n\nWith prayers and blessings,\nFr. Roy",
+        "sections": [
+          {
+            "title": "Parish Breakfast",
+            "content": "Greenacres Walkerville Parish Breakfast will be held on Saturday 30th May at 9:30am in St Martins Church Hall. Come hungry and gather for great food and lovely conversations. RSVP by 17th May to admin@gwparish.org.au or via QR code. Limited seats available.",
+            "imageAsset": "assets/posters/connections-2026-05-10/parish-breakfast.png"
+          },
+          {
+            "title": "Marian Procession",
+            "content": "The 77th Marian Procession will be held on Sunday May 17, beginning at Victoria Park and processing up Wakefield Street into Victoria Square. Members of our parish will be meeting from 1:30pm before the procession commences at 2pm. Look for the Greenacres Walkerville banner. All are invited to attend.",
+            "imageAsset": "assets/posters/connections-2026-05-10/marian-procession.png"
+          },
+          {
+            "title": "Vinnies Winter Appeal",
+            "content": "Vinnies Winter Appeal will be launched next weekend. This year's theme is the precarity of homelessness, focusing on how many people are only one crisis away from becoming homeless. Donations help provide assistance with food, clothing, household bills, furniture and household goods, and early intervention support. Donation envelopes will be available at both churches, or donate online at www.vinnies.org.au or by calling 13 18 12. Donations of $2 or more are tax deductible.",
+            "imageAsset": "assets/posters/connections-2026-05-10/vinnies-winter-appeal.png"
+          },
+          {
+            "title": "New Counters Needed",
+            "content": "As some counters are no longer able to assist, the parish needs more volunteers. Teams of three count the collections and bag the cash ready for banking after Mass on Sunday mornings. If you have an hour to spare after Mass on the first Sunday of the month, you are just the person we need. Training and encouragement supplied. Please ring the Parish Office on 8261 6200 to register your interest.",
+            "imageAsset": "assets/posters/connections-2026-05-10/new-counters-needed.png"
+          },
+          {
+            "title": "Giving App",
+            "content": "You can give to the parish through Adelaide Archdiocese's Good Giving App on your mobile phone by scanning the QR code, or go to https://adelaide.goodgiving.com.au/qr/parish/greenacres to set up direct giving from your computer.",
+            "imageAsset": "assets/posters/connections-2026-05-10/giving-app.png"
+          },
+          {
+            "title": "Synod 2026 Liturgies",
+            "content": "Ecumenical Taizé Prayer on the Eve of the Synod will be held on 19 May 2026 at 7:30pm at St Francis Xavier Cathedral. All are welcome to join in a special ecumenical prayer service in the Taizé style. Opening Mass of the 2026 Archdiocesan Synod will be held on 29 May 2026 at 5:45pm at St Francis Xavier Cathedral. All are welcome to join in the opening Mass. A simple meal in the hall will follow.",
+            "imageAsset": "assets/posters/connections-2026-05-10/synod-2026-liturgies.png"
+          }
+        ]
+      }
+    },
     {
       "id": "1st-sun-lent",
       "title": "CONNECTIONS 1ST SUN LENT",
@@ -40,7 +83,7 @@
       "id": "2nd-sun-easter",
       "title": "CONNECTIONS 2ND SUNDAY EASTER",
       "url": "https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUNDAY_EASTER.pdf",
-      "isCurrent": true,
+      "isCurrent": false,
       "nativeBulletin": null
     },
     {
