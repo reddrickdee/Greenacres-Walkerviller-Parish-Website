@@ -1,0 +1,465 @@
+- generic [ref=e3]:
+  - link "Skip to main content" [ref=e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e5]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: In the footsteps of Jesus
+      - generic [ref=e9]:
+        - link "Safeguarding" [ref=e10] [cursor=pointer]:
+          - /url: /safeguarding
+        - generic [ref=e11]: "|"
+        - link "Privacy" [ref=e12] [cursor=pointer]:
+          - /url: /contact
+        - generic [ref=e13]: "|"
+        - link "(08) 8261 6100" [ref=e14] [cursor=pointer]:
+          - /url: tel:(08) 8261 6100
+          - img [ref=e15]
+          - text: (08) 8261 6100
+    - generic [ref=e18]:
+      - link "Greenacres Walkerville Catholic Parish home" [ref=e19] [cursor=pointer]:
+        - /url: /
+        - img "Greenacres Walkerville Parish logo" [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23]: Greenacres
+          - generic [ref=e24]: Walkerville
+          - generic [ref=e25]: Catholic Parish
+      - generic [ref=e26]:
+        - link "Mass Times" [ref=e27] [cursor=pointer]:
+          - /url: /mass-times
+        - link "Sacraments" [ref=e28] [cursor=pointer]:
+          - /url: /sacraments
+        - link "Today's Readings" [ref=e29] [cursor=pointer]:
+          - /url: /daily-readings
+        - link "I'm New Here" [ref=e30] [cursor=pointer]:
+          - /url: /new-here
+        - link "Our Parish" [ref=e31] [cursor=pointer]:
+          - /url: /about
+        - link "News & Events" [ref=e32] [cursor=pointer]:
+          - /url: /news-events
+        - link "Get Involved" [ref=e33] [cursor=pointer]:
+          - /url: /volunteer
+        - link "Give" [ref=e34] [cursor=pointer]:
+          - /url: /give
+        - link "Contact" [ref=e35] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - button "Accessibility Settings" [ref=e39] [cursor=pointer]:
+            - img [ref=e40]
+          - button "Switch to dark mode" [ref=e43] [cursor=pointer]:
+            - img [ref=e44]
+        - button "Search" [ref=e46] [cursor=pointer]:
+          - img [ref=e47]
+  - main [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - generic [ref=e57]: Bulletin Archive
+          - heading "Connections — every issue, all in one place." [level=1] [ref=e58]
+          - paragraph [ref=e59]: The Connections bulletin is published each weekend. Browse past issues below, or download the latest as a PDF.
+          - generic [ref=e60]:
+            - link "Download Latest Issue (PDF)" [ref=e61] [cursor=pointer]:
+              - /url: /assets/bulletins/connections-2026-05-10.pdf
+              - img [ref=e62]
+              - text: Download Latest Issue (PDF)
+            - link "Contact The Parish" [ref=e65] [cursor=pointer]:
+              - /url: /contact
+          - generic [ref=e67]:
+            - generic [ref=e68]: How It Works
+            - paragraph [ref=e69]: A new Connections bulletin is published each weekend with the week's notices, rosters, Mass changes, and community news. Every issue is saved here as a PDF.
+        - generic [ref=e71]:
+          - img "Connections parish bulletin" [ref=e72]
+          - generic [ref=e74]:
+            - generic [ref=e75]: Parish Welcome
+            - paragraph [ref=e76]: A calm, practical first step into the life of Greenacres Walkerville Parish.
+      - generic [ref=e77]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - generic [ref=e83]: Current Issue
+            - heading "6th Sunday Easter" [level=2] [ref=e84]
+            - paragraph [ref=e85]: May 10, 2026
+          - generic [ref=e86]:
+            - link "Open PDF" [ref=e87] [cursor=pointer]:
+              - /url: /assets/bulletins/connections-2026-05-10.pdf
+              - img [ref=e88]
+              - text: Open PDF
+            - link "Read Online" [ref=e91] [cursor=pointer]:
+              - /url: /news-events/bulletin/connections-2026-05-10
+              - text: Read Online
+              - img [ref=e92]
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e97]: Past Issues
+            - heading "Browse the full Connections archive." [level=2] [ref=e98]
+            - paragraph [ref=e99]: Each issue links directly to the PDF on the parish website.
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]:
+                - heading "6th Sunday Easter" [level=3] [ref=e103]
+                - generic [ref=e104]: Current
+                - link "Read online →" [ref=e105] [cursor=pointer]:
+                  - /url: /news-events/bulletin/connections-2026-05-10
+              - 'link "Open PDF: CONNECTIONS 6TH SUNDAY EASTER" [ref=e106] [cursor=pointer]':
+                - /url: /assets/bulletins/connections-2026-05-10.pdf
+                - img [ref=e107]
+            - generic [ref=e111]:
+              - heading "14th Sun Ordinary Time" [level=3] [ref=e113]
+              - 'link "Open PDF: CONNECTIONS 14TH SUN ORDINARY TIME" [ref=e114] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_14TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e115]
+            - generic [ref=e119]:
+              - heading "15th Sun Ordinary Time" [level=3] [ref=e121]
+              - 'link "Open PDF: CONNECTIONS 15TH SUN ORDINARY TIME" [ref=e122] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_15TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e123]
+            - generic [ref=e127]:
+              - heading "16th Sun Ordinary Time" [level=3] [ref=e129]
+              - 'link "Open PDF: CONNECTIONS 16TH SUN ORDINARY TIME" [ref=e130] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_16TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e131]
+            - generic [ref=e135]:
+              - heading "17th Sun Ordinary Time" [level=3] [ref=e137]
+              - 'link "Open PDF: CONNECTIONS 17TH SUN ORDINARY TIME" [ref=e138] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_17TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e139]
+            - generic [ref=e143]:
+              - heading "18th Sun Ordinary Time" [level=3] [ref=e145]
+              - 'link "Open PDF: CONNECTIONS 18TH SUN ORDINARY TIME" [ref=e146] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_18TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e147]
+            - generic [ref=e151]:
+              - heading "19th Sun Ordinary Time" [level=3] [ref=e153]
+              - 'link "Open PDF: CONNECTIONS 19TH SUN ORDINARY TIME" [ref=e154] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_19TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e155]
+            - generic [ref=e159]:
+              - heading "1st Sun Advent" [level=3] [ref=e161]
+              - 'link "Open PDF: CONNECTIONS 1ST SUN ADVENT" [ref=e162] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_1ST_SUN_ADVENT.pdf
+                - img [ref=e163]
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - heading "1st Sun Lent" [level=3] [ref=e169]
+                - link "Read online →" [ref=e170] [cursor=pointer]:
+                  - /url: /news-events/bulletin/1st-sun-lent
+              - 'link "Open PDF: CONNECTIONS 1ST SUN LENT" [ref=e171] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_1ST_SUN_LENT.pdf
+                - img [ref=e172]
+            - generic [ref=e176]:
+              - heading "20th Sun Ordinary Time" [level=3] [ref=e178]
+              - 'link "Open PDF: CONNECTIONS 20TH SUN ORDINARY TIME" [ref=e179] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_20TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e180]
+            - generic [ref=e184]:
+              - heading "21st Sun Ordinary Time" [level=3] [ref=e186]
+              - 'link "Open PDF: CONNECTIONS 21ST SUN ORDINARY TIME" [ref=e187] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_21ST_SUN_ORDINARY_TIME.pdf
+                - img [ref=e188]
+            - generic [ref=e192]:
+              - heading "22nd Sun Ordinary Time" [level=3] [ref=e194]
+              - 'link "Open PDF: CONNECTIONS 22ND SUN ORDINARY TIME" [ref=e195] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_22ND_SUN_ORDINARY_TIME.pdf
+                - img [ref=e196]
+            - generic [ref=e200]:
+              - heading "23rd Sun Ordinary Time" [level=3] [ref=e202]
+              - 'link "Open PDF: CONNECTIONS 23RD SUN ORDINARY TIME" [ref=e203] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_23RD_SUN_ORDINARY_TIME.pdf
+                - img [ref=e204]
+            - generic [ref=e208]:
+              - heading "25th Sun Ordinary Time" [level=3] [ref=e210]
+              - 'link "Open PDF: CONNECTIONS 25TH SUN ORDINARY TIME" [ref=e211] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_25TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e212]
+            - generic [ref=e216]:
+              - heading "26th Sun Ordinary Time" [level=3] [ref=e218]
+              - 'link "Open PDF: CONNECTIONS 26TH SUN ORDINARY TIME" [ref=e219] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_26TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e220]
+            - generic [ref=e224]:
+              - heading "27th Sun Ordinary Time" [level=3] [ref=e226]
+              - 'link "Open PDF: CONNECTIONS 27TH SUN ORDINARY TIME" [ref=e227] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_27TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e228]
+            - generic [ref=e232]:
+              - heading "28th Sun Ordinary Time" [level=3] [ref=e234]
+              - 'link "Open PDF: CONNECTIONS 28TH SUN ORDINARY TIME" [ref=e235] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_28TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e236]
+            - generic [ref=e240]:
+              - heading "29th Sun Ordinary Time" [level=3] [ref=e242]
+              - 'link "Open PDF: CONNECTIONS 29TH SUN ORDINARY TIME" [ref=e243] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_29TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e244]
+            - generic [ref=e248]:
+              - heading "2nd Sun Advent" [level=3] [ref=e250]
+              - 'link "Open PDF: CONNECTIONS 2ND SUN ADVENT" [ref=e251] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_ADVENT.pdf
+                - img [ref=e252]
+            - generic [ref=e256]:
+              - generic [ref=e257]:
+                - heading "2nd Sun Lent" [level=3] [ref=e258]
+                - link "Read online →" [ref=e259] [cursor=pointer]:
+                  - /url: /news-events/bulletin/2nd-sun-lent
+              - 'link "Open PDF: CONNECTIONS 2ND SUN LENT" [ref=e260] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_LENT.pdf
+                - img [ref=e261]
+            - generic [ref=e265]:
+              - heading "2nd Sun Ordinary Time" [level=3] [ref=e267]
+              - 'link "Open PDF: CONNECTIONS 2ND SUN ORDINARY TIME" [ref=e268] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_ORDINARY_TIME.pdf
+                - img [ref=e269]
+            - generic [ref=e273]:
+              - heading "2nd Sun Ordinary Time" [level=3] [ref=e275]
+              - 'link "Open PDF: CONNECTIONS 2ND SUN ORDINARY TIME" [ref=e276] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUN_ORDINARY_TIME.pdf
+                - img [ref=e277]
+            - generic [ref=e281]:
+              - heading "2nd Sunday Easter" [level=3] [ref=e283]
+              - 'link "Open PDF: CONNECTIONS 2ND SUNDAY EASTER" [ref=e284] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_2ND_SUNDAY_EASTER.pdf
+                - img [ref=e285]
+            - generic [ref=e289]:
+              - heading "30th Sun Ordinary Time" [level=3] [ref=e291]
+              - 'link "Open PDF: CONNECTIONS 30TH SUN ORDINARY TIME" [ref=e292] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_30TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e293]
+            - generic [ref=e297]:
+              - heading "33rd Sun Ordinary Time" [level=3] [ref=e299]
+              - 'link "Open PDF: CONNECTIONS 33RD SUN ORDINARY TIME" [ref=e300] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_33RD_SUN_ORDINARY_TIME.pdf
+                - img [ref=e301]
+            - generic [ref=e305]:
+              - heading "3rd Sun Advent" [level=3] [ref=e307]
+              - 'link "Open PDF: CONNECTIONS 3RD SUN ADVENT" [ref=e308] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_ADVENT.pdf
+                - img [ref=e309]
+            - generic [ref=e313]:
+              - heading "3rd Sun Lent" [level=3] [ref=e315]
+              - 'link "Open PDF: CONNECTIONS 3RD SUN LENT" [ref=e316] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_LENT.pdf
+                - img [ref=e317]
+            - generic [ref=e321]:
+              - heading "3rd Sun Ordinary Time" [level=3] [ref=e323]
+              - 'link "Open PDF: CONNECTIONS 3RD SUN ORDINARY TIME" [ref=e324] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_ORDINARY_TIME.pdf
+                - img [ref=e325]
+            - generic [ref=e329]:
+              - heading "3rd Sun Ordinary Time" [level=3] [ref=e331]
+              - 'link "Open PDF: CONNECTIONS 3RD SUN ORDINARY TIME" [ref=e332] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_3RD_SUN_ORDINARY_TIME.pdf
+                - img [ref=e333]
+            - generic [ref=e337]:
+              - heading "4th Sun Advent" [level=3] [ref=e339]
+              - 'link "Open PDF: CONNECTIONS 4TH SUN ADVENT" [ref=e340] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_ADVENT.pdf
+                - img [ref=e341]
+            - generic [ref=e345]:
+              - heading "4th Sun Easter" [level=3] [ref=e347]
+              - 'link "Open PDF: CONNECTIONS 4TH SUN EASTER" [ref=e348] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_EASTER.pdf
+                - img [ref=e349]
+            - generic [ref=e353]:
+              - heading "4th Sun Lent" [level=3] [ref=e355]
+              - 'link "Open PDF: CONNECTIONS 4TH SUN LENT" [ref=e356] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_LENT.pdf
+                - img [ref=e357]
+            - generic [ref=e361]:
+              - heading "4th Sun Ordinary Time" [level=3] [ref=e363]
+              - 'link "Open PDF: CONNECTIONS 4TH SUN ORDINARY TIME" [ref=e364] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_4TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e365]
+            - generic [ref=e369]:
+              - heading "5th Sun Easter" [level=3] [ref=e371]
+              - 'link "Open PDF: CONNECTIONS 5TH SUN EASTER" [ref=e372] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_5TH_SUN_EASTER.pdf
+                - img [ref=e373]
+            - generic [ref=e377]:
+              - heading "5th Sun Lent" [level=3] [ref=e379]
+              - 'link "Open PDF: CONNECTIONS 5TH SUN LENT" [ref=e380] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_5TH_SUN_LENT.pdf
+                - img [ref=e381]
+            - generic [ref=e385]:
+              - heading "5th Sun Ordinary Time" [level=3] [ref=e387]
+              - 'link "Open PDF: CONNECTIONS 5TH SUN ORDINARY TIME" [ref=e388] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_5TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e389]
+            - generic [ref=e393]:
+              - heading "6th Sun Ordinary Time" [level=3] [ref=e395]
+              - 'link "Open PDF: CONNECTIONS 6TH SUN ORDINARY TIME" [ref=e396] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_6TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e397]
+            - generic [ref=e401]:
+              - heading "7th Sun Ordinary Time" [level=3] [ref=e403]
+              - 'link "Open PDF: CONNECTIONS 7TH SUN ORDINARY TIME" [ref=e404] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_7TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e405]
+            - generic [ref=e409]:
+              - heading "8th Sun Ordinary Time" [level=3] [ref=e411]
+              - 'link "Open PDF: CONNECTIONS 8TH SUN ORDINARY TIME" [ref=e412] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_8TH_SUN_ORDINARY_TIME.pdf
+                - img [ref=e413]
+            - generic [ref=e417]:
+              - heading "Ascension" [level=3] [ref=e419]
+              - 'link "Open PDF: CONNECTIONS ASCENSION" [ref=e420] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_ASCENSION.pdf
+                - img [ref=e421]
+            - generic [ref=e425]:
+              - heading "Ascension of the Lord" [level=3] [ref=e427]
+              - 'link "Open PDF: CONNECTIONS ASCENSION OF THE LORD" [ref=e428] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_ASCENSION_OF_THE_LORD.pdf
+                - img [ref=e429]
+            - generic [ref=e433]:
+              - heading "Baptism of the Lord" [level=3] [ref=e435]
+              - 'link "Open PDF: CONNECTIONS BAPTISM OF THE LORD" [ref=e436] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_BAPTISM_OF_THE_LORD.pdf
+                - img [ref=e437]
+            - generic [ref=e441]:
+              - heading "Baptism of the Lord" [level=3] [ref=e443]
+              - 'link "Open PDF: CONNECTIONS BAPTISM OF THE LORD" [ref=e444] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_BAPTISM_OF_THE_LORD.pdf
+                - img [ref=e445]
+            - generic [ref=e449]:
+              - heading "Christ the King" [level=3] [ref=e451]
+              - 'link "Open PDF: CONNECTIONS CHRIST THE KING" [ref=e452] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_CHRIST_THE_KING.pdf
+                - img [ref=e453]
+            - generic [ref=e457]:
+              - heading "Easter Sunday" [level=3] [ref=e459]
+              - 'link "Open PDF: CONNECTIONS EASTER SUNDAY" [ref=e460] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_EASTER_SUNDAY.pdf
+                - img [ref=e461]
+            - generic [ref=e465]:
+              - heading "Epiphany" [level=3] [ref=e467]
+              - 'link "Open PDF: CONNECTIONS EPIPHANY" [ref=e468] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_EPIPHANY.pdf
+                - img [ref=e469]
+            - generic [ref=e473]:
+              - heading "Exaltation of the Holy Cross" [level=3] [ref=e475]
+              - 'link "Open PDF: CONNECTIONS EXALTATION OF THE HOLY CROSS" [ref=e476] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_EXALTATION_OF_THE_HOLY_CROSS.pdf
+                - img [ref=e477]
+            - generic [ref=e481]:
+              - heading "Holy Family" [level=3] [ref=e483]
+              - 'link "Open PDF: CONNECTIONS HOLY FAMILY" [ref=e484] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_HOLY_FAMILY.pdf
+                - img [ref=e485]
+            - generic [ref=e489]:
+              - heading "Most Holy Body and Blood" [level=3] [ref=e491]
+              - 'link "Open PDF: CONNECTIONS MOST HOLY BODY AND BLOOD" [ref=e492] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_MOST_HOLY BODY_AND_BLOOD.pdf
+                - img [ref=e493]
+            - generic [ref=e497]:
+              - heading "Most Holy Trinity" [level=3] [ref=e499]
+              - 'link "Open PDF: CONNECTIONS MOST HOLY TRINITY" [ref=e500] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_MOST_HOLY_TRINITY.pdf
+                - img [ref=e501]
+            - generic [ref=e505]:
+              - heading "Palm Sunday" [level=3] [ref=e507]
+              - 'link "Open PDF: CONNECTIONS PALM SUNDAY" [ref=e508] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_PALM_SUNDAY.pdf
+                - img [ref=e509]
+            - generic [ref=e513]:
+              - heading "Pentecost Sunday" [level=3] [ref=e515]
+              - 'link "Open PDF: CONNECTIONS PENTECOST SUNDAY" [ref=e516] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_PENTECOST_SUNDAY.pdf
+                - img [ref=e517]
+            - generic [ref=e521]:
+              - heading "Sts Peter and Paul Apostles" [level=3] [ref=e523]
+              - 'link "Open PDF: CONNECTIONS STS PETER AND PAUL APOSTLES" [ref=e524] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_STS_PETER_AND_PAUL_APOSTLES.pdf
+                - img [ref=e525]
+            - generic [ref=e529]:
+              - heading "The Commemoration of the Faithful Departed" [level=3] [ref=e531]
+              - 'link "Open PDF: CONNECTIONS THE COMMEMORATION OF THE FAITHFUL DEPARTED" [ref=e532] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_THE_COMMEMORATION_OF_THE_FAITHFUL_DEPARTED.pdf
+                - img [ref=e533]
+            - generic [ref=e537]:
+              - heading "The Dedication of the Lateran Basilica" [level=3] [ref=e539]
+              - 'link "Open PDF: CONNECTIONS THE DEDICATION OF THE LATERAN BASILICA" [ref=e540] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_THE_DEDICATION_OF_THE_LATERAN_BASILICA.pdf
+                - img [ref=e541]
+            - generic [ref=e545]:
+              - heading "The Presentation of the Lord" [level=3] [ref=e547]
+              - 'link "Open PDF: CONNECTIONS THE PRESENTATION OF THE LORD" [ref=e548] [cursor=pointer]':
+                - /url: https://www.gwparish.org.au/News/PastNewsletters/CONNECTIONS_THE_PRESENTATION_OF_THE_LORD.pdf
+                - img [ref=e549]
+        - generic [ref=e556]:
+          - generic [ref=e557]:
+            - generic [ref=e558]: Stay Connected
+            - heading "Check back each weekend for the latest Connections bulletin." [level=2] [ref=e559]
+          - generic [ref=e560]:
+            - link "Back to Home" [ref=e561] [cursor=pointer]:
+              - /url: /
+            - link "Contact The Parish" [ref=e562] [cursor=pointer]:
+              - /url: /contact
+  - contentinfo [ref=e563]:
+    - generic [ref=e564]:
+      - generic [ref=e565]:
+        - generic [ref=e566]:
+          - link "Greenacres Walkerville Catholic Parish" [ref=e567] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e568]:
+              - generic [ref=e569]:
+                - text: Greenacres
+                - text: Walkerville
+              - generic [ref=e570]: Catholic Parish
+          - paragraph [ref=e571]: A welcoming community of faith in the footsteps of Jesus.
+          - generic [ref=e572]:
+            - generic [ref=e573]:
+              - img [ref=e574]
+              - generic [ref=e578]: St Monica's Church, 90 North East Road, Walkerville
+            - generic [ref=e579]:
+              - img [ref=e580]
+              - generic [ref=e584]: St Martin's Church, Corner Muller & Hampstead Roads, Greenacres
+        - generic [ref=e585]:
+          - heading "Quick Links" [level=3] [ref=e586]
+          - generic [ref=e587]:
+            - link "Mass Times" [ref=e588] [cursor=pointer]:
+              - /url: /mass-times
+            - link "Today's Readings" [ref=e589] [cursor=pointer]:
+              - /url: /daily-readings
+            - link "I'm New Here" [ref=e590] [cursor=pointer]:
+              - /url: /new-here
+            - link "Sacraments" [ref=e591] [cursor=pointer]:
+              - /url: /sacraments
+            - link "News & Events" [ref=e592] [cursor=pointer]:
+              - /url: /news-events
+            - link "Get Involved" [ref=e593] [cursor=pointer]:
+              - /url: /volunteer
+            - link "Give" [ref=e594] [cursor=pointer]:
+              - /url: /give
+            - link "Contact" [ref=e595] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e596]:
+          - heading "Parish Office" [level=3] [ref=e597]
+          - generic [ref=e598]:
+            - generic [ref=e599]:
+              - img [ref=e600]
+              - generic [ref=e603]:
+                - paragraph [ref=e604]: Monday – Thursday
+                - paragraph [ref=e605]: 9:00am – 3:00pm
+                - paragraph [ref=e606]: Friday
+                - paragraph [ref=e607]: 9:00am – 12:00pm
+            - paragraph [ref=e608]: We are closed on public holidays.
+          - link "Contact the Office" [ref=e609] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e610]:
+          - heading "We acknowledge" [level=3] [ref=e611]
+          - paragraph [ref=e612]: We acknowledge the Kaurna people, the traditional custodians of the land on which we gather, and pay our respects to Elders past, present and emerging.
+          - generic [ref=e613]:
+            - link "Email" [ref=e614] [cursor=pointer]:
+              - /url: mailto:admin@gwparish.org.au
+              - img [ref=e615]
+            - link "Phone" [ref=e618] [cursor=pointer]:
+              - /url: tel:(08) 8261 6100
+              - img [ref=e619]
+      - generic [ref=e621]:
+        - paragraph [ref=e622]: © 2026 Greenacres Walkerville Catholic Parish
+        - generic [ref=e623]:
+          - link "Safeguarding" [ref=e624] [cursor=pointer]:
+            - /url: /safeguarding
+          - link "Privacy" [ref=e625] [cursor=pointer]:
+            - /url: /contact
+          - link "Terms of Use" [ref=e626] [cursor=pointer]:
+            - /url: /sitemap.xml
+      - generic [ref=e629]: Season of Easter

@@ -1,0 +1,133 @@
+{
+  "weekOf": "2026-05-10",
+  "issueTitle": "Connections — 6th Sunday of Easter 2026",
+  "pdfUrl": "/assets/bulletins/connections-2026-05-10.pdf",
+  "liturgicalInfo": {
+    "sundayTitle": "6th Sunday of Easter",
+    "weekdayReadings": "Easter Season",
+    "note": "Year A"
+  },
+  "massChanges": {
+    "heading": "Mass, Reconciliation and Devotions",
+    "body": "Weekend Masses continue at St Monica's: Saturday 6:00pm Vigil and Sunday 11:00am Ordinariate Mass; St Martin's: Sunday 9:30am. Reconciliation is available 5:15pm-5:45pm Saturday and 8:45am-9:15am Sunday."
+  },
+  "topNotices": [
+    {
+      "heading": "Parish Breakfast",
+      "body": "Saturday 30th May at 9:30am in St Martins Church Hall. Come hungry and gather for great food and lovely conversations. RSVP by 17th May to admin@gwparish.org.au. Limited seats available.",
+      "imageAsset": "assets/posters/connections-2026-05-10/parish-breakfast.png",
+      "imageAlt": "Parish Breakfast poster: Saturday 30th May, 9:30am, St Martins Church Hall, RSVP by 17th May to admin@gwparish.org.au, limited seats available."
+    },
+    {
+      "heading": "Marian Procession",
+      "body": "The 77th Marian Procession will be held on Sunday May 17, beginning at Victoria Park and processing up Wakefield Street into Victoria Square. Parishioners meet from 1:30pm before the procession starts at 2pm. Look for the Greenacres Walkerville banner.",
+      "imageAsset": "assets/posters/connections-2026-05-10/marian-procession.png",
+      "imageAlt": "Marian Procession poster: Sunday May 17, meet from 1:30pm, procession begins at 2pm, Victoria Park to Victoria Square."
+    },
+    {
+      "heading": "Vinnies Winter Appeal",
+      "body": "Vinnies Winter Appeal launches next weekend, supporting people in our community facing homelessness and hardship. Donation envelopes will be available at both churches, or donate online at www.vinnies.org.au or by calling 13 18 12.",
+      "imageAsset": "assets/posters/connections-2026-05-10/vinnies-winter-appeal.png",
+      "imageAlt": "Vinnies Winter Appeal poster: support people facing homelessness and hardship, donation envelopes at both churches, donate online at www.vinnies.org.au or phone 13 18 12."
+    }
+  ],
+  "thisWeek": [
+    {
+      "heading": "New Counters Needed",
+      "body": "The parish needs more volunteers to count collections and prepare cash for banking after Sunday morning Mass. Teams of three serve on the first Sunday of the month. Training and encouragement supplied. Ring the Parish Office on 8261 6200.",
+      "imageAsset": "assets/posters/connections-2026-05-10/new-counters-needed.png",
+      "imageAlt": "New Counters Needed poster: help count Sunday collections, teams of three, first Sunday of the month, ring the Parish Office on 8261 6200."
+    },
+    {
+      "heading": "Good Giving App",
+      "body": "You can give to the parish through Adelaide Archdiocese's Good Giving App on your mobile phone or by visiting https://adelaide.goodgiving.com.au/qr/parish/greenacres to set up direct giving from your computer.",
+      "imageAsset": "assets/posters/connections-2026-05-10/giving-app.png",
+      "imageAlt": "Giving App poster: support Greenacres Walkerville Parish through Adelaide Archdiocese's Good Giving App at https://adelaide.goodgiving.com.au/qr/parish/greenacres."
+    },
+    {
+      "heading": "Synod 2026 Liturgies",
+      "body": "Ecumenical Taizé Prayer on the Eve of the Synod will be held 19 May 2026 at 7:30pm at St Francis Xavier Cathedral. Opening Mass of the 2026 Archdiocesan Synod will be held 29 May 2026 at 5:45pm at St Francis Xavier Cathedral.",
+      "imageAsset": "assets/posters/connections-2026-05-10/synod-2026-liturgies.png",
+      "imageAlt": "Synod 2026 Liturgies poster: Ecumenical Taizé Prayer, 19 May 2026, 7:30pm, and Opening Mass, 29 May 2026, 5:45pm, both at St Francis Xavier Cathedral."
+    },
+    {
+      "heading": "Holy Mass",
+      "body": "Fr Roy reminds parishioners to arrive on time for Mass, preserve silence and reverence, minimise distractions, and keep focus on the living liturgy being celebrated before us."
+    }
+  ],
+  "communitySchool": [
+    {
+      "heading": "Southern Cross",
+      "body": "The May edition of The Southern Cross is now available in the church foyers."
+    },
+    {
+      "heading": "Children's Liturgy",
+      "body": "Children's Liturgy will be offered during Masses on Saturday 16 and Sunday 17 May."
+    },
+    {
+      "heading": "Parish Office",
+      "body": "For parish notices, sacramental enquiries, planned giving, or volunteer registrations, contact the Parish Office on 08 8261 6200 or email admin@gwparish.org.au."
+    }
+  ],
+  "roster": {
+    "heading": "Weekend Ministry Roster",
+    "saturday": {
+      "label": "Saturday 16 May — Vigil Mass 6:00pm (St Monica's)",
+      "roles": [
+        {
+          "role": "Welcomers",
+          "name": "Tasha Chye, David Bland"
+        },
+        {
+          "role": "Musicians",
+          "name": "CD - Norvin R"
+        },
+        {
+          "role": "Commentator",
+          "name": "Max Willmore"
+        },
+        {
+          "role": "Readers",
+          "name": "Tasha Chye, Sharon Quinn"
+        },
+        {
+          "role": "Eucharistic Minister",
+          "name": "Reg Nye"
+        },
+        {
+          "role": "Hospitality",
+          "name": "N/A"
+        }
+      ]
+    },
+    "sunday": {
+      "label": "Sunday 17 May — Mass 9:30am (St Martin's)",
+      "roles": [
+        {
+          "role": "Welcomers",
+          "name": "Elaine Prior, Michelle Arthur"
+        },
+        {
+          "role": "Musicians",
+          "name": "Emma & Choir"
+        },
+        {
+          "role": "Commentator",
+          "name": "Clare Mahony"
+        },
+        {
+          "role": "Readers",
+          "name": "Joanitha D'Souza, Peter Higgs"
+        },
+        {
+          "role": "Eucharistic Minister",
+          "name": "Michael Downs, Liz Giannetta"
+        },
+        {
+          "role": "Hospitality",
+          "name": "N/A"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,418 @@
+- generic [ref=e3]:
+  - link "Skip to main content" [ref=e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e5]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: In the footsteps of Jesus
+      - generic [ref=e9]:
+        - link "Safeguarding" [ref=e10] [cursor=pointer]:
+          - /url: /safeguarding
+        - generic [ref=e11]: "|"
+        - link "Privacy" [ref=e12] [cursor=pointer]:
+          - /url: /contact
+        - generic [ref=e13]: "|"
+        - link "(08) 8261 6100" [ref=e14] [cursor=pointer]:
+          - /url: tel:(08) 8261 6100
+          - img [ref=e15]
+          - text: (08) 8261 6100
+    - generic [ref=e18]:
+      - link "Greenacres Walkerville Catholic Parish home" [ref=e19] [cursor=pointer]:
+        - /url: /
+        - img "Greenacres Walkerville Parish logo" [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23]: Greenacres
+          - generic [ref=e24]: Walkerville
+          - generic [ref=e25]: Catholic Parish
+      - generic [ref=e26]:
+        - link "Mass Times" [ref=e27] [cursor=pointer]:
+          - /url: /mass-times
+        - link "Sacraments" [ref=e28] [cursor=pointer]:
+          - /url: /sacraments
+        - link "Today's Readings" [ref=e29] [cursor=pointer]:
+          - /url: /daily-readings
+        - link "I'm New Here" [ref=e30] [cursor=pointer]:
+          - /url: /new-here
+        - link "Our Parish" [ref=e31] [cursor=pointer]:
+          - /url: /about
+        - link "News & Events" [ref=e32] [cursor=pointer]:
+          - /url: /news-events
+        - link "Get Involved" [ref=e33] [cursor=pointer]:
+          - /url: /volunteer
+        - link "Give" [ref=e34] [cursor=pointer]:
+          - /url: /give
+        - link "Contact" [ref=e35] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - button "Accessibility Settings" [ref=e39] [cursor=pointer]:
+            - img [ref=e40]
+          - button "Switch to dark mode" [ref=e43] [cursor=pointer]:
+            - img [ref=e44]
+        - button "Search" [ref=e46] [cursor=pointer]:
+          - img [ref=e47]
+  - main [ref=e50]:
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e58]:
+          - heading "A welcoming community of faith in Adelaide" [level=1] [ref=e59]
+          - paragraph [ref=e60]: We are a Catholic Parish serving Greenacres, Walkerville and the surrounding communities.
+          - generic [ref=e61]:
+            - link "View Mass Times" [ref=e62] [cursor=pointer]:
+              - /url: /mass-times
+            - link "I'm New Here" [ref=e63] [cursor=pointer]:
+              - /url: /new-here
+        - generic [ref=e64]:
+          - generic [ref=e66]:
+            - img [ref=e68]
+            - generic [ref=e72]:
+              - generic [ref=e73]: Next Mass
+              - generic [ref=e74]: Tue 9:00am
+              - generic [ref=e75]: St Martin's
+              - generic [ref=e76]: Begins in 1d 18h 12m 50s
+          - generic [ref=e79]:
+            - generic [ref=e80]: St Monica's
+            - generic [ref=e81]: Catholic Church
+      - generic [ref=e82]:
+        - generic [ref=e84]: In the Footsteps of Jesus
+        - generic [ref=e85]: ·
+        - generic [ref=e86]: Easter
+    - generic [ref=e87]:
+      - generic [ref=e89]:
+        - heading "How can we help you today?" [level=2] [ref=e90]
+        - generic [ref=e91]:
+          - link "Mass Times Weekend and weekday Mass times for both St Monica’s and St Martin’s. View Mass Times" [ref=e93] [cursor=pointer]:
+            - /url: /mass-times
+            - img [ref=e94]
+            - heading "Mass Times" [level=3] [ref=e98]
+            - paragraph [ref=e99]: Weekend and weekday Mass times for both St Monica’s and St Martin’s.
+            - generic [ref=e100]:
+              - text: View Mass Times
+              - img [ref=e101]
+          - link "I'm New Here Everything you need to know for your first visit. We can’t wait to welcome you. Plan Your Visit" [ref=e104] [cursor=pointer]:
+            - /url: /new-here
+            - img [ref=e105]
+            - heading "I'm New Here" [level=3] [ref=e109]
+            - paragraph [ref=e110]: Everything you need to know for your first visit. We can’t wait to welcome you.
+            - generic [ref=e111]:
+              - text: Plan Your Visit
+              - img [ref=e112]
+          - link "This Week's Bulletin Read the latest bulletin and find what’s happening in our Parish this week. Read Bulletin" [ref=e115] [cursor=pointer]:
+            - /url: /news-events
+            - img [ref=e116]
+            - heading "This Week's Bulletin" [level=3] [ref=e119]
+            - paragraph [ref=e120]: Read the latest bulletin and find what’s happening in our Parish this week.
+            - generic [ref=e121]:
+              - text: Read Bulletin
+              - img [ref=e122]
+          - link "Give Online Your generosity helps our Parish to continue our mission and ministries. Give Now" [ref=e125] [cursor=pointer]:
+            - /url: /give
+            - img [ref=e126]
+            - heading "Give Online" [level=3] [ref=e128]
+            - paragraph [ref=e129]: Your generosity helps our Parish to continue our mission and ministries.
+            - generic [ref=e130]:
+              - text: Give Now
+              - img [ref=e131]
+          - link "Contact the Office Get in touch with our Parish Office. We’re here to help. Contact Us" [ref=e134] [cursor=pointer]:
+            - /url: /contact
+            - img [ref=e135]
+            - heading "Contact the Office" [level=3] [ref=e137]
+            - paragraph [ref=e138]: Get in touch with our Parish Office. We’re here to help.
+            - generic [ref=e139]:
+              - text: Contact Us
+              - img [ref=e140]
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - img [ref=e150]
+            - generic [ref=e152]:
+              - heading "This Weekend" [level=2] [ref=e153]
+              - paragraph [ref=e154]: 16 – 17 May 2026
+          - paragraph [ref=e155]: Easter
+          - generic [ref=e156]:
+            - heading "Upcoming Masses" [level=3] [ref=e157]
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - paragraph [ref=e160]: St Monica's Church
+                - paragraph [ref=e161]: 90 North East Road, Walkerville
+                - generic [ref=e162]:
+                  - generic [ref=e163]:
+                    - text: Saturday Vigil
+                    - strong [ref=e164]: 6:00pm
+                  - generic [ref=e165]:
+                    - text: Sunday
+                    - strong [ref=e166]: 9:30am
+              - generic [ref=e167]:
+                - paragraph [ref=e168]: St Martin's Church
+                - paragraph [ref=e169]: Corner Muller & Hampstead Roads, Greenacres
+                - generic [ref=e171]:
+                  - text: Sunday
+                  - strong [ref=e172]: 9:00am
+              - generic [ref=e173]:
+                - paragraph [ref=e174]: Weekday Mass
+                - paragraph [ref=e175]: Both Churches
+                - generic [ref=e177]:
+                  - text: Monday – Saturday
+                  - strong [ref=e178]: 9:15am
+          - link "View full Mass Times" [ref=e179] [cursor=pointer]:
+            - /url: /mass-times
+            - text: View full Mass Times
+            - img [ref=e180]
+        - img "Interior of St Monica's Church, Walkerville" [ref=e183]
+      - 'link "Today’s Readings 6th Sunday of Easter Gospel: John 14:15‐21 White / Gold" [ref=e188] [cursor=pointer]':
+        - /url: /daily-readings
+        - generic [ref=e190]:
+          - img [ref=e192]
+          - generic [ref=e194]:
+            - paragraph [ref=e195]: Today’s Readings
+            - paragraph [ref=e196]: 6th Sunday of Easter
+            - generic [ref=e197]:
+              - generic [ref=e198]: "Gospel: John 14:15‐21"
+              - generic [ref=e199]: White / Gold
+          - img [ref=e201]
+      - generic [ref=e206]:
+        - 'img "Parish bulletin: Connections — 6th Sunday of Easter 2026" [ref=e209]'
+        - generic [ref=e210]:
+          - generic [ref=e211]: Latest Bulletin
+          - heading "This week in our Parish" [level=2] [ref=e212]
+          - paragraph [ref=e213]: Stay informed with the latest news, reflections, and events across our Parish community.
+          - generic [ref=e214]:
+            - link "Read Bulletin Online" [ref=e215] [cursor=pointer]:
+              - /url: /assets/bulletins/connections-2026-05-10.pdf
+              - img [ref=e216]
+              - text: Read Bulletin Online
+            - link "Download Bulletin (PDF)" [ref=e220] [cursor=pointer]:
+              - /url: /assets/bulletins/connections-2026-05-10.pdf
+              - img [ref=e221]
+              - text: Download Bulletin (PDF)
+          - paragraph [ref=e224]: 2026-05-10 · Connections — 6th Sunday of Easter 2026
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - generic [ref=e228]: Upcoming Events
+          - heading "What's happening in the Parish" [level=2] [ref=e229]
+        - generic [ref=e230]:
+          - generic [ref=e231]:
+            - generic [ref=e232]:
+              - generic [ref=e233]: "11"
+              - generic [ref=e234]: May
+            - generic [ref=e235]:
+              - heading "Lectio Divina" [level=3] [ref=e236]
+              - generic [ref=e237]:
+                - generic [ref=e238]:
+                  - img [ref=e239]
+                  - text: Mon, 11 May
+                - generic [ref=e241]:
+                  - img [ref=e242]
+                  - text: 1:30pm
+                - generic [ref=e245]:
+                  - img [ref=e246]
+                  - text: St Martin's Church Hall
+              - paragraph [ref=e249]: Parish Lectio Divina gathering for prayerful reflection on scripture.
+            - generic [ref=e250]:
+              - img [ref=e251]
+              - text: Devotion
+          - generic [ref=e254]:
+            - generic [ref=e255]:
+              - generic [ref=e256]: "12"
+              - generic [ref=e257]: May
+            - generic [ref=e258]:
+              - heading "St Vincent de Paul" [level=3] [ref=e259]
+              - generic [ref=e260]:
+                - generic [ref=e261]:
+                  - img [ref=e262]
+                  - text: Tue, 12 May
+                - generic [ref=e264]:
+                  - img [ref=e265]
+                  - text: 9:45am
+                - generic [ref=e268]:
+                  - img [ref=e269]
+                  - text: St Martin's Church Hall
+              - paragraph [ref=e272]: St Vincent de Paul parish conference meeting.
+            - generic [ref=e273]:
+              - img [ref=e274]
+              - text: Meeting
+          - generic [ref=e277]:
+            - generic [ref=e278]:
+              - generic [ref=e279]: "13"
+              - generic [ref=e280]: May
+            - generic [ref=e281]:
+              - heading "Sacramental Program" [level=3] [ref=e282]
+              - generic [ref=e283]:
+                - generic [ref=e284]:
+                  - img [ref=e285]
+                  - text: Wed, 13 May
+                - generic [ref=e287]:
+                  - img [ref=e288]
+                  - text: 6:15pm
+                - generic [ref=e291]:
+                  - img [ref=e292]
+                  - text: St Monica's School Hall
+              - paragraph [ref=e295]: 2025/2026 Sacramental Program gathering.
+            - generic [ref=e296]:
+              - img [ref=e297]
+              - text: Sacrament
+          - generic [ref=e300]:
+            - generic [ref=e301]:
+              - generic [ref=e302]: "17"
+              - generic [ref=e303]: May
+            - generic [ref=e304]:
+              - heading "Marian Procession" [level=3] [ref=e305]
+              - generic [ref=e306]:
+                - generic [ref=e307]:
+                  - img [ref=e308]
+                  - text: Sun, 17 May
+                - generic [ref=e310]:
+                  - img [ref=e311]
+                  - text: Meet from 1:30pm; procession begins at 2:00pm
+                - generic [ref=e314]:
+                  - img [ref=e315]
+                  - text: Victoria Park to Victoria Square
+              - paragraph [ref=e318]: The 77th Marian Procession begins at Victoria Park and processes up Wakefield Street into Victoria Square. Look for the Greenacres Walkerville banner.
+            - generic [ref=e319]:
+              - img [ref=e320]
+              - text: Devotion
+          - generic [ref=e323]:
+            - generic [ref=e324]:
+              - generic [ref=e325]: "17"
+              - generic [ref=e326]: May
+            - generic [ref=e327]:
+              - heading "Youth Mass" [level=3] [ref=e328]
+              - generic [ref=e329]:
+                - generic [ref=e330]:
+                  - img [ref=e331]
+                  - text: Sun, 17 May
+                - generic [ref=e333]:
+                  - img [ref=e334]
+                  - text: During weekend Masses
+                - generic [ref=e337]:
+                  - img [ref=e338]
+                  - text: St Monica's and St Martin's
+              - paragraph [ref=e341]: Youth Mass during the weekend Masses of Saturday 16 and Sunday 17 May.
+            - generic [ref=e342]:
+              - img [ref=e343]
+              - text: Youth
+      - generic [ref=e349]:
+        - generic [ref=e350]:
+          - img [ref=e352]
+          - generic [ref=e355]:
+            - generic [ref=e356]: This Week in the Church
+            - heading "Season of Easter" [level=2] [ref=e357]
+            - paragraph [ref=e358]: We celebrate the risen Christ during these fifty days of joy. The Easter Season runs from Easter Sunday through Pentecost Sunday.
+        - generic [ref=e359]:
+          - img [ref=e360]
+          - generic [ref=e362]:
+            - text: "Liturgical colour:"
+            - generic [ref=e363]: White / Gold
+      - generic [ref=e368]:
+        - heading "Parish life" [level=2] [ref=e369]
+        - generic [ref=e370]:
+          - link "Sacraments Baptism, Reconciliation, First Communion, Confirmation & more. Learn more" [ref=e372] [cursor=pointer]:
+            - /url: /sacraments
+            - img [ref=e373]
+            - heading "Sacraments" [level=3] [ref=e376]
+            - paragraph [ref=e377]: Baptism, Reconciliation, First Communion, Confirmation & more.
+            - generic [ref=e378]:
+              - text: Learn more
+              - img [ref=e379]
+          - link "Ministries Explore our ministries and find a place to share your gifts. Learn more" [ref=e382] [cursor=pointer]:
+            - /url: /volunteer
+            - img [ref=e383]
+            - heading "Ministries" [level=3] [ref=e385]
+            - paragraph [ref=e386]: Explore our ministries and find a place to share your gifts.
+            - generic [ref=e387]:
+              - text: Learn more
+              - img [ref=e388]
+          - link "Our Schools St Martin's Primary School and St Monica's Primary. Learn more" [ref=e391] [cursor=pointer]:
+            - /url: /contact
+            - img [ref=e392]
+            - heading "Our Schools" [level=3] [ref=e395]
+            - paragraph [ref=e396]: St Martin's Primary School and St Monica's Primary.
+            - generic [ref=e397]:
+              - text: Learn more
+              - img [ref=e398]
+          - link "Safeguarding Keeping our community safe is everyone's responsibility. Learn more" [ref=e401] [cursor=pointer]:
+            - /url: /safeguarding
+            - img [ref=e402]
+            - heading "Safeguarding" [level=3] [ref=e404]
+            - paragraph [ref=e405]: Keeping our community safe is everyone's responsibility.
+            - generic [ref=e406]:
+              - text: Learn more
+              - img [ref=e407]
+          - link "Parish Calendar See what's happening in the parish this month. Learn more" [ref=e410] [cursor=pointer]:
+            - /url: /news-events
+            - img [ref=e411]
+            - heading "Parish Calendar" [level=3] [ref=e413]
+            - paragraph [ref=e414]: See what's happening in the parish this month.
+            - generic [ref=e415]:
+              - text: Learn more
+              - img [ref=e416]
+  - contentinfo [ref=e418]:
+    - generic [ref=e419]:
+      - generic [ref=e420]:
+        - generic [ref=e421]:
+          - link "Greenacres Walkerville Catholic Parish" [ref=e422] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e423]:
+              - generic [ref=e424]:
+                - text: Greenacres
+                - text: Walkerville
+              - generic [ref=e425]: Catholic Parish
+          - paragraph [ref=e426]: A welcoming community of faith in the footsteps of Jesus.
+          - generic [ref=e427]:
+            - generic [ref=e428]:
+              - img [ref=e429]
+              - generic [ref=e433]: St Monica's Church, 90 North East Road, Walkerville
+            - generic [ref=e434]:
+              - img [ref=e435]
+              - generic [ref=e439]: St Martin's Church, Corner Muller & Hampstead Roads, Greenacres
+        - generic [ref=e440]:
+          - heading "Quick Links" [level=3] [ref=e441]
+          - generic [ref=e442]:
+            - link "Mass Times" [ref=e443] [cursor=pointer]:
+              - /url: /mass-times
+            - link "Today's Readings" [ref=e444] [cursor=pointer]:
+              - /url: /daily-readings
+            - link "I'm New Here" [ref=e445] [cursor=pointer]:
+              - /url: /new-here
+            - link "Sacraments" [ref=e446] [cursor=pointer]:
+              - /url: /sacraments
+            - link "News & Events" [ref=e447] [cursor=pointer]:
+              - /url: /news-events
+            - link "Get Involved" [ref=e448] [cursor=pointer]:
+              - /url: /volunteer
+            - link "Give" [ref=e449] [cursor=pointer]:
+              - /url: /give
+            - link "Contact" [ref=e450] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e451]:
+          - heading "Parish Office" [level=3] [ref=e452]
+          - generic [ref=e453]:
+            - generic [ref=e454]:
+              - img [ref=e455]
+              - generic [ref=e458]:
+                - paragraph [ref=e459]: Monday – Thursday
+                - paragraph [ref=e460]: 9:00am – 3:00pm
+                - paragraph [ref=e461]: Friday
+                - paragraph [ref=e462]: 9:00am – 12:00pm
+            - paragraph [ref=e463]: We are closed on public holidays.
+          - link "Contact the Office" [ref=e464] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e465]:
+          - heading "We acknowledge" [level=3] [ref=e466]
+          - paragraph [ref=e467]: We acknowledge the Kaurna people, the traditional custodians of the land on which we gather, and pay our respects to Elders past, present and emerging.
+          - generic [ref=e468]:
+            - link "Email" [ref=e469] [cursor=pointer]:
+              - /url: mailto:admin@gwparish.org.au
+              - img [ref=e470]
+            - link "Phone" [ref=e473] [cursor=pointer]:
+              - /url: tel:(08) 8261 6100
+              - img [ref=e474]
+      - generic [ref=e476]:
+        - paragraph [ref=e477]: © 2026 Greenacres Walkerville Catholic Parish
+        - generic [ref=e478]:
+          - link "Safeguarding" [ref=e479] [cursor=pointer]:
+            - /url: /safeguarding
+          - link "Privacy" [ref=e480] [cursor=pointer]:
+            - /url: /contact
+          - link "Terms of Use" [ref=e481] [cursor=pointer]:
+            - /url: /sitemap.xml
+      - generic [ref=e484]: Season of Easter

@@ -4,6 +4,7 @@ import { HeroSection } from '../components/home/HeroSection';
 import { TaskCards } from '../components/home/TaskCards';
 import { ThisWeekend } from '../components/home/ThisWeekend';
 import { LatestBulletin } from '../components/home/LatestBulletin';
+import { WeeklyNotices } from '../components/home/WeeklyNotices';
 import { ParishLifeStrip } from '../components/home/ParishLifeStrip';
 import { EventsList } from '../components/home/EventsList';
 import { LiturgicalWidget } from '../components/home/LiturgicalWidget';
@@ -63,6 +64,9 @@ export function HomePage() {
 
                 {/* Latest Bulletin — cover image + download */}
                 <LatestBulletin />
+
+                {/* Current Connections notices */}
+                <WeeklyNotices />
 
                 {/* Upcoming Events */}
                 <EventsList limit={5} />

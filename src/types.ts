@@ -138,7 +138,7 @@ export interface BulletinSection {
     title: string;
     content: string;
     imageAsset?: string;
+    imageAlt?: string;
     imageFocalPoint?: { x: number; y: number };
 }
-
 
