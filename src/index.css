@@ -88,15 +88,9 @@
     line-height: 1.08;
   }
 
-  a:focus-visible,
-  button:focus-visible,
-  [role="button"]:focus-visible,
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    outline: 3px solid hsl(var(--color-parish-brass));
-    outline-offset: 4px;
-    border-radius: 8px;
+  *:focus-visible {
+    outline: 3px solid hsl(var(--color-parish-brass)) !important;
+    outline-offset: 2px !important;
   }
 
   a,

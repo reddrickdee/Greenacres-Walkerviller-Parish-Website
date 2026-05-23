@@ -104,7 +104,7 @@ export function GalleryPage() {
                                 onClick={() => setSelectedCategory(cat)}
                                 className={`rounded-full px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.24em] transition-all duration-300 ${selectedCategory === cat
                                     ? 'bg-parish-fg text-parish-inverse shadow-halo'
-                                    : 'border border-parish-border/10 bg-parish-surface/70 text-parish-muted hover:border-parish-brass/30 hover:text-parish-fg'
+                                    : 'border border-parish-border/10 bg-parish-surface/90 text-parish-muted hover:border-parish-brass/30 hover:text-parish-fg'
                                     }`}
                             >
                                 {cat}

@@ -14,12 +14,8 @@ const HistoryPage = lazy(() => import('./pages/HistoryPage').then(m => ({ defaul
 const NewHerePage = lazy(() => import('./pages/NewHerePage').then(m => ({ default: m.NewHerePage })));
 const NewsEventsPage = lazy(() => import('./pages/NewsEventsPage').then(m => ({ default: m.NewsEventsPage })));
 const BulletinPage = lazy(() => import('./pages/BulletinPage').then(m => ({ default: m.BulletinPage })));
-const SafeguardingPage = lazy(() => import('./pages/SafeguardingPage').then(m => ({ default: m.SafeguardingPage })));
 const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then(m => ({ default: m.VolunteerPage })));
 const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
-const SacramentsPage = lazy(() => import('./pages/SacramentsPage').then(m => ({ default: m.SacramentsPage })));
-const GivePage = lazy(() => import('./pages/GivePage').then(m => ({ default: m.GivePage })));
-const DailyReadingsPage = lazy(() => import('./pages/DailyReadingsPage').then(m => ({ default: m.DailyReadingsPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 import { PATHS } from './lib/routes';
@@ -141,12 +137,8 @@ const router = createBrowserRouter([
             { path: rel(PATHS.NEW_HERE), element: <NewHerePage /> },
             { path: rel(PATHS.NEWS_EVENTS), element: <NewsEventsPage /> },
             { path: rel(PATHS.BULLETIN), element: <BulletinPage /> },
-            { path: rel(PATHS.SAFEGUARDING), element: <SafeguardingPage /> },
             { path: rel(PATHS.VOLUNTEER), element: <VolunteerPage /> },
             { path: rel(PATHS.GALLERY), element: <GalleryPage /> },
-            { path: rel(PATHS.SACRAMENTS), element: <SacramentsPage /> },
-            { path: rel(PATHS.GIVE), element: <GivePage /> },
-            { path: rel(PATHS.DAILY_READINGS), element: <DailyReadingsPage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },

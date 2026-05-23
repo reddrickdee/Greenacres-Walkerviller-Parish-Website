@@ -8,7 +8,6 @@ import { WeeklyNotices } from '../components/home/WeeklyNotices';
 import { ParishLifeStrip } from '../components/home/ParishLifeStrip';
 import { EventsList } from '../components/home/EventsList';
 import { LiturgicalWidget } from '../components/home/LiturgicalWidget';
-import { TodaysReadingsCard } from '../components/home/TodaysReadingsCard';
 
 export function HomePage() {
     usePageSEO({
@@ -58,9 +57,6 @@ export function HomePage() {
 
                 {/* This Weekend — Mass schedule + liturgical info */}
                 <ThisWeekend />
-
-                {/* Today's Readings — daily Mass readings card */}
-                <TodaysReadingsCard />
 
                 {/* Latest Bulletin — cover image + download */}
                 <LatestBulletin />

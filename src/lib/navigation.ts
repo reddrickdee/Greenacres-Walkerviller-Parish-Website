@@ -5,7 +5,7 @@
  * Path constants and ROUTE_META are centralised in ./routes.ts.
  */
 import type { LucideIcon } from 'lucide-react';
-import { CalendarClock, Heart, Mail, MapPinned, Droplets } from 'lucide-react';
+import { CalendarClock, Mail, MapPinned } from 'lucide-react';
 import { PATHS } from './routes';
 
 // Re-export ROUTE_META so existing consumers (Breadcrumbs, tests) keep working
@@ -35,13 +35,10 @@ export interface QuickAction {
 
 export const PRIMARY_NAV: NavItem[] = [
     { to: PATHS.MASS_TIMES, label: 'Mass Times' },
-    { to: PATHS.SACRAMENTS, label: 'Sacraments' },
-    { to: PATHS.DAILY_READINGS, label: "Today's Readings" },
     { to: PATHS.NEW_HERE, label: "I'm New Here" },
     { to: PATHS.ABOUT, label: 'Our Parish' },
     { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
     { to: PATHS.VOLUNTEER, label: 'Get Involved' },
-    { to: PATHS.GIVE, label: 'Give' },
     { to: PATHS.CONTACT, label: 'Contact' },
 ];
 
@@ -52,8 +49,6 @@ export const DRAWER_GROUPS: NavGroup[] = [
         title: 'Worship',
         links: [
             { to: PATHS.MASS_TIMES, label: 'Mass Times' },
-            { to: PATHS.SACRAMENTS, label: 'Sacraments' },
-            { to: PATHS.DAILY_READINGS, label: "Today's Readings" },
         ],
     },
     {
@@ -70,9 +65,7 @@ export const DRAWER_GROUPS: NavGroup[] = [
         links: [
             { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
             { to: PATHS.VOLUNTEER, label: 'Get Involved' },
-            { to: PATHS.GIVE, label: 'Give' },
             { to: PATHS.CONTACT, label: 'Contact' },
-            { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
         ],
     },
 ];
@@ -87,22 +80,10 @@ export const QUICK_ACTIONS: QuickAction[] = [
         to: PATHS.MASS_TIMES,
     },
     {
-        icon: Droplets,
-        title: 'Sacraments',
-        detail: 'Baptism, Reconciliation, Weddings, and more.',
-        to: PATHS.SACRAMENTS,
-    },
-    {
         icon: MapPinned,
         title: 'Plan your first visit',
         detail: 'Find parking, contact details, and what to expect.',
         to: PATHS.NEW_HERE,
-    },
-    {
-        icon: Heart,
-        title: 'Give to the parish',
-        detail: 'Support a living parish through online giving.',
-        to: PATHS.GIVE,
     },
     {
         icon: Mail,
@@ -116,12 +97,9 @@ export const QUICK_ACTIONS: QuickAction[] = [
 
 export const FOOTER_QUICK_LINKS: NavItem[] = [
     { to: PATHS.MASS_TIMES, label: 'Mass Times' },
-    { to: PATHS.DAILY_READINGS, label: "Today's Readings" },
     { to: PATHS.NEW_HERE, label: "I'm New Here" },
-    { to: PATHS.SACRAMENTS, label: 'Sacraments' },
     { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
     { to: PATHS.VOLUNTEER, label: 'Get Involved' },
-    { to: PATHS.GIVE, label: 'Give' },
     { to: PATHS.CONTACT, label: 'Contact' },
 ];
 
@@ -130,7 +108,6 @@ export const FOOTER_QUICK_LINKS: NavItem[] = [
 export const FOOTER_EXTRA_NAV: NavItem[] = [
     { to: PATHS.GALLERY, label: 'Gallery' },
     { to: PATHS.VOLUNTEER, label: 'Volunteer' },
-    { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
 ];
 
 // ── Active-state helper ───────────────────────────────────────────────────────

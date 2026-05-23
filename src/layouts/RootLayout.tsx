@@ -60,13 +60,6 @@ export function RootLayout() {
                         <span className="hidden opacity-80 md:block">In the footsteps of Jesus</span>
                         <div className="flex items-center gap-4 mx-auto md:mx-0">
                             <Link
-                                to="/safeguarding"
-                                className="text-parish-shell-fg/80 no-underline hover:text-white transition-colors"
-                            >
-                                Safeguarding
-                            </Link>
-                            <span className="text-parish-shell-fg/30">|</span>
-                            <Link
                                 to="/contact"
                                 className="text-parish-shell-fg/80 no-underline hover:text-white transition-colors"
                             >
@@ -311,6 +304,15 @@ export function RootLayout() {
                                     <span>St Martin&apos;s Church, Corner Muller &amp; Hampstead Roads, Greenacres</span>
                                 </div>
                             </div>
+                            <div className="mt-6 border-t border-parish-border/15 pt-4 text-xs text-parish-muted">
+                                <div className="font-semibold text-parish-fg uppercase tracking-wider mb-2">Child Safeguarding Contacts</div>
+                                <p className="mb-1">
+                                    Child Abuse Report Line: <a href="tel:131478" className="font-semibold text-parish-accent hover:underline">13 14 78</a>
+                                </p>
+                                <p>
+                                    Archdiocese Office: <a href="tel:0882108150" className="font-semibold text-parish-accent hover:underline">(08) 8210 8150</a>
+                                </p>
+                            </div>
                         </div>
 
                         {/* Column 2: Quick Links */}
@@ -380,9 +382,6 @@ export function RootLayout() {
                     <div className="mt-12 border-t border-parish-border/15 pt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-xs text-parish-muted/60">
                         <p>© {new Date().getFullYear()} Greenacres Walkerville Catholic Parish</p>
                         <div className="flex items-center gap-4">
-                            <Link to="/safeguarding" className="no-underline hover:text-parish-accent transition-colors">
-                                Safeguarding
-                            </Link>
                             <Link to="/contact" className="no-underline hover:text-parish-accent transition-colors">
                                 Privacy
                             </Link>

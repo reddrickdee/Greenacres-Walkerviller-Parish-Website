@@ -102,7 +102,7 @@ export function AccessibilityMenu() {
                 ref={triggerRef}
                 id="accessibility-menu-btn"
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg text-parish-muted hover:text-parish-fg hover:bg-parish-border/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-lg text-parish-muted hover:text-parish-fg hover:bg-parish-border/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
                 aria-label="Accessibility Settings"
                 aria-expanded={isOpen}
                 aria-haspopup="dialog"
@@ -144,7 +144,7 @@ export function AccessibilityMenu() {
                                         onClick={() => cycleFontSize('down')}
                                         disabled={fontSize === 'normal'}
                                         aria-label="Decrease text size"
-                                        className="p-1.5 rounded-md hover:bg-parish-border/5 disabled:opacity-30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
+                                        className="min-h-[44px] min-w-[44px] flex items-center justify-center p-1.5 rounded-md hover:bg-parish-border/5 disabled:opacity-30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
                                     >
                                         <ZoomOut size={16} />
                                     </button>
@@ -155,7 +155,7 @@ export function AccessibilityMenu() {
                                         onClick={() => cycleFontSize('up')}
                                         disabled={fontSize === 'xlarge'}
                                         aria-label="Increase text size"
-                                        className="p-1.5 rounded-md hover:bg-parish-border/5 disabled:opacity-30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
+                                        className="min-h-[44px] min-w-[44px] flex items-center justify-center p-1.5 rounded-md hover:bg-parish-border/5 disabled:opacity-30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
                                     >
                                         <ZoomIn size={16} />
                                     </button>

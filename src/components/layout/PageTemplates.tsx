@@ -47,10 +47,10 @@ function templateAccent(variant: TemplateVariant) {
     }
 
     if (variant === 'highlight') {
-        return 'bg-gradient-to-br from-parish-elevated/70 via-parish-surface to-parish-surface';
+        return 'bg-gradient-to-br from-parish-elevated/90 via-parish-surface to-parish-surface';
     }
 
-    return 'bg-gradient-to-br from-parish-surface via-parish-surface to-parish-elevated/70';
+    return 'bg-gradient-to-br from-parish-surface via-parish-surface to-parish-elevated/90';
 }
 
 function TemplateFrame({
