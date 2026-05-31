@@ -34,7 +34,7 @@ export interface DailyMassReadingsResult {
     retry: () => void;
 }
 
-const TIMEOUT_MS = 12_000;
+const TIMEOUT_MS = 10_000;
 
 let callbackCounter = 0;
 
@@ -72,6 +72,7 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
     }, []);
 
     useEffect(() => {
+        let isActive = true;
         settledRef.current = false;
         setStatus('loading');
         setData(null);
@@ -80,6 +81,10 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
         const url = buildUniversalisUrl(dateKey, cbName);
 
         (window as any)[cbName] = (payload: UniversalisData) => {
+            if (!isActive) {
+                delete (window as any)[cbName];
+                return;
+            }
             settledRef.current = true;
             setData(payload);
             setStatus('success');
@@ -112,7 +117,15 @@ export function useDailyMassReadings(): DailyMassReadingsResult {
         }, TIMEOUT_MS);
 
         return () => {
-            delete (window as any)[cbName];
+            isActive = false;
+            if (typeof (window as any)[cbName] === 'function') {
+                (window as any)[cbName] = () => {
+                    delete (window as any)[cbName];
+                };
+                window.setTimeout(() => {
+                    delete (window as any)[cbName];
+                }, TIMEOUT_MS);
+            }
             cleanup();
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps

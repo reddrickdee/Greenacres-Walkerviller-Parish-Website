@@ -77,16 +77,16 @@ export function TodaysReadingsCard() {
                     <motion.div {...m}>
                         <Link
                             to={PATHS.DAILY_READINGS}
-                            className="group flex items-center gap-4 sanctuary-panel px-6 py-6 md:px-8 md:py-8 no-underline transition-all duration-500 hover:-translate-y-0.5 hover:shadow-card-hover"
+                            className="group flex items-center gap-4 sanctuary-panel px-6 py-6 md:px-8 md:py-8 no-underline transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-card-hover"
                         >
-                            <BookOpen className="h-6 w-6 text-parish-accent shrink-0" />
+                            <BookOpen className="h-6 w-6 text-parish-accent shrink-0" aria-hidden="true" />
                             <div className="flex-1 min-w-0">
-                                <p className="ornamental-kicker mb-0.5">Today&rsquo;s Readings</p>
+                                <p className="ornamental-kicker mb-0.5">Readings &amp; Reflection</p>
                                 <p className="text-sm text-parish-muted">
-                                    Read the daily Mass readings for Adelaide
+                                    Daily readings and prayer sources for Adelaide
                                 </p>
                             </div>
-                            <ArrowRight className="h-4 w-4 text-parish-accent shrink-0 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="h-4 w-4 text-parish-accent shrink-0 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                         </Link>
                     </motion.div>
                 </div>
@@ -100,7 +100,7 @@ export function TodaysReadingsCard() {
                 <motion.div {...m}>
                     <Link
                         to={PATHS.DAILY_READINGS}
-                        className="group block sanctuary-panel overflow-hidden no-underline transition-all duration-500 hover:-translate-y-0.5 hover:shadow-card-hover"
+                        className="group block sanctuary-panel overflow-hidden no-underline transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-card-hover"
                         style={{
                             background: `linear-gradient(135deg, ${colourInfo.cssColor}08 0%, transparent 60%)`,
                         }}
@@ -114,10 +114,10 @@ export function TodaysReadingsCard() {
                                         color: colourInfo.cssColor,
                                     }}
                                 >
-                                    <BookOpen className="h-5 w-5" />
+                                    <BookOpen className="h-5 w-5" aria-hidden="true" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="ornamental-kicker mb-1">Today&rsquo;s Readings</p>
+                                    <p className="ornamental-kicker mb-1">Readings &amp; Reflection</p>
                                     {liturgicalDay && (
                                         <p className="text-base font-display text-parish-fg leading-snug">
                                             {liturgicalDay}
@@ -139,7 +139,7 @@ export function TodaysReadingsCard() {
                                         </span>
                                     </div>
                                 </div>
-                                <ArrowRight className="h-4 w-4 text-parish-accent shrink-0 mt-1 transition-transform group-hover:translate-x-1" />
+                                <ArrowRight className="h-4 w-4 text-parish-accent shrink-0 mt-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                             </div>
                         </div>
                     </Link>

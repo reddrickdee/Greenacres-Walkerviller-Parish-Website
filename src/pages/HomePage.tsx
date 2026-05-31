@@ -59,7 +59,7 @@ export function HomePage() {
                 {/* This Weekend — Mass schedule + liturgical info */}
                 <ThisWeekend />
 
-                {/* Today's Readings — daily Mass readings card */}
+                {/* Readings & Reflection — daily Mass readings card */}
                 <TodaysReadingsCard />
 
                 {/* Latest Bulletin — cover image + download */}

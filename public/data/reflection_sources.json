@@ -1,0 +1,59 @@
+{
+  "_note": "Only set permissionStatus to approved, and add excerpt text, after written permission to reproduce that source has been documented.",
+  "sources": [
+    {
+      "name": "Universalis Australia - Adelaide",
+      "url": "https://universalis.com/Australia.Adelaide/mass.htm",
+      "kind": "readings",
+      "region": "Australia",
+      "badge": "Australia - Adelaide readings",
+      "description": "Mass readings for the Adelaide liturgical calendar, with copyright details supplied by Universalis.",
+      "permissionStatus": "link_only"
+    },
+    {
+      "name": "Pray.com.au Daily Prayer",
+      "url": "https://www.pray.com.au/daily-prayer/",
+      "kind": "daily-prayer",
+      "region": "Australia",
+      "badge": "Australian Jesuit prayer",
+      "description": "A daily Australian Catholic prayer and Gospel reflection from Jesuit Communications.",
+      "permissionStatus": "link_only"
+    },
+    {
+      "name": "Canberra & Goulburn Living Word",
+      "url": "https://cgcatholic.org.au/livingword/",
+      "kind": "email-signup",
+      "region": "Australia",
+      "badge": "Australian diocesan source",
+      "description": "A diocesan daily Gospel reflection available by email from the Archdiocese of Canberra and Goulburn.",
+      "permissionStatus": "link_only"
+    },
+    {
+      "name": "Bathurst Connect@home",
+      "url": "https://bathurst.catholic.org.au/connecthome-2/",
+      "kind": "email-signup",
+      "region": "Australia",
+      "badge": "Australian email reflection",
+      "description": "Daily readings and reflection links from the Catholic Diocese of Bathurst.",
+      "permissionStatus": "link_only"
+    },
+    {
+      "name": "Sacred Space",
+      "url": "https://www.sacredspace.ie/daily-prayer",
+      "kind": "daily-prayer",
+      "region": "Global",
+      "badge": "Global prayer source",
+      "description": "A daily prayer guide from the Irish Jesuits, offered as a backup prayer source.",
+      "permissionStatus": "link_only"
+    },
+    {
+      "name": "The Word Among Us",
+      "url": "https://wau.org/meditations/daily/",
+      "kind": "gospel-reflection",
+      "region": "Global",
+      "badge": "Global reflection source",
+      "description": "A daily Catholic meditation source, included after Australian options.",
+      "permissionStatus": "link_only"
+    }
+  ]
+}

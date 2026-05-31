@@ -84,14 +84,14 @@ describe('useDailyMassReadings', () => {
         expect(result.current.data).toBeNull();
     });
 
-    it('transitions to timeout after 12 s when script never loads or errors', () => {
+    it('transitions to timeout after 10 s when script never loads or errors', () => {
         const { result } = renderHook(() => useDailyMassReadings());
 
-        // Advance just under 12 s — should still be loading
-        act(() => vi.advanceTimersByTime(11_999));
+        // Advance just under 10 s — should still be loading
+        act(() => vi.advanceTimersByTime(9_999));
         expect(result.current.status).toBe('loading');
 
-        // Advance past the 12 s mark — should timeout
+        // Advance past the 10 s mark — should timeout
         act(() => vi.advanceTimersByTime(1));
         expect(result.current.status).toBe('timeout');
     });
@@ -104,8 +104,8 @@ describe('useDailyMassReadings', () => {
         act(() => fireJsonpCallback());
         expect(result.current.status).toBe('success');
 
-        // Advance past 12 s — status must stay 'success'
-        act(() => vi.advanceTimersByTime(10_000));
+        // Advance past 10 s — status must stay 'success'
+        act(() => vi.advanceTimersByTime(6_000));
         expect(result.current.status).toBe('success');
     });
 
@@ -119,13 +119,19 @@ describe('useDailyMassReadings', () => {
         expect(result.current.status).toBe('error');
     });
 
-    it('cleans up global callback on unmount', () => {
+    it('keeps stale callback harmless on unmount and then removes it', () => {
         const { unmount } = renderHook(() => useDailyMassReadings());
 
         const hasCb = () => Object.keys(window).some(k => k.startsWith('__universalisCb_'));
         expect(hasCb()).toBe(true);
 
+        const cbName = Object.keys(window).find(k => k.startsWith('__universalisCb_'));
         unmount();
+        expect(hasCb()).toBe(true);
+
+        act(() => {
+            (window as any)[cbName!](fakePayload);
+        });
         expect(hasCb()).toBe(false);
     });
 });
