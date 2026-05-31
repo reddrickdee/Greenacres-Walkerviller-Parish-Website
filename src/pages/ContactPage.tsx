@@ -1,9 +1,104 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPinned, Phone } from 'lucide-react';
+import { MapPinned, MapPinOff, Phone } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, InfoCard, SectionIntro, UtilityPageTemplate } from '../components/layout/PageTemplates';
 import { ContentLoading, ContentError } from '../components/ContentStates';
+
+/**
+ * Lifecycle of an embedded Google Maps iframe.
+ * Task 4.4 added 'loading'/'loaded'; task 4.5 adds 'error' for load failure or block.
+ */
+type MapStatus = 'loading' | 'loaded' | 'error';
+
+/**
+ * How long to wait for the iframe `onLoad` before treating the map as
+ * unavailable. Cross-origin iframes (Google Maps) do not reliably fire
+ * `onError` when blocked, so a timeout fallback surfaces the unavailable
+ * indication even when the frame is silently blocked.
+ */
+const MAP_LOAD_TIMEOUT_MS = 10_000;
+
+interface MapEmbedProps {
+    /** Non-empty, AT-friendly title naming the mapped location (church + suburb). */
+    title: string;
+    /** Google Maps search query for this church. */
+    query: string;
+    /** Human-readable location text, retained when the map is unavailable. */
+    address: string;
+}
+
+/**
+ * Google Maps embed with visible loading and failure states.
+ *
+ * While the iframe loads, a spinner is shown inside a rounded container that
+ * uses the warm-tinted Shadow_Token_System (`--shadow-md`). When the iframe's
+ * `onLoad` fires, the loader is replaced by the revealed map.
+ *
+ * If the iframe errors, or fails to load before {@link MAP_LOAD_TIMEOUT_MS}
+ * (covering blocked third-party frames that never fire `onError`), a
+ * map-unavailable indication is shown in the same container while the visible
+ * text address is retained.
+ */
+function MapEmbed({ title, query, address }: MapEmbedProps) {
+    const [status, setStatus] = useState<MapStatus>('loading');
+    const isLoaded = status === 'loaded';
+    const isError = status === 'error';
+
+    // Timeout fallback: a blocked iframe may never fire `onError`, so flip to
+    // the unavailable state if the map has not loaded in time.
+    useEffect(() => {
+        if (status !== 'loading') return;
+        const timer = window.setTimeout(() => {
+            setStatus(current => (current === 'loading' ? 'error' : current));
+        }, MAP_LOAD_TIMEOUT_MS);
+        return () => window.clearTimeout(timer);
+    }, [status]);
+
+    return (
+        <div
+            className="relative mt-5 h-72 w-full overflow-hidden rounded-[1.5rem] border border-parish-border/10 bg-parish-surface"
+            style={{ boxShadow: 'var(--shadow-md)' }}
+        >
+            {isError ? (
+                <div
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-parish-surface px-6 text-center"
+                    role="status"
+                    aria-live="polite"
+                >
+                    <MapPinOff className="h-7 w-7 text-parish-brass" aria-hidden="true" />
+                    <p className="text-sm font-semibold text-parish-fg">Map unavailable</p>
+                    <p className="text-sm leading-relaxed text-parish-muted">
+                        We couldn&apos;t load the interactive map. You can still find us at:
+                    </p>
+                    <p className="text-sm leading-relaxed text-parish-fg">{address}</p>
+                </div>
+            ) : (
+                <>
+                    {!isLoaded && (
+                        <div
+                            className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-parish-surface"
+                            role="status"
+                            aria-live="polite"
+                        >
+                            <div className="h-8 w-8 animate-spin rounded-full border-2 border-parish-border/20 border-t-parish-accent" />
+                            <p className="text-sm text-parish-muted">Loading map…</p>
+                        </div>
+                    )}
+                    <iframe
+                        title={title}
+                        className={`h-full w-full transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed`}
+                        loading="lazy"
+                        onLoad={() => setStatus('loaded')}
+                        onError={() => setStatus('error')}
+                    />
+                </>
+            )}
+        </div>
+    );
+}
 
 export function ContactPage() {
     const { content, isLoading } = useParishData();
@@ -92,22 +187,20 @@ export function ContactPage() {
                         <InfoCard className="p-5 md:p-6">
                             <div className="ornamental-kicker">St Monica&apos;s Church</div>
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.stMonicaQuery}</p>
-                            <iframe
-                                title="St Monica's Church location"
-                                className="mt-5 h-72 w-full rounded-[1.5rem] border border-parish-border/10"
-                                src={`https://maps.google.com/maps?q=${encodeURIComponent(contact.stMonicaQuery)}&output=embed`}
-                                loading="lazy"
+                            <MapEmbed
+                                title="Map of St Monica's Church, Walkerville"
+                                query={contact.stMonicaQuery}
+                                address={contact.stMonicaQuery}
                             />
                         </InfoCard>
 
                         <InfoCard className="p-5 md:p-6">
                             <div className="ornamental-kicker">St Martin&apos;s Church</div>
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.stMartinQuery}</p>
-                            <iframe
-                                title="St Martin's Church location"
-                                className="mt-5 h-72 w-full rounded-[1.5rem] border border-parish-border/10"
-                                src={`https://maps.google.com/maps?q=${encodeURIComponent(contact.stMartinQuery)}&output=embed`}
-                                loading="lazy"
+                            <MapEmbed
+                                title="Map of St Martin's Church, Greenacres"
+                                query={contact.stMartinQuery}
+                                address={contact.stMartinQuery}
                             />
                         </InfoCard>
                     </div>

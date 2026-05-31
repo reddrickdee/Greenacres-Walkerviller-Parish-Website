@@ -154,61 +154,61 @@ This plan implements the Parish Website Design Revamp in "Preserve" mode. Tasks 
   - Add `hanging-punctuation: first` where supported, `text-wrap: pretty` on long passages, and refine verse numbers (smaller, muted, `tabular-nums`)
   - _Requirements: 4.1_
 
-- [-] 4.2 Home EventsList — featured-card asymmetry
+- [x] 4.2 Home EventsList — featured-card asymmetry
   - When two or more events render, present exactly one featured card spanning a larger layout than the remaining uniform cards, consistent with DESIGN_VARIANCE 4–5
   - Add viewport-triggered staggered entry animation
   - _Requirements: 4.2_
 
-- [~] 4.3 Home TaskCards — hover lift
+- [x] 4.3 Home TaskCards — hover lift
   - Apply a `-translate-y-0.5` hover lift while a pointer hovers an interactive card, reverting on pointer leave
   - Suppress the lift while `prefers-reduced-motion: reduce`
   - _Requirements: 4.3, 4.7_
 
-- [~] 4.4 ContactPage — map loading state and polish
+- [x] 4.4 ContactPage — map loading state and polish
   - Show a visible loading indicator inside a rounded container using Shadow_Token_System tokens while the Google Maps iframe loads
   - Set a non-empty iframe `title` naming the mapped location; replace the loader with the map on load
   - _Requirements: 4.4, 4.5_
 
-- [~] 4.5 ContactPage — map failure handling
+- [x] 4.5 ContactPage — map failure handling
   - On iframe load failure or block, show a map-unavailable indication and keep the visible text address
   - _Requirements: 4.6_
 
-- [~] 4.6 HomePage — hero layout (Decision 3)
+- [ ] 4.6 HomePage — hero layout (Decision 3)
   - **Decision checkpoint:** confirm centered hero (variance = 4) vs subtle asymmetry
   - Apply the selected hero layout
   - _Requirements: 4.8_
 
-- [~] 4.7 Phase 4 verification gate
+- [-] 4.7 Phase 4 verification gate
   - Run the automated gate (lint, tsc, test, build)
   - Verify drop-cap scope (Property 9) and reduced-motion behaviour (Property 11); light/dark screenshot review of touched pages
   - _Requirements: 5.1, 5.2, 5.5, 5.6, 5.7_
 
 ### Phase 5 — Pre-Flight & Verification
 
-- [~] 5.1 Run the full 62-item Pre-Flight checklist
+- [ ] 5.1 Run the full 62-item Pre-Flight checklist
   - Verify all checklist items (typography, colour, layout, animation, content, accessibility) across every touched page; record each as pass with zero unresolved items
   - _Requirements: 5.1_
 
-- [~] 5.2 Verify all 12 Correctness Properties with evidence
+- [ ] 5.2 Verify all 12 Correctness Properties with evidence
   - Record each of Properties 1–12 as pass with an automated result, static scan, or manual review note
   - Confirm token purity (Property 1), theme totality (Property 2), 18px base + 44px targets (Property 10), and reduced motion (Property 11)
   - _Requirements: 5.5, 6.1, 6.2, 6.3, 6.4_
 
-- [~] 5.3 Verify SEO baseline preserved
+- [ ] 5.3 Verify SEO baseline preserved
   - Compare route set, slugs, `usePageSEO` outputs, and `JsonLdSchema` payloads against the Phase 0 baseline; confirm byte-for-byte identical
   - _Requirements: 6.7_
 
-- [~] 5.4 Confirm inverse-section policy (Decision 1)
+- [ ] 5.4 Confirm inverse-section policy (Decision 1)
   - **Decision checkpoint:** confirm Option A (justify under "Color Block Story" exception, max 2 per page) vs Option B (redesign with parish-elevated shades)
   - Audit each page for inverse sections and bring them within the chosen policy
   - _Requirements: 2.4_
 
-- [~] 5.5 Full automated verification and manual review
+- [ ] 5.5 Full automated verification and manual review
   - Run `npm run verify:release` (or the individual lint/tsc/test/build chain); confirm any non-zero exit (lint warnings excepted) keeps the phase incomplete and is recorded
   - Manual: keyboard-only walkthrough, light + dark visual review of every page, 375px mobile check, reduced-motion check, OpenDyslexic font check
   - _Requirements: 5.2, 5.3, 5.6, 5.7_
 
-- [~] 5.6 Run the design quality gate and code review
+- [ ] 5.6 Run the design quality gate and code review
   - Run `gstack-design-quality` (AI slop detection, typography, spacing/layout, interaction states, parish design-system compliance)
   - Run `gstack-code-review` before merge
   - _Requirements: 5.1_

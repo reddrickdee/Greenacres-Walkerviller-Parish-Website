@@ -93,11 +93,19 @@ export function TaskCards() {
                                 transition: { ...reveal.transition, delay: index * 0.08 },
                             };
 
+                        /* Requirement 4.3: subtle hover lift on pointer hover, reverting on leave.
+                           Requirement 4.7: suppress the lift entirely under prefers-reduced-motion
+                           so the card does not translate at all (the global reduced-motion rule in
+                           index.css only collapses the transition duration, it does not remove the
+                           transform). */
+                        const liftClass = prefersReduced ? '' : 'hover:-translate-y-0.5';
+
                         return (
                             <motion.div key={task.title} {...motionProps}>
                                 <Link
                                     to={task.to}
-                                    className="group flex flex-col rounded-2xl border border-parish-border/15 bg-parish-surface px-5 py-6 no-underline transition-all duration-500 hover:-translate-y-0.5 hover:border-parish-accent/15 hover:shadow-card-hover"
+                                    data-lift={prefersReduced ? 'off' : 'on'}
+                                    className={`group flex flex-col rounded-2xl border border-parish-border/15 bg-parish-surface px-5 py-6 no-underline transition-all duration-500 ${liftClass} hover:border-parish-accent/15 hover:shadow-card-hover`}
                                 >
                                     <Icon
                                         className="h-6 w-6 text-parish-accent"
