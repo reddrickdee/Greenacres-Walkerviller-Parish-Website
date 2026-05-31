@@ -189,21 +189,21 @@ This plan implements the Parish Website Design Revamp in "Preserve" mode. Tasks 
   - Verify all checklist items (typography, colour, layout, animation, content, accessibility) across every touched page; record each as pass with zero unresolved items
   - _Requirements: 5.1_
 
-- [ ] 5.2 Verify all 12 Correctness Properties with evidence
+- [x] 5.2 Verify all 12 Correctness Properties with evidence
   - Record each of Properties 1–12 as pass with an automated result, static scan, or manual review note
   - Confirm token purity (Property 1), theme totality (Property 2), 18px base + 44px targets (Property 10), and reduced motion (Property 11)
   - _Requirements: 5.5, 6.1, 6.2, 6.3, 6.4_
 
-- [-] 5.3 Verify SEO baseline preserved
+- [x] 5.3 Verify SEO baseline preserved
   - Compare route set, slugs, `usePageSEO` outputs, and `JsonLdSchema` payloads against the Phase 0 baseline; confirm byte-for-byte identical
   - _Requirements: 6.7_
 
-- [ ] 5.4 Confirm inverse-section policy (Decision 1)
+- [x] 5.4 Confirm inverse-section policy (Decision 1)
   - **Decision checkpoint:** confirm Option A (justify under "Color Block Story" exception, max 2 per page) vs Option B (redesign with parish-elevated shades)
   - Audit each page for inverse sections and bring them within the chosen policy
   - _Requirements: 2.4_
 
-- [ ] 5.5 Full automated verification and manual review
+- [-] 5.5 Full automated verification and manual review
   - Run `npm run verify:release` (or the individual lint/tsc/test/build chain); confirm any non-zero exit (lint warnings excepted) keeps the phase incomplete and is recorded
   - Manual: keyboard-only walkthrough, light + dark visual review of every page, 375px mobile check, reduced-motion check, OpenDyslexic font check
   - _Requirements: 5.2, 5.3, 5.6, 5.7_
