@@ -275,10 +275,11 @@
 
   /* ── Reflection prose — scoped editorial drop cap ───────────────
      Applied ONLY to parish-authored reflection prose (Reflection_Prose),
-     never to liturgical reading text (Decision 6 / Req 3.8). The
-     ::first-letter drop cap is scoped to the FIRST paragraph only via
-     p:first-of-type, uses the display face and the parish-accent token
-     (space-separated channels) so it adapts across light/dark themes. */
+     never to liturgical reading text (Decision 6 / Req 3.8, 4.1). Shared
+     by BulletinPage (priest reflection) and DailyReadingsPage (Prayer for
+     Today). The ::first-letter drop cap is scoped to the FIRST paragraph
+     only via p:first-of-type, uses the display face and the parish-accent
+     token (space-separated channels) so it adapts across light/dark. */
   .reflection-prose {
     hanging-punctuation: first;
     text-wrap: pretty;
