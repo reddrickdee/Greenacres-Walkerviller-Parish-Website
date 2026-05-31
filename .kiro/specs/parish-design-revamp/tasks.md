@@ -149,12 +149,12 @@ This plan implements the Parish Website Design Revamp in "Preserve" mode. Tasks 
 
 ### Phase 4 — Editorial Polish
 
-- [ ] 4.1 DailyReadingsPage — scripture typography
+- [x] 4.1 DailyReadingsPage — scripture typography
   - Apply the `::first-letter` drop cap to Reflection_Prose first paragraph only (`parish-accent`, `font-display`); render Liturgical_Reading_Text without any first-letter decoration
   - Add `hanging-punctuation: first` where supported, `text-wrap: pretty` on long passages, and refine verse numbers (smaller, muted, `tabular-nums`)
   - _Requirements: 4.1_
 
-- [~] 4.2 Home EventsList — featured-card asymmetry
+- [-] 4.2 Home EventsList — featured-card asymmetry
   - When two or more events render, present exactly one featured card spanning a larger layout than the remaining uniform cards, consistent with DESIGN_VARIANCE 4–5
   - Add viewport-triggered staggered entry animation
   - _Requirements: 4.2_

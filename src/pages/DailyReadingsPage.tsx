@@ -388,9 +388,16 @@ export function DailyReadingsPage() {
                             <div className="sanctuary-panel px-6 py-6 md:px-8 md:py-8">
                                 <div className="flex min-w-0 gap-4">
                                     <MessageCircle className="mt-1 h-5 w-5 shrink-0 text-parish-accent" aria-hidden="true" />
-                                    <p className="min-w-0 break-words text-base leading-relaxed text-parish-fg">
-                                        {reflectionPrompt}
-                                    </p>
+                                    {/* Reflection_Prose — parish-authored prayer prompt. The
+                                        .reflection-prose class scopes the ::first-letter drop cap
+                                        to the FIRST paragraph only (parish-accent + font-display),
+                                        and adds hanging-punctuation / text-wrap: pretty. It is never
+                                        applied to liturgical reading text (Decision 6 / Req 4.1). */}
+                                    <div className="reflection-prose min-w-0 flex-1">
+                                        <p className="break-words text-base leading-relaxed text-parish-fg">
+                                            {reflectionPrompt}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         ) : (
