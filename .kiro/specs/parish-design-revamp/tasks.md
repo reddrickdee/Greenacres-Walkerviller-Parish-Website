@@ -173,19 +173,19 @@ This plan implements the Parish Website Design Revamp in "Preserve" mode. Tasks 
   - On iframe load failure or block, show a map-unavailable indication and keep the visible text address
   - _Requirements: 4.6_
 
-- [ ] 4.6 HomePage — hero layout (Decision 3)
+- [x] 4.6 HomePage — hero layout (Decision 3)
   - **Decision checkpoint:** confirm centered hero (variance = 4) vs subtle asymmetry
   - Apply the selected hero layout
   - _Requirements: 4.8_
 
-- [-] 4.7 Phase 4 verification gate
+- [x] 4.7 Phase 4 verification gate
   - Run the automated gate (lint, tsc, test, build)
   - Verify drop-cap scope (Property 9) and reduced-motion behaviour (Property 11); light/dark screenshot review of touched pages
   - _Requirements: 5.1, 5.2, 5.5, 5.6, 5.7_
 
 ### Phase 5 — Pre-Flight & Verification
 
-- [ ] 5.1 Run the full 62-item Pre-Flight checklist
+- [x] 5.1 Run the full 62-item Pre-Flight checklist
   - Verify all checklist items (typography, colour, layout, animation, content, accessibility) across every touched page; record each as pass with zero unresolved items
   - _Requirements: 5.1_
 
@@ -194,7 +194,7 @@ This plan implements the Parish Website Design Revamp in "Preserve" mode. Tasks 
   - Confirm token purity (Property 1), theme totality (Property 2), 18px base + 44px targets (Property 10), and reduced motion (Property 11)
   - _Requirements: 5.5, 6.1, 6.2, 6.3, 6.4_
 
-- [ ] 5.3 Verify SEO baseline preserved
+- [-] 5.3 Verify SEO baseline preserved
   - Compare route set, slugs, `usePageSEO` outputs, and `JsonLdSchema` payloads against the Phase 0 baseline; confirm byte-for-byte identical
   - _Requirements: 6.7_
 
