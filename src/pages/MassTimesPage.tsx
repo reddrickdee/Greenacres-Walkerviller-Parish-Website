@@ -183,18 +183,18 @@ function ChurchCard({
                     <div className="ornamental-kicker">{title}</div>
                     <h2 className="mt-3 text-3xl text-parish-fg">{masses[0]?.address}</h2>
                 </div>
-                <MapPinned className="mt-1 h-5 w-5 shrink-0 text-parish-brass" />
+                <MapPinned className="mt-1 h-5 w-5 shrink-0 text-parish-brass" aria-hidden="true" />
             </div>
 
             {/* Visitor logistics from visitorInfo */}
             {info && (
                 <div className="mt-6 space-y-3">
                     <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
-                        <Car className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" />
+                        <Car className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
                         <p className="text-sm leading-relaxed text-parish-muted">{info.parkingSummary}</p>
                     </div>
                     <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
-                        <Accessibility className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" />
+                        <Accessibility className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
                         <p className="text-sm leading-relaxed text-parish-muted">{info.accessibilitySummary}</p>
                     </div>
                     <p className="text-sm leading-relaxed text-parish-muted italic">{info.arrivalTip}</p>
@@ -215,7 +215,7 @@ function ChurchCard({
                                         {mass.type}{mass.notes ? ` — ${mass.notes}` : ''}
                                     </p>
                                 </div>
-                                <Clock3 className="mt-1 h-5 w-5 shrink-0 text-parish-brass" />
+                                <Clock3 className="mt-1 h-5 w-5 shrink-0 text-parish-brass" aria-hidden="true" />
                             </div>
                             {countdown && (
                                 <p className="mt-3 text-sm italic text-parish-accent" aria-live="polite">
@@ -236,13 +236,13 @@ function ChurchCard({
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"
                     >
-                        <MapPinned className="h-4 w-4" />
+                        <MapPinned className="h-4 w-4" aria-hidden="true" />
                         Directions
                     </a>
                 )}
                 <Link to="/contact" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
                     Contact Office
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
             </div>
         </InfoCard>

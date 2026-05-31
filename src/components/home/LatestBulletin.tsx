@@ -78,7 +78,7 @@ export function LatestBulletin() {
                                     rel="noopener noreferrer"
                                     className="pilgrimage-button inline-flex items-center gap-2"
                                 >
-                                    <ExternalLink className="h-4 w-4" />
+                                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
                                     Read Bulletin Online
                                 </a>
                                 <a
@@ -88,7 +88,7 @@ export function LatestBulletin() {
                                     className="pilgrimage-button-secondary inline-flex items-center gap-2"
                                     download
                                 >
-                                    <Download className="h-4 w-4" />
+                                    <Download className="h-4 w-4" aria-hidden="true" />
                                     Download Bulletin (PDF)
                                 </a>
                             </div>

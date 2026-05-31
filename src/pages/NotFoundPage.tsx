@@ -35,11 +35,11 @@ export function NotFoundPage() {
 
                         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                             <Link to="/" className="pilgrimage-button inline-flex items-center gap-2">
-                                <Home className="h-4 w-4" />
+                                <Home className="h-4 w-4" aria-hidden="true" />
                                 Back to Home
                             </Link>
                             <Link to="/mass-times" className="pilgrimage-button-secondary inline-flex items-center gap-2">
-                                <CalendarClock className="h-4 w-4" />
+                                <CalendarClock className="h-4 w-4" aria-hidden="true" />
                                 View Mass Times
                             </Link>
                         </div>
@@ -55,19 +55,19 @@ export function NotFoundPage() {
                                     to="/new-here"
                                     className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-sm font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
                                 >
-                                    I&apos;m New Here <ArrowRight className="h-4 w-4 opacity-60" />
+                                    I&apos;m New Here <ArrowRight className="h-4 w-4 opacity-60" aria-hidden="true" />
                                 </Link>
                                 <Link
                                     to="/contact"
                                     className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-sm font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
                                 >
-                                    Contact the Parish <ArrowRight className="h-4 w-4 opacity-60" />
+                                    Contact the Parish <ArrowRight className="h-4 w-4 opacity-60" aria-hidden="true" />
                                 </Link>
                                 <Link
                                     to="/news-events"
                                     className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-sm font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
                                 >
-                                    News &amp; Events <ArrowRight className="h-4 w-4 opacity-60" />
+                                    News &amp; Events <ArrowRight className="h-4 w-4 opacity-60" aria-hidden="true" />
                                 </Link>
                             </div>
                         </div>

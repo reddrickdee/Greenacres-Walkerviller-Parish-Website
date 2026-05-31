@@ -92,7 +92,7 @@ export function HeroSection() {
                         <div className="sanctuary-panel bg-parish-surface/95 p-5 max-w-sm w-full">
                             <div className="flex items-start gap-3">
                                 <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl bg-parish-accent/8 text-parish-accent">
-                                    <CalendarClock className="h-5 w-5" />
+                                    <CalendarClock className="h-5 w-5" aria-hidden="true" />
                                 </div>
                                 <div>
                                     <div className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">Next Mass</div>

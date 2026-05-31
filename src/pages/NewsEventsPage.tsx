@@ -79,7 +79,7 @@ export function NewsEventsPage() {
                             rel="noopener noreferrer"
                             className="pilgrimage-button inline-flex items-center gap-2"
                         >
-                            <FileText className="h-4 w-4" />
+                            <FileText className="h-4 w-4" aria-hidden="true" />
                             Download Latest Issue (PDF)
                         </a>
                     )}
@@ -120,7 +120,7 @@ export function NewsEventsPage() {
                                         rel="noopener noreferrer"
                                         className="pilgrimage-button inline-flex items-center gap-2"
                                     >
-                                        <FileText className="h-4 w-4" />
+                                        <FileText className="h-4 w-4" aria-hidden="true" />
                                         Open PDF
                                     </a>
                                     {currentIssue.nativeBulletin && (
@@ -128,7 +128,7 @@ export function NewsEventsPage() {
                                             to={`/news-events/bulletin/${currentIssue.id}`}
                                             className="pilgrimage-button-secondary inline-flex items-center gap-2"
                                         >
-                                            Read Online <ArrowRight className="h-4 w-4" />
+                                            Read Online <ArrowRight className="h-4 w-4" aria-hidden="true" />
                                         </Link>
                                     )}
                                 </div>
@@ -139,7 +139,7 @@ export function NewsEventsPage() {
             )}
 
             {/* ── Past Issues Grid ─────────────────────────────────── */}
-            <section className="page-section mt-12 md:mt-16">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Past Issues"
@@ -186,7 +186,7 @@ export function NewsEventsPage() {
                                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-parish-border/15 text-parish-muted transition hover:border-parish-accent hover:text-parish-accent"
                                     aria-label={`Open PDF: ${item.title}`}
                                 >
-                                    <ExternalLink className="h-4 w-4" />
+                                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
                                 </a>
                             </motion.div>
                         ))}

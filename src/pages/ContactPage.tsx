@@ -59,14 +59,14 @@ export function ContactPage() {
 
                     <div className="grid gap-6 lg:col-span-7 md:grid-cols-2">
                         <InfoCard>
-                            <MapPinned className="h-6 w-6 text-parish-brass" />
+                            <MapPinned className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">Address</div>
                             <p className="mt-3 text-lg leading-relaxed text-parish-fg">{contact.address}</p>
                             <div className="mt-5 ornamental-kicker">Postal Address</div>
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.postalAddress}</p>
                         </InfoCard>
                         <InfoCard>
-                            <Phone className="h-6 w-6 text-parish-brass" />
+                            <Phone className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">Phone</div>
                             <a href={`tel:${contact.phone}`} className="mt-3 block text-lg text-parish-fg underline decoration-parish-brass/35 hover:text-parish-accent">
                                 {contact.phone}

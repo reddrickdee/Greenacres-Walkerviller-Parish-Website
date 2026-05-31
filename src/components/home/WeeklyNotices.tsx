@@ -120,7 +120,7 @@ function SectionHeader({
     return (
         <div className="flex items-center gap-3 mb-5">
             <div className="flex h-10 w-10 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65 text-parish-brass">
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
                 <div className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
@@ -202,7 +202,7 @@ export function WeeklyNotices() {
                                 {data.issueTitle}
                             </h2>
                             <p className="mt-2 inline-flex items-center gap-2 text-sm text-parish-muted">
-                                <ShieldCheck className="h-4 w-4 text-parish-brass" />
+                                <ShieldCheck className="h-4 w-4 text-parish-brass" aria-hidden="true" />
                                 Current parish notices for the week of {data.weekOf}.
                             </p>
                         </div>
@@ -212,7 +212,7 @@ export function WeeklyNotices() {
                             rel="noopener noreferrer"
                             className="pilgrimage-button inline-flex items-center gap-2 shrink-0"
                         >
-                            <Download className="h-4 w-4" />
+                            <Download className="h-4 w-4" aria-hidden="true" />
                             Download Bulletin PDF
                         </a>
                     </div>
@@ -226,7 +226,7 @@ export function WeeklyNotices() {
                             <span>{data.liturgicalInfo.weekdayReadings}</span>
                             {data.liturgicalInfo.note && (
                                 <span className="flex items-center gap-1 text-parish-accent">
-                                    <AlertCircle className="h-3.5 w-3.5" />
+                                    <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
                                     {data.liturgicalInfo.note}
                                 </span>
                             )}
@@ -237,7 +237,7 @@ export function WeeklyNotices() {
                     {data.massChanges && (
                         <div className="mt-4 rounded-xl border border-parish-brass/20 bg-parish-brass/10 px-5 py-4 md:px-6">
                             <div className="flex items-start gap-3">
-                                <Church className="h-5 w-5 mt-0.5 shrink-0 text-parish-brass" />
+                                <Church className="h-5 w-5 mt-0.5 shrink-0 text-parish-brass" aria-hidden="true" />
                                 <div>
                                     <div className="text-sm font-semibold text-parish-fg">
                                         {data.massChanges.heading}
@@ -295,7 +295,7 @@ export function WeeklyNotices() {
                         rel="noopener noreferrer"
                         className="pilgrimage-button-secondary inline-flex items-center gap-2"
                     >
-                        <Download className="h-4 w-4" />
+                        <Download className="h-4 w-4" aria-hidden="true" />
                         Download Full Bulletin PDF
                     </a>
                 </motion.div>

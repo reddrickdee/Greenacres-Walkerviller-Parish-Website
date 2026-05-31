@@ -54,7 +54,7 @@ export function ThisWeekend() {
                         {/* Left: Mass info */}
                         <div className="lg:col-span-7 px-6 py-8 md:px-10 md:py-10">
                             <div className="flex items-center gap-3 mb-2">
-                                <Cross className="h-5 w-5 text-parish-accent shrink-0" />
+                                <Cross className="h-5 w-5 text-parish-accent shrink-0" aria-hidden="true" />
                                 <div>
                                     <h2 className="text-2xl font-display text-parish-fg md:text-3xl">
                                         This Weekend
@@ -119,7 +119,7 @@ export function ThisWeekend() {
                                 className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-parish-accent no-underline"
                             >
                                 View full Mass Times
-                                <ArrowRight className="h-3.5 w-3.5" />
+                                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                             </Link>
                         </div>
 

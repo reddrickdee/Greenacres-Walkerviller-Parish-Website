@@ -42,7 +42,7 @@ export function LiturgicalWidget() {
                                     color: season.cssColor,
                                 }}
                             >
-                                <Sparkles className="h-5 w-5" />
+                                <Sparkles className="h-5 w-5" aria-hidden="true" />
                             </div>
                             <div>
                                 <div className="ornamental-kicker mb-1">This Week in the Church</div>
@@ -77,7 +77,7 @@ export function LiturgicalWidget() {
 
                         {/* Liturgical color indicator */}
                         <div className="mt-6 flex items-center gap-3 text-sm text-parish-muted">
-                            <BookOpen className="h-4 w-4" />
+                            <BookOpen className="h-4 w-4" aria-hidden="true" />
                             <span>
                                 Liturgical colour:{' '}
                                 <span

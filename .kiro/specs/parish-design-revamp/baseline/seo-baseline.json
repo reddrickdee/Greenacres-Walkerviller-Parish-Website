@@ -1,0 +1,304 @@
+{
+  "_meta": {
+    "purpose": "Pre-revamp SEO baseline for byte-for-byte comparison in Phase 5 (task 5.3). Captures the route set, slugs, usePageSEO inputs, page-level JSON-LD payloads, the global JsonLdSchema payload, and sitemap entries as they exist BEFORE any revamp code change.",
+    "capturedBy": "Task 0.1 — Capture the pre-revamp baseline",
+    "gitCommit": "c02d6d33",
+    "gitBranch": "main",
+    "validatesRequirements": ["6.7", "5.4"],
+    "constants": {
+      "SITE_NAME": "Greenacres Walkerville Catholic Parish",
+      "BASE_URL_usePageSEO": "https://www.gwparish.org.au",
+      "DEFAULT_OG_IMAGE": "/assets/source/hero_3.webp",
+      "titleRule": "fullTitle = (title === SITE_NAME) ? title : `${title} | ${SITE_NAME}`",
+      "ogImageRule": "imageUrl = BASE_URL + (ogImage || DEFAULT_OG_IMAGE)"
+    }
+  },
+
+  "routeManifest": {
+    "_source": "src/lib/routes.ts (PATHS + ROUTE_MANIFEST)",
+    "paths": {
+      "HOME": "/",
+      "MASS_TIMES": "/mass-times",
+      "CONTACT": "/contact",
+      "ABOUT": "/about",
+      "HISTORY": "/history",
+      "NEW_HERE": "/new-here",
+      "NEWS_EVENTS": "/news-events",
+      "VOLUNTEER": "/volunteer",
+      "GALLERY": "/gallery",
+      "DAILY_READINGS": "/daily-readings",
+      "BULLETIN": "/news-events/bulletin/:id"
+    },
+    "manifestOrder": [
+      { "path": "/", "label": "Home", "section": "Worship" },
+      { "path": "/mass-times", "label": "Mass Times", "section": "Worship" },
+      { "path": "/daily-readings", "label": "Readings & Reflection", "section": "Worship" },
+      { "path": "/news-events", "label": "News & Events", "section": "Worship" },
+      { "path": "/about", "label": "About Us", "section": "Explore" },
+      { "path": "/history", "label": "History", "section": "Explore" },
+      { "path": "/new-here", "label": "I'm New Here", "section": "Explore" },
+      { "path": "/gallery", "label": "Gallery", "section": "Explore" },
+      { "path": "/volunteer", "label": "Volunteer", "section": "Community" },
+      { "path": "/contact", "label": "Contact", "section": "Community" }
+    ],
+    "allStaticPaths": [
+      "/", "/mass-times", "/daily-readings", "/news-events",
+      "/about", "/history", "/new-here", "/gallery", "/volunteer", "/contact"
+    ],
+    "routerConfig": {
+      "_source": "src/App.tsx createBrowserRouter",
+      "rootPath": "/",
+      "rootElement": "RootLayout",
+      "children": [
+        { "index": true, "element": "HomePage" },
+        { "path": "mass-times", "element": "MassTimesPage" },
+        { "path": "contact", "element": "ContactPage" },
+        { "path": "about", "element": "AboutPage" },
+        { "path": "history", "element": "HistoryPage" },
+        { "path": "new-here", "element": "NewHerePage" },
+        { "path": "news-events", "element": "NewsEventsPage" },
+        { "path": "news-events/bulletin/:id", "element": "BulletinPage" },
+        { "path": "volunteer", "element": "VolunteerPage" },
+        { "path": "gallery", "element": "GalleryPage" },
+        { "path": "daily-readings", "element": "DailyReadingsPage" },
+        { "path": "*", "element": "NotFoundPage" }
+      ]
+    }
+  },
+
+  "usePageSEO": {
+    "_note": "Exact inputs passed to usePageSEO() at each call site. path defaults to '/' when omitted; ogImage defaults to DEFAULT_OG_IMAGE when omitted.",
+    "HomePage": {
+      "title": "Home",
+      "description": "Greenacres Walkerville Catholic Parish — Mass times, parish bulletin, sacraments, and community life at St Monica's Walkerville and St Martin's Greenacres in Adelaide.",
+      "path": "/"
+    },
+    "MassTimesPage": {
+      "title": "Mass Times",
+      "description": "Weekend and weekday Mass schedule for St Monica's Walkerville and St Martin's Greenacres, plus sacrament and reconciliation information.",
+      "path": "/mass-times",
+      "ogImage": "/assets/refurbishment/st_monica_4.webp"
+    },
+    "ContactPage": {
+      "title": "Contact Us",
+      "description": "Contact Greenacres Walkerville Catholic Parish, find office hours, church locations, and parish school details.",
+      "path": "/contact",
+      "ogImage": "/assets/source/hero_2.webp"
+    },
+    "AboutPage": {
+      "title": "About Us",
+      "description": "Read the vision, mission, parish prayer, and leadership story of Greenacres Walkerville Catholic Parish.",
+      "path": "/about",
+      "ogImage": "/assets/source/our_parish.webp"
+    },
+    "HistoryPage": {
+      "title": "Parish History",
+      "description": "Over a century of Catholic faith in Adelaide — from a Druids Hall in 1912 to today's thriving two-church parish at Greenacres and Walkerville.",
+      "path": "/history"
+    },
+    "NewHerePage": {
+      "title": "I'm New Here",
+      "description": "Find what to expect at your first Mass, how to arrive with confidence, and how Greenacres Walkerville Catholic Parish welcomes new visitors.",
+      "path": "/new-here",
+      "ogImage": "/assets/source/welcome_thumb.webp"
+    },
+    "NewsEventsPage": {
+      "title": "News & Events — Connections Bulletin Archive",
+      "description": "Browse every issue of the Connections bulletin from Greenacres Walkerville Catholic Parish. Download any past bulletin as a PDF.",
+      "path": "/news-events",
+      "ogImage": "/assets/source/news_connections.webp"
+    },
+    "BulletinPage": {
+      "title": "Parish Bulletin",
+      "description": "Read the latest Connections newsletter from Greenacres Walkerville Catholic Parish.",
+      "path": "/news-events/bulletin/${id}",
+      "_pathNote": "Template literal: `/news-events/bulletin/${id}` where id is the route param."
+    },
+    "VolunteerPage": {
+      "title": "Volunteer — Get Involved",
+      "description": "Volunteer your time and talents at Greenacres Walkerville Catholic Parish. Join our ministries and make a difference in our community.",
+      "path": "/volunteer"
+    },
+    "GalleryPage": {
+      "title": "Gallery",
+      "description": "Photos of St Monica's and St Martin's churches, parish community gatherings, and the 2019 refurbishment at Greenacres Walkerville Catholic Parish.",
+      "path": "/gallery"
+    },
+    "DailyReadingsPage": {
+      "title": "Today's Readings & Reflection",
+      "description": "Daily Mass readings and reflection sources for the Australia - Adelaide liturgical calendar.",
+      "path": "/daily-readings"
+    },
+    "NotFoundPage": {
+      "title": "Page Not Found",
+      "description": "The page you were looking for could not be found. Return to the homepage or view Mass times.",
+      "path": "/404",
+      "noindex": true
+    }
+  },
+
+  "jsonLd": {
+    "_note": "Page-level JSON-LD payloads injected via useJsonLd(schema, id), plus the standalone JsonLdSchema component payload.",
+    "JsonLdSchema_component": {
+      "_source": "src/components/JsonLdSchema.tsx",
+      "_status": "DEFINED BUT NOT CURRENTLY RENDERED — grep shows no <JsonLdSchema /> usage anywhere in src/. Payload recorded for completeness; preservation means this remains unchanged whether or not it is wired up.",
+      "payload": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.gwparish.org.au/#organization",
+            "name": "Greenacres Walkerville Catholic Parish",
+            "alternateName": "GW Parish",
+            "url": "https://www.gwparish.org.au",
+            "logo": "https://www.gwparish.org.au/parish-logo.png",
+            "description": "A welcoming and inclusive Catholic parish community in Adelaide, South Australia, with churches in Greenacres and Walkerville.",
+            "telephone": "(08) 8261 6200",
+            "email": "admin@gwparish.org.au",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "56-80 Princes Road",
+              "addressLocality": "Greenacres",
+              "addressRegion": "SA",
+              "postalCode": "5086",
+              "addressCountry": "AU"
+            },
+            "sameAs": ["https://www.facebook.com/profile.php?id=61584973342464"]
+          },
+          {
+            "@type": "Church",
+            "@id": "https://www.gwparish.org.au/#st-martins",
+            "name": "St Martin's Catholic Church",
+            "parentOrganization": { "@id": "https://www.gwparish.org.au/#organization" },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Corner Muller and Hampstead Roads",
+              "addressLocality": "Greenacres",
+              "addressRegion": "SA",
+              "postalCode": "5086",
+              "addressCountry": "AU"
+            },
+            "openingHoursSpecification": [
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "09:30", "closes": "10:30", "description": "Sunday Mass" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:00", "closes": "09:30", "description": "Weekday Mass" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:00", "closes": "09:30", "description": "Weekday Mass" }
+            ]
+          },
+          {
+            "@type": "Church",
+            "@id": "https://www.gwparish.org.au/#st-monicas",
+            "name": "St Monica's Catholic Church",
+            "parentOrganization": { "@id": "https://www.gwparish.org.au/#organization" },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "90 North East Road",
+              "addressLocality": "Walkerville",
+              "addressRegion": "SA",
+              "postalCode": "5081",
+              "addressCountry": "AU"
+            },
+            "openingHoursSpecification": [
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "18:00", "closes": "19:00", "description": "Weekend Vigil Mass" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "12:00", "description": "Ordinariate Mass" },
+              { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "09:00", "closes": "09:30", "description": "Weekday Mass" }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.gwparish.org.au/#website",
+            "url": "https://www.gwparish.org.au",
+            "name": "Greenacres Walkerville Catholic Parish",
+            "publisher": { "@id": "https://www.gwparish.org.au/#organization" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.gwparish.org.au/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.gwparish.org.au/" },
+              { "@type": "ListItem", "position": 2, "name": "Mass Times", "item": "https://www.gwparish.org.au/mass-times" },
+              { "@type": "ListItem", "position": 3, "name": "Sacraments", "item": "https://www.gwparish.org.au/sacraments" },
+              { "@type": "ListItem", "position": 4, "name": "About Us", "item": "https://www.gwparish.org.au/about" },
+              { "@type": "ListItem", "position": 5, "name": "I'm New Here", "item": "https://www.gwparish.org.au/new-here" },
+              { "@type": "ListItem", "position": 6, "name": "News & Events", "item": "https://www.gwparish.org.au/news-events" },
+              { "@type": "ListItem", "position": 7, "name": "Give", "item": "https://www.gwparish.org.au/give" },
+              { "@type": "ListItem", "position": 8, "name": "History", "item": "https://www.gwparish.org.au/history" },
+              { "@type": "ListItem", "position": 9, "name": "Contact", "item": "https://www.gwparish.org.au/contact" },
+              { "@type": "ListItem", "position": 10, "name": "Volunteer", "item": "https://www.gwparish.org.au/volunteer" },
+              { "@type": "ListItem", "position": 11, "name": "Gallery", "item": "https://www.gwparish.org.au/gallery" },
+              { "@type": "ListItem", "position": 12, "name": "Safeguarding", "item": "https://www.gwparish.org.au/safeguarding" }
+            ]
+          },
+          {
+            "@type": "Event",
+            "name": "Sunday Mass — St Martin's Church",
+            "description": "Weekly Sunday Mass at St Martin's Catholic Church, Greenacres.",
+            "startDate": "2026-03-08T09:30:00+10:30",
+            "endDate": "2026-03-08T10:30:00+10:30",
+            "eventSchedule": { "@type": "Schedule", "repeatFrequency": "P1W", "byDay": "https://schema.org/Sunday", "startTime": "09:30", "endTime": "10:30" },
+            "location": { "@id": "https://www.gwparish.org.au/#st-martins" },
+            "organizer": { "@id": "https://www.gwparish.org.au/#organization" },
+            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "Event",
+            "name": "Saturday Vigil Mass — St Monica's Church",
+            "description": "Weekly Saturday Vigil Mass at St Monica's Catholic Church, Walkerville.",
+            "startDate": "2026-03-07T18:00:00+10:30",
+            "endDate": "2026-03-07T19:00:00+10:30",
+            "eventSchedule": { "@type": "Schedule", "repeatFrequency": "P1W", "byDay": "https://schema.org/Saturday", "startTime": "18:00", "endTime": "19:00" },
+            "location": { "@id": "https://www.gwparish.org.au/#st-monicas" },
+            "organizer": { "@id": "https://www.gwparish.org.au/#organization" },
+            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+            "isAccessibleForFree": true
+          }
+        ]
+      }
+    },
+    "HomePage_useJsonLd": {
+      "_source": "src/pages/HomePage.tsx",
+      "id": "home-church",
+      "payload": {
+        "@context": "https://schema.org",
+        "@type": "Church",
+        "name": "Greenacres Walkerville Catholic Parish",
+        "url": "https://www.gwparish.org.au",
+        "address": [
+          { "@type": "PostalAddress", "streetAddress": "90 North East Road", "addressLocality": "Walkerville", "addressRegion": "SA", "postalCode": "5081", "addressCountry": "AU" },
+          { "@type": "PostalAddress", "streetAddress": "Corner Muller & Hampstead Roads", "addressLocality": "Greenacres", "addressRegion": "SA", "postalCode": "5086", "addressCountry": "AU" }
+        ]
+      }
+    },
+    "DailyReadingsPage_useJsonLd": {
+      "_source": "src/pages/DailyReadingsPage.tsx",
+      "id": "daily-readings-page",
+      "payload": {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Today's Readings & Reflection - Greenacres Walkerville Catholic Parish",
+        "description": "Daily Mass readings and reflection sources for the Australia - Adelaide liturgical calendar.",
+        "url": "https://www.gwparish.org.au/daily-readings",
+        "isPartOf": { "@type": "WebSite", "name": "Greenacres Walkerville Catholic Parish", "url": "https://www.gwparish.org.au" }
+      }
+    }
+  },
+
+  "sitemap": {
+    "_source": "public/sitemap.xml",
+    "urls": [
+      { "loc": "https://www.gwparish.org.au/", "changefreq": "daily", "priority": "1.0" },
+      { "loc": "https://www.gwparish.org.au/mass-times", "changefreq": "weekly", "priority": "0.9" },
+      { "loc": "https://www.gwparish.org.au/contact", "changefreq": "monthly", "priority": "0.9" },
+      { "loc": "https://www.gwparish.org.au/about", "changefreq": "monthly", "priority": "0.8" },
+      { "loc": "https://www.gwparish.org.au/new-here", "changefreq": "monthly", "priority": "0.8" },
+      { "loc": "https://www.gwparish.org.au/news-events", "changefreq": "weekly", "priority": "0.7" },
+      { "loc": "https://www.gwparish.org.au/volunteer", "changefreq": "monthly", "priority": "0.7" },
+      { "loc": "https://www.gwparish.org.au/history", "changefreq": "yearly", "priority": "0.5" },
+      { "loc": "https://www.gwparish.org.au/gallery", "changefreq": "monthly", "priority": "0.5" },
+      { "loc": "https://www.gwparish.org.au/sacraments", "changefreq": "monthly", "priority": "0.8" },
+      { "loc": "https://www.gwparish.org.au/give", "changefreq": "monthly", "priority": "0.7" },
+      { "loc": "https://www.gwparish.org.au/safeguarding", "changefreq": "yearly", "priority": "0.4" }
+    ],
+    "_note": "Sitemap includes /sacraments, /give, /safeguarding which are NOT in ROUTE_MANIFEST (no SPA routes exist for them) and appear in the JSON-LD BreadcrumbList. These pre-existing mismatches are recorded as-is; preservation requires they stay byte-for-byte identical."
+  }
+}

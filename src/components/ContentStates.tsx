@@ -45,7 +45,7 @@ export function ContentError({
                     onClick={reload}
                     className="pilgrimage-button-secondary mt-6 mx-auto"
                 >
-                    <RefreshCw className="h-4 w-4" />
+                    <RefreshCw className="h-4 w-4" aria-hidden="true" />
                     Try Again
                 </button>
 
@@ -53,11 +53,11 @@ export function ContentError({
                     <p className="text-sm font-semibold text-parish-fg">Contact the parish office</p>
                     <div className="mt-3 space-y-2 text-sm text-parish-muted">
                         <a href="tel:(08) 8261 6200" className="flex items-center gap-2 text-parish-fg no-underline hover:text-parish-accent">
-                            <Phone className="h-4 w-4 text-parish-brass" />
+                            <Phone className="h-4 w-4 text-parish-brass" aria-hidden="true" />
                             (08) 8261 6200
                         </a>
                         <a href="mailto:admin@gwparish.org.au" className="flex items-center gap-2 text-parish-fg no-underline hover:text-parish-accent">
-                            <Mail className="h-4 w-4 text-parish-brass" />
+                            <Mail className="h-4 w-4 text-parish-brass" aria-hidden="true" />
                             admin@gwparish.org.au
                         </a>
                     </div>

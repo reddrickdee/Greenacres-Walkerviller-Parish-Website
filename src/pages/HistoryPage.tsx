@@ -1,12 +1,14 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { ActionBand, SectionIntro, StoryPageTemplate } from '../components/layout/PageTemplates';
+import { ContentLoading, ContentError } from '../components/ContentStates';
 
 export function HistoryPage() {
     const { content, isLoading } = useParishData();
+    const prefersReduced = useReducedMotion();
 
     usePageSEO({
         title: 'Parish History',
@@ -14,9 +16,8 @@ export function HistoryPage() {
         path: '/history',
     });
 
-    if (isLoading || !content) {
-        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
-    }
+    if (isLoading) return <ContentLoading />;
+    if (!content) return <ContentError />;
 
     return (
         <StoryPageTemplate
@@ -48,15 +49,24 @@ export function HistoryPage() {
                         {content.historyMilestones.map((item, index) => (
                             <motion.div
                                 key={item.year + index}
-                                initial={{ opacity: 0, x: -20 }}
+                                initial={prefersReduced ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, margin: '-60px' }}
-                                transition={{ duration: 0.7, delay: Math.min(index * 0.05, 0.4), ease: [0.32, 0.72, 0, 1] }}
-                                className="relative mb-10 pl-10 md:pl-14"
+                                transition={prefersReduced
+                                    ? { duration: 0 }
+                                    : { duration: 0.7, delay: Math.min(index * 0.05, 0.4), ease: [0.32, 0.72, 0, 1] }}
+                                className="relative mb-10"
                             >
-                                <div className="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-parish-brass ring-4 ring-parish-bg" />
-                                <div className="ornamental-kicker">{item.year}</div>
-                                <p className="mt-3 text-lg leading-relaxed text-parish-muted md:text-xl">{item.description}</p>
+                                {/* Inner wrapper owns the decorative hover lift so its CSS transform
+                                    never fights Framer Motion's inline reveal transform on the parent.
+                                    The pl-10/md:pl-14 padding moves here to preserve the brass dot's
+                                    exact geometry. The CSS transition collapses to ~0 under the global
+                                    prefers-reduced-motion rule in index.css. */}
+                                <div className="relative pl-10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 md:pl-14">
+                                    <div className="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-parish-brass ring-4 ring-parish-bg" />
+                                    <h3 className="font-display text-2xl font-bold leading-tight text-parish-accent md:text-3xl">{item.year}</h3>
+                                    <p className="mt-3 font-body text-lg leading-relaxed text-parish-muted md:text-xl">{item.description}</p>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -79,7 +89,7 @@ export function HistoryPage() {
                                 </Link>
                                 <Link to="/about" className="pilgrimage-button-secondary inline-flex items-center">
                                     Meet The Parish
-                                    <ArrowRight className="h-4 w-4" />
+                                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                                 </Link>
                             </div>
                         </div>

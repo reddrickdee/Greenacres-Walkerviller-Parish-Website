@@ -103,7 +103,7 @@ function PWAUpdateBanner() {
             aria-live="polite"
             className="fixed bottom-4 left-1/2 -translate-x-1/2 z-toast flex items-center gap-4 px-6 py-4 rounded-xl shadow-xl bg-parish-accent text-parish-inverse font-display text-sm"
         >
-            <span className="flex items-center gap-2"><Sparkles size={14} /> A new version is available.</span>
+            <span className="flex items-center gap-2"><Sparkles size={14} aria-hidden="true" /> A new version is available.</span>
             <button
                 onClick={() => window.location.reload()}
                 className="underline font-semibold hover:no-underline focus:outline-none focus:ring-2 focus:ring-parish-inverse rounded"
@@ -115,7 +115,7 @@ function PWAUpdateBanner() {
                 aria-label="Dismiss update notification"
                 className="ml-1 opacity-70 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-parish-inverse rounded"
             >
-                <X size={14} />
+                <X size={14} aria-hidden="true" />
             </button>
         </div>
     );

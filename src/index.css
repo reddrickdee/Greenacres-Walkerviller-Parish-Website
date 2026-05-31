@@ -7,6 +7,13 @@
 @layer base {
   :root {
     color-scheme: light;
+    /* ── Typography tokens ───────────────────────────────────────── */
+    /* Token alias for the existing display face (Merriweather). Theme-
+       independent — defined once so scoped CSS (e.g. the reflection
+       drop cap) can reference var(--font-display) without an unresolved
+       fallback. Introduces no new font family. */
+    --font-display: 'Merriweather', serif;
+
     /* ── Warm Parish — Light Mode (Default) ──────────────────────── */
     --color-parish-bg: 245 241 233;
     --color-parish-surface: 252 250 245;
@@ -33,6 +40,15 @@
     --color-parish-overlay-text: 255 255 255;
     --color-parish-overlay-muted: 210 205 195;
     --color-parish-overlay-border: 255 255 255;
+
+    /* ── Warm-tinted shadow system (auto-adapts via --color-parish-fg) ── */
+    /* References the foreground token so the tint follows the active theme:
+       warm near-black in light mode, warm bone in dark mode. No separate
+       dark-theme box-shadow override is needed. */
+    --parish-shadow-color: var(--color-parish-fg);
+    --shadow-sm: 0 1px 3px rgb(var(--parish-shadow-color) / 0.06);
+    --shadow-md: 0 8px 24px -8px rgb(var(--parish-shadow-color) / 0.10);
+    --shadow-lg: 0 16px 48px -12px rgb(var(--parish-shadow-color) / 0.14);
   }
 
   html[data-theme="dark"] {
@@ -147,8 +163,8 @@
     @apply relative overflow-hidden rounded-2xl bg-parish-surface border;
     border-color: rgb(var(--color-parish-border) / 0.15);
     box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.06),
-      0 8px 24px -8px rgba(0, 0, 0, 0.08);
+      var(--shadow-sm),
+      var(--shadow-md);
   }
 
   /* ── Sanctuary card — interactive elevated card ─────────────── */
@@ -157,16 +173,16 @@
     border-color: rgb(var(--color-parish-border) / 0.15);
     transition: all 500ms cubic-bezier(0.32, 0.72, 0, 1);
     box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.05),
-      0 6px 20px -6px rgba(0, 0, 0, 0.06);
+      var(--shadow-sm),
+      var(--shadow-md);
   }
 
   .sanctuary-card:hover {
     @apply -translate-y-0.5;
     border-color: rgb(var(--color-parish-accent) / 0.2);
     box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.08),
-      0 12px 32px -8px rgba(0, 0, 0, 0.1);
+      var(--shadow-md),
+      var(--shadow-lg);
   }
 
   .sacred-container {
@@ -181,7 +197,7 @@
   .image-panel {
     @apply relative overflow-hidden rounded-2xl border bg-parish-elevated;
     border-color: rgb(var(--color-parish-border) / 0.15);
-    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
   }
 
   .image-panel::after {
@@ -257,11 +273,55 @@
     @apply text-[0.82rem] uppercase tracking-[0.22em] text-parish-accent font-body font-semibold;
   }
 
+  /* ── Reflection prose — scoped editorial drop cap ───────────────
+     Applied ONLY to parish-authored reflection prose (Reflection_Prose),
+     never to liturgical reading text (Decision 6 / Req 3.8). The
+     ::first-letter drop cap is scoped to the FIRST paragraph only via
+     p:first-of-type, uses the display face and the parish-accent token
+     (space-separated channels) so it adapts across light/dark themes. */
+  .reflection-prose {
+    hanging-punctuation: first;
+    text-wrap: pretty;
+  }
+
+  .reflection-prose > p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    font-size: 3.2em;
+    line-height: 0.8;
+    float: left;
+    padding-right: 0.08em;
+    color: rgb(var(--color-parish-accent));
+  }
+
+  /* ── Liturgical reading prose — reverent, never drop-capped ─────
+     Applied to Liturgical_Reading_Text (Jerusalem Bible). Decision 6
+     forbids ANY first-letter decoration here — only long-passage
+     niceties: `hanging-punctuation: first` and `text-wrap: pretty`.
+     This is the existing `prose-parish` hook already on the readings
+     container, so no markup change is needed. */
+  .prose-parish {
+    hanging-punctuation: first;
+    text-wrap: pretty;
+  }
+
+  /* Verse numbers — the Universalis readings mark them as <sup> inside
+     `.prose-parish`; `.verse-number` is the canonical hook from the
+     design. Render them smaller, muted, and tabular so numerals align.
+     The parish-muted token keeps them theme-aware in light/dark. */
+  .prose-parish sup,
+  .verse-number {
+    font-size: 0.66em;
+    font-weight: 600;
+    line-height: 0;
+    color: rgb(var(--color-parish-muted));
+    font-variant-numeric: tabular-nums;
+  }
+
   /* ── Constraint widget box ──────────────────────────────────── */
   .constraint-widget-box {
     @apply relative rounded-2xl overflow-hidden border flex flex-col bg-parish-surface;
     border-color: rgb(var(--color-parish-border) / 0.15);
-    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
   }
 
   .constraint-widget-fade {

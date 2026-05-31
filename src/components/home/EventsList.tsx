@@ -125,15 +125,15 @@ export function EventsList({ limit = 8, showHeading = true }: EventsListProps) {
                                     </h3>
                                     <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-parish-muted">
                                         <span className="inline-flex items-center gap-1.5">
-                                            <Calendar className="h-3.5 w-3.5" />
+                                            <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
                                             {formatDate(event.date)}
                                         </span>
                                         <span className="inline-flex items-center gap-1.5">
-                                            <Clock3 className="h-3.5 w-3.5" />
+                                            <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
                                             {event.time}
                                         </span>
                                         <span className="inline-flex items-center gap-1.5">
-                                            <MapPin className="h-3.5 w-3.5" />
+                                            <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
                                             {event.location}
                                         </span>
                                     </div>
@@ -144,7 +144,7 @@ export function EventsList({ limit = 8, showHeading = true }: EventsListProps) {
 
                                 {/* Category tag */}
                                 <span className={`inline-flex items-center gap-1 shrink-0 text-[0.65rem] font-semibold uppercase tracking-wider ${colorClass}`}>
-                                    <Tag className="h-3 w-3" />
+                                    <Tag className="h-3 w-3" aria-hidden="true" />
                                     {event.category}
                                 </span>
                             </motion.div>

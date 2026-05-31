@@ -108,7 +108,7 @@ export function AccessibilityMenu() {
                 aria-haspopup="dialog"
                 title="Accessibility Settings"
             >
-                <Settings size={20} />
+                <Settings size={20} aria-hidden="true" />
             </button>
 
             {isOpen && (
@@ -146,7 +146,7 @@ export function AccessibilityMenu() {
                                         aria-label="Decrease text size"
                                         className="min-h-[44px] min-w-[44px] flex items-center justify-center p-1.5 rounded-md hover:bg-parish-border/5 disabled:opacity-30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
                                     >
-                                        <ZoomOut size={16} />
+                                        <ZoomOut size={16} aria-hidden="true" />
                                     </button>
                                     <span className="text-xs text-parish-muted w-8 text-center font-display">
                                         {fontSize === 'normal' ? '100%' : fontSize === 'large' ? '112%' : '125%'}
@@ -157,7 +157,7 @@ export function AccessibilityMenu() {
                                         aria-label="Increase text size"
                                         className="min-h-[44px] min-w-[44px] flex items-center justify-center p-1.5 rounded-md hover:bg-parish-border/5 disabled:opacity-30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
                                     >
-                                        <ZoomIn size={16} />
+                                        <ZoomIn size={16} aria-hidden="true" />
                                     </button>
                                 </div>
                             </div>

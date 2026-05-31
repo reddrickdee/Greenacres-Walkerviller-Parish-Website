@@ -96,6 +96,7 @@ export function ParishLifeStrip() {
                                     <Icon
                                         className="h-6 w-6 text-parish-accent"
                                         strokeWidth={1.5}
+                                        aria-hidden="true"
                                     />
                                     <h3 className="mt-3 text-base font-display text-parish-fg">
                                         {item.title}
@@ -105,7 +106,7 @@ export function ParishLifeStrip() {
                                     </p>
                                     <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-parish-accent">
                                         Learn more
-                                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                                     </span>
                                 </Link>
                             </motion.div>

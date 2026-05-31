@@ -196,7 +196,7 @@ export function GalleryPage() {
                             className="absolute right-6 top-6 z-10 rounded-full p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
                             aria-label="Close lightbox"
                         >
-                            <X size={28} />
+                            <X size={28} aria-hidden="true" />
                         </button>
 
                         <button
@@ -204,7 +204,7 @@ export function GalleryPage() {
                             className="absolute left-4 z-10 rounded-full p-3 text-white/60 transition-colors hover:bg-white/10 hover:text-white md:left-8"
                             aria-label="Previous image"
                         >
-                            <ChevronLeft size={32} />
+                            <ChevronLeft size={32} aria-hidden="true" />
                         </button>
 
                         <motion.img
@@ -224,7 +224,7 @@ export function GalleryPage() {
                             className="absolute right-4 z-10 rounded-full p-3 text-white/60 transition-colors hover:bg-white/10 hover:text-white md:right-8"
                             aria-label="Next image"
                         >
-                            <ChevronRight size={32} />
+                            <ChevronRight size={32} aria-hidden="true" />
                         </button>
 
                         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">

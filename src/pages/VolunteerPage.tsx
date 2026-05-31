@@ -84,7 +84,7 @@ export function VolunteerPage() {
                             className="mx-auto max-w-lg text-center"
                         >
                             <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full border border-parish-brass/25 bg-parish-elevated/65">
-                                <CheckCircle className="h-10 w-10 text-parish-brass" />
+                                <CheckCircle className="h-10 w-10 text-parish-brass" aria-hidden="true" />
                             </div>
                             <h1 className="text-4xl text-parish-fg md:text-5xl">Thank You, {name}!</h1>
                             <p className="mt-6 text-xl leading-relaxed text-parish-muted">
@@ -158,7 +158,7 @@ export function VolunteerPage() {
                                             : ''
                                             }`}
                                     >
-                                        <Icon size={24} className={`mb-3 ${isSelected ? 'text-parish-brass' : 'text-parish-muted'} transition-colors`} />
+                                        <Icon size={24} className={`mb-3 ${isSelected ? 'text-parish-brass' : 'text-parish-muted'} transition-colors`} aria-hidden="true" />
                                         <div className="ornamental-kicker">{ministry.label}</div>
                                         <p className="mt-3 text-sm leading-relaxed text-parish-muted">{ministry.description}</p>
                                     </button>
@@ -171,7 +171,7 @@ export function VolunteerPage() {
                     </div>
                 </section>
 
-                <section className="page-section mt-12 md:mt-16">
+                <section className="page-section mt-16 md:mt-24">
                     <div className="page-section-inner">
                         <div className="sanctuary-panel px-7 py-8 md:px-10 md:py-10">
                             <div className="ornamental-kicker mb-6">Your Details</div>
@@ -181,28 +181,28 @@ export function VolunteerPage() {
                                         Full Name <span className="text-parish-fg">*</span>
                                     </label>
                                     <input id="vol-name" type="text" required value={name} onChange={e => setName(e.target.value)} placeholder="Your name"
-                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40" />
                                 </div>
                                 <div>
                                     <label htmlFor="vol-email" className="ornamental-kicker mb-2 block text-[0.68rem]">
                                         Email <span className="text-parish-fg">*</span>
                                     </label>
                                     <input id="vol-email" type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com"
-                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40" />
                                 </div>
                                 <div>
                                     <label htmlFor="vol-phone" className="ornamental-kicker mb-2 block text-[0.68rem]">
                                         Phone <span className="text-parish-muted">(optional)</span>
                                     </label>
                                     <input id="vol-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="0412 345 678"
-                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40" />
                                 </div>
                                 <div>
                                     <label htmlFor="vol-message" className="ornamental-kicker mb-2 block text-[0.68rem]">
                                         Anything else? <span className="text-parish-muted">(optional)</span>
                                     </label>
                                     <input id="vol-message" type="text" value={message} onChange={e => setMessage(e.target.value)} placeholder="Skills, availability, etc."
-                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40 focus:outline-none" />
+                                        className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40" />
                                 </div>
                             </div>
 
@@ -215,7 +215,7 @@ export function VolunteerPage() {
                                     {isSubmitting ? (
                                         <><span className="h-5 w-5 animate-spin rounded-full border-2 border-current/30 border-t-current" /> Submitting…</>
                                     ) : (
-                                        <><Send size={18} /> Sign Up To Volunteer</>
+                                        <><Send size={18} aria-hidden="true" /> Sign Up To Volunteer</>
                                     )}
                                 </button>
                             </div>

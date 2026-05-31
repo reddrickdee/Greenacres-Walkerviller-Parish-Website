@@ -1,13 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, StoryPageTemplate } from '../components/layout/PageTemplates';
+import { ContentLoading, ContentError } from '../components/ContentStates';
 
 export function BulletinPage() {
     const { id } = useParams<{ id: string }>();
     const { newsletters, isLoading } = useParishData();
+    const prefersReducedMotion = useReducedMotion();
 
     usePageSEO({
         title: 'Parish Bulletin',
@@ -15,9 +17,8 @@ export function BulletinPage() {
         path: `/news-events/bulletin/${id}`,
     });
 
-    if (isLoading || !newsletters) {
-        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
-    }
+    if (isLoading) return <ContentLoading />;
+    if (!newsletters) return <ContentError />;
 
     const item = newsletters.items.find(i => i.id === id);
 
@@ -29,7 +30,7 @@ export function BulletinPage() {
                         <h1 className="text-5xl text-parish-fg">Bulletin Not Found</h1>
                         <p className="mt-6 text-xl text-parish-muted">This bulletin does not have a native digital edition.</p>
                         <Link to="/news-events" className="pilgrimage-button-secondary mt-8 inline-flex items-center gap-2">
-                            <ArrowLeft className="h-4 w-4" />
+                            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                             Back to News & Events
                         </Link>
                     </div>
@@ -50,7 +51,7 @@ export function BulletinPage() {
             actions={(
                 <>
                     <Link to="/news-events" className="pilgrimage-button-secondary inline-flex items-center gap-2">
-                        <ArrowLeft className="h-4 w-4" />
+                        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                         All News & Events
                     </Link>
                 </>
@@ -60,23 +61,19 @@ export function BulletinPage() {
             <section className="page-section">
                 <div className="page-section-inner max-w-3xl">
                     <motion.div
-                        initial={{ opacity: 0, y: 24 }}
+                        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.78, ease: [0.32, 0.72, 0, 1] }}
+                        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.78, ease: [0.32, 0.72, 0, 1] }}
                     >
                         <div className="ornamental-kicker">Priest&apos;s Reflection</div>
-                        <div className="mt-6">
+                        {/* Reflection_Prose — parish-authored. The .reflection-prose class
+                            scopes the ::first-letter drop cap to the FIRST paragraph only
+                            (parish-accent + font-display). Liturgical text is never rendered here. */}
+                        <div className="reflection-prose mt-6">
                             {bulletin.priestReflection.split('\n\n').map((para, i) => (
-                                <p key={i} className="mb-6 text-lg leading-relaxed text-parish-muted md:text-xl">
-                                    {i === 0 ? (
-                                        <>
-                                            <span className="float-left mt-1 pr-3 text-7xl leading-none text-parish-brass">{para.charAt(0)}</span>
-                                            {para.slice(1)}
-                                        </>
-                                    ) : (
-                                        para
-                                    )}
+                                <p key={i} className="mb-6 font-body text-lg leading-relaxed text-parish-muted md:text-xl">
+                                    {para}
                                 </p>
                             ))}
                         </div>
@@ -89,10 +86,10 @@ export function BulletinPage() {
                 <section key={i} className="page-section mt-10 md:mt-14">
                     <div className="page-section-inner max-w-3xl">
                         <motion.div
-                            initial={{ opacity: 0, y: 24 }}
+                            initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.68, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
+                            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.68, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
                             className="border-t border-parish-border/5 pt-10"
                         >
                             <div className="ornamental-kicker">{section.title}</div>

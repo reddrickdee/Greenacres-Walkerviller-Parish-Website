@@ -120,11 +120,11 @@ export function NewHerePage() {
 
                                     <div className="mt-5 space-y-3">
                                         <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
-                                            <Car className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" />
+                                            <Car className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
                                             <p className="text-sm leading-relaxed text-parish-muted">{church.parkingSummary}</p>
                                         </div>
                                         <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
-                                            <Accessibility className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" />
+                                            <Accessibility className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
                                             <p className="text-sm leading-relaxed text-parish-muted">{church.accessibilitySummary}</p>
                                         </div>
                                         <p className="text-sm leading-relaxed text-parish-muted italic">{church.arrivalTip}</p>
@@ -137,7 +137,7 @@ export function NewHerePage() {
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"
                                         >
-                                            <MapPinned className="h-4 w-4" />
+                                            <MapPinned className="h-4 w-4" aria-hidden="true" />
                                             Directions
                                         </a>
                                     </div>
@@ -153,26 +153,26 @@ export function NewHerePage() {
                 <section className="page-section mt-16 md:mt-20">
                     <div className="page-section-inner grid gap-6 lg:grid-cols-3">
                         <InfoCard>
-                            <Accessibility className="h-6 w-6 text-parish-brass" />
+                            <Accessibility className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">Accessibility Support</div>
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">{visitorInfo.accessibilitySupport}</p>
                         </InfoCard>
                         <InfoCard>
-                            <Users className="h-6 w-6 text-parish-brass" />
+                            <Users className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">A Diverse Parish Family</div>
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">
                                 Our parish includes Sri Lankan, Filipino, and broader Australian families. Children are welcome at every Mass, with children's liturgy on the first and third weekends.
                             </p>
                         </InfoCard>
                         <InfoCard>
-                            <CalendarClock className="h-6 w-6 text-parish-brass" />
+                            <CalendarClock className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">What Happens Next</div>
                             <p className="mt-3 text-sm leading-relaxed text-parish-muted">
                                 After your first visit, the easiest way to keep moving is through community groups, parish news, and sacramental life.
                             </p>
                             <Link to="/news-events" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
                                 Weekly bulletin &amp; news
-                                <ArrowRight className="h-4 w-4" />
+                                <ArrowRight className="h-4 w-4" aria-hidden="true" />
                             </Link>
                         </InfoCard>
                     </div>

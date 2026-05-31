@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Star } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, InfoCard, ScriptureBlock, SectionIntro, StoryPageTemplate } from '../components/layout/PageTemplates';
+import { ContentLoading, ContentError } from '../components/ContentStates';
 
 export function AboutPage() {
     const { content, isLoading } = useParishData();
+    const prefersReduced = useReducedMotion();
 
     usePageSEO({
         title: 'About Us',
@@ -15,9 +17,8 @@ export function AboutPage() {
         ogImage: '/assets/source/our_parish.webp',
     });
 
-    if (isLoading || !content) {
-        return <div className="flex h-screen items-center justify-center bg-parish-bg text-lg text-parish-fg">Loading…</div>;
-    }
+    if (isLoading) return <ContentLoading />;
+    if (!content) return <ContentError />;
 
     return (
         <StoryPageTemplate
@@ -51,6 +52,11 @@ export function AboutPage() {
                             title={<>Meet our parish leadership.</>}
                             description="Our parish priest and pastoral council work together to guide worship, community life, and pastoral care."
                         />
+                        <blockquote className="mt-10 border-l-2 border-parish-brass/40 pl-6">
+                            <p className="font-display text-2xl leading-snug text-parish-fg text-balance md:text-3xl">
+                                &ldquo;{content.tagline}&rdquo;
+                            </p>
+                        </blockquote>
                     </div>
                     <div className="lg:col-span-7 grid gap-6">
                         <InfoCard>
@@ -65,7 +71,7 @@ export function AboutPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner grid gap-6 lg:grid-cols-2">
                     <ScriptureBlock>
                         <div className="ornamental-kicker !text-parish-brass">Parish Prayer</div>
@@ -79,7 +85,7 @@ export function AboutPage() {
                         <div className="mt-4 space-y-4">
                             {content.missionPoints.map(point => (
                                 <div key={point.title} className="flex gap-3">
-                                    <Star size={14} className="mt-1 shrink-0 text-parish-brass" />
+                                    <Star size={14} className="mt-1 shrink-0 text-parish-brass" aria-hidden="true" />
                                     <p className="text-sm leading-relaxed text-parish-muted md:text-base">{point.title}</p>
                                 </div>
                             ))}
@@ -88,7 +94,7 @@ export function AboutPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Pastoral Council"
@@ -101,14 +107,16 @@ export function AboutPage() {
                         {content.councilMembers.map((member, index) => (
                             <motion.div
                                 key={member.name}
-                                initial={{ opacity: 0, y: 22 }}
+                                initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-70px' }}
-                                transition={{ duration: 0.65, delay: index * 0.05, ease: [0.32, 0.72, 0, 1] }}
+                                transition={prefersReduced
+                                    ? { duration: 0 }
+                                    : { duration: 0.65, delay: index * 0.05, ease: [0.32, 0.72, 0, 1] }}
                                 className="sanctuary-card p-0"
                             >
                                 {member.photoAsset ? (
-                                    <div className="image-panel min-h-[260px] rounded-none border-x-0 border-t-0 border-b border-parish-border/10">
+                                    <div className="image-panel min-h-[260px] rounded-t-2xl border-x-0 border-t-0 border-b border-parish-border/10">
                                         <img
                                             src={`/${member.photoAsset}`}
                                             alt={member.name}
@@ -117,7 +125,7 @@ export function AboutPage() {
                                         />
                                     </div>
                                 ) : (
-                                    <div className="flex min-h-[220px] items-end rounded-t-[1.75rem] bg-gradient-to-br from-parish-elevated to-parish-surface px-6 py-6">
+                                    <div className="flex min-h-[220px] items-end rounded-t-2xl bg-gradient-to-br from-parish-elevated to-parish-surface px-6 py-6">
                                         <div className="ornamental-kicker">Pastoral Profile</div>
                                     </div>
                                 )}
@@ -132,7 +140,7 @@ export function AboutPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <ActionBand>
                         <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
@@ -148,7 +156,7 @@ export function AboutPage() {
                                 </Link>
                                 <Link to="/history" className="pilgrimage-button-secondary inline-flex items-center">
                                     Explore Parish History
-                                    <ArrowRight className="h-4 w-4" />
+                                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                                 </Link>
                             </div>
                         </div>
