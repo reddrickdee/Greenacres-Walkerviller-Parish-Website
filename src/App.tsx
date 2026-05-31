@@ -16,6 +16,7 @@ const NewsEventsPage = lazy(() => import('./pages/NewsEventsPage').then(m => ({ 
 const BulletinPage = lazy(() => import('./pages/BulletinPage').then(m => ({ default: m.BulletinPage })));
 const VolunteerPage = lazy(() => import('./pages/VolunteerPage').then(m => ({ default: m.VolunteerPage })));
 const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
+const DailyReadingsPage = lazy(() => import('./pages/DailyReadingsPage').then(m => ({ default: m.DailyReadingsPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 import { PATHS } from './lib/routes';
@@ -139,6 +140,7 @@ const router = createBrowserRouter([
             { path: rel(PATHS.BULLETIN), element: <BulletinPage /> },
             { path: rel(PATHS.VOLUNTEER), element: <VolunteerPage /> },
             { path: rel(PATHS.GALLERY), element: <GalleryPage /> },
+            { path: rel(PATHS.DAILY_READINGS), element: <DailyReadingsPage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },

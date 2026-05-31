@@ -18,6 +18,7 @@ export const PATHS = {
     NEWS_EVENTS: '/news-events',
     VOLUNTEER: '/volunteer',
     GALLERY: '/gallery',
+    DAILY_READINGS: '/daily-readings',
     // Dynamic routes (param segments)
     BULLETIN: '/news-events/bulletin/:id',
 } as const;
@@ -48,6 +49,7 @@ export const ROUTE_MANIFEST: RouteEntry[] = [
     // Worship
     { path: PATHS.HOME, label: 'Home', section: 'Worship' },
     { path: PATHS.MASS_TIMES, label: 'Mass Times', section: 'Worship' },
+    { path: PATHS.DAILY_READINGS, label: "Today's Readings", section: 'Worship' },
     { path: PATHS.NEWS_EVENTS, label: 'News & Events', section: 'Worship' },
     // Explore
     { path: PATHS.ABOUT, label: 'About Us', section: 'Explore' },
