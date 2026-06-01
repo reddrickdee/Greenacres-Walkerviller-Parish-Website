@@ -52,7 +52,7 @@ export function LiturgicalWidget() {
                                 >
                                     Season of {season.label}
                                 </h2>
-                                <p className="mt-3 text-sm leading-relaxed text-parish-muted max-w-xl">
+                                <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted max-w-xl">
                                     {season.label === 'Easter' && (
                                         <>We celebrate the risen Christ during these fifty days of joy. The Easter Season runs from Easter Sunday through Pentecost Sunday.</>
                                     )}
@@ -76,7 +76,7 @@ export function LiturgicalWidget() {
                         </div>
 
                         {/* Liturgical color indicator */}
-                        <div className="mt-6 flex items-center gap-3 text-sm text-parish-muted">
+                        <div className="mt-6 flex items-center gap-3 text-[1rem] text-parish-muted">
                             <BookOpen className="h-4 w-4" aria-hidden="true" />
                             <span>
                                 Liturgical colour:{' '}

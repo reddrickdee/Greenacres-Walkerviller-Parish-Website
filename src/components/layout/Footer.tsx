@@ -25,7 +25,7 @@ export function Footer() {
                                 <div className="font-display text-lg font-bold text-parish-fg leading-tight">
                                     Greenacres<br />Walkerville
                                 </div>
-                                <div className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
+                                <div className="text-[0.8125rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
                                     Catholic Parish
                                 </div>
                             </div>
@@ -43,7 +43,7 @@ export function Footer() {
                                 <span>St Martin&apos;s Church, Corner Muller &amp; Hampstead Roads, Greenacres</span>
                             </div>
                         </div>
-                        <div className="mt-6 border-t border-parish-border/15 pt-4 text-xs text-parish-muted">
+                        <div className="mt-6 border-t border-parish-border/15 pt-4 text-[0.8125rem] text-parish-muted">
                             <div className="font-semibold text-parish-fg uppercase tracking-wider mb-2">Child Safeguarding Contacts</div>
                             <p className="mb-1">
                                 Child Abuse Report Line: <a href="tel:131478" className="font-semibold text-parish-accent hover:underline">13 14 78</a>
@@ -83,11 +83,11 @@ export function Footer() {
                                     <p>9:00am – 12:00pm</p>
                                 </div>
                             </div>
-                            <p className="text-xs text-parish-muted/60 mt-2">
+                            <p className="text-[0.8125rem] text-parish-muted/60 mt-2">
                                 We are closed on public holidays.
                             </p>
                         </div>
-                        <Link to="/contact" className="pilgrimage-button mt-6 text-xs">
+                        <Link to="/contact" className="pilgrimage-button mt-6">
                             Contact the Office
                         </Link>
                     </div>
@@ -118,7 +118,7 @@ export function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="mt-12 border-t border-parish-border/15 pt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-xs text-parish-muted/60">
+                <div className="mt-12 border-t border-parish-border/15 pt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-[0.8125rem] text-parish-muted/60">
                     <p>© {new Date().getFullYear()} Greenacres Walkerville Catholic Parish</p>
                     <div className="flex items-center gap-4">
                         <Link to="/contact" className="no-underline hover:text-parish-accent transition-colors">
@@ -131,7 +131,7 @@ export function Footer() {
                 </div>
 
                 {/* Liturgical season indicator */}
-                <div className="mt-4 flex items-center gap-2 text-xs text-parish-muted/40">
+                <div className="mt-4 flex items-center gap-2 text-[0.8125rem] text-parish-muted/40">
                     <span
                         className="inline-block h-2 w-2 rounded-full"
                         style={{ backgroundColor: season.cssColor }}

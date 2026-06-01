@@ -101,10 +101,10 @@ export function ParishLifeStrip() {
                                     <h3 className="mt-3 text-base font-display text-parish-fg">
                                         {item.title}
                                     </h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-parish-muted flex-1">
+                                    <p className="mt-2 text-[1rem] leading-relaxed text-parish-muted flex-1">
                                         {item.description}
                                     </p>
-                                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-parish-accent">
+                                    <span className="mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold uppercase tracking-[0.14em] text-parish-accent">
                                         Learn more
                                         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                                     </span>

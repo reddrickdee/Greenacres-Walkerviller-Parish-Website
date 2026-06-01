@@ -123,7 +123,7 @@ function SectionHeader({
                 <Icon className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
-                <div className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
+                <div className="text-[0.875rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
                     {label}
                 </div>
                 <h2 className="text-2xl font-display text-parish-fg md:text-3xl">
@@ -147,10 +147,10 @@ function RosterSection({ roster }: { roster: Roster }) {
                         key={mass.label}
                         className="rounded-xl border border-parish-border/10 bg-parish-surface px-5 py-5 shadow-sm"
                     >
-                        <div className="text-sm font-semibold text-parish-fg">{mass.label}</div>
+                        <div className="text-[1rem] font-semibold text-parish-fg">{mass.label}</div>
                         <div className="mt-3 space-y-2">
                             {mass.roles.map(r => (
-                                <div key={r.role} className="flex justify-between text-sm text-parish-muted">
+                                <div key={r.role} className="flex justify-between text-[1rem] text-parish-muted">
                                     <span>{r.role}</span>
                                     <span className="font-medium text-parish-fg">{r.name}</span>
                                 </div>
@@ -201,7 +201,7 @@ export function WeeklyNotices() {
                             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] text-parish-fg">
                                 {data.issueTitle}
                             </h2>
-                            <p className="mt-2 inline-flex items-center gap-2 text-sm text-parish-muted">
+                            <p className="mt-2 inline-flex items-center gap-2 text-[1rem] text-parish-muted">
                                 <ShieldCheck className="h-4 w-4 text-parish-brass" aria-hidden="true" />
                                 Current parish notices for the week of {data.weekOf}.
                             </p>
@@ -219,7 +219,7 @@ export function WeeklyNotices() {
 
                     {/* Liturgical info strip */}
                     <div className="mt-5 rounded-xl border border-parish-border/10 bg-parish-elevated/45 px-5 py-4 md:px-6">
-                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-parish-muted">
+                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[1rem] text-parish-muted">
                             <span className="font-medium text-parish-fg">
                                 {data.liturgicalInfo.sundayTitle}
                             </span>
@@ -239,10 +239,10 @@ export function WeeklyNotices() {
                             <div className="flex items-start gap-3">
                                 <Church className="h-5 w-5 mt-0.5 shrink-0 text-parish-brass" aria-hidden="true" />
                                 <div>
-                                    <div className="text-sm font-semibold text-parish-fg">
+                                    <div className="text-[1rem] font-semibold text-parish-fg">
                                         {data.massChanges.heading}
                                     </div>
-                                    <p className="mt-1 text-sm leading-relaxed text-parish-muted">
+                                    <p className="mt-1 text-[1rem] leading-relaxed text-parish-muted">
                                         {data.massChanges.body}
                                     </p>
                                 </div>
@@ -286,7 +286,7 @@ export function WeeklyNotices() {
 
                 {/* Bottom PDF download */}
                 <motion.div {...motionProps} className="mt-10 text-center">
-                    <p className="text-sm text-parish-muted mb-4">
+                    <p className="text-[1rem] text-parish-muted mb-4">
                         For the full bulletin including readings, reflections, and additional notices:
                     </p>
                     <a

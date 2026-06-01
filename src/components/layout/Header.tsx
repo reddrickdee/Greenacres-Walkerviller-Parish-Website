@@ -39,7 +39,7 @@ export function Header() {
         >
             {/* Utility strip — green with key links */}
             <div className="bg-parish-shell-bg text-parish-shell-fg">
-                <div className="mx-auto flex max-w-[1480px] items-center justify-between px-4 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.22em] md:px-6">
+                <div className="mx-auto flex max-w-[1480px] items-center justify-between px-4 py-1.5 text-[0.8125rem] font-semibold uppercase tracking-[0.22em] md:px-6">
                     <span className="hidden opacity-80 md:block">In the footsteps of Jesus</span>
                     <div className="flex items-center gap-4 mx-auto md:mx-0">
                         <Link
@@ -92,7 +92,7 @@ export function Header() {
                             <div className="font-display text-lg leading-tight font-bold text-parish-fg md:text-xl">
                                 Walkerville
                             </div>
-                            <div className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
+                            <div className="text-[0.8125rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
                                 Catholic Parish
                             </div>
                         </div>

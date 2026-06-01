@@ -59,7 +59,7 @@ export function ThisWeekend() {
                                     <h2 className="text-2xl font-display text-parish-fg md:text-3xl">
                                         This Weekend
                                     </h2>
-                                    <p className="text-sm text-parish-muted">{weekendRange}</p>
+                                    <p className="text-[1rem] text-parish-muted">{weekendRange}</p>
                                 </div>
                             </div>
 
@@ -72,7 +72,7 @@ export function ThisWeekend() {
 
                             {/* Mass schedule table */}
                             <div className="mt-6 space-y-1">
-                                <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-parish-muted mb-3">
+                                <h3 className="text-[1rem] font-semibold uppercase tracking-[0.14em] text-parish-muted mb-3">
                                     Upcoming Masses
                                 </h3>
 
@@ -81,10 +81,10 @@ export function ThisWeekend() {
                                         <p className="text-base font-semibold text-parish-fg">
                                             St Monica&apos;s Church
                                         </p>
-                                        <p className="text-sm text-parish-muted">
+                                        <p className="text-[1rem] text-parish-muted">
                                             90 North East Road, Walkerville
                                         </p>
-                                        <div className="mt-2 flex flex-wrap gap-x-8 gap-y-1 text-sm text-parish-muted">
+                                        <div className="mt-2 flex flex-wrap gap-x-8 gap-y-1 text-[1rem] text-parish-muted">
                                             <span>Saturday Vigil <strong className="text-parish-fg ml-2">6:00pm</strong></span>
                                             <span>Sunday <strong className="text-parish-fg ml-2">9:30am</strong></span>
                                         </div>
@@ -94,10 +94,10 @@ export function ThisWeekend() {
                                         <p className="text-base font-semibold text-parish-fg">
                                             St Martin&apos;s Church
                                         </p>
-                                        <p className="text-sm text-parish-muted">
+                                        <p className="text-[1rem] text-parish-muted">
                                             Corner Muller &amp; Hampstead Roads, Greenacres
                                         </p>
-                                        <div className="mt-2 flex flex-wrap gap-x-8 gap-y-1 text-sm text-parish-muted">
+                                        <div className="mt-2 flex flex-wrap gap-x-8 gap-y-1 text-[1rem] text-parish-muted">
                                             <span>Sunday <strong className="text-parish-fg ml-2">9:00am</strong></span>
                                         </div>
                                     </div>
@@ -106,8 +106,8 @@ export function ThisWeekend() {
                                         <p className="text-base font-semibold text-parish-fg">
                                             Weekday Mass
                                         </p>
-                                        <p className="text-sm text-parish-muted">Both Churches</p>
-                                        <div className="mt-2 text-sm text-parish-muted">
+                                        <p className="text-[1rem] text-parish-muted">Both Churches</p>
+                                        <div className="mt-2 text-[1rem] text-parish-muted">
                                             <span>Monday – Saturday <strong className="text-parish-fg ml-2">9:15am</strong></span>
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@ export function ThisWeekend() {
 
                             <Link
                                 to="/mass-times"
-                                className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-parish-accent no-underline"
+                                className="mt-6 inline-flex items-center gap-2 text-[1rem] font-semibold uppercase tracking-[0.18em] text-parish-accent no-underline"
                             >
                                 View full Mass Times
                                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

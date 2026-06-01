@@ -80,10 +80,10 @@ function TemplateFrame({
                         <div className="grid grid-cols-1 lg:grid-cols-12">
                             <div className="order-2 lg:order-1 lg:col-span-7 px-7 py-8 md:px-10 md:py-12 lg:px-14 lg:py-16">
                                 <span className="section-label mb-6">{eyebrow}</span>
-                                <h1 className="max-w-4xl text-[clamp(2.9rem,6vw,5.9rem)] leading-[0.95] tracking-tight text-parish-fg text-balance">
+                                <h1 className="max-w-4xl text-[clamp(3.1rem,6.5vw,6.2rem)] leading-[0.95] tracking-tight text-parish-fg text-balance">
                                     {title}
                                 </h1>
-                                <p className="mt-6 max-w-prose text-lg md:text-xl text-parish-muted text-balance">
+                                <p className="mt-6 max-w-prose text-xl md:text-2xl text-parish-muted text-balance">
                                     {description}
                                 </p>
                                 {actions && (
@@ -112,7 +112,7 @@ function TemplateFrame({
                                     <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-8">
                                         <div className="max-w-sm rounded-[1.5rem] border border-parish-overlay-border/15 bg-parish-overlay-bg/35 px-5 py-4 text-parish-overlay-text/92 backdrop-blur-md">
                                             <div className="ornamental-kicker !text-parish-overlay-muted">Parish Welcome</div>
-                                            <p className="mt-2 text-sm leading-relaxed text-parish-overlay-text/85">
+                                            <p className="mt-2 text-[1rem] leading-relaxed text-parish-overlay-text/85">
                                                 A calm, practical first step into the life of Greenacres Walkerville Parish.
                                             </p>
                                         </div>
@@ -158,9 +158,9 @@ export function SectionIntro({
             className={align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}
         >
             <span className="section-label mb-5">{eyebrow}</span>
-            <h2 className="text-[clamp(2rem,4vw,3.6rem)] tracking-tight text-parish-fg text-balance">{title}</h2>
+            <h2 className="text-[clamp(2.2rem,4.5vw,3.8rem)] tracking-tight text-parish-fg text-balance">{title}</h2>
             {description && (
-                <p className="mt-4 max-w-prose text-lg md:text-xl text-parish-muted text-balance">
+                <p className="mt-4 max-w-prose text-xl md:text-2xl text-parish-muted text-balance">
                     {description}
                 </p>
             )}

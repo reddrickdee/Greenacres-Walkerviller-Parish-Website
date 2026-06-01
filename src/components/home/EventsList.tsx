@@ -119,7 +119,7 @@ function EventCard({ event, featured, variants }: EventCardProps) {
                 <span className={featured ? 'text-2xl font-bold leading-none' : 'text-lg font-bold leading-none'}>
                     {eventDate.getDate()}
                 </span>
-                <span className="text-[0.65rem] font-semibold uppercase tracking-wider">
+                <span className="text-[0.875rem] font-semibold uppercase tracking-wider">
                     {MONTHS[eventDate.getMonth()]}
                 </span>
             </div>
@@ -138,7 +138,7 @@ function EventCard({ event, featured, variants }: EventCardProps) {
                 >
                     {event.title}
                 </h3>
-                <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-parish-muted">
+                <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[1rem] text-parish-muted">
                     <span className="inline-flex items-center gap-1.5">
                         <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
                         {formatDate(event.date)}
@@ -152,14 +152,14 @@ function EventCard({ event, featured, variants }: EventCardProps) {
                         {event.location}
                     </span>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-parish-muted">
+                <p className="mt-2 text-[1rem] leading-relaxed text-parish-muted">
                     {event.description}
                 </p>
             </div>
 
             {/* Category tag */}
             <span
-                className={`inline-flex items-center gap-1 shrink-0 self-start text-[0.65rem] font-semibold uppercase tracking-wider ${colorClass}`}
+                className={`inline-flex items-center gap-1 shrink-0 self-start text-[0.875rem] font-semibold uppercase tracking-wider ${colorClass}`}
             >
                 <Tag className="h-3 w-3" aria-hidden="true" />
                 {event.category}

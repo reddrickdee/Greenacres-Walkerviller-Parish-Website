@@ -93,7 +93,7 @@ export function LatestBulletin() {
                                 </a>
                             </div>
 
-                            <p className="mt-4 text-sm text-parish-muted">
+                            <p className="mt-4 text-[1rem] text-parish-muted">
                                 {data.weekOf} · {data.issueTitle}
                             </p>
                         </div>

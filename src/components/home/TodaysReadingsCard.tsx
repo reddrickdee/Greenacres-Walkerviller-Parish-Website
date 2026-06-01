@@ -82,7 +82,7 @@ export function TodaysReadingsCard() {
                             <BookOpen className="h-6 w-6 text-parish-accent shrink-0" aria-hidden="true" />
                             <div className="flex-1 min-w-0">
                                 <p className="ornamental-kicker mb-0.5">Readings &amp; Reflection</p>
-                                <p className="text-sm text-parish-muted">
+                                <p className="text-[1rem] text-parish-muted">
                                     Daily readings and prayer sources for Adelaide
                                 </p>
                             </div>
@@ -123,7 +123,7 @@ export function TodaysReadingsCard() {
                                             {liturgicalDay}
                                         </p>
                                     )}
-                                    <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-parish-muted">
+                                    <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[1rem] text-parish-muted">
                                         {gospelRef && (
                                             <span>
                                                 Gospel: <span className="font-semibold text-parish-fg">{gospelRef}</span>

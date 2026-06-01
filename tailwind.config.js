@@ -57,11 +57,16 @@ export default {
                 'section-lg': '10rem',
             },
             fontSize: {
-                // Readable base scale for elderly-friendly UI
-                'body': ['1.125rem', { lineHeight: '1.75' }],   // 18px base
-                'body-lg': ['1.25rem', { lineHeight: '1.7' }],  // 20px
-                'body-xl': ['1.5rem', { lineHeight: '1.65' }],  // 24px
-                'nav': ['0.875rem', { lineHeight: '1', letterSpacing: '0.1em' }],
+                // Readable base scale for elderly-friendly UI — mapped to --type-* tokens
+                'body': ['var(--type-body)', { lineHeight: '1.85' }],     // 18px base
+                'body-lg': ['var(--type-body-lg)', { lineHeight: '1.7' }], // 20px
+                'body-xl': ['1.5rem', { lineHeight: '1.65' }],            // 24px
+                'sub': ['var(--type-sub)', { lineHeight: '1.7' }],        // 16px — secondary text
+                'label': ['var(--type-label)', { lineHeight: '1.4', letterSpacing: '0.1em' }],   // 14px — kickers/labels
+                'button': ['var(--type-button)', { lineHeight: '1', letterSpacing: '0.1em' }],   // 15px — CTAs
+                'fine': ['var(--type-fine)', { lineHeight: '1.5' }],      // 13px — fine print
+                'caption': ['var(--type-caption)', { lineHeight: '1.5' }], // 14px — captions
+                'nav': ['var(--type-nav)', { lineHeight: '1', letterSpacing: '0.1em' }], // 13px — nav (exception)
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

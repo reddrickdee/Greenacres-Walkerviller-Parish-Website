@@ -93,7 +93,7 @@ export function HeroSection() {
                     <h1 className="mx-auto max-w-3xl text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.05] text-parish-fg text-balance">
                         A welcoming community of faith in Adelaide
                     </h1>
-                    <p className="mx-auto mt-5 max-w-prose text-lg leading-relaxed text-parish-muted md:text-xl text-pretty">
+                    <p className="mx-auto mt-5 max-w-prose text-xl leading-relaxed text-parish-muted md:text-2xl text-pretty">
                         We are a Catholic Parish serving Greenacres, Walkerville and the surrounding communities.
                     </p>
                     <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
@@ -118,21 +118,21 @@ export function HeroSection() {
                                 <CalendarClock className="h-5 w-5" aria-hidden="true" />
                             </div>
                             <div>
-                                <div className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">Next Mass</div>
+                                <div className="text-[0.875rem] font-semibold uppercase tracking-[0.18em] text-parish-muted">Next Mass</div>
                                 {nextService ? (
                                     <>
                                         <div className="mt-2 text-2xl font-display text-parish-fg">
                                             {nextDay} {nextTime}
                                         </div>
-                                        <div className="text-sm leading-relaxed text-parish-muted">{nextChurch}</div>
-                                        <div className="mt-2 text-sm text-parish-accent font-semibold">
+                                        <div className="text-[1rem] leading-relaxed text-parish-muted">{nextChurch}</div>
+                                        <div className="mt-2 text-[1rem] text-parish-accent font-semibold">
                                             Begins in {nextService.countdown.display}
                                         </div>
                                     </>
                                 ) : (
                                     <>
                                         <div className="mt-2 text-2xl font-display text-parish-fg">Saturday 6:00pm</div>
-                                        <div className="text-sm leading-relaxed text-parish-muted">St Monica&apos;s Walkerville</div>
+                                        <div className="text-[1rem] leading-relaxed text-parish-muted">St Monica&apos;s Walkerville</div>
                                     </>
                                 )}
                             </div>
@@ -150,10 +150,10 @@ export function HeroSection() {
                                 className="h-8 w-8 object-contain"
                             />
                             <div>
-                                <div className="text-xs font-semibold uppercase tracking-[0.12em] text-parish-fg">
+                                <div className="text-[0.875rem] font-semibold uppercase tracking-[0.12em] text-parish-fg">
                                     St Monica&apos;s
                                 </div>
-                                <div className="text-[0.72rem] text-parish-muted">
+                                <div className="text-[0.875rem] text-parish-muted">
                                     Catholic Church
                                 </div>
                             </div>
@@ -166,9 +166,9 @@ export function HeroSection() {
                     className="mt-10 flex flex-wrap items-center justify-center gap-4 text-parish-muted"
                 >
                     <div className="h-px w-14 bg-parish-border/30" />
-                    <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em]">{content.tagline}</span>
-                    <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] opacity-60">·</span>
-                    <span className={`text-[0.72rem] font-semibold uppercase tracking-[0.18em] ${liturgicalSeason.colorClass}`}>
+                    <span className="text-[0.875rem] font-semibold uppercase tracking-[0.18em]">{content.tagline}</span>
+                    <span className="text-[0.875rem] font-semibold uppercase tracking-[0.18em] opacity-60">·</span>
+                    <span className={`text-[0.875rem] font-semibold uppercase tracking-[0.18em] ${liturgicalSeason.colorClass}`}>
                         {liturgicalSeason.label}
                     </span>
                 </motion.div>

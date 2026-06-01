@@ -115,10 +115,10 @@ export function TaskCards() {
                                     <h3 className="mt-3 text-base font-display text-parish-fg">
                                         {task.title}
                                     </h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-parish-muted">
+                                    <p className="mt-2 text-[1rem] leading-relaxed text-parish-muted">
                                         {task.description}
                                     </p>
-                                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-parish-accent">
+                                    <span className="mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold uppercase tracking-[0.14em] text-parish-accent">
                                         {task.linkLabel}
                                         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                                     </span>
