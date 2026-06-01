@@ -19,6 +19,11 @@ export const PATHS = {
     VOLUNTEER: '/volunteer',
     GALLERY: '/gallery',
     DAILY_READINGS: '/daily-readings',
+    SACRAMENTS: '/sacraments',
+    GIVING: '/give',
+    SAFEGUARDING: '/safeguarding',
+    PRIVACY: '/privacy',
+    ACCESSIBILITY: '/accessibility',
     // Dynamic routes (param segments)
     BULLETIN: '/news-events/bulletin/:id',
 } as const;
@@ -59,6 +64,11 @@ export const ROUTE_MANIFEST: RouteEntry[] = [
     // Community
     { path: PATHS.VOLUNTEER, label: 'Volunteer', section: 'Community' },
     { path: PATHS.CONTACT, label: 'Contact', section: 'Community' },
+    { path: PATHS.SACRAMENTS, label: 'Sacraments', section: 'Worship' },
+    { path: PATHS.GIVING, label: 'Give', section: 'Community' },
+    { path: PATHS.SAFEGUARDING, label: 'Safeguarding', section: 'Community' },
+    { path: PATHS.PRIVACY, label: 'Privacy Policy', section: 'Community' },
+    { path: PATHS.ACCESSIBILITY, label: 'Accessibility', section: 'Community' },
 ];
 
 // ── Derived lookups ───────────────────────────────────────────────────────────
