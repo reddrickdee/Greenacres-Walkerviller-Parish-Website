@@ -18,6 +18,7 @@ export interface CalendarEvent {
     description?: string;
     category: string;
     registrationEnabled?: boolean;
+    maxCapacity?: number;
     imageUrl?: string;
 }
 
@@ -29,11 +30,12 @@ interface SanityEvent {
     description?: string;
     category?: string;
     registrationEnabled?: boolean;
+    maxCapacity?: number;
     imageUrl?: string;
 }
 
 const EVENTS_QUERY = `*[_type == "event" && dateTime >= now()] | order(dateTime asc){
-    "id": _id, title, dateTime, location, description, category, registrationEnabled,
+    "id": _id, title, dateTime, location, description, category, registrationEnabled, maxCapacity,
     "imageUrl": image.asset->url
 }`;
 
