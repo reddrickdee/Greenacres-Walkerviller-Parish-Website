@@ -17,6 +17,7 @@ export default tseslint.config(
             'coverage/**',
             'skills/**',
             'frontend/**',
+            'sanity/**',
             'supabase/functions/**',
             'jsonpmass.js',
             'parse_universalis*.js',

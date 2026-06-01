@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Church, Clock3, Mail, Phone } from 'lucide-react';
+import { Church, Clock3, Mail, Phone, Facebook } from 'lucide-react';
 import { FOOTER_QUICK_LINKS, FOOTER_LEGAL_LINKS } from '../../lib/navigation';
 import { useLiturgicalSeason } from '../../hooks/useLiturgicalSeason';
 
@@ -112,6 +112,15 @@ export function Footer() {
                                 aria-label="Phone"
                             >
                                 <Phone className="h-4 w-4" aria-hidden="true" />
+                            </a>
+                            <a
+                                href="https://www.facebook.com/profile.php?id=61584973342464"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex h-9 w-9 items-center justify-center rounded-full border border-parish-border/15 text-parish-muted no-underline transition-colors hover:text-parish-accent hover:border-parish-accent/30"
+                                aria-label="Facebook"
+                            >
+                                <Facebook className="h-4 w-4" aria-hidden="true" />
                             </a>
                         </div>
                     </div>

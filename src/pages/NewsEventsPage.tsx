@@ -5,6 +5,7 @@ import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { ActionBand, SectionIntro, HighlightPageTemplate } from '../components/layout/PageTemplates';
 import { ContentLoading, ContentError } from '../components/ContentStates';
+import { EventCalendar } from '../components/events/EventCalendar';
 
 // ── helpers ────────────────────────────────────────────────────────────────────
 
@@ -137,6 +138,20 @@ export function NewsEventsPage() {
                     </div>
                 </section>
             )}
+
+            {/* ── Upcoming Events ──────────────────────────────────── */}
+            <section className="page-section mt-16 md:mt-24">
+                <div className="page-section-inner">
+                    <SectionIntro
+                        eyebrow="What's On"
+                        title={<>Upcoming events</>}
+                        description="Liturgical celebrations, community gatherings, and parish life. Managed in the parish content system."
+                    />
+                    <div className="mt-10">
+                        <EventCalendar />
+                    </div>
+                </div>
+            </section>
 
             {/* ── Past Issues Grid ─────────────────────────────────── */}
             <section className="page-section mt-16 md:mt-24">

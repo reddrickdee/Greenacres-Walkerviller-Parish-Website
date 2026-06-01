@@ -1,0 +1,23 @@
+{
+    "name": "gwparish-studio",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "sanity dev",
+        "start": "sanity start",
+        "build": "sanity build",
+        "deploy": "sanity deploy"
+    },
+    "dependencies": {
+        "@sanity/vision": "^3.99.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "sanity": "^3.99.0",
+        "styled-components": "^6.1.13"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.10",
+        "typescript": "^5.5.3"
+    }
+}
