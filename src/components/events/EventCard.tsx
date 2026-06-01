@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { CalendarDays, Clock, MapPin } from 'lucide-react';
 import type { CalendarEvent } from '../../hooks/useEvents';
+import { EventRegistrationForm } from './EventRegistrationForm';
 
 function dateParts(iso?: string) {
     if (!iso) return null;
@@ -14,6 +15,7 @@ function dateParts(iso?: string) {
 
 export function EventCard({ event }: { event: CalendarEvent }) {
     const p = dateParts(event.dateTime);
+    const [registering, setRegistering] = useState(false);
 
     return (
         <div className="sanctuary-card flex gap-5">
@@ -48,9 +50,17 @@ export function EventCard({ event }: { event: CalendarEvent }) {
                     <p className="mt-2 text-[1rem] leading-relaxed text-parish-muted">{event.description}</p>
                 )}
                 {event.registrationEnabled && (
-                    <Link to="/contact" className="pilgrimage-button mt-4 inline-flex !px-5 !py-2.5">
-                        Register
-                    </Link>
+                    <div className="mt-4">
+                        <button
+                            type="button"
+                            onClick={() => setRegistering(o => !o)}
+                            aria-expanded={registering}
+                            className="pilgrimage-button inline-flex !px-5 !py-2.5"
+                        >
+                            {registering ? 'Hide registration' : 'Register'}
+                        </button>
+                        {registering && <EventRegistrationForm event={event} />}
+                    </div>
                 )}
             </div>
         </div>

@@ -421,3 +421,18 @@ html.reduce-motion *::after {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
+
+@media print {
+  nav[aria-label="Main navigation"],
+  footer[role="contentinfo"] {
+    display: none !important;
+  }
+
+  .page-shell {
+    padding-top: 0 !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+}

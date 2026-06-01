@@ -1,15 +1,16 @@
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Share2, Printer, Check } from 'lucide-react';
 import { useParishData } from '../context/ParishDataContext';
 import { usePageSEO } from '../hooks/usePageSEO';
-import { ActionBand, StoryPageTemplate } from '../components/layout/PageTemplates';
+import { StoryPageTemplate } from '../components/layout/PageTemplates';
 import { ContentLoading, ContentError } from '../components/ContentStates';
 
 export function BulletinPage() {
     const { id } = useParams<{ id: string }>();
     const { newsletters, isLoading } = useParishData();
-    const prefersReducedMotion = useReducedMotion();
+    const [copied, setCopied] = useState(false);
+    const [activeId, setActiveId] = useState('reflection');
 
     usePageSEO({
         title: 'Parish Bulletin',
@@ -17,12 +18,41 @@ export function BulletinPage() {
         path: `/news-events/bulletin/${id}`,
     });
 
+    const item = newsletters?.items.find(i => i.id === id);
+    const bulletin = item?.nativeBulletin;
+
+    // Prev/next across bulletins that have a native digital edition.
+    const native = newsletters?.items.filter(i => i.nativeBulletin) ?? [];
+    const pos = native.findIndex(i => i.id === id);
+    const prevItem = pos > 0 ? native[pos - 1] : null;
+    const nextItem = pos >= 0 && pos < native.length - 1 ? native[pos + 1] : null;
+
+    const navItems = bulletin
+        ? [{ id: 'reflection', title: "Priest's Reflection" }, ...bulletin.sections.map((s, i) => ({ id: `section-${i}`, title: s.title }))]
+        : [];
+
+    // Scroll-spy: highlight the section currently in view.
+    useEffect(() => {
+        if (!navItems.length) return;
+        const observer = new IntersectionObserver(
+            entries => {
+                const visible = entries.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+                if (visible[0]) setActiveId(visible[0].target.id);
+            },
+            { rootMargin: '-30% 0px -60% 0px' },
+        );
+        navItems.forEach(s => {
+            const el = document.getElementById(s.id);
+            if (el) observer.observe(el);
+        });
+        return () => observer.disconnect();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id, navItems.length]);
+
     if (isLoading) return <ContentLoading />;
     if (!newsletters) return <ContentError />;
 
-    const item = newsletters.items.find(i => i.id === id);
-
-    if (!item || !item.nativeBulletin) {
+    if (!item || !bulletin) {
         return (
             <div className="page-shell">
                 <section className="page-section">
@@ -39,7 +69,17 @@ export function BulletinPage() {
         );
     }
 
-    const bulletin = item.nativeBulletin;
+    const share = async () => {
+        const url = window.location.href;
+        if (navigator.share) {
+            try { await navigator.share({ title: item.title, url }); return; } catch { /* cancelled */ }
+        }
+        try {
+            await navigator.clipboard.writeText(url);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch { /* ignore */ }
+    };
 
     return (
         <StoryPageTemplate
@@ -49,85 +89,83 @@ export function BulletinPage() {
             imageSrc="/assets/source/news_connections.webp"
             imageAlt="Connections newsletter"
             actions={(
-                <>
-                    <Link to="/news-events" className="pilgrimage-button-secondary inline-flex items-center gap-2">
-                        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                        All News & Events
-                    </Link>
-                </>
+                <Link to="/news-events" className="pilgrimage-button-secondary inline-flex items-center gap-2">
+                    <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                    All News & Events
+                </Link>
             )}
         >
-            {/* Priest's Reflection */}
             <section className="page-section">
-                <div className="page-section-inner max-w-3xl">
-                    <motion.div
-                        initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.78, ease: [0.32, 0.72, 0, 1] }}
-                    >
-                        <div className="ornamental-kicker">Priest&apos;s Reflection</div>
-                        {/* Reflection_Prose — parish-authored. The .reflection-prose class
-                            scopes the ::first-letter drop cap to the FIRST paragraph only
-                            (parish-accent + font-display). Liturgical text is never rendered here. */}
-                        <div className="reflection-prose mt-6">
-                            {bulletin.priestReflection.split('\n\n').map((para, i) => (
-                                <p key={i} className="mb-6 font-body text-lg leading-relaxed text-parish-muted md:text-xl">
-                                    {para}
-                                </p>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+                <div className="page-section-inner grid gap-10 lg:grid-cols-12">
+                    {/* Section nav with scroll-spy (desktop) */}
+                    <aside className="hidden lg:col-span-3 lg:block print:hidden">
+                        <nav className="sticky top-32" aria-label="Bulletin sections">
+                            <div className="ornamental-kicker mb-4">On this page</div>
+                            <ul className="space-y-2">
+                                {navItems.map(s => (
+                                    <li key={s.id}>
+                                        <a
+                                            href={`#${s.id}`}
+                                            className={`block text-[0.9375rem] no-underline transition-colors ${activeId === s.id ? 'font-semibold text-parish-accent' : 'text-parish-muted hover:text-parish-accent'}`}
+                                        >
+                                            {s.title}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    </aside>
 
-            {/* Bulletin Sections */}
-            {bulletin.sections.map((section, i) => (
-                <section key={i} className="page-section mt-10 md:mt-14">
-                    <div className="page-section-inner max-w-3xl">
-                        <motion.div
-                            initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.68, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
-                            className="border-t border-parish-border/5 pt-10"
-                        >
-                            <div className="ornamental-kicker">{section.title}</div>
-                            {section.imageAsset && (
-                                <div className="image-panel mt-5 overflow-hidden">
-                                    <img
-                                        src={`/${section.imageAsset}`}
-                                        alt={section.title}
-                                        className="w-full object-cover"
-                                    />
-                                </div>
-                            )}
-                            <p className="mt-5 text-lg leading-relaxed text-parish-muted md:text-xl">{section.content}</p>
-                        </motion.div>
+                    <div className="max-w-3xl lg:col-span-9">
+                        {/* Share / print actions */}
+                        <div className="mb-8 flex flex-wrap gap-3 print:hidden">
+                            <button type="button" onClick={share} className="pilgrimage-button-secondary inline-flex items-center gap-2 !px-5 !py-2.5">
+                                {copied ? <><Check className="h-4 w-4" aria-hidden="true" /> Link copied</> : <><Share2 className="h-4 w-4" aria-hidden="true" /> Share</>}
+                            </button>
+                            <button type="button" onClick={() => window.print()} className="pilgrimage-button-ghost inline-flex items-center gap-2 !px-5 !py-2.5">
+                                <Printer className="h-4 w-4" aria-hidden="true" /> Print
+                            </button>
+                        </div>
+
+                        {/* Priest's reflection */}
+                        <div id="reflection" className="scroll-mt-32">
+                            <div className="ornamental-kicker">Priest&apos;s Reflection</div>
+                            <div className="reflection-prose mt-6">
+                                {bulletin.priestReflection.split('\n\n').map((para, i) => (
+                                    <p key={i} className="mb-6 font-body text-lg leading-relaxed text-parish-muted md:text-xl">{para}</p>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Sections */}
+                        {bulletin.sections.map((section, i) => (
+                            <div key={i} id={`section-${i}`} className="mt-10 scroll-mt-32 border-t border-parish-border/5 pt-10">
+                                <div className="ornamental-kicker">{section.title}</div>
+                                {section.imageAsset && (
+                                    <div className="image-panel mt-5 overflow-hidden">
+                                        <img src={`/${section.imageAsset}`} alt={section.imageAlt || section.title} className="w-full object-cover" />
+                                    </div>
+                                )}
+                                <p className="mt-5 text-lg leading-relaxed text-parish-muted md:text-xl">{section.content}</p>
+                            </div>
+                        ))}
+
+                        {/* Prev / next bulletin */}
+                        <nav className="mt-14 flex items-center justify-between gap-4 border-t border-parish-border/10 pt-8 print:hidden" aria-label="Bulletin navigation">
+                            {prevItem ? (
+                                <Link to={`/news-events/bulletin/${prevItem.id}`} className="inline-flex max-w-[45%] items-center gap-2 text-parish-accent no-underline hover:underline">
+                                    <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden="true" />
+                                    <span className="truncate">{prevItem.title}</span>
+                                </Link>
+                            ) : <span />}
+                            {nextItem ? (
+                                <Link to={`/news-events/bulletin/${nextItem.id}`} className="inline-flex max-w-[45%] items-center gap-2 text-right text-parish-accent no-underline hover:underline">
+                                    <span className="truncate">{nextItem.title}</span>
+                                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                                </Link>
+                            ) : <span />}
+                        </nav>
                     </div>
-                </section>
-            ))}
-
-            <section className="page-section mt-16 md:mt-24">
-                <div className="page-section-inner max-w-3xl">
-                    <ActionBand>
-                        <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
-                            <div className="lg:col-span-8">
-                                <span className="section-label mb-4">Stay In The Loop</span>
-                                <h2 className="text-[clamp(2.2rem,4vw,3.9rem)] text-parish-fg">
-                                    Browse more bulletins or see what is coming up this week.
-                                </h2>
-                            </div>
-                            <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
-                                <Link to="/news-events" className="pilgrimage-button">
-                                    All News & Events
-                                </Link>
-                                <Link to="/mass-times" className="pilgrimage-button-secondary">
-                                    Mass Times
-                                </Link>
-                            </div>
-                        </div>
-                    </ActionBand>
                 </div>
             </section>
         </StoryPageTemplate>
