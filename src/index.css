@@ -14,6 +14,16 @@
        fallback. Introduces no new font family. */
     --font-display: 'Merriweather', serif;
 
+    /* ── Typography scale — readable minimums for 40–70yr audience ── */
+    --type-fine: 0.8125rem;    /* 13px — footer fine print, copyright */
+    --type-caption: 0.875rem;  /* 14px — image captions, overlay labels */
+    --type-label: 0.875rem;    /* 14px — kickers, form labels, ornamental */
+    --type-button: 0.9375rem;  /* 15px — button text, CTAs */
+    --type-body: 1.125rem;     /* 18px — primary body text */
+    --type-body-lg: 1.25rem;   /* 20px — emphasis/intro paragraphs */
+    --type-sub: 1rem;          /* 16px — secondary/supporting text */
+    --type-nav: 0.8125rem;     /* 13px — nav link labels (exception) */
+
     /* ── Warm Parish — Light Mode (Default) ──────────────────────── */
     --color-parish-bg: 245 241 233;
     --color-parish-surface: 252 250 245;
