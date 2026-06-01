@@ -129,16 +129,16 @@ export function AccessibilityMenu() {
                         className="absolute right-0 mt-2 w-64 bg-parish-surface border border-parish-border/10 rounded-xl shadow-xl z-50 overflow-hidden"
                     >
                         <div className="px-4 py-3 border-b border-parish-border/5 flex items-center justify-between">
-                            <h2 className="font-display tracking-widest text-xs uppercase text-parish-accent">
+                            <h2 className="font-display tracking-widest text-[0.8125rem] uppercase text-parish-accent">
                                 Accessibility
                             </h2>
-                            <span className="text-parish-muted text-xs font-serif">{fontSize !== 'normal' || isDyslexic || reduceMotion ? '● Active' : ''}</span>
+                            <span className="text-parish-muted text-[0.8125rem] font-serif">{fontSize !== 'normal' || isDyslexic || reduceMotion ? '● Active' : ''}</span>
                         </div>
 
                         <div className="p-2 flex flex-col gap-1">
                             {/* Font size */}
                             <div className="flex items-center justify-between px-3 py-2.5 rounded-lg">
-                                <span className="text-sm font-body text-parish-fg">Text size</span>
+                                <span className="text-[1rem] font-body text-parish-fg">Text size</span>
                                 <div className="flex items-center gap-1">
                                     <button
                                         onClick={() => cycleFontSize('down')}
@@ -148,7 +148,7 @@ export function AccessibilityMenu() {
                                     >
                                         <ZoomOut size={16} aria-hidden="true" />
                                     </button>
-                                    <span className="text-xs text-parish-muted w-8 text-center font-display">
+                                    <span className="text-[0.8125rem] text-parish-muted w-8 text-center font-display">
                                         {fontSize === 'normal' ? '100%' : fontSize === 'large' ? '112%' : '125%'}
                                     </span>
                                     <button
@@ -168,7 +168,7 @@ export function AccessibilityMenu() {
                                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-parish-border/5 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
                                 aria-pressed={isDyslexic}
                             >
-                                <span className="text-sm font-body text-parish-fg">Dyslexia-friendly font</span>
+                                <span className="text-[1rem] font-body text-parish-fg">Dyslexia-friendly font</span>
                                 {isDyslexic && <Check size={16} className="text-parish-accent flex-shrink-0" aria-hidden="true" />}
                             </button>
 
@@ -178,7 +178,7 @@ export function AccessibilityMenu() {
                                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-parish-border/5 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent"
                                 aria-pressed={reduceMotion}
                             >
-                                <span className="text-sm font-body text-parish-fg flex items-center gap-2">
+                                <span className="text-[1rem] font-body text-parish-fg flex items-center gap-2">
                                     <Eye size={14} aria-hidden="true" />
                                     Reduce motion
                                 </span>
@@ -191,14 +191,14 @@ export function AccessibilityMenu() {
                             {(isDyslexic || fontSize !== 'normal' || reduceMotion) && (
                                 <button
                                     onClick={resetAll}
-                                    className="w-full text-center px-3 py-2 text-xs text-parish-muted hover:text-parish-accent font-display tracking-widest uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent rounded-lg"
+                                    className="w-full text-center px-3 py-2 text-[0.8125rem] text-parish-muted hover:text-parish-accent font-display tracking-widest uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-parish-accent rounded-lg"
                                 >
                                     Reset all
                                 </button>
                             )}
                         </div>
 
-                        <p className="px-4 pb-3 text-parish-muted font-serif text-xs text-center leading-relaxed">
+                        <p className="px-4 pb-3 text-parish-muted font-serif text-[0.8125rem] text-center leading-relaxed">
                             Settings saved to your browser.
                         </p>
                     </div>

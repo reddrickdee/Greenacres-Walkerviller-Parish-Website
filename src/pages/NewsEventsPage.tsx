@@ -91,7 +91,7 @@ export function NewsEventsPage() {
             aside={(
                 <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
                     <div className="ornamental-kicker">How It Works</div>
-                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                    <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">
                         A new Connections bulletin is published each weekend with the week's notices,
                         rosters, Mass changes, and community news. Every issue is saved here as a PDF.
                     </p>
@@ -162,7 +162,7 @@ export function NewsEventsPage() {
                                 className="sanctuary-card flex items-center justify-between gap-4 px-5 py-4"
                             >
                                 <div className="min-w-0">
-                                    <h3 className="truncate text-sm font-semibold text-parish-fg">
+                                    <h3 className="truncate text-[1rem] font-semibold text-parish-fg">
                                         {humanTitle(item.title)}
                                     </h3>
                                     {item.isCurrent && (
@@ -173,7 +173,7 @@ export function NewsEventsPage() {
                                     {item.nativeBulletin && (
                                         <Link
                                             to={`/news-events/bulletin/${item.id}`}
-                                            className="mt-1 block text-xs text-parish-accent no-underline hover:underline"
+                                            className="mt-1 block text-[0.875rem] text-parish-accent no-underline hover:underline"
                                         >
                                             Read online →
                                         </Link>

@@ -68,11 +68,11 @@ function MapEmbed({ title, query, address }: MapEmbedProps) {
                     aria-live="polite"
                 >
                     <MapPinOff className="h-7 w-7 text-parish-brass" aria-hidden="true" />
-                    <p className="text-sm font-semibold text-parish-fg">Map unavailable</p>
-                    <p className="text-sm leading-relaxed text-parish-muted">
+                    <p className="text-[1rem] font-semibold text-parish-fg">Map unavailable</p>
+                    <p className="text-[1rem] leading-relaxed text-parish-muted">
                         We couldn&apos;t load the interactive map. You can still find us at:
                     </p>
-                    <p className="text-sm leading-relaxed text-parish-fg">{address}</p>
+                    <p className="text-[1rem] leading-relaxed text-parish-fg">{address}</p>
                 </div>
             ) : (
                 <>
@@ -83,7 +83,7 @@ function MapEmbed({ title, query, address }: MapEmbedProps) {
                             aria-live="polite"
                         >
                             <div className="h-8 w-8 animate-spin rounded-full border-2 border-parish-border/20 border-t-parish-accent" />
-                            <p className="text-sm text-parish-muted">Loading map…</p>
+                            <p className="text-[1rem] text-parish-muted">Loading map…</p>
                         </div>
                     )}
                     <iframe
@@ -135,8 +135,8 @@ export function ContactPage() {
             aside={(
                 <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
                     <div className="ornamental-kicker">Office Hours</div>
-                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.officeHours}</p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-parish-accent">
+                    <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">{contact.officeHours}</p>
+                    <p className="mt-3 text-[0.875rem] font-semibold uppercase tracking-[0.16em] text-parish-accent">
                         Details last checked {content.lastVerified}
                     </p>
                 </div>
@@ -158,7 +158,7 @@ export function ContactPage() {
                             <div className="mt-4 ornamental-kicker">Address</div>
                             <p className="mt-3 text-lg leading-relaxed text-parish-fg">{contact.address}</p>
                             <div className="mt-5 ornamental-kicker">Postal Address</div>
-                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.postalAddress}</p>
+                            <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">{contact.postalAddress}</p>
                         </InfoCard>
                         <InfoCard>
                             <Phone className="h-6 w-6 text-parish-brass" aria-hidden="true" />
@@ -167,7 +167,7 @@ export function ContactPage() {
                                 {contact.phone}
                             </a>
                             <div className="mt-5 ornamental-kicker">Email</div>
-                            <a href={`mailto:${contact.email}`} className="mt-3 block break-all text-sm text-parish-fg underline decoration-parish-brass/35 hover:text-parish-accent">
+                            <a href={`mailto:${contact.email}`} className="mt-3 block break-all text-[1rem] text-parish-fg underline decoration-parish-brass/35 hover:text-parish-accent">
                                 {contact.email}
                             </a>
                         </InfoCard>
@@ -186,7 +186,7 @@ export function ContactPage() {
                     <div className="mt-10 grid gap-6 lg:grid-cols-2">
                         <InfoCard className="p-5 md:p-6">
                             <div className="ornamental-kicker">St Monica&apos;s Church</div>
-                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.stMonicaQuery}</p>
+                            <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">{contact.stMonicaQuery}</p>
                             <MapEmbed
                                 title="Map of St Monica's Church, Walkerville"
                                 query={contact.stMonicaQuery}
@@ -196,7 +196,7 @@ export function ContactPage() {
 
                         <InfoCard className="p-5 md:p-6">
                             <div className="ornamental-kicker">St Martin&apos;s Church</div>
-                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{contact.stMartinQuery}</p>
+                            <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">{contact.stMartinQuery}</p>
                             <MapEmbed
                                 title="Map of St Martin's Church, Greenacres"
                                 query={contact.stMartinQuery}
@@ -219,7 +219,7 @@ export function ContactPage() {
                         {schools.map(school => (
                             <InfoCard key={school.name}>
                                 <div className="ornamental-kicker">{school.name}</div>
-                                <div className="mt-4 space-y-3 text-sm leading-relaxed text-parish-muted">
+                                <div className="mt-4 space-y-3 text-[1rem] leading-relaxed text-parish-muted">
                                     <p>{school.address}</p>
                                     <p>Principal: <span className="text-parish-fg">{school.principal}</span></p>
                                     <p>

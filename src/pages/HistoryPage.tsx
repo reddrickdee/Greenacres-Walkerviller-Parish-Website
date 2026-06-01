@@ -64,7 +64,7 @@ export function HistoryPage() {
                                     prefers-reduced-motion rule in index.css. */}
                                 <div className="relative pl-10 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 md:pl-14">
                                     <div className="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-parish-brass ring-4 ring-parish-bg" />
-                                    <h3 className="font-display text-2xl font-bold leading-tight text-parish-accent md:text-3xl">{item.year}</h3>
+                                    <h3 className="font-display text-3xl font-bold leading-tight text-parish-accent md:text-4xl">{item.year}</h3>
                                     <p className="mt-3 font-body text-lg leading-relaxed text-parish-muted md:text-xl">{item.description}</p>
                                 </div>
                             </motion.div>

@@ -27,7 +27,7 @@ function PageSkeleton() {
         <div className="min-h-screen flex items-center justify-center" role="status" aria-label="Loading page">
             <div className="flex flex-col items-center gap-4">
                 <div className="w-12 h-12 border-4 border-parish-accent/20 border-t-parish-accent rounded-full animate-spin" />
-                <p className="text-parish-muted font-serif text-sm">Loading…</p>
+                <p className="text-parish-muted font-serif text-[1rem]">Loading…</p>
             </div>
         </div>
     );
@@ -68,12 +68,12 @@ class ChunkErrorBoundary extends Component<{ children: ReactNode }, { hasError: 
                 <div className="min-h-screen bg-parish-surface flex items-center justify-center px-6">
                     <div className="text-center max-w-md">
                         <p className="font-display text-lg tracking-wider text-parish-fg mb-3">Page Update Available</p>
-                        <p className="font-serif text-parish-muted text-sm mb-6">
+                        <p className="font-serif text-parish-muted text-[1rem] mb-6">
                             A newer version of the site is available. Please refresh to continue.
                         </p>
                         <button
                             onClick={() => window.location.reload()}
-                            className="bg-parish-accent text-parish-inverse px-6 py-3 rounded-full font-display text-xs uppercase tracking-widest hover:opacity-90 transition-opacity"
+                            className="bg-parish-accent text-parish-inverse px-6 py-3 rounded-full font-display text-[0.875rem] uppercase tracking-widest hover:opacity-90 transition-opacity"
                         >
                             Refresh Page
                         </button>
@@ -101,7 +101,7 @@ function PWAUpdateBanner() {
         <div
             role="alert"
             aria-live="polite"
-            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-toast flex items-center gap-4 px-6 py-4 rounded-xl shadow-xl bg-parish-accent text-parish-inverse font-display text-sm"
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-toast flex items-center gap-4 px-6 py-4 rounded-xl shadow-xl bg-parish-accent text-parish-inverse font-display text-[1rem]"
         >
             <span className="flex items-center gap-2"><Sparkles size={14} aria-hidden="true" /> A new version is available.</span>
             <button

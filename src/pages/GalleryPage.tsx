@@ -102,7 +102,7 @@ export function GalleryPage() {
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`rounded-full px-4 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.24em] transition-all duration-300 ${selectedCategory === cat
+                                className={`rounded-full px-4 py-2.5 text-[0.875rem] font-semibold uppercase tracking-[0.24em] transition-all duration-300 ${selectedCategory === cat
                                     ? 'bg-parish-fg text-parish-inverse shadow-halo'
                                     : 'border border-parish-border/10 bg-parish-surface/90 text-parish-muted hover:border-parish-brass/30 hover:text-parish-fg'
                                     }`}
@@ -138,7 +138,7 @@ export function GalleryPage() {
                                     <div className="absolute inset-0 flex items-end bg-gradient-to-t from-parish-overlay-bg/60 via-transparent to-transparent p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                                         <div>
                                             <p className="text-lg tracking-wide text-parish-overlay-text">{img.alt}</p>
-                                            <span className="text-xs uppercase tracking-[0.22em] text-parish-overlay-text/60">{img.category}</span>
+                                            <span className="text-[0.875rem] uppercase tracking-[0.22em] text-parish-overlay-text/60">{img.category}</span>
                                         </div>
                                     </div>
                                 </button>
@@ -229,7 +229,7 @@ export function GalleryPage() {
 
                         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
                             <p className="text-lg text-white">{filtered[lightboxIndex]?.alt}</p>
-                            <p className="mt-1 text-xs uppercase tracking-[0.22em] text-white/40">
+                            <p className="mt-1 text-[0.875rem] uppercase tracking-[0.22em] text-white/40">
                                 {lightboxIndex + 1} / {filtered.length}
                             </p>
                         </div>

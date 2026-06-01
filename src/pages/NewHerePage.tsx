@@ -42,11 +42,11 @@ export function NewHerePage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                     <div className="rounded-[1.4rem] border border-parish-border/10 bg-parish-border/5 px-5 py-4">
                         <div className="ornamental-kicker">Saturday</div>
-                        <p className="mt-2 text-sm leading-relaxed text-parish-muted">6:00pm at St Monica&apos;s Walkerville</p>
+                        <p className="mt-2 text-[1rem] leading-relaxed text-parish-muted">6:00pm at St Monica&apos;s Walkerville</p>
                     </div>
                     <div className="rounded-[1.4rem] border border-parish-border/10 bg-parish-border/5 px-5 py-4">
                         <div className="ornamental-kicker">Sunday</div>
-                        <p className="mt-2 text-sm leading-relaxed text-parish-muted">9:30am at St Martin&apos;s Greenacres</p>
+                        <p className="mt-2 text-[1rem] leading-relaxed text-parish-muted">9:30am at St Martin&apos;s Greenacres</p>
                     </div>
                 </div>
             )}
@@ -67,7 +67,7 @@ export function NewHerePage() {
                             <p className="mt-4 text-2xl leading-relaxed text-parish-inverse/88 md:text-[2rem]">
                                 &ldquo;Come to me, all you who are weary and burdened, and I will give you rest.&rdquo;
                             </p>
-                            <p className="mt-4 text-sm uppercase tracking-[0.22em] text-parish-brass">Matthew 11:28</p>
+                            <p className="mt-4 text-[1rem] uppercase tracking-[0.22em] text-parish-brass">Matthew 11:28</p>
                         </ScriptureBlock>
                     </div>
                 </div>
@@ -121,13 +121,13 @@ export function NewHerePage() {
                                     <div className="mt-5 space-y-3">
                                         <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
                                             <Car className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
-                                            <p className="text-sm leading-relaxed text-parish-muted">{church.parkingSummary}</p>
+                                            <p className="text-[1rem] leading-relaxed text-parish-muted">{church.parkingSummary}</p>
                                         </div>
                                         <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
                                             <Accessibility className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
-                                            <p className="text-sm leading-relaxed text-parish-muted">{church.accessibilitySummary}</p>
+                                            <p className="text-[1rem] leading-relaxed text-parish-muted">{church.accessibilitySummary}</p>
                                         </div>
-                                        <p className="text-sm leading-relaxed text-parish-muted italic">{church.arrivalTip}</p>
+                                        <p className="text-[1rem] leading-relaxed text-parish-muted italic">{church.arrivalTip}</p>
                                     </div>
 
                                     <div className="mt-5 flex flex-wrap gap-4">
@@ -135,7 +135,7 @@ export function NewHerePage() {
                                             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(church.mapQuery)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"
+                                            className="inline-flex items-center gap-2 text-[0.875rem] font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"
                                         >
                                             <MapPinned className="h-4 w-4" aria-hidden="true" />
                                             Directions
@@ -155,22 +155,22 @@ export function NewHerePage() {
                         <InfoCard>
                             <Accessibility className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">Accessibility Support</div>
-                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">{visitorInfo.accessibilitySupport}</p>
+                            <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">{visitorInfo.accessibilitySupport}</p>
                         </InfoCard>
                         <InfoCard>
                             <Users className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">A Diverse Parish Family</div>
-                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                            <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">
                                 Our parish includes Sri Lankan, Filipino, and broader Australian families. Children are welcome at every Mass, with children's liturgy on the first and third weekends.
                             </p>
                         </InfoCard>
                         <InfoCard>
                             <CalendarClock className="h-6 w-6 text-parish-brass" aria-hidden="true" />
                             <div className="mt-4 ornamental-kicker">What Happens Next</div>
-                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                            <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">
                                 After your first visit, the easiest way to keep moving is through community groups, parish news, and sacramental life.
                             </p>
-                            <Link to="/news-events" className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
+                            <Link to="/news-events" className="mt-5 inline-flex items-center gap-2 text-[0.875rem] font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
                                 Weekly bulletin &amp; news
                                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
                             </Link>

@@ -46,26 +46,26 @@ export function NotFoundPage() {
 
                         <div className="mt-12 sanctuary-card mx-auto max-w-md p-6">
                             <div className="ornamental-kicker">Looking for something?</div>
-                            <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                            <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">
                                 If you followed a link to get here, the page may have moved.
                                 Try the links below or contact the parish office.
                             </p>
                             <div className="mt-5 space-y-2">
                                 <Link
                                     to="/new-here"
-                                    className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-sm font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
+                                    className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-[1rem] font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
                                 >
                                     I&apos;m New Here <ArrowRight className="h-4 w-4 opacity-60" aria-hidden="true" />
                                 </Link>
                                 <Link
                                     to="/contact"
-                                    className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-sm font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
+                                    className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-[1rem] font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
                                 >
                                     Contact the Parish <ArrowRight className="h-4 w-4 opacity-60" aria-hidden="true" />
                                 </Link>
                                 <Link
                                     to="/news-events"
-                                    className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-sm font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
+                                    className="flex items-center justify-between rounded-[1.2rem] bg-parish-border/5 px-4 py-3 text-[1rem] font-semibold text-parish-fg no-underline transition hover:bg-parish-border/10"
                                 >
                                     News &amp; Events <ArrowRight className="h-4 w-4 opacity-60" aria-hidden="true" />
                                 </Link>

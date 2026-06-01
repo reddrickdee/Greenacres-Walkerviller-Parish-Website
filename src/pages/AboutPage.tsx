@@ -86,7 +86,7 @@ export function AboutPage() {
                             {content.missionPoints.map(point => (
                                 <div key={point.title} className="flex gap-3">
                                     <Star size={14} className="mt-1 shrink-0 text-parish-brass" aria-hidden="true" />
-                                    <p className="text-sm leading-relaxed text-parish-muted md:text-base">{point.title}</p>
+                                    <p className="text-[1rem] leading-relaxed text-parish-muted md:text-lg">{point.title}</p>
                                 </div>
                             ))}
                         </div>
@@ -132,7 +132,7 @@ export function AboutPage() {
                                 <div className="px-6 py-7">
                                     <div className="ornamental-kicker">{member.role}</div>
                                     <h3 className="mt-3 text-3xl text-parish-fg">{member.name}</h3>
-                                    <p className="mt-4 text-sm leading-relaxed text-parish-muted">{member.bio}</p>
+                                    <p className="mt-4 text-[1rem] leading-relaxed text-parish-muted">{member.bio}</p>
                                 </div>
                             </motion.div>
                         ))}

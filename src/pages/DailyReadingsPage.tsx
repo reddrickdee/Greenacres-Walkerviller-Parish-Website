@@ -50,7 +50,7 @@ function ReadingBlock({
                     {reading.heading}
                 </p>
             )}
-            <p className="mb-3 text-sm font-semibold text-parish-accent">
+            <p className="mb-3 text-[1rem] font-semibold text-parish-accent">
                 {decodeHtmlEntities(reading.source)}
             </p>
             <div
@@ -76,7 +76,7 @@ function ReflectionSourceCard({
             {...motionProps}
             className="group flex min-w-0 flex-col rounded-2xl border border-parish-border/15 bg-parish-surface px-5 py-6 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-parish-accent/25 hover:shadow-card-hover md:px-6"
         >
-            <span className="mb-4 inline-flex w-fit items-center rounded-full border border-parish-accent/15 bg-parish-accent/5 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-parish-accent">
+            <span className="mb-4 inline-flex w-fit items-center rounded-full border border-parish-accent/15 bg-parish-accent/5 px-3 py-1 text-[0.875rem] font-semibold uppercase tracking-[0.18em] text-parish-accent">
                 {badge}
             </span>
             <div className="flex min-w-0 items-start gap-3">
@@ -85,18 +85,18 @@ function ReflectionSourceCard({
                     <h3 className="text-lg font-display leading-tight text-parish-fg text-pretty">
                         {source.name}
                     </h3>
-                    <p className="mt-3 break-words text-sm leading-relaxed text-parish-muted">
+                    <p className="mt-3 break-words text-[1rem] leading-relaxed text-parish-muted">
                         {source.description}
                     </p>
                 </div>
             </div>
 
             {excerpt ? (
-                <blockquote className="mt-5 border-l-2 border-parish-accent/40 pl-4 text-sm leading-relaxed text-parish-fg">
+                <blockquote className="mt-5 border-l-2 border-parish-accent/40 pl-4 text-[1rem] leading-relaxed text-parish-fg">
                     {excerpt}
                 </blockquote>
             ) : (
-                <p className="mt-5 text-xs leading-relaxed text-parish-muted">
+                <p className="mt-5 text-[0.875rem] leading-relaxed text-parish-muted">
                     Linked directly at the source. Reproduced excerpts can appear here after written permission is recorded.
                 </p>
             )}
@@ -106,7 +106,7 @@ function ReflectionSourceCard({
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-semibold text-parish-accent underline transition-[color,text-decoration-color] duration-200 hover:text-parish-accent-hover hover:no-underline"
+                    className="mt-5 inline-flex w-fit items-center gap-2 text-[1rem] font-semibold text-parish-accent underline transition-[color,text-decoration-color] duration-200 hover:text-parish-accent-hover hover:no-underline"
                 >
                     Read at Source: {source.name}
                     <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
@@ -253,13 +253,13 @@ export function DailyReadingsPage() {
                         >
                             <div className="flex flex-col gap-4 px-6 py-6 md:px-10 md:py-8 sm:flex-row sm:items-center">
                                 <div className="min-w-0 flex-1">
-                                    <p className="text-sm text-parish-muted">{readingsData.date}</p>
+                                    <p className="text-[1rem] text-parish-muted">{readingsData.date}</p>
                                     <div
                                         className="mt-1 break-words text-lg font-display text-parish-fg [&_b]:font-bold"
                                         dangerouslySetInnerHTML={{ __html: sanitiseReadingHtml(readingsData.day) }}
                                     />
                                 </div>
-                                <div className="flex shrink-0 items-center gap-2 text-sm text-parish-muted">
+                                <div className="flex shrink-0 items-center gap-2 text-[1rem] text-parish-muted">
                                     <Palette className="h-4 w-4" aria-hidden="true" />
                                     <span>Liturgical colour:</span>
                                     <span
@@ -301,7 +301,7 @@ export function DailyReadingsPage() {
                             <h2 className="mb-2 text-xl font-display text-parish-fg">
                                 {problemTitle}
                             </h2>
-                            <p className="mx-auto mb-5 max-w-md text-sm text-parish-muted">
+                            <p className="mx-auto mb-5 max-w-md text-[1rem] text-parish-muted">
                                 Try again, or read today&rsquo;s Mass readings directly on Universalis.
                             </p>
                             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -401,7 +401,7 @@ export function DailyReadingsPage() {
                                 </div>
                             </div>
                         ) : (
-                            <p className="max-w-2xl text-sm leading-relaxed text-parish-muted">
+                            <p className="max-w-2xl text-[1rem] leading-relaxed text-parish-muted">
                                 The reflection prompt will appear once today&rsquo;s Gospel reference has loaded.
                             </p>
                         )}
@@ -412,19 +412,19 @@ export function DailyReadingsPage() {
                             <h2 className="mb-2 text-2xl font-display text-parish-fg text-pretty">
                                 Daily Prayer &amp; Reflection Sources
                             </h2>
-                            <p className="mb-8 max-w-2xl text-sm leading-relaxed text-parish-muted">
+                            <p className="mb-8 max-w-2xl text-[1rem] leading-relaxed text-parish-muted">
                                 Australian Catholic sources appear first. Global sources are included as backup prayer options.
                             </p>
                         </motion.div>
 
                         {sourcesStatus === 'loading' && (
-                            <p className="text-sm text-parish-muted" role="status" aria-live="polite">
+                            <p className="text-[1rem] text-parish-muted" role="status" aria-live="polite">
                                 Loading reflection sources&hellip;
                             </p>
                         )}
 
                         {sourcesStatus !== 'loading' && sources.length === 0 && (
-                            <p className="rounded-2xl border border-parish-border/15 bg-parish-surface px-6 py-5 text-sm text-parish-muted">
+                            <p className="rounded-2xl border border-parish-border/15 bg-parish-surface px-6 py-5 text-[1rem] text-parish-muted">
                                 No daily reflection sources are currently available.
                             </p>
                         )}
@@ -452,10 +452,10 @@ export function DailyReadingsPage() {
             <section className="page-section pt-12 pb-16 md:pt-16" id="source">
                 <div className="page-section-inner max-w-3xl">
                     <motion.div {...m} className="sanctuary-panel px-6 py-8 md:px-10 md:py-10">
-                        <h2 className="mb-4 text-sm font-display uppercase tracking-widest text-parish-muted">
+                        <h2 className="mb-4 text-[1rem] font-display uppercase tracking-widest text-parish-muted">
                             Source
                         </h2>
-                        <p className="text-sm leading-relaxed text-parish-muted">
+                        <p className="text-[1rem] leading-relaxed text-parish-muted">
                             Readings are provided by{' '}
                             <a
                                 href="https://universalis.com"
@@ -472,7 +472,7 @@ export function DailyReadingsPage() {
                                 href={universalisUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-sm font-semibold text-parish-accent underline transition-[color,text-decoration-color] duration-200 hover:text-parish-accent-hover hover:no-underline"
+                                className="inline-flex items-center gap-1.5 text-[1rem] font-semibold text-parish-accent underline transition-[color,text-decoration-color] duration-200 hover:text-parish-accent-hover hover:no-underline"
                             >
                                 Open Today&rsquo;s Readings on Universalis
                                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
@@ -480,7 +480,7 @@ export function DailyReadingsPage() {
                         </p>
                         {readingsData?.copyright?.text && (
                             <div
-                                className="mt-6 border-t border-parish-border/10 pt-5 text-xs leading-relaxed text-parish-muted/60 [&_a]:text-parish-accent [&_a]:underline"
+                                className="mt-6 border-t border-parish-border/10 pt-5 text-[0.875rem] leading-relaxed text-parish-muted/60 [&_a]:text-parish-accent [&_a]:underline"
                                 dangerouslySetInnerHTML={{
                                     __html: sanitiseReadingHtml(readingsData.copyright.text),
                                 }}

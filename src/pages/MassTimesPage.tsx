@@ -71,10 +71,10 @@ export function MassTimesPage() {
             aside={(
                 <div className="rounded-[1.5rem] border border-parish-brass/20 bg-parish-border/5 px-5 py-5">
                     <div className="ornamental-kicker">Weekend Anchor</div>
-                    <p className="mt-3 text-sm leading-relaxed text-parish-muted">
+                    <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">
                         Saturday 6:00pm at St Monica&apos;s Walkerville and Sunday 9:30am at St Martin&apos;s Greenacres.
                     </p>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-parish-accent">
+                    <p className="mt-3 text-[0.875rem] font-semibold uppercase tracking-[0.16em] text-parish-accent">
                         Schedule last checked {content.lastVerified}
                     </p>
                 </div>
@@ -114,7 +114,7 @@ export function MassTimesPage() {
                     <div className="mt-10 grid gap-6 lg:grid-cols-2">
                         <div>
                             <h3 className="ornamental-kicker mb-3">St Monica&apos;s Church</h3>
-                            <p className="text-sm text-parish-muted mb-4">90 North East Road, Walkerville SA 5081</p>
+                            <p className="text-[1rem] text-parish-muted mb-4">90 North East Road, Walkerville SA 5081</p>
                             <ChurchMap
                                 name="St Monica's Church"
                                 address="90 North East Road, Walkerville SA 5081"
@@ -123,7 +123,7 @@ export function MassTimesPage() {
                         </div>
                         <div>
                             <h3 className="ornamental-kicker mb-3">St Martin&apos;s Church</h3>
-                            <p className="text-sm text-parish-muted mb-4">Corner Muller &amp; Hampstead Roads, Greenacres SA 5086</p>
+                            <p className="text-[1rem] text-parish-muted mb-4">Corner Muller &amp; Hampstead Roads, Greenacres SA 5086</p>
                             <ChurchMap
                                 name="St Martin's Church"
                                 address="Corner Muller & Hampstead Roads, Greenacres SA 5086"
@@ -191,13 +191,13 @@ function ChurchCard({
                 <div className="mt-6 space-y-3">
                     <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
                         <Car className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
-                        <p className="text-sm leading-relaxed text-parish-muted">{info.parkingSummary}</p>
+                        <p className="text-[1rem] leading-relaxed text-parish-muted">{info.parkingSummary}</p>
                     </div>
                     <div className="flex items-start gap-3 rounded-[1.2rem] border border-parish-border/10 bg-parish-border/5 px-4 py-3">
                         <Accessibility className="mt-0.5 h-4 w-4 shrink-0 text-parish-accent" aria-hidden="true" />
-                        <p className="text-sm leading-relaxed text-parish-muted">{info.accessibilitySummary}</p>
+                        <p className="text-[1rem] leading-relaxed text-parish-muted">{info.accessibilitySummary}</p>
                     </div>
-                    <p className="text-sm leading-relaxed text-parish-muted italic">{info.arrivalTip}</p>
+                    <p className="text-[1rem] leading-relaxed text-parish-muted italic">{info.arrivalTip}</p>
                 </div>
             )}
 
@@ -211,14 +211,14 @@ function ChurchCard({
                             <div className="flex items-start justify-between gap-4">
                                 <div>
                                     <div className="text-2xl text-parish-fg">{WEEKDAYS[mass.dayOfWeek - 1]} {formatTime(mass.startTime)}</div>
-                                    <p className="mt-1 text-sm leading-relaxed text-parish-muted">
+                                    <p className="mt-1 text-[1rem] leading-relaxed text-parish-muted">
                                         {mass.type}{mass.notes ? ` — ${mass.notes}` : ''}
                                     </p>
                                 </div>
                                 <Clock3 className="mt-1 h-5 w-5 shrink-0 text-parish-brass" aria-hidden="true" />
                             </div>
                             {countdown && (
-                                <p className="mt-3 text-sm italic text-parish-accent" aria-live="polite">
+                                <p className="mt-3 text-[1rem] italic text-parish-accent" aria-live="polite">
                                     Next celebration begins in {countdown.display}.
                                 </p>
                             )}
@@ -234,13 +234,13 @@ function ChurchCard({
                         href={mapUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"
+                        className="inline-flex items-center gap-2 text-[0.875rem] font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline"
                     >
                         <MapPinned className="h-4 w-4" aria-hidden="true" />
                         Directions
                     </a>
                 )}
-                <Link to="/contact" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
+                <Link to="/contact" className="inline-flex items-center gap-2 text-[0.875rem] font-semibold uppercase tracking-[0.22em] text-parish-accent no-underline">
                     Contact Office
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>

@@ -96,7 +96,7 @@ export function VolunteerPage() {
                                     {selectedMinistries.map(id => {
                                         const m = MINISTRIES.find(m => m.id === id);
                                         return m ? (
-                                            <span key={id} className="rounded-full border border-parish-brass/20 bg-parish-elevated/50 px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-parish-brass">
+                                            <span key={id} className="rounded-full border border-parish-brass/20 bg-parish-elevated/50 px-3 py-1.5 text-[0.875rem] font-semibold uppercase tracking-[0.2em] text-parish-brass">
                                                 {m.label}
                                             </span>
                                         ) : null;
@@ -107,7 +107,7 @@ export function VolunteerPage() {
                                 <p className="text-lg leading-relaxed text-parish-inverse/85">
                                     "Each of you should use whatever gift you have received to serve others."
                                 </p>
-                                <p className="mt-4 text-sm uppercase tracking-[0.24em] text-parish-brass">1 Peter 4:10</p>
+                                <p className="mt-4 text-[1rem] uppercase tracking-[0.24em] text-parish-brass">1 Peter 4:10</p>
                             </ScriptureBlock>
                         </motion.div>
                     </div>
@@ -160,13 +160,13 @@ export function VolunteerPage() {
                                     >
                                         <Icon size={24} className={`mb-3 ${isSelected ? 'text-parish-brass' : 'text-parish-muted'} transition-colors`} aria-hidden="true" />
                                         <div className="ornamental-kicker">{ministry.label}</div>
-                                        <p className="mt-3 text-sm leading-relaxed text-parish-muted">{ministry.description}</p>
+                                        <p className="mt-3 text-[1rem] leading-relaxed text-parish-muted">{ministry.description}</p>
                                     </button>
                                 );
                             })}
                         </div>
                         {selectedMinistries.length === 0 && (
-                            <p className="mt-3 text-sm italic text-parish-muted">Please select at least one ministry.</p>
+                            <p className="mt-3 text-[1rem] italic text-parish-muted">Please select at least one ministry.</p>
                         )}
                     </div>
                 </section>
@@ -177,28 +177,28 @@ export function VolunteerPage() {
                             <div className="ornamental-kicker mb-6">Your Details</div>
                             <div className="grid gap-6 md:grid-cols-2">
                                 <div>
-                                    <label htmlFor="vol-name" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                    <label htmlFor="vol-name" className="ornamental-kicker mb-2 block text-[0.875rem]">
                                         Full Name <span className="text-parish-fg">*</span>
                                     </label>
                                     <input id="vol-name" type="text" required value={name} onChange={e => setName(e.target.value)} placeholder="Your name"
                                         className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40" />
                                 </div>
                                 <div>
-                                    <label htmlFor="vol-email" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                    <label htmlFor="vol-email" className="ornamental-kicker mb-2 block text-[0.875rem]">
                                         Email <span className="text-parish-fg">*</span>
                                     </label>
                                     <input id="vol-email" type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com"
                                         className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40" />
                                 </div>
                                 <div>
-                                    <label htmlFor="vol-phone" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                    <label htmlFor="vol-phone" className="ornamental-kicker mb-2 block text-[0.875rem]">
                                         Phone <span className="text-parish-muted">(optional)</span>
                                     </label>
                                     <input id="vol-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="0412 345 678"
                                         className="w-full rounded-[1.25rem] border border-parish-border/10 bg-parish-bg px-5 py-4 text-parish-fg transition-colors focus:border-parish-brass/40" />
                                 </div>
                                 <div>
-                                    <label htmlFor="vol-message" className="ornamental-kicker mb-2 block text-[0.68rem]">
+                                    <label htmlFor="vol-message" className="ornamental-kicker mb-2 block text-[0.875rem]">
                                         Anything else? <span className="text-parish-muted">(optional)</span>
                                     </label>
                                     <input id="vol-message" type="text" value={message} onChange={e => setMessage(e.target.value)} placeholder="Skills, availability, etc."
