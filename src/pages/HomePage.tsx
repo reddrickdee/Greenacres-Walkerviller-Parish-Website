@@ -1,6 +1,7 @@
 import { usePageSEO } from '../hooks/usePageSEO';
 import { useJsonLd } from '../hooks/useJsonLd';
 import { HeroSection } from '../components/home/HeroSection';
+import { SynodBanner } from '../components/home/SynodBanner';
 import { TaskCards } from '../components/home/TaskCards';
 import { ThisWeekend } from '../components/home/ThisWeekend';
 import { LatestBulletin } from '../components/home/LatestBulletin';
@@ -48,6 +49,9 @@ export function HomePage() {
             <HeroSection />
 
             <div className="space-y-16 pb-24 md:space-y-24 md:pb-32 pt-16 md:pt-24">
+                {/* Time-sensitive 2026 Diocesan Synod banner (auto-expires) */}
+                <SynodBanner />
+
                 {/* "How can we help you today?" — 5 task cards */}
                 <TaskCards />
 

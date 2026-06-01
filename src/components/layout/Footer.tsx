@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Church, Clock3, Mail, Phone } from 'lucide-react';
-import { FOOTER_QUICK_LINKS } from '../../lib/navigation';
+import { FOOTER_QUICK_LINKS, FOOTER_LEGAL_LINKS } from '../../lib/navigation';
 import { useLiturgicalSeason } from '../../hooks/useLiturgicalSeason';
 
 export function Footer() {
@@ -107,7 +107,7 @@ export function Footer() {
                                 <Mail className="h-4 w-4" aria-hidden="true" />
                             </a>
                             <a
-                                href="tel:(08) 8261 6100"
+                                href="tel:0882616200"
                                 className="flex h-9 w-9 items-center justify-center rounded-full border border-parish-border/15 text-parish-muted no-underline transition-colors hover:text-parish-accent hover:border-parish-accent/30"
                                 aria-label="Phone"
                             >
@@ -120,12 +120,19 @@ export function Footer() {
                 {/* Bottom bar */}
                 <div className="mt-12 border-t border-parish-border/15 pt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-[0.8125rem] text-parish-muted/60">
                     <p>© {new Date().getFullYear()} Greenacres Walkerville Catholic Parish</p>
-                    <div className="flex items-center gap-4">
-                        <Link to="/contact" className="no-underline hover:text-parish-accent transition-colors">
-                            Privacy
-                        </Link>
-                        <a href="/sitemap.xml" className="no-underline hover:text-parish-accent transition-colors">
-                            Terms of Use
+                    <div className="flex flex-wrap items-center gap-4">
+                        {FOOTER_LEGAL_LINKS.map(link => (
+                            <Link key={link.to} to={link.to} className="no-underline hover:text-parish-accent transition-colors">
+                                {link.label}
+                            </Link>
+                        ))}
+                        <a
+                            href="https://adelaide.catholic.org.au"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="no-underline hover:text-parish-accent transition-colors"
+                        >
+                            Archdiocese of Adelaide
                         </a>
                     </div>
                 </div>

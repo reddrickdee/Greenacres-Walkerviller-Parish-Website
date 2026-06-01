@@ -9,6 +9,7 @@ import {
     PRIMARY_NAV,
     isActive,
 } from '../../lib/navigation';
+import { PATHS } from '../../lib/routes';
 
 export function Header() {
     const location = useLocation();
@@ -43,18 +44,18 @@ export function Header() {
                     <span className="hidden opacity-80 md:block">In the footsteps of Jesus</span>
                     <div className="flex items-center gap-4 mx-auto md:mx-0">
                         <Link
-                            to="/contact"
+                            to={PATHS.PRIVACY}
                             className="text-parish-shell-fg/80 no-underline hover:text-white transition-colors"
                         >
                             Privacy
                         </Link>
                         <span className="text-parish-shell-fg/30 hidden md:inline">|</span>
                         <a
-                            href="tel:(08) 8261 6100"
+                            href="tel:0882616200"
                             className="hidden md:flex items-center gap-1.5 text-parish-shell-fg/80 no-underline hover:text-white transition-colors"
                         >
                             <Phone className="h-3 w-3" aria-hidden="true" />
-                            (08) 8261 6100
+                            (08) 8261 6200
                         </a>
                     </div>
                 </div>
@@ -116,6 +117,12 @@ export function Header() {
 
                     {/* Right controls */}
                     <div className="flex items-center gap-2">
+                        <Link
+                            to={PATHS.GIVING}
+                            className="pilgrimage-button hidden md:inline-flex !px-5 !py-2.5"
+                        >
+                            Give
+                        </Link>
                         <div className="hidden md:flex items-center gap-1 rounded-full border border-parish-border/15 px-1.5 py-1">
                             <AccessibilityMenu />
                             <ThemeToggle />

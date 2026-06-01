@@ -35,6 +35,7 @@ export interface QuickAction {
 
 export const PRIMARY_NAV: NavItem[] = [
     { to: PATHS.MASS_TIMES, label: 'Mass Times' },
+    { to: PATHS.SACRAMENTS, label: 'Sacraments' },
     { to: PATHS.DAILY_READINGS, label: 'Readings & Reflection' },
     { to: PATHS.NEW_HERE, label: "I'm New Here" },
     { to: PATHS.ABOUT, label: 'Our Parish' },
@@ -50,6 +51,7 @@ export const DRAWER_GROUPS: NavGroup[] = [
         title: 'Worship',
         links: [
             { to: PATHS.MASS_TIMES, label: 'Mass Times' },
+            { to: PATHS.SACRAMENTS, label: 'Sacraments' },
             { to: PATHS.DAILY_READINGS, label: 'Readings & Reflection' },
         ],
     },
@@ -65,6 +67,7 @@ export const DRAWER_GROUPS: NavGroup[] = [
     {
         title: 'Community',
         links: [
+            { to: PATHS.GIVING, label: 'Give' },
             { to: PATHS.NEWS_EVENTS, label: 'News & Events' },
             { to: PATHS.VOLUNTEER, label: 'Get Involved' },
             { to: PATHS.CONTACT, label: 'Contact' },
@@ -111,6 +114,14 @@ export const FOOTER_QUICK_LINKS: NavItem[] = [
 export const FOOTER_EXTRA_NAV: NavItem[] = [
     { to: PATHS.GALLERY, label: 'Gallery' },
     { to: PATHS.VOLUNTEER, label: 'Volunteer' },
+];
+
+// ── Footer legal / compliance links ──────────────────────────────────────────
+
+export const FOOTER_LEGAL_LINKS: NavItem[] = [
+    { to: PATHS.SAFEGUARDING, label: 'Safeguarding' },
+    { to: PATHS.PRIVACY, label: 'Privacy' },
+    { to: PATHS.ACCESSIBILITY, label: 'Accessibility' },
 ];
 
 // ── Active-state helper ───────────────────────────────────────────────────────
