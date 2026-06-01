@@ -74,7 +74,7 @@ export function NewHerePage() {
             </section>
 
             {/* When to arrive */}
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="When to Arrive"
@@ -104,7 +104,7 @@ export function NewHerePage() {
 
             {/* Where to go — church cards with logistics */}
             {visitorInfo && visitorInfo.churches.length > 0 && (
-                <section className="page-section mt-16 md:mt-20">
+                <section className="page-section mt-16 md:mt-24">
                     <div className="page-section-inner">
                         <SectionIntro
                             eyebrow="Where to Go"
@@ -150,7 +150,7 @@ export function NewHerePage() {
 
             {/* Accessibility support */}
             {visitorInfo?.accessibilitySupport && (
-                <section className="page-section mt-16 md:mt-20">
+                <section className="page-section mt-16 md:mt-24">
                     <div className="page-section-inner grid gap-6 lg:grid-cols-3">
                         <InfoCard>
                             <Accessibility className="h-6 w-6 text-parish-brass" aria-hidden="true" />
@@ -180,7 +180,7 @@ export function NewHerePage() {
             )}
 
             {/* Contact prompt */}
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <ActionBand>
                         <div className="grid gap-6 lg:grid-cols-12 lg:items-center">

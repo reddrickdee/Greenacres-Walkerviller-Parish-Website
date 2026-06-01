@@ -203,12 +203,12 @@ This plan implements the Parish Website Design Revamp in "Preserve" mode. Tasks 
   - Audit each page for inverse sections and bring them within the chosen policy
   - _Requirements: 2.4_
 
-- [-] 5.5 Full automated verification and manual review
+- [x] 5.5 Full automated verification and manual review
   - Run `npm run verify:release` (or the individual lint/tsc/test/build chain); confirm any non-zero exit (lint warnings excepted) keeps the phase incomplete and is recorded
   - Manual: keyboard-only walkthrough, light + dark visual review of every page, 375px mobile check, reduced-motion check, OpenDyslexic font check
   - _Requirements: 5.2, 5.3, 5.6, 5.7_
 
-- [ ] 5.6 Run the design quality gate and code review
+- [x] 5.6 Run the design quality gate and code review
   - Run `gstack-design-quality` (AI slop detection, typography, spacing/layout, interaction states, parish design-system compliance)
   - Run `gstack-code-review` before merge
   - _Requirements: 5.1_

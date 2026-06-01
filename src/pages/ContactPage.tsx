@@ -175,7 +175,7 @@ export function ContactPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Church Maps"
@@ -207,7 +207,7 @@ export function ContactPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Parish Schools"
@@ -246,7 +246,7 @@ export function ContactPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <ActionBand>
                         <div className="grid gap-6 lg:grid-cols-12 lg:items-center">

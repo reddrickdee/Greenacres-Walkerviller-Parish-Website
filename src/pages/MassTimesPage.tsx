@@ -103,7 +103,7 @@ export function MassTimesPage() {
             </section>
 
             {/* Find Our Churches — Maps */}
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <SectionIntro
                         eyebrow="Find Us"
@@ -134,7 +134,7 @@ export function MassTimesPage() {
                 </div>
             </section>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <ActionBand>
                         <div className="grid gap-6 lg:grid-cols-12 lg:items-center">

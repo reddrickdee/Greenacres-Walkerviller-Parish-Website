@@ -86,13 +86,13 @@ export function Header() {
                             />
                         </div>
                         <div className="min-w-0">
-                            <div className={`font-display text-lg leading-tight font-bold md:text-xl ${isHeroTransparent ? 'text-parish-fg' : 'text-parish-fg'}`}>
+                            <div className="font-display text-lg leading-tight font-bold text-parish-fg md:text-xl">
                                 Greenacres
                             </div>
-                            <div className={`font-display text-lg leading-tight font-bold md:text-xl ${isHeroTransparent ? 'text-parish-fg' : 'text-parish-fg'}`}>
+                            <div className="font-display text-lg leading-tight font-bold text-parish-fg md:text-xl">
                                 Walkerville
                             </div>
-                            <div className={`text-[0.55rem] font-semibold uppercase tracking-[0.22em] ${isHeroTransparent ? 'text-parish-muted' : 'text-parish-muted'}`}>
+                            <div className="text-[0.55rem] font-semibold uppercase tracking-[0.22em] text-parish-muted">
                                 Catholic Parish
                             </div>
                         </div>
@@ -123,10 +123,7 @@ export function Header() {
                         <button
                             ref={hamburgerRef}
                             onClick={() => setMenuOpen(open => !open)}
-                            className={`relative flex h-11 w-11 items-center justify-center rounded-md border transition-all duration-500 lg:hidden ${isHeroTransparent
-                                ? 'border-parish-border/15 text-parish-fg hover:bg-parish-elevated/50'
-                                : 'border-parish-border/15 text-parish-fg hover:bg-parish-elevated/50'
-                            }`}
+                            className="relative flex h-11 w-11 items-center justify-center rounded-md border border-parish-border/15 text-parish-fg transition-all duration-500 hover:bg-parish-elevated/50 lg:hidden"
                             aria-expanded={menuOpen}
                             aria-controls="mobile-drawer"
                             aria-label={menuOpen ? 'Close menu' : 'Open menu'}

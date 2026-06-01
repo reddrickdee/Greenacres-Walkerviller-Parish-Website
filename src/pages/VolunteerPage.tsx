@@ -224,7 +224,7 @@ export function VolunteerPage() {
                 </section>
             </form>
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner">
                     <ActionBand>
                         <div className="grid gap-6 lg:grid-cols-12 lg:items-center">

@@ -108,7 +108,7 @@ export function BulletinPage() {
                 </section>
             ))}
 
-            <section className="page-section mt-16 md:mt-20">
+            <section className="page-section mt-16 md:mt-24">
                 <div className="page-section-inner max-w-3xl">
                     <ActionBand>
                         <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
