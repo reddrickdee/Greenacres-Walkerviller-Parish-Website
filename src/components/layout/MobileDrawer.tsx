@@ -65,7 +65,7 @@ export function MobileDrawer({ isOpen, onClose, triggerRef }: MobileDrawerProps)
                                                             : 'text-parish-fg hover:bg-parish-elevated/50 hover:text-parish-accent'
                                                         }`}
                                                     >
-                                                        <span className="text-sm font-semibold">{link.label}</span>
+                                                        <span className="text-[1rem] font-semibold">{link.label}</span>
                                                         <ArrowRight className="h-4 w-4 opacity-40" aria-hidden="true" />
                                                     </Link>
                                                 </motion.div>
@@ -96,8 +96,8 @@ export function MobileDrawer({ isOpen, onClose, triggerRef }: MobileDrawerProps)
                                                     <Icon className="h-5 w-5" aria-hidden="true" />
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm font-semibold text-parish-fg">{action.title}</div>
-                                                    <div className="mt-1 text-sm leading-relaxed text-parish-muted">{action.detail}</div>
+                                                    <div className="text-[1rem] font-semibold text-parish-fg">{action.title}</div>
+                                                    <div className="mt-1 text-[1rem] leading-relaxed text-parish-muted">{action.detail}</div>
                                                 </div>
                                             </Link>
                                         );

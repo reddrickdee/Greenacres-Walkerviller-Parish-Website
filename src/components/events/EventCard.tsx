@@ -23,7 +23,7 @@ export function EventCard({ event }: { event: CalendarEvent }) {
                 {p ? (
                     <>
                         <span className="font-display text-2xl leading-none">{p.day}</span>
-                        <span className="text-[0.75rem] font-semibold uppercase tracking-wide">{p.month}</span>
+                        <span className="text-[0.875rem] font-semibold uppercase tracking-wide">{p.month}</span>
                     </>
                 ) : (
                     <CalendarDays className="h-6 w-6" aria-hidden="true" />

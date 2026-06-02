@@ -30,10 +30,10 @@ export function Footer() {
                                 </div>
                             </div>
                         </Link>
-                        <p className="text-sm leading-relaxed text-parish-muted">
+                        <p className="text-[1rem] leading-relaxed text-parish-muted">
                             A welcoming community of faith in the footsteps of Jesus.
                         </p>
-                        <div className="mt-4 space-y-2 text-sm text-parish-muted">
+                        <div className="mt-4 space-y-2 text-[1rem] text-parish-muted">
                             <div className="flex gap-2">
                                 <Church className="mt-0.5 h-4 w-4 text-parish-accent shrink-0" aria-hidden="true" />
                                 <span>St Monica&apos;s Church, 90 North East Road, Walkerville</span>
@@ -62,7 +62,7 @@ export function Footer() {
                                 <Link
                                     key={link.to}
                                     to={link.to}
-                                    className="block text-sm text-parish-muted no-underline transition-colors duration-300 hover:text-parish-accent"
+                                    className="block text-[1rem] text-parish-muted no-underline transition-colors duration-300 hover:text-parish-accent"
                                 >
                                     {link.label}
                                 </Link>
@@ -73,7 +73,7 @@ export function Footer() {
                     {/* Column 3: Parish Office */}
                     <div>
                         <h3 className="ornamental-kicker mb-4">Parish Office</h3>
-                        <div className="space-y-2.5 text-sm text-parish-muted">
+                        <div className="space-y-2.5 text-[1rem] text-parish-muted">
                             <div className="flex gap-2">
                                 <Clock3 className="mt-0.5 h-4 w-4 text-parish-accent shrink-0" aria-hidden="true" />
                                 <div>
@@ -95,7 +95,7 @@ export function Footer() {
                     {/* Column 4: Acknowledgement */}
                     <div>
                         <h3 className="ornamental-kicker mb-4">We acknowledge</h3>
-                        <p className="text-sm leading-relaxed text-parish-muted">
+                        <p className="text-[1rem] leading-relaxed text-parish-muted">
                             We acknowledge the Kaurna people, the traditional custodians of the land on which we gather, and pay our respects to Elders past, present and emerging.
                         </p>
                         <div className="mt-6 flex items-center gap-3">

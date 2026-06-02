@@ -13,7 +13,7 @@ export function SkipLink() {
                 'focus:fixed focus:top-4 focus:left-4 focus:z-skip',
                 'focus:px-5 focus:py-3 focus:rounded-lg',
                 'focus:bg-parish-accent focus:text-parish-inverse',
-                'focus:font-display focus:font-semibold focus:text-sm focus:uppercase focus:tracking-wider',
+                'focus:font-display focus:font-semibold focus:text-[1rem] focus:uppercase focus:tracking-wider',
                 'focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-parish-inverse',
                 'transition-none',
             ].join(' ')}
